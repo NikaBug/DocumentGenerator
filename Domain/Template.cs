@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Domain
 {
     /// <summary>
-    /// Шаблон
+    /// Template
     /// </summary>
     public class Template
     {
         /// <summary>
-        /// конструктор шаблону
+        /// template constructor
         /// </summary>
-        /// <param name="fileName">шлях до файлу</param>
-        /// <param name="fileContent">зміст файлу</param>
+        /// <param name="fileName">path file</param>
+        /// <param name="fileContent">content file</param>
         /// <exception cref="ArgumentNullException"></exception>
         public Template(string fileName, byte[] fileContent)
         {
@@ -34,14 +28,13 @@ namespace Domain
         }
 
         /// <summary>
-        /// Назва файлу
+        /// File name
         /// </summary>
         public string FileName { get; }
 
         /// <summary>
-        /// Зміст файлу
+        /// File content
         /// </summary>
         public byte[] FileContent { get; }
-
     }
 }
