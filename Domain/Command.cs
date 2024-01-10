@@ -1,48 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace Domain
+﻿namespace Domain
 {
     /// <summary>
-    /// Команда
+    /// Command
     /// </summary>
     public class Command
     {
         /// <summary>
-        /// конструктор команди
+        /// Command constructor
         /// </summary>
-        /// <param name="inputTemplate">заповнений шаблон вхідного документу</param>
-        /// <param name="outputTemplate">шаблон вихідного документу</param>
+        /// <param name="commandName">command name</param>
+        /// <param name="commandSetting">command setting</param>
+        /// <param name="inputTemplate">completed input document template</param>
+        /// <param name="outputTemplate">output document template</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public Command(Template inputTemplate, Template outputTemplate) 
+        public Command(string commandName, IReadOnlyDictionary<string, string> commandSetting,
+            Template inputTemplate, Template outputTemplate)
         {
-            if(inputTemplate == null)
-            {
-                throw new ArgumentNullException(nameof(inputTemplate));
-            }
-
-            if (outputTemplate == null)
-            {
-                throw new ArgumentNullException(nameof(outputTemplate));
-            }
-
-            this.InputTemplate = inputTemplate;
-            this.OutputTemplate = outputTemplate;
+            this.CommandName = commandName ?? throw new ArgumentNullException(nameof(commandName));
+            this.CommandSetting = commandSetting ?? throw new ArgumentNullException(nameof(commandSetting));
+            this.InputTemplate = inputTemplate ?? throw new ArgumentNullException(nameof(inputTemplate));
+            this.OutputTemplate = outputTemplate ?? throw new ArgumentNullException(nameof(outputTemplate));
         }
 
         /// <summary>
-        /// Заповнений шаблон вхідного документу
+        /// Command Setting
+        /// </summary>
+        public IReadOnlyDictionary<string, string> CommandSetting { get; }
+
+        /// <summary>
+        /// Command name
+        /// </summary>
+        public string CommandName { get; }
+
+        /// <summary>
+        /// Input Template
         /// </summary>
         public Template InputTemplate { get; }
 
         /// <summary>
-        /// Шаблон вихідного документу
+        /// Template output
         /// </summary>
         public Template OutputTemplate { get; }
-
     }
 }

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain
+﻿namespace Domain
 {
     /// <summary>
-    /// Інтерфейс репозиторію для команд
+    /// Interface command repository
     /// </summary>
     public interface ICommandRepository
     {
-        Task Convert(Template intmp, Template outtmp);
+        Task<IEnumerable<Command>> Get(string cmdName);
+        Task Save(string cmdName);
+        Task Delete(string cmdName);
     }
 }
