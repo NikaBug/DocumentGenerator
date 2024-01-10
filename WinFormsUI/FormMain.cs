@@ -3,9 +3,9 @@ using MaterialSkin.Controls;
 
 namespace WinFormsUI
 {
-    public partial class Form1 : MaterialForm
+    public partial class FormMain : MaterialForm
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;

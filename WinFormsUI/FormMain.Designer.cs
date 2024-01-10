@@ -1,6 +1,6 @@
 ﻿namespace WinFormsUI
 {
-    partial class Form1
+    partial class FormMain
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             materialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
@@ -95,7 +95,7 @@
             imageListMenu.Images.SetKeyName(1, "template.png");
             imageListMenu.Images.SetKeyName(2, "writing.png");
             // 
-            // Form1
+            // FormMain
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -103,7 +103,7 @@
             Controls.Add(materialTabControl);
             DrawerTabControl = materialTabControl;
             HelpButton = true;
-            Name = "Form1";
+            Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Document Generator";
             materialTabControl.ResumeLayout(false);
