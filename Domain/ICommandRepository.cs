@@ -6,7 +6,7 @@
     public interface ICommandRepository
     {
         Task<IEnumerable<Command>> Get(string cmdName);
-        Task Save(string cmdName);
+        Task Save(Command command);
         Task Delete(string cmdName);
     }
 }
