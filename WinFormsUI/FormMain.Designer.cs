@@ -32,10 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             materialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
+            materialLabelListTemplate = new MaterialSkin.Controls.MaterialLabel();
+            materialListViewTemplate = new MaterialSkin.Controls.MaterialListView();
+            materialButtonRemoveTemplate = new MaterialSkin.Controls.MaterialButton();
+            materialButtonAddTemplate = new MaterialSkin.Controls.MaterialButton();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
             imageListMenu = new ImageList(components);
             materialTabControl.SuspendLayout();
+            tabPage1.SuspendLayout();
             SuspendLayout();
             // 
             // materialTabControl
@@ -56,7 +61,11 @@
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = Color.White;
+            tabPage1.BackColor = Color.WhiteSmoke;
+            tabPage1.Controls.Add(materialLabelListTemplate);
+            tabPage1.Controls.Add(materialListViewTemplate);
+            tabPage1.Controls.Add(materialButtonRemoveTemplate);
+            tabPage1.Controls.Add(materialButtonAddTemplate);
             tabPage1.ImageKey = "template.png";
             tabPage1.Location = new Point(4, 39);
             tabPage1.Name = "tabPage1";
@@ -64,6 +73,76 @@
             tabPage1.Size = new Size(836, 440);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Шаблони";
+            // 
+            // materialLabelListTemplate
+            // 
+            materialLabelListTemplate.AutoSize = true;
+            materialLabelListTemplate.Depth = 0;
+            materialLabelListTemplate.Font = new Font("Microsoft Sans Serif", 20F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Pixel);
+            materialLabelListTemplate.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            materialLabelListTemplate.HighEmphasis = true;
+            materialLabelListTemplate.Location = new Point(263, 20);
+            materialLabelListTemplate.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabelListTemplate.Name = "materialLabelListTemplate";
+            materialLabelListTemplate.Size = new Size(244, 24);
+            materialLabelListTemplate.TabIndex = 3;
+            materialLabelListTemplate.Text = "Список доданих шаблонів";
+            // 
+            // materialListViewTemplate
+            // 
+            materialListViewTemplate.AutoSizeTable = false;
+            materialListViewTemplate.BackColor = Color.FromArgb(255, 255, 255);
+            materialListViewTemplate.BorderStyle = BorderStyle.None;
+            materialListViewTemplate.Depth = 0;
+            materialListViewTemplate.FullRowSelect = true;
+            materialListViewTemplate.Location = new Point(23, 58);
+            materialListViewTemplate.MinimumSize = new Size(200, 100);
+            materialListViewTemplate.MouseLocation = new Point(-1, -1);
+            materialListViewTemplate.MouseState = MaterialSkin.MouseState.OUT;
+            materialListViewTemplate.Name = "materialListViewTemplate";
+            materialListViewTemplate.OwnerDraw = true;
+            materialListViewTemplate.Size = new Size(781, 178);
+            materialListViewTemplate.TabIndex = 2;
+            materialListViewTemplate.UseCompatibleStateImageBehavior = false;
+            materialListViewTemplate.View = View.Details;
+            // 
+            // materialButtonRemoveTemplate
+            // 
+            materialButtonRemoveTemplate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButtonRemoveTemplate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButtonRemoveTemplate.Depth = 0;
+            materialButtonRemoveTemplate.HighEmphasis = true;
+            materialButtonRemoveTemplate.Icon = null;
+            materialButtonRemoveTemplate.Location = new Point(385, 245);
+            materialButtonRemoveTemplate.Margin = new Padding(4, 6, 4, 6);
+            materialButtonRemoveTemplate.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButtonRemoveTemplate.Name = "materialButtonRemoveTemplate";
+            materialButtonRemoveTemplate.NoAccentTextColor = Color.Empty;
+            materialButtonRemoveTemplate.Size = new Size(170, 36);
+            materialButtonRemoveTemplate.TabIndex = 1;
+            materialButtonRemoveTemplate.Text = "Видалити шаблон";
+            materialButtonRemoveTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButtonRemoveTemplate.UseAccentColor = false;
+            materialButtonRemoveTemplate.UseVisualStyleBackColor = true;
+            // 
+            // materialButtonAddTemplate
+            // 
+            materialButtonAddTemplate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButtonAddTemplate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButtonAddTemplate.Depth = 0;
+            materialButtonAddTemplate.HighEmphasis = true;
+            materialButtonAddTemplate.Icon = null;
+            materialButtonAddTemplate.Location = new Point(198, 245);
+            materialButtonAddTemplate.Margin = new Padding(4, 6, 4, 6);
+            materialButtonAddTemplate.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButtonAddTemplate.Name = "materialButtonAddTemplate";
+            materialButtonAddTemplate.NoAccentTextColor = Color.Empty;
+            materialButtonAddTemplate.Size = new Size(151, 36);
+            materialButtonAddTemplate.TabIndex = 0;
+            materialButtonAddTemplate.Text = "Додати шаблон";
+            materialButtonAddTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButtonAddTemplate.UseAccentColor = false;
+            materialButtonAddTemplate.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -107,6 +186,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Document Generator";
             materialTabControl.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -117,5 +198,9 @@
         private TabPage tabPage2;
         private TabPage tabPage3;
         private ImageList imageListMenu;
+        private MaterialSkin.Controls.MaterialButton materialButtonAddTemplate;
+        private MaterialSkin.Controls.MaterialButton materialButtonRemoveTemplate;
+        private MaterialSkin.Controls.MaterialListView materialListViewTemplate;
+        private MaterialSkin.Controls.MaterialLabel materialLabelListTemplate;
     }
 }
