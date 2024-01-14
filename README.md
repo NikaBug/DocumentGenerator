@@ -1,6 +1,9 @@
 # DocumentGenerator
 Частина інтерфейсу (проєкт WinFormsUI)
 
-<img width="433" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/73b766ee-7be3-4389-8ae1-dd528b9e6a70">
-<img width="431" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/d0b5c29f-a687-4f13-a3c8-0325048e764f">
+<img width="429" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/4f283e57-8d52-42c7-8c57-603d42a9a271">
+<img width="431" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/add393ea-8afa-45ec-a2aa-2e251ce85705">
+
+
+
 
