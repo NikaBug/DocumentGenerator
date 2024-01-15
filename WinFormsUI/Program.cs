@@ -28,9 +28,9 @@ namespace WinFormsUI
             return Host.CreateDefaultBuilder()
                   .ConfigureServices((context, services) =>
                   {
-                      services.AddTransient<ITemplateRepository, InMemoryTemplateRepository>();
-                      services.AddTransient<ICommandRepository, InMemoryCommandRepository>();
-                      services.AddTransient<FormMain>();
+                      services.AddScoped<ITemplateRepository, InMemoryTemplateRepository>();
+                      services.AddScoped<ICommandRepository, InMemoryCommandRepository>();
+                      services.AddScoped<FormMain>();
                   });
         }
 
