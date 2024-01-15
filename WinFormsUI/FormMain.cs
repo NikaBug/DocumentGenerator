@@ -1,6 +1,10 @@
 using Domain;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Presentation.Models;
+using Presentation.Presenters;
+using Presentation.Views;
+using System.Diagnostics;
 
 namespace WinFormsUI
 {
@@ -16,6 +20,15 @@ namespace WinFormsUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             _templateRepository = tempRepository;
             _commandRepository = cmdRepository;
+        }
+
+        private void materialButtonLoadTemplate_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void materialButtonRemoveTemplate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

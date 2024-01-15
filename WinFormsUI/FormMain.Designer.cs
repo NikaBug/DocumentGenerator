@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             materialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
+            materialLabelPathFile = new MaterialSkin.Controls.MaterialLabel();
+            materialTextBoxPathFile = new MaterialSkin.Controls.MaterialTextBox();
             materialLabelListTemplate = new MaterialSkin.Controls.MaterialLabel();
             materialListViewTemplate = new MaterialSkin.Controls.MaterialListView();
             materialButtonRemoveTemplate = new MaterialSkin.Controls.MaterialButton();
@@ -62,6 +64,8 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.WhiteSmoke;
+            tabPage1.Controls.Add(materialLabelPathFile);
+            tabPage1.Controls.Add(materialTextBoxPathFile);
             tabPage1.Controls.Add(materialLabelListTemplate);
             tabPage1.Controls.Add(materialListViewTemplate);
             tabPage1.Controls.Add(materialButtonRemoveTemplate);
@@ -74,6 +78,40 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Шаблони";
             // 
+            // materialLabelPathFile
+            // 
+            materialLabelPathFile.AutoSize = true;
+            materialLabelPathFile.Depth = 0;
+            materialLabelPathFile.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabelPathFile.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            materialLabelPathFile.HighEmphasis = true;
+            materialLabelPathFile.Location = new Point(84, 73);
+            materialLabelPathFile.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabelPathFile.Name = "materialLabelPathFile";
+            materialLabelPathFile.Size = new Size(42, 19);
+            materialLabelPathFile.TabIndex = 5;
+            materialLabelPathFile.Text = "Шлях";
+            // 
+            // materialTextBoxPathFile
+            // 
+            materialTextBoxPathFile.AnimateReadOnly = false;
+            materialTextBoxPathFile.BorderStyle = BorderStyle.None;
+            materialTextBoxPathFile.Depth = 0;
+            materialTextBoxPathFile.Enabled = false;
+            materialTextBoxPathFile.Font = new Font("Roboto", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            materialTextBoxPathFile.HideSelection = false;
+            materialTextBoxPathFile.LeadingIcon = null;
+            materialTextBoxPathFile.Location = new Point(141, 56);
+            materialTextBoxPathFile.MaxLength = 300;
+            materialTextBoxPathFile.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBoxPathFile.Multiline = false;
+            materialTextBoxPathFile.Name = "materialTextBoxPathFile";
+            materialTextBoxPathFile.ReadOnly = true;
+            materialTextBoxPathFile.Size = new Size(456, 50);
+            materialTextBoxPathFile.TabIndex = 4;
+            materialTextBoxPathFile.Text = "Шлях до файлу";
+            materialTextBoxPathFile.TrailingIcon = null;
+            // 
             // materialLabelListTemplate
             // 
             materialLabelListTemplate.AutoSize = true;
@@ -81,7 +119,7 @@
             materialLabelListTemplate.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabelListTemplate.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             materialLabelListTemplate.HighEmphasis = true;
-            materialLabelListTemplate.Location = new Point(228, 20);
+            materialLabelListTemplate.Location = new Point(224, 20);
             materialLabelListTemplate.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabelListTemplate.Name = "materialLabelListTemplate";
             materialLabelListTemplate.Size = new Size(300, 24);
@@ -95,7 +133,7 @@
             materialListViewTemplate.BorderStyle = BorderStyle.None;
             materialListViewTemplate.Depth = 0;
             materialListViewTemplate.FullRowSelect = true;
-            materialListViewTemplate.Location = new Point(23, 58);
+            materialListViewTemplate.Location = new Point(23, 112);
             materialListViewTemplate.MinimumSize = new Size(200, 100);
             materialListViewTemplate.MouseLocation = new Point(-1, -1);
             materialListViewTemplate.MouseState = MaterialSkin.MouseState.OUT;
@@ -113,7 +151,7 @@
             materialButtonRemoveTemplate.Depth = 0;
             materialButtonRemoveTemplate.HighEmphasis = true;
             materialButtonRemoveTemplate.Icon = null;
-            materialButtonRemoveTemplate.Location = new Point(439, 245);
+            materialButtonRemoveTemplate.Location = new Point(407, 299);
             materialButtonRemoveTemplate.Margin = new Padding(4, 6, 4, 6);
             materialButtonRemoveTemplate.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonRemoveTemplate.Name = "materialButtonRemoveTemplate";
@@ -124,6 +162,7 @@
             materialButtonRemoveTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonRemoveTemplate.UseAccentColor = false;
             materialButtonRemoveTemplate.UseVisualStyleBackColor = true;
+            materialButtonRemoveTemplate.Click += materialButtonRemoveTemplate_Click;
             // 
             // materialButtonLoadTemplate
             // 
@@ -132,7 +171,7 @@
             materialButtonLoadTemplate.Depth = 0;
             materialButtonLoadTemplate.HighEmphasis = true;
             materialButtonLoadTemplate.Icon = null;
-            materialButtonLoadTemplate.Location = new Point(147, 245);
+            materialButtonLoadTemplate.Location = new Point(169, 299);
             materialButtonLoadTemplate.Margin = new Padding(4, 6, 4, 6);
             materialButtonLoadTemplate.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonLoadTemplate.Name = "materialButtonLoadTemplate";
@@ -143,6 +182,7 @@
             materialButtonLoadTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonLoadTemplate.UseAccentColor = false;
             materialButtonLoadTemplate.UseVisualStyleBackColor = true;
+            materialButtonLoadTemplate.Click += materialButtonLoadTemplate_Click;
             // 
             // tabPage2
             // 
@@ -184,7 +224,7 @@
             HelpButton = true;
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Document Generator";
+            Text = "LoadedTemplate Generator";
             materialTabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
@@ -202,5 +242,7 @@
         private MaterialSkin.Controls.MaterialButton materialButtonRemoveTemplate;
         private MaterialSkin.Controls.MaterialListView materialListViewTemplate;
         private MaterialSkin.Controls.MaterialLabel materialLabelListTemplate;
+        private MaterialSkin.Controls.MaterialTextBox materialTextBoxPathFile;
+        private MaterialSkin.Controls.MaterialLabel materialLabelPathFile;
     }
 }
