@@ -13,8 +13,10 @@
         /// <param name="inputTemplate">completed input document template</param>
         /// <param name="outputTemplate">output document template</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public Command(string commandName, IReadOnlyDictionary<string, string> commandSetting,
-            Template inputTemplate, Template outputTemplate)
+        public Command(string commandName, 
+            IReadOnlyDictionary<string, string> commandSetting,
+            Template inputTemplate, 
+            Template outputTemplate)
         {
             this.CommandName = commandName ?? throw new ArgumentNullException(nameof(commandName));
             this.CommandSetting = commandSetting ?? throw new ArgumentNullException(nameof(commandSetting));
