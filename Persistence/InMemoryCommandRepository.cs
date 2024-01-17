@@ -7,7 +7,7 @@ namespace Persistence
     /// </summary>
     public class InMemoryCommandRepository : ICommandRepository
     {
-        private IList<Command> cmd = new List<Command>();
+        private static IList<Command> inMemoryCommands = new List<Command>();
 
         /// <summary>
         /// Delete command
@@ -16,13 +16,12 @@ namespace Persistence
         /// <returns>The successfully completed task</returns>
         public Task Delete(string cmdName)
         {
-            bool res = false;
-            var item = cmd.FirstOrDefault(c => c.CommandName == cmdName);
+            var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == cmdName);
             if (item != null)
             {
-                res = cmd.Remove(item);
+                inMemoryCommands.Remove(item);
             };
-            return Task.FromResult(res);
+            return Task.CompletedTask;
         }
 
         /// <summary>
@@ -32,15 +31,15 @@ namespace Persistence
         /// <returns>The successfully completed task</returns>
         public Task<IEnumerable<Command>> Get(string cmdName)
         {
-            var list = new List<Command>();
-            foreach (var it in cmd)
+            if (string.IsNullOrEmpty(cmdName))
             {
-                if (it.CommandName == cmdName)
-                {
-                    list.Add(it);
-                }
+                return Task.FromResult<IEnumerable<Command>>(inMemoryCommands);
             }
-            return Task.FromResult<IEnumerable<Command>>(list);
+            else
+                {
+                var commandFound = inMemoryCommands.Where(c => c.CommandName == cmdName);
+                return Task.FromResult(commandFound);
+            }
         }
 
         /// <summary>
@@ -50,7 +49,16 @@ namespace Persistence
         /// <returns>The successfully completed task</returns>
         public Task Save(Command command)
         {
-            cmd.Add(command);
+            var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == command.CommandName);
+            if (item == null)
+            {
+                inMemoryCommands.Add(command);
+            }
+            else
+            {
+                var index = inMemoryCommands.IndexOf(item);
+                inMemoryCommands[index] = command;
+            }
             return Task.CompletedTask;
         }
     }

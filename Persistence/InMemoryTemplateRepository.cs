@@ -7,7 +7,7 @@ namespace Persistence
     /// </summary>
     public class InMemoryTemplateRepository : ITemplateRepository
     {
-        private IList<Template> tmp = new List<Template>();
+        private static IList<Template> inMemoryTemplates = new List<Template>();
 
         /// <summary>
         /// Delete template
@@ -16,13 +16,12 @@ namespace Persistence
         /// <returns>The successfully completed task</returns>
         public Task Delete(string name)
         {
-            bool res = false;
-            var item = tmp.FirstOrDefault(t => t.FileName == name);
+            var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == name);
             if (item != null)
             {
-                res = tmp.Remove(item);
+                inMemoryTemplates.Remove(item);
             }
-            return Task.FromResult(res);
+            return Task.CompletedTask;
         }
 
         /// <summary>
@@ -32,16 +31,16 @@ namespace Persistence
         /// <returns>The successfully completed task</returns>
         public Task<IEnumerable<Template>> Get(string name)
         {
-            var list = new List<Template>();
-            foreach (var it in tmp)
+            if (string.IsNullOrEmpty(name))
             {
-                if (it.FileName == name)
-                {
-                    list.Add(it);
+                return Task.FromResult<IEnumerable<Template>>(inMemoryTemplates);
+            }
+            else
+            {
+                var templateFound = inMemoryTemplates.Where(t => t.FileName == name);
+                return Task.FromResult(templateFound);
                 }
             }
-            return Task.FromResult<IEnumerable<Template>>(list);
-        }
 
         /// <summary>
         /// Save template
@@ -50,7 +49,16 @@ namespace Persistence
         /// <returns>The successfully completed task</returns>
         public Task Save(Template template)
         {
-            tmp.Add(template);
+            var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == template.FileName);
+            if (item == null)
+            {
+                inMemoryTemplates.Add(template);
+            }
+            else
+            {
+                var index = inMemoryTemplates.IndexOf(item);
+                inMemoryTemplates[index] = template;
+            }
             return Task.CompletedTask;
         }
     }
