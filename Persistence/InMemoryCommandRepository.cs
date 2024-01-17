@@ -36,7 +36,7 @@ namespace Persistence
                 return Task.FromResult<IEnumerable<Command>>(inMemoryCommands);
             }
             else
-                {
+            {
                 var commandFound = inMemoryCommands.Where(c => c.CommandName == cmdName);
                 return Task.FromResult(commandFound);
             }

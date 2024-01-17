@@ -39,8 +39,8 @@ namespace Persistence
             {
                 var templateFound = inMemoryTemplates.Where(t => t.FileName == name);
                 return Task.FromResult(templateFound);
-                }
             }
+        }
 
         /// <summary>
         /// Save template
