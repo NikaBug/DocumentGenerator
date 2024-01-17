@@ -162,7 +162,6 @@
             materialButtonRemoveTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonRemoveTemplate.UseAccentColor = false;
             materialButtonRemoveTemplate.UseVisualStyleBackColor = true;
-            materialButtonRemoveTemplate.Click += materialButtonRemoveTemplate_Click;
             // 
             // materialButtonLoadTemplate
             // 
@@ -182,7 +181,6 @@
             materialButtonLoadTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonLoadTemplate.UseAccentColor = false;
             materialButtonLoadTemplate.UseVisualStyleBackColor = true;
-            materialButtonLoadTemplate.Click += materialButtonLoadTemplate_Click;
             // 
             // tabPage2
             // 
