@@ -20,7 +20,7 @@ namespace Persistence
             if (item != null)
             {
                 inMemoryCommands.Remove(item);
-            };
+            }
             return Task.CompletedTask;
         }
 
