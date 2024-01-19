@@ -222,7 +222,7 @@
             HelpButton = true;
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "LoadedTemplate Generator";
+            Text = "Document Generator";
             materialTabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
