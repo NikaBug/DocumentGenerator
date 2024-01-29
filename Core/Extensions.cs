@@ -4,7 +4,7 @@ using Persistence;
 
 namespace Core
 {
-    public static class ExtensionsCore
+    public static class Extensions
     {
         public static IServiceCollection AddInMemoryRepositories(this IServiceCollection services)
         {
