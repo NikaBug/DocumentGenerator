@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Presentation
 {
-    public static class ExtensionsPresentation
+    public static class Extensions
     {
         private static void UseCore(IServiceCollection services)
         {
