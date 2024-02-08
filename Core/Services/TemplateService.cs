@@ -11,7 +11,7 @@ namespace Core.Services
             this.templateRepository = templateRepository;
         }
 
-        public Task<IEnumerable<Template>> GetAllCommands()
+        public Task<IEnumerable<Template>> GetAllTemplates()
         {
             return templateRepository.Get(string.Empty);
         }
