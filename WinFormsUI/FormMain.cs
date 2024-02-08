@@ -1,11 +1,11 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Presentation.ViewModels;
-using System.Windows.Forms;
+using Presentation.Views;
 
 namespace WinFormsUI
 {
-    public partial class FormMain : MaterialForm
+    public partial class FormMain : MaterialForm, IMainView
     {
         public FormMain()
         {

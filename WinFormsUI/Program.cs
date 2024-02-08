@@ -1,3 +1,8 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Presentation;
+using Presentation.Presenters;
+
 namespace WinFormsUI
 {
     internal static class Program
@@ -8,13 +13,13 @@ namespace WinFormsUI
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            //Application.Run(new FormMain());
 
             var host = CreateHostBuilder().Build();
             var mainPresenter = host.Services.GetRequiredService<IMainPresenter>();
+
+            mainPresenter.Run();
+            Application.Run();
         }
 
         static IHostBuilder CreateHostBuilder()
@@ -22,7 +27,7 @@ namespace WinFormsUI
             return Host.CreateDefaultBuilder().ConfigureServices((_, services) =>
             {
                 services.AddViews();
-                //services.UseCore();
+                services.UseCore();
             });
         }
     }

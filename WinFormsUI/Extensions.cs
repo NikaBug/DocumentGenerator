@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Presentation.Views;
 
 namespace WinFormsUI
 {
@@ -6,7 +7,7 @@ namespace WinFormsUI
     {
         public static void AddViews(this IServiceCollection services)
         {
-            // services.AddScoped<IMainView, FormMain>();
+            services.AddScoped<IMainView, FormMain>();
         }
     }
 }
