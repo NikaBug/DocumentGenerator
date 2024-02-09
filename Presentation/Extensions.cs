@@ -7,9 +7,12 @@ namespace Presentation
 {
     public static class Extensions
     {
-        private static void UseCore(IServiceCollection services)
+        public static void UseCore(this IServiceCollection services)
         {
             services.AddInMemoryRepositories();
+
+            AddServices(services);
+            AddPresenters(services);
         }
 
         private static void AddServices(IServiceCollection services)
