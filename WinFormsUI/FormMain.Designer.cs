@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle27 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle26 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             materialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             tabPageTemplate = new TabPage();
+            materialButtonUpdateTemplate = new MaterialSkin.Controls.MaterialButton();
+            materialButtonReadTemlate = new MaterialSkin.Controls.MaterialButton();
             materialLabelPathFile = new MaterialSkin.Controls.MaterialLabel();
             materialTextBoxPathFile = new MaterialSkin.Controls.MaterialTextBox();
             materialLabelListTemplate = new MaterialSkin.Controls.MaterialLabel();
@@ -78,8 +80,6 @@
             materialLabelInputTmp = new MaterialSkin.Controls.MaterialLabel();
             materialComboBoxOutputTmp = new MaterialSkin.Controls.MaterialComboBox();
             imageListMenu = new ImageList(components);
-            materialButtonReadTemlate = new MaterialSkin.Controls.MaterialButton();
-            materialButtonUpdateTemplate = new MaterialSkin.Controls.MaterialButton();
             materialTabControl.SuspendLayout();
             tabPageTemplate.SuspendLayout();
             tabPageGenerateDocument.SuspendLayout();
@@ -124,6 +124,44 @@
             tabPageTemplate.Size = new Size(905, 512);
             tabPageTemplate.TabIndex = 0;
             tabPageTemplate.Text = "Шаблони";
+            // 
+            // materialButtonUpdateTemplate
+            // 
+            materialButtonUpdateTemplate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButtonUpdateTemplate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButtonUpdateTemplate.Depth = 0;
+            materialButtonUpdateTemplate.HighEmphasis = true;
+            materialButtonUpdateTemplate.Icon = null;
+            materialButtonUpdateTemplate.Location = new Point(614, 299);
+            materialButtonUpdateTemplate.Margin = new Padding(4, 6, 4, 6);
+            materialButtonUpdateTemplate.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButtonUpdateTemplate.Name = "materialButtonUpdateTemplate";
+            materialButtonUpdateTemplate.NoAccentTextColor = Color.Empty;
+            materialButtonUpdateTemplate.Size = new Size(159, 36);
+            materialButtonUpdateTemplate.TabIndex = 7;
+            materialButtonUpdateTemplate.Text = "Оновити шаблон";
+            materialButtonUpdateTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButtonUpdateTemplate.UseAccentColor = false;
+            materialButtonUpdateTemplate.UseVisualStyleBackColor = true;
+            // 
+            // materialButtonReadTemlate
+            // 
+            materialButtonReadTemlate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButtonReadTemlate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButtonReadTemlate.Depth = 0;
+            materialButtonReadTemlate.HighEmphasis = true;
+            materialButtonReadTemlate.Icon = null;
+            materialButtonReadTemlate.Location = new Point(250, 299);
+            materialButtonReadTemlate.Margin = new Padding(4, 6, 4, 6);
+            materialButtonReadTemlate.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButtonReadTemlate.Name = "materialButtonReadTemlate";
+            materialButtonReadTemlate.NoAccentTextColor = Color.Empty;
+            materialButtonReadTemlate.Size = new Size(148, 36);
+            materialButtonReadTemlate.TabIndex = 6;
+            materialButtonReadTemlate.Text = "Читати шаблон";
+            materialButtonReadTemlate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButtonReadTemlate.UseAccentColor = false;
+            materialButtonReadTemlate.UseVisualStyleBackColor = true;
             // 
             // materialLabelPathFile
             // 
@@ -214,16 +252,16 @@
             materialButtonLoadTemplate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             materialButtonLoadTemplate.Depth = 0;
             materialButtonLoadTemplate.HighEmphasis = true;
-            materialButtonLoadTemplate.Icon = null;
-            materialButtonLoadTemplate.Location = new Point(23, 299);
+            materialButtonLoadTemplate.Icon = Properties.Resources.file;
+            materialButtonLoadTemplate.Location = new Point(15, 299);
             materialButtonLoadTemplate.Margin = new Padding(4, 6, 4, 6);
             materialButtonLoadTemplate.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonLoadTemplate.Name = "materialButtonLoadTemplate";
             materialButtonLoadTemplate.NoAccentTextColor = Color.Empty;
-            materialButtonLoadTemplate.Size = new Size(199, 36);
+            materialButtonLoadTemplate.Size = new Size(227, 36);
             materialButtonLoadTemplate.TabIndex = 0;
             materialButtonLoadTemplate.Text = "Завантажити шаблон";
-            materialButtonLoadTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButtonLoadTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             materialButtonLoadTemplate.UseAccentColor = false;
             materialButtonLoadTemplate.UseVisualStyleBackColor = true;
             // 
@@ -267,32 +305,32 @@
             // 
             // dataGridViewBookmarks
             // 
-            dataGridViewCellStyle19.BackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle19.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle19.ForeColor = Color.Black;
-            dataGridViewCellStyle19.SelectionBackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle19.SelectionForeColor = Color.Black;
-            dataGridViewBookmarks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle10.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
+            dataGridViewBookmarks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewBookmarks.BackgroundColor = Color.Gainsboro;
             dataGridViewBookmarks.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = Color.MediumPurple;
-            dataGridViewCellStyle20.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle20.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle20.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.True;
-            dataGridViewBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.MediumPurple;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dataGridViewBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewBookmarks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBookmarks.Columns.AddRange(new DataGridViewColumn[] { Bookmark, TypeData, EnterData });
-            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle22.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle22.ForeColor = Color.Black;
-            dataGridViewCellStyle22.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle22.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.False;
-            dataGridViewBookmarks.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle13.ForeColor = Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle13.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.False;
+            dataGridViewBookmarks.DefaultCellStyle = dataGridViewCellStyle13;
             dataGridViewBookmarks.EnableHeadersVisualStyles = false;
             dataGridViewBookmarks.Location = new Point(27, 252);
             dataGridViewBookmarks.Name = "dataGridViewBookmarks";
@@ -312,11 +350,11 @@
             // 
             // TypeData
             // 
-            dataGridViewCellStyle21.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle21.ForeColor = Color.Black;
-            dataGridViewCellStyle21.SelectionBackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle21.SelectionForeColor = Color.Black;
-            TypeData.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle12.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle12.ForeColor = Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            TypeData.DefaultCellStyle = dataGridViewCellStyle12;
             TypeData.FlatStyle = FlatStyle.Flat;
             TypeData.HeaderText = "Тип даних";
             TypeData.MinimumWidth = 8;
@@ -548,32 +586,32 @@
             // 
             // dataGridViewIOBookmark
             // 
-            dataGridViewCellStyle23.BackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle23.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle23.ForeColor = Color.Black;
-            dataGridViewCellStyle23.SelectionBackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle23.SelectionForeColor = Color.Black;
-            dataGridViewIOBookmark.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle14.BackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle14.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle14.SelectionForeColor = Color.Black;
+            dataGridViewIOBookmark.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
             dataGridViewIOBookmark.BackgroundColor = Color.FromArgb(224, 224, 224);
             dataGridViewIOBookmark.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = Color.MediumPurple;
-            dataGridViewCellStyle24.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle24.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle24.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.True;
-            dataGridViewIOBookmark.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = Color.MediumPurple;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle15.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
+            dataGridViewIOBookmark.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             dataGridViewIOBookmark.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewIOBookmark.Columns.AddRange(new DataGridViewColumn[] { InputBookmark, dataGridViewComboBoxColumn1 });
-            dataGridViewCellStyle27.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle27.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle27.ForeColor = Color.Black;
-            dataGridViewCellStyle27.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle27.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle27.WrapMode = DataGridViewTriState.False;
-            dataGridViewIOBookmark.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle18.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle18.ForeColor = Color.Black;
+            dataGridViewCellStyle18.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            dataGridViewCellStyle18.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
+            dataGridViewIOBookmark.DefaultCellStyle = dataGridViewCellStyle18;
             dataGridViewIOBookmark.EnableHeadersVisualStyles = false;
             dataGridViewIOBookmark.Location = new Point(33, 221);
             dataGridViewIOBookmark.Name = "dataGridViewIOBookmark";
@@ -585,11 +623,11 @@
             // 
             // InputBookmark
             // 
-            dataGridViewCellStyle25.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle25.ForeColor = Color.Black;
-            dataGridViewCellStyle25.SelectionBackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle25.SelectionForeColor = Color.Black;
-            InputBookmark.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle16.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle16.ForeColor = Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
+            InputBookmark.DefaultCellStyle = dataGridViewCellStyle16;
             InputBookmark.FlatStyle = FlatStyle.Flat;
             InputBookmark.HeaderText = "Вхідна закладка";
             InputBookmark.MinimumWidth = 8;
@@ -598,11 +636,11 @@
             // 
             // dataGridViewComboBoxColumn1
             // 
-            dataGridViewCellStyle26.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle26.ForeColor = Color.Black;
-            dataGridViewCellStyle26.SelectionBackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle26.SelectionForeColor = Color.Black;
-            dataGridViewComboBoxColumn1.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle17.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle17.ForeColor = Color.Black;
+            dataGridViewCellStyle17.SelectionBackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle17.SelectionForeColor = Color.Black;
+            dataGridViewComboBoxColumn1.DefaultCellStyle = dataGridViewCellStyle17;
             dataGridViewComboBoxColumn1.FlatStyle = FlatStyle.Flat;
             dataGridViewComboBoxColumn1.HeaderText = "Вихідна закладка";
             dataGridViewComboBoxColumn1.MinimumWidth = 8;
@@ -751,44 +789,6 @@
             imageListMenu.Images.SetKeyName(0, "command-line.png");
             imageListMenu.Images.SetKeyName(1, "template.png");
             imageListMenu.Images.SetKeyName(2, "writing.png");
-            // 
-            // materialButtonReadTemlate
-            // 
-            materialButtonReadTemlate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonReadTemlate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonReadTemlate.Depth = 0;
-            materialButtonReadTemlate.HighEmphasis = true;
-            materialButtonReadTemlate.Icon = null;
-            materialButtonReadTemlate.Location = new Point(250, 299);
-            materialButtonReadTemlate.Margin = new Padding(4, 6, 4, 6);
-            materialButtonReadTemlate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonReadTemlate.Name = "materialButtonReadTemlate";
-            materialButtonReadTemlate.NoAccentTextColor = Color.Empty;
-            materialButtonReadTemlate.Size = new Size(148, 36);
-            materialButtonReadTemlate.TabIndex = 6;
-            materialButtonReadTemlate.Text = "Читати шаблон";
-            materialButtonReadTemlate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonReadTemlate.UseAccentColor = false;
-            materialButtonReadTemlate.UseVisualStyleBackColor = true;
-            // 
-            // materialButtonUpdateTemplate
-            // 
-            materialButtonUpdateTemplate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonUpdateTemplate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonUpdateTemplate.Depth = 0;
-            materialButtonUpdateTemplate.HighEmphasis = true;
-            materialButtonUpdateTemplate.Icon = null;
-            materialButtonUpdateTemplate.Location = new Point(614, 299);
-            materialButtonUpdateTemplate.Margin = new Padding(4, 6, 4, 6);
-            materialButtonUpdateTemplate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonUpdateTemplate.Name = "materialButtonUpdateTemplate";
-            materialButtonUpdateTemplate.NoAccentTextColor = Color.Empty;
-            materialButtonUpdateTemplate.Size = new Size(159, 36);
-            materialButtonUpdateTemplate.TabIndex = 7;
-            materialButtonUpdateTemplate.Text = "Оновити шаблон";
-            materialButtonUpdateTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonUpdateTemplate.UseAccentColor = false;
-            materialButtonUpdateTemplate.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
