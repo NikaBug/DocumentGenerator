@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="Bookmark.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TypeData.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="EnterData.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="imageListMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -125,7 +134,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAAiQAAAJNU0Z0AUkBTAIBAQMB
-        AAGIAQMBiAEDASABAAEgAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABgAMAASADAAEBAQABIAYAAUCe
+        AAGQAQMBkAEDASABAAEgAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABgAMAASADAAEBAQABIAYAAUCe
         AAM4AV0DYAHzAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB
         /wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNgAfMDOAFdDAADDAEPA1MBpgNIAfYD
         AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8D
@@ -156,7 +165,7 @@
         /wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB
         /wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/FAADXQHMAwAB/wMAAf8DXQHJAxIBGEAAAxIB
         GANdAckDAAH/AwAB/wNdAcwPAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB
-        /wMAAf8DQQH5AxUBHAQCA1wB1gMAAf8DAAH/AwAB/wNxAf4DWAG3AyEBLwQAAyIBMasAAf8DAAH/AwAB
+        /wMAAf8DQQH5AxUBHAQCA1wB1gMAAf8DAAH/AwAB/wNyAf4DWAG3AyEBLwQAAyIBMasAAf8DAAH/AwAB
         /wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB
         /wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8UAANdAcwDAAH/AwAB/wMAAf8D
         AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8D
@@ -186,8 +195,8 @@
         AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DUwH0AykBPgQAAyUB
         NwNeAfADAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DWgH1Ay0BRJsAAf8DAAH/AwAB/wMAAf8DAAH/AwAB
         /wNQAZ8DCQELBAADJAE0AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8D
-        AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/FAADXQHMAwAB/wMAAf8DcQH+A1UBsQNPAZkDTwGZA08B
-        mQNPAZkDTwGZA08BmQNPAZkDTwGZA08BmQNPAZkDTwGZA08BmQNPAZkDTwGZA08BmQNPAZkDVQGxA3EB
+        AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/FAADXQHMAwAB/wMAAf8DcgH+A1UBsQNPAZkDTwGZA08B
+        mQNPAZkDTwGZA08BmQNPAZkDTwGZA08BmQNPAZkDTwGZA08BmQNPAZkDTwGZA08BmQNPAZkDVQGxA3IB
         /gMAAf8DAAH/A10BzA8AAf8DAAH/AwAB/wMAAf8DMwFQAwwBEAMMARADDAEQAwwBEAMMARADDAEQAwwB
         EAMMARADMwFQAwAB/wMAAf8DYAHzAykBPgQAAyUBNwNeAfADAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8D
         SAH2AysBQZcAAf8DAAH/AwAB/wMAAf8DUwH0AzoBYAgAAzkBXwNTAfQDAAH/AwAB/wMAAf8DAAH/AwAB
@@ -204,7 +213,7 @@
         AAM6AWIDMAFLjwAB/wMAAf8DAAH/AwAB/wMlATcDIAEuA18B1QMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB
         /wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB
         /xQAA10BzAMAAf8DAAH/A1cBwgNPAZkDTwGZA08BmQNPAZkDTwGZA1UBrQMAAf8DAAH/AwAB/wNgAegD
-        UQGeA08BmQNPAZkDTwGZA08BmQNPAZkDTwGZA1UBsQNxAf4DAAH/AwAB/wNdAcwPAAH/AwAB/wMAAf8D
+        UQGeA08BmQNPAZkDTwGZA08BmQNPAZkDTwGZA1UBsQNyAf4DAAH/AwAB/wNdAcwPAAH/AwAB/wMAAf8D
         AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8D
         AAH/A2AB8wMpAT4EAAMlATcDXgHwAwAB/wNgAdsDFQEcBAADOwFjA0AB/QNcAfgDMAFLiwAB/wMAAf8D
         AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8D
@@ -281,15 +290,6 @@
         4AIAAQcDAAH/BAAE/wHgAgABBwMAAf8EAAs=
 </value>
   </data>
-  <metadata name="Bookmark.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="TypeData.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="EnterData.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="InputBookmark.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

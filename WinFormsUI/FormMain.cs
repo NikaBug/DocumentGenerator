@@ -17,7 +17,12 @@ namespace WinFormsUI
 
         public void SetCommandsList(IEnumerable<CommandViewModel> commands)
         {
-            materialTextBoxPathFile.Text = commands.First().Name;
+            // materialTextBoxPathFile.Text = commands.First().Name;
+        }
+
+        public void SetTemplateList(IEnumerable<TemplateViewModel> templates)
+        {
+            materialTextBoxPathFile.Text = templates.First().FileName;
         }
 
         private void materialRadioButtonSaveTmp_CheckedChanged(object sender, EventArgs e)
@@ -51,6 +56,8 @@ namespace WinFormsUI
                 }
             }
         }
+
+
     }
 }
 
