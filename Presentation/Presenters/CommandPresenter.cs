@@ -4,14 +4,14 @@ using Presentation.Views;
 
 namespace Presentation.Presenters
 {
-    public class MainPresenter : IMainPresenter
+    public class CommandPresenter : ICommandPresenter
     {
-        private readonly IMainView mainView;
+        private readonly ICommandView commandView;
         private readonly CommandService commandService;
 
-        public MainPresenter(IMainView mainView, CommandService commandService)
+        public CommandPresenter(ICommandView commandView, CommandService commandService)
         {
-            this.mainView = mainView;
+            this.commandView = commandView;
             this.commandService = commandService;
         }
 
@@ -20,8 +20,9 @@ namespace Presentation.Presenters
             var commands = await commandService.GetAllCommands();
             var viewModel = commands.Select(c => new CommandViewModel { Name = c.CommandName }).ToList();
 
-            mainView.SetCommandsList(viewModel);
-            mainView.Show();
+            commandView.SetCommandsList(viewModel);
+            commandView.Show();
         }
+
     }
 }

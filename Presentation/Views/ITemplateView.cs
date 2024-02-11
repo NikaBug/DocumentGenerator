@@ -2,9 +2,8 @@
 
 namespace Presentation.Views
 {
-    public interface IMainView : IView
+    public interface ITemplateView : IView
     {
         void SetTemplateList(IEnumerable<TemplateViewModel> templates);
-        void SetCommandsList(IEnumerable<CommandViewModel> commands);
     }
 }

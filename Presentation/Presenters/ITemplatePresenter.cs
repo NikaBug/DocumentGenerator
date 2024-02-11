@@ -1,6 +1,6 @@
 ﻿namespace Presentation.Presenters
 {
-    public interface IMainPresenter : IPresenter
+    public interface ITemplatePresenter : IPresenter
     {
     }
 }

@@ -22,7 +22,7 @@ namespace Presentation
 
         private static void AddPresenters(IServiceCollection services)
         {
-            services.AddScoped<IMainPresenter, MainPresenter>();
+            services.AddScoped<ICommandPresenter, CommandPresenter>();
         }
     }
 }
