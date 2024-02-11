@@ -9,6 +9,20 @@ namespace Persistence
     {
         private static IList<Template> inMemoryTemplates = new List<Template>();
 
+        public Task<Template> Create(string fileName, byte[] fileContent)
+        {
+            Template template;
+            if (string.IsNullOrEmpty(fileName) || fileContent == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                template = new Template(fileName, fileContent);
+            }
+            return Task.FromResult(template);
+        }
+
         /// <summary>
         /// Get template
         /// </summary>
@@ -24,8 +38,9 @@ namespace Persistence
             {
                 var templateFound = inMemoryTemplates.Where(t => t.FileName == name);
                 return Task.FromResult(templateFound);
+            }
         }
-        }
+
         /// <summary>
         /// Update template
         /// </summary>
@@ -64,6 +79,22 @@ namespace Persistence
             {
                 var index = inMemoryTemplates.IndexOf(item);
                 inMemoryTemplates[index] = template;
+            }
+
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Delete Template
+        /// </summary>
+        /// <param name="name">Template name</param>
+        /// <returns>The successfully completed task</returns>
+        public Task Delete(string name)
+        {
+            var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == name);
+            if (item != null)
+            {
+                inMemoryTemplates.Remove(item);
             }
             return Task.CompletedTask;
         }

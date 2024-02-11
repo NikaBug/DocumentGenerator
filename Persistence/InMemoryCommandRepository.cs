@@ -9,6 +9,24 @@ namespace Persistence
     {
         private static IList<Command> inMemoryCommands = new List<Command>();
 
+        public Task<Command> Create(string commandName,
+            IReadOnlyDictionary<string, string> commandSetting,
+            Template inputTemplate,
+            Template outputTemplate)
+        {
+            Command command;
+            if (string.IsNullOrEmpty(commandName) || commandSetting == null || inputTemplate == null || outputTemplate == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                command = new Command(commandName, commandSetting, inputTemplate, outputTemplate);
+            }
+
+            return Task.FromResult(command);
+        }
+
         /// <summary>
         /// Get command
         /// </summary>
@@ -67,5 +85,22 @@ namespace Persistence
             }
             return Task.CompletedTask;
         }
+
+        /// <summary>
+        /// Delete command
+        /// </summary>
+        /// <param name="cmdName">command name</param>
+        /// <returns>The successfully completed task</returns>
+        public Task Delete(string cmdName)
+        {
+            var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == cmdName);
+            if (item != null)
+            {
+                inMemoryCommands.Remove(item);
+            }
+            return Task.CompletedTask;
+        }
+
+
     }
 }

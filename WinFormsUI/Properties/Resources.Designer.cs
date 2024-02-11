@@ -63,6 +63,16 @@ namespace WinFormsUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap create_cmd {
+            get {
+                object obj = ResourceManager.GetObject("create_cmd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_doc {
             get {
                 object obj = ResourceManager.GetObject("delete_doc", resourceCulture);
@@ -96,6 +106,26 @@ namespace WinFormsUI.Properties {
         internal static System.Drawing.Bitmap file_view {
             get {
                 object obj = ResourceManager.GetObject("file_view", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap read_cmd {
+            get {
+                object obj = ResourceManager.GetObject("read_cmd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap upd_cmd {
+            get {
+                object obj = ResourceManager.GetObject("upd_cmd", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
