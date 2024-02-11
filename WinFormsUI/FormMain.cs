@@ -5,7 +5,7 @@ using Presentation.Views;
 
 namespace WinFormsUI
 {
-    public partial class FormMain : MaterialForm, IMainView
+    public partial class FormMain : MaterialForm, ITemplateView
     {
         public FormMain()
         {
@@ -57,7 +57,17 @@ namespace WinFormsUI
             }
         }
 
-
+        private void materialSwitchUseCommand_CheckedChanged(object sender, EventArgs e)
+        {
+            if (materialSwitchUseCommand.Checked)
+            {
+                materialComboBoxCommandsSelect.Enabled = true;
+            }
+            else
+            {
+                materialComboBoxCommandsSelect.Enabled = false;
+            }
+        }
     }
 }
 

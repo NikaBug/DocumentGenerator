@@ -16,7 +16,7 @@ namespace WinFormsUI
             ApplicationConfiguration.Initialize();
 
             var host = CreateHostBuilder().Build();
-            var mainPresenter = host.Services.GetRequiredService<IMainPresenter>();
+            var mainPresenter = host.Services.GetRequiredService<ICommandPresenter>();
 
             mainPresenter.Run();
             Application.Run();
