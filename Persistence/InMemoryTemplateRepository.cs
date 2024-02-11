@@ -10,24 +10,9 @@ namespace Persistence
         private static IList<Template> inMemoryTemplates = new List<Template>();
 
         /// <summary>
-        /// Delete template
-        /// </summary>
-        /// <param name="name">template name</param>
-        /// <returns>The successfully completed task</returns>
-        public Task Delete(string name)
-        {
-            var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == name);
-            if (item != null)
-            {
-                inMemoryTemplates.Remove(item);
-            }
-            return Task.CompletedTask;
-        }
-
-        /// <summary>
         /// Get template
         /// </summary>
-        /// <param name="name">template name</param>
+        /// <param name="name">Template name</param>
         /// <returns>The successfully completed task</returns>
         public Task<IEnumerable<Template>> Get(string name)
         {
@@ -39,7 +24,28 @@ namespace Persistence
             {
                 var templateFound = inMemoryTemplates.Where(t => t.FileName == name);
                 return Task.FromResult(templateFound);
+        }
+        }
+        /// <summary>
+        /// Update template
+        /// </summary>
+        /// <param name="oldTemplate">old template</param>
+        /// <param name="newTemplate">new template</param>
+        /// <returns>The successfully completed task</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public Task Update(Template oldTemplate, Template newTemplate)
+        {
+            var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == oldTemplate.FileName);
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(oldTemplate.FileName));
             }
+            else
+            {
+                var index = inMemoryTemplates.IndexOf(item);
+                inMemoryTemplates[index] = newTemplate;
+            }
+            return Task.CompletedTask;
         }
 
         /// <summary>

@@ -10,21 +10,6 @@ namespace Persistence
         private static IList<Command> inMemoryCommands = new List<Command>();
 
         /// <summary>
-        /// Delete command
-        /// </summary>
-        /// <param name="cmdName">command name</param>
-        /// <returns>The successfully completed task</returns>
-        public Task Delete(string cmdName)
-        {
-            var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == cmdName);
-            if (item != null)
-            {
-                inMemoryCommands.Remove(item);
-            }
-            return Task.CompletedTask;
-        }
-
-        /// <summary>
         /// Get command
         /// </summary>
         /// <param name="cmdName">command name</param>
@@ -40,6 +25,27 @@ namespace Persistence
                 var commandFound = inMemoryCommands.Where(c => c.CommandName == cmdName);
                 return Task.FromResult(commandFound);
             }
+        }
+        /// <summary>
+        /// Update command
+        /// </summary>
+        /// <param name="oldCommand">old command</param>
+        /// <param name="newCommand">new command</param>
+        /// <returns>The successfully completed task</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public Task Update(Command oldCommand, Command newCommand)
+        {
+            var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == oldCommand.CommandName);
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(oldCommand.CommandName));
+            }
+            else
+            {
+                var index = inMemoryCommands.IndexOf(item);
+                inMemoryCommands[index] = newCommand;
+            }
+            return Task.CompletedTask;
         }
 
         /// <summary>
