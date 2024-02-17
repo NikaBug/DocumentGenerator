@@ -17,11 +17,13 @@ namespace Presentation
 
         private static void AddServices(IServiceCollection services)
         {
+            services.AddScoped<TemplateService>();
             services.AddScoped<CommandService>();
         }
 
         private static void AddPresenters(IServiceCollection services)
         {
+            services.AddScoped<ITemplatePresenter, TemplatePresenter>();
             services.AddScoped<ICommandPresenter, CommandPresenter>();
         }
     }
