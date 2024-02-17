@@ -1,12 +1,13 @@
 # DocumentGenerator
 Частина інтерфейсу (проєкт WinFormsUI)
 
-<img width="461" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/3a28f0df-aa81-41c9-a494-b8605bc5c44c">
-<img width="462" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/ec4f6caf-2738-47e3-887d-ae8e48465143">
-<img width="467" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/f7f95e90-2859-4ae0-86e2-f265f7241ca3">
-<img width="464" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/b287352b-5ad3-4a55-b2ed-9d0c8acad916">
-<img width="465" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/5f9125c3-d7d8-47de-9538-e7b1e826325f">
-<img width="470" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/8f5d3be5-6201-4d7a-a947-894c6f588b9f">
+<img width="478" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/af2d8140-f1c4-4638-974f-e4dd10d18063">
+<img width="484" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/a4b40bde-d70f-4ee0-a826-5280142ab03f">
+<img width="485" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/93ab6b68-b33a-4fbc-b5c5-7c7b525bf217">
+<img width="493" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/860f4604-0b9f-4d12-933a-6853e2105390">
+<img width="488" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/aac7caca-6027-4e15-a483-a004aba895cf">
+<img width="488" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/1557c3b0-75d6-44c6-88bc-44fe4f9a3b2d">
+
 
 
 
