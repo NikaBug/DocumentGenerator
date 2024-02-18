@@ -46,7 +46,7 @@
             materialLabelPathFile = new MaterialSkin.Controls.MaterialLabel();
             materialTextBoxPathFile = new MaterialSkin.Controls.MaterialTextBox();
             materialLabelListTemplate = new MaterialSkin.Controls.MaterialLabel();
-            materialListViewTemplate = new MaterialSkin.Controls.MaterialListView();
+            materialListUploadTemplate = new MaterialSkin.Controls.MaterialListView();
             materialButtonRemoveTemplate = new MaterialSkin.Controls.MaterialButton();
             materialButtonLoadTemplate = new MaterialSkin.Controls.MaterialButton();
             tabPageGenerateDocument = new TabPage();
@@ -60,7 +60,7 @@
             materialButtonGenerateDocument = new MaterialSkin.Controls.MaterialButton();
             panelUploadTemplate = new Panel();
             materialLabelUploadTmp = new MaterialSkin.Controls.MaterialLabel();
-            materialListBoxUploadTmp = new MaterialSkin.Controls.MaterialListBox();
+            materialListBoxUploadGenTmp = new MaterialSkin.Controls.MaterialListBox();
             materialButtonUploadTemplateGen = new MaterialSkin.Controls.MaterialButton();
             panelSavedTemplate = new Panel();
             materialLabelSavedTmp = new MaterialSkin.Controls.MaterialLabel();
@@ -120,7 +120,7 @@
             tabPageTemplate.Controls.Add(materialLabelPathFile);
             tabPageTemplate.Controls.Add(materialTextBoxPathFile);
             tabPageTemplate.Controls.Add(materialLabelListTemplate);
-            tabPageTemplate.Controls.Add(materialListViewTemplate);
+            tabPageTemplate.Controls.Add(materialListUploadTemplate);
             tabPageTemplate.Controls.Add(materialButtonRemoveTemplate);
             tabPageTemplate.Controls.Add(materialButtonLoadTemplate);
             tabPageTemplate.ImageKey = "template.png";
@@ -215,23 +215,23 @@
             materialLabelListTemplate.TabIndex = 3;
             materialLabelListTemplate.Text = "Список завантажених шаблонів";
             // 
-            // materialListViewTemplate
+            // materialListUploadTemplate
             // 
-            materialListViewTemplate.AutoSizeTable = false;
-            materialListViewTemplate.BackColor = Color.FromArgb(255, 255, 255);
-            materialListViewTemplate.BorderStyle = BorderStyle.None;
-            materialListViewTemplate.Depth = 0;
-            materialListViewTemplate.FullRowSelect = true;
-            materialListViewTemplate.Location = new Point(23, 112);
-            materialListViewTemplate.MinimumSize = new Size(200, 100);
-            materialListViewTemplate.MouseLocation = new Point(-1, -1);
-            materialListViewTemplate.MouseState = MaterialSkin.MouseState.OUT;
-            materialListViewTemplate.Name = "materialListViewTemplate";
-            materialListViewTemplate.OwnerDraw = true;
-            materialListViewTemplate.Size = new Size(781, 178);
-            materialListViewTemplate.TabIndex = 2;
-            materialListViewTemplate.UseCompatibleStateImageBehavior = false;
-            materialListViewTemplate.View = View.Details;
+            materialListUploadTemplate.AutoSizeTable = false;
+            materialListUploadTemplate.BackColor = Color.FromArgb(255, 255, 255);
+            materialListUploadTemplate.BorderStyle = BorderStyle.None;
+            materialListUploadTemplate.Depth = 0;
+            materialListUploadTemplate.FullRowSelect = true;
+            materialListUploadTemplate.Location = new Point(23, 112);
+            materialListUploadTemplate.MinimumSize = new Size(200, 100);
+            materialListUploadTemplate.MouseLocation = new Point(-1, -1);
+            materialListUploadTemplate.MouseState = MaterialSkin.MouseState.OUT;
+            materialListUploadTemplate.Name = "materialListUploadTemplate";
+            materialListUploadTemplate.OwnerDraw = true;
+            materialListUploadTemplate.Size = new Size(781, 178);
+            materialListUploadTemplate.TabIndex = 2;
+            materialListUploadTemplate.UseCompatibleStateImageBehavior = false;
+            materialListUploadTemplate.View = View.Details;
             // 
             // materialButtonRemoveTemplate
             // 
@@ -270,6 +270,7 @@
             materialButtonLoadTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonLoadTemplate.UseAccentColor = false;
             materialButtonLoadTemplate.UseVisualStyleBackColor = true;
+            materialButtonLoadTemplate.Click += materialButtonLoadTemplate_Click;
             // 
             // tabPageGenerateDocument
             // 
@@ -437,7 +438,7 @@
             // 
             panelUploadTemplate.BorderStyle = BorderStyle.FixedSingle;
             panelUploadTemplate.Controls.Add(materialLabelUploadTmp);
-            panelUploadTemplate.Controls.Add(materialListBoxUploadTmp);
+            panelUploadTemplate.Controls.Add(materialListBoxUploadGenTmp);
             panelUploadTemplate.Controls.Add(materialButtonUploadTemplateGen);
             panelUploadTemplate.Location = new Point(406, 53);
             panelUploadTemplate.Name = "panelUploadTemplate";
@@ -457,20 +458,20 @@
             materialLabelUploadTmp.TabIndex = 2;
             materialLabelUploadTmp.Text = "завантажені шаблони";
             // 
-            // materialListBoxUploadTmp
+            // materialListBoxUploadGenTmp
             // 
-            materialListBoxUploadTmp.BackColor = Color.White;
-            materialListBoxUploadTmp.BorderColor = Color.LightGray;
-            materialListBoxUploadTmp.Depth = 0;
-            materialListBoxUploadTmp.Enabled = false;
-            materialListBoxUploadTmp.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialListBoxUploadTmp.Location = new Point(153, 32);
-            materialListBoxUploadTmp.MouseState = MaterialSkin.MouseState.HOVER;
-            materialListBoxUploadTmp.Name = "materialListBoxUploadTmp";
-            materialListBoxUploadTmp.SelectedIndex = -1;
-            materialListBoxUploadTmp.SelectedItem = null;
-            materialListBoxUploadTmp.Size = new Size(308, 97);
-            materialListBoxUploadTmp.TabIndex = 1;
+            materialListBoxUploadGenTmp.BackColor = Color.White;
+            materialListBoxUploadGenTmp.BorderColor = Color.LightGray;
+            materialListBoxUploadGenTmp.Depth = 0;
+            materialListBoxUploadGenTmp.Enabled = false;
+            materialListBoxUploadGenTmp.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialListBoxUploadGenTmp.Location = new Point(153, 32);
+            materialListBoxUploadGenTmp.MouseState = MaterialSkin.MouseState.HOVER;
+            materialListBoxUploadGenTmp.Name = "materialListBoxUploadGenTmp";
+            materialListBoxUploadGenTmp.SelectedIndex = -1;
+            materialListBoxUploadGenTmp.SelectedItem = null;
+            materialListBoxUploadGenTmp.Size = new Size(308, 97);
+            materialListBoxUploadGenTmp.TabIndex = 1;
             // 
             // materialButtonUploadTemplateGen
             // 
@@ -949,7 +950,7 @@
         private ImageList imageListMenu;
         private MaterialSkin.Controls.MaterialButton materialButtonLoadTemplate;
         private MaterialSkin.Controls.MaterialButton materialButtonRemoveTemplate;
-        private MaterialSkin.Controls.MaterialListView materialListViewTemplate;
+        private MaterialSkin.Controls.MaterialListView materialListUploadTemplate;
         private MaterialSkin.Controls.MaterialLabel materialLabelListTemplate;
         private MaterialSkin.Controls.MaterialTextBox materialTextBoxPathFile;
         private MaterialSkin.Controls.MaterialLabel materialLabelPathFile;
@@ -965,7 +966,7 @@
         private MaterialSkin.Controls.MaterialButton materialButtonGenerateDocument;
         private Panel panelUploadTemplate;
         private MaterialSkin.Controls.MaterialLabel materialLabelUploadTmp;
-        private MaterialSkin.Controls.MaterialListBox materialListBoxUploadTmp;
+        private MaterialSkin.Controls.MaterialListBox materialListBoxUploadGenTmp;
         private MaterialSkin.Controls.MaterialButton materialButtonUploadTemplateGen;
         private Panel panelSavedTemplate;
         private MaterialSkin.Controls.MaterialLabel materialLabelSavedTmp;

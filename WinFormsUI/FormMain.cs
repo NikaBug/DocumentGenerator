@@ -17,7 +17,6 @@ namespace WinFormsUI
 
         public void SetCommandsList(IEnumerable<CommandViewModel> commands)
         {
-            // materialTextBoxPathFile.Text = commands.First().Name;
             materialComboBoxCmdList.Items.Add(commands.First().Name);
         }
 
@@ -67,6 +66,15 @@ namespace WinFormsUI
             else
             {
                 materialComboBoxCommandsSelect.Enabled = false;
+            }
+        }
+
+        private void materialButtonLoadTemplate_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Word|*.docx;*.doc";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
             }
         }
     }
