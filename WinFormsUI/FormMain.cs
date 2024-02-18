@@ -5,7 +5,7 @@ using Presentation.Views;
 
 namespace WinFormsUI
 {
-    public partial class FormMain : MaterialForm, ITemplateView
+    public partial class FormMain : MaterialForm, ICommandView, ITemplateView
     {
         public FormMain()
         {
@@ -18,6 +18,7 @@ namespace WinFormsUI
         public void SetCommandsList(IEnumerable<CommandViewModel> commands)
         {
             // materialTextBoxPathFile.Text = commands.First().Name;
+            materialComboBoxCmdList.Items.Add(commands.First().Name);
         }
 
         public void SetTemplateList(IEnumerable<TemplateViewModel> templates)

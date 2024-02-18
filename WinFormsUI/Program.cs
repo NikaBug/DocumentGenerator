@@ -16,10 +16,11 @@ namespace WinFormsUI
             ApplicationConfiguration.Initialize();
 
             var host = CreateHostBuilder().Build();
-            var mainPresenter = host.Services.GetRequiredService<ICommandPresenter>();
-
-            mainPresenter.Run();
-            Application.Run();
+            var commandPresenter = host.Services.GetRequiredService<ICommandPresenter>();
+            var templatePresenter = host.Services.GetRequiredService<ITemplatePresenter>();
+            templatePresenter.Run();
+            commandPresenter.Run();
+            Application.Run(new FormMain());
         }
 
         static IHostBuilder CreateHostBuilder()
