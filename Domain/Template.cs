@@ -1,15 +1,15 @@
 namespace Domain
 {
     /// <summary>
-    /// РЁР°Р±Р»РѕРЅ
+    /// Шаблон
     /// </summary>
     public class Template
     {
         /// <summary>
-        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ С€Р°Р±Р»РѕРЅР°
+        /// Конструктор шаблона
         /// </summary>
-        /// <param name="fileName">РЅР°Р·РІР° С„Р°Р№Р»Сѓ</param>
-        /// <param name="fileContent">Р·РјС–СЃС‚ С„Р°Р№Р»Сѓ</param>
+        /// <param name="fileName">назва файлу</param>
+        /// <param name="fileContent">зміст файлу</param>
         /// <exception cref="ArgumentNullException"></exception>
         public Template(string fileName, byte[] fileContent)
         {
@@ -28,12 +28,12 @@ namespace Domain
         }
 
         /// <summary>
-        /// РќР°Р·РІР° С„Р°Р№Р»Сѓ
+        /// Назва файлу
         /// </summary>
         public string FileName { get; }
 
         /// <summary>
-        /// Р—РјС–СЃС‚ С„Р°Р№Р»Сѓ
+        /// Зміст файлу
         /// </summary>
         public byte[] FileContent { get; }
     }
