@@ -1,15 +1,15 @@
 namespace Domain
 {
     /// <summary>
-    /// Template
+    /// Шаблон
     /// </summary>
     public class Template
     {
         /// <summary>
-        /// template constructor
+        /// Конструктор шаблона
         /// </summary>
-        /// <param name="fileName">path file</param>
-        /// <param name="fileContent">content file</param>
+        /// <param name="fileName">назва файлу</param>
+        /// <param name="fileContent">зміст файлу</param>
         /// <exception cref="ArgumentNullException"></exception>
         public Template(string fileName, byte[] fileContent)
         {
@@ -28,12 +28,12 @@ namespace Domain
         }
 
         /// <summary>
-        /// File name
+        /// Назва файлу
         /// </summary>
         public string FileName { get; }
 
         /// <summary>
-        /// File content
+        /// Зміст файлу
         /// </summary>
         public byte[] FileContent { get; }
     }

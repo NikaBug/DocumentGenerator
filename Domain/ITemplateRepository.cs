@@ -1,7 +1,7 @@
 ﻿namespace Domain
 {
     /// <summary>
-    /// Interface template repository
+    /// Інтерфейс репозиторію шаблону
     /// </summary>
     public interface ITemplateRepository
     {

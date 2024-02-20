@@ -1,17 +1,17 @@
 ﻿namespace Domain
 {
     /// <summary>
-    /// Command
+    /// Команда
     /// </summary>
     public class Command
     {
         /// <summary>
-        /// Command constructor
+        /// Конструктор команди
         /// </summary>
-        /// <param name="commandName">command name</param>
-        /// <param name="commandSetting">command setting</param>
-        /// <param name="inputTemplate">completed input document template</param>
-        /// <param name="outputTemplate">output document template</param>
+        /// <param name="commandName">назва команди</param>
+        /// <param name="commandSetting">налаштування команди</param>
+        /// <param name="inputTemplate">вхідний шаблон</param>
+        /// <param name="outputTemplate">вихідний шаблон</param>
         /// <exception cref="ArgumentNullException"></exception>
         public Command(string commandName,
             IReadOnlyDictionary<string, string> commandSetting,
@@ -25,22 +25,22 @@
         }
 
         /// <summary>
-        /// Command Setting
+        /// Налаштування команди
         /// </summary>
         public IReadOnlyDictionary<string, string> CommandSetting { get; }
 
         /// <summary>
-        /// Command name
+        /// Назва команди
         /// </summary>
         public string CommandName { get; }
 
         /// <summary>
-        /// Input Template
+        /// Вхідий шаблон
         /// </summary>
         public Template InputTemplate { get; }
 
         /// <summary>
-        /// Template output
+        /// Вихідний шаблон
         /// </summary>
         public Template OutputTemplate { get; }
     }

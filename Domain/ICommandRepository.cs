@@ -1,7 +1,7 @@
 ﻿namespace Domain
 {
     /// <summary>
-    /// Interface command repository
+    /// Інтерфейс репозиторію команд
     /// </summary>
     public interface ICommandRepository
     {
