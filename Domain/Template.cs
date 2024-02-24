@@ -11,26 +11,27 @@ namespace Domain
         /// <param name="fileName">назва файлу</param>
         /// <param name="fileContent">зміст файлу</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public Template(string fileName, byte[] fileContent)
+        public Template(string fileName, string filePath, byte[] fileContent)
         {
-            if (fileName == null)
-            {
-                throw new ArgumentNullException(nameof(fileName));
-            }
-
             if (fileContent == null || !fileContent.Any())
             {
                 throw new ArgumentNullException(nameof(fileContent));
             }
 
-            this.FileName = fileName;
+            this.FileName = fileName ?? throw new ArgumentNullException(nameof(fileName));
             this.FileContent = fileContent;
+            this.FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
         }
 
         /// <summary>
         /// Назва файлу
         /// </summary>
         public string FileName { get; }
+
+        /// <summary>
+        /// Шлях до файлу
+        /// </summary>
+        public string FilePath { get; }
 
         /// <summary>
         /// Зміст файлу

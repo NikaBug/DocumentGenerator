@@ -4,6 +4,9 @@ using Presentation.Views;
 
 namespace Presentation.Presenters
 {
+    /// <summary>
+    /// Презентер шаблона
+    /// </summary>
     public class TemplatePresenter : ITemplatePresenter
     {
         private readonly ITemplateView templateView;

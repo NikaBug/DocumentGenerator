@@ -4,6 +4,9 @@ using Presentation.Views;
 
 namespace Presentation.Presenters
 {
+    /// <summary>
+    /// Перезентер команд
+    /// </summary>
     public class CommandPresenter : ICommandPresenter
     {
         private readonly ICommandView commandView;

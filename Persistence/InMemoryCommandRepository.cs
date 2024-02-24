@@ -3,12 +3,21 @@
 namespace Persistence
 {
     /// <summary>
-    /// In memory command repository
+    /// Репозиторій команд в пам'яті
     /// </summary>
     public class InMemoryCommandRepository : ICommandRepository
     {
         private static IList<Command> inMemoryCommands = new List<Command>();
 
+        /// <summary>
+        /// Створити команду
+        /// </summary>
+        /// <param name="commandName">назва команди</param>
+        /// <param name="commandSetting">налаштування команди</param>
+        /// <param name="inputTemplate">вхідний шаблон</param>
+        /// <param name="outputTemplate">вихідний шаблон</param>
+        /// <returns>Успішність виконання операції</returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public Task<Command> Create(string commandName,
             IReadOnlyDictionary<string, string> commandSetting,
             Template inputTemplate,
@@ -28,10 +37,10 @@ namespace Persistence
         }
 
         /// <summary>
-        /// Get command
+        /// Отримати команду
         /// </summary>
-        /// <param name="cmdName">command name</param>
-        /// <returns>The successfully completed task</returns>
+        /// <param name="cmdName">назва команди</param>
+        /// <returns>Успішність виконання операції</returns>
         public Task<IEnumerable<Command>> Get(string cmdName)
         {
             if (string.IsNullOrEmpty(cmdName))
@@ -45,11 +54,11 @@ namespace Persistence
             }
         }
         /// <summary>
-        /// Update command
+        /// Оновити команду
         /// </summary>
-        /// <param name="oldCommand">old command</param>
-        /// <param name="newCommand">new command</param>
-        /// <returns>The successfully completed task</returns>
+        /// <param name="oldCommand">стара команда</param>
+        /// <param name="newCommand">нова команда</param>
+        /// <returns>Успішність виконання операції</returns>
         /// <exception cref="NotImplementedException"></exception>
         public Task Update(Command oldCommand, Command newCommand)
         {
@@ -67,10 +76,10 @@ namespace Persistence
         }
 
         /// <summary>
-        /// Save command
+        /// Зберегти команду
         /// </summary>
-        /// <param name="command">command name</param>
-        /// <returns>The successfully completed task</returns>
+        /// <param name="command">назва команди</param>
+        /// <returns>Успішність виконання операції</returns>
         public Task Save(Command command)
         {
             var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == command.CommandName);
@@ -87,10 +96,10 @@ namespace Persistence
         }
 
         /// <summary>
-        /// Delete command
+        /// Видалити команду
         /// </summary>
-        /// <param name="cmdName">command name</param>
-        /// <returns>The successfully completed task</returns>
+        /// <param name="cmdName">назва команди</param>
+        /// <returns>Успішність виконання операції</returns>
         public Task Delete(string cmdName)
         {
             var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == cmdName);
@@ -100,7 +109,5 @@ namespace Persistence
             }
             return Task.CompletedTask;
         }
-
-
     }
 }

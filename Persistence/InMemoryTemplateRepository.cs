@@ -3,13 +3,19 @@
 namespace Persistence
 {
     /// <summary>
-    /// In Memory Template Repository
+    /// Репозиторій шаблонів в пам'яті
     /// </summary>
     public class InMemoryTemplateRepository : ITemplateRepository
     {
         private static IList<Template> inMemoryTemplates = new List<Template>();
-
-        public Task<Template> Create(string fileName, byte[] fileContent)
+        /// <summary>
+        /// Створити шаблон
+        /// </summary>
+        /// <param name="fileName">назва шаблону</param>
+        /// <param name="fileContent">зміст файлу</param>
+        /// <returns>Успішність виконання операції</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public Task<Template> Create(string fileName, string filePath, byte[] fileContent)
         {
             Template template;
             if (string.IsNullOrEmpty(fileName) || fileContent == null)
@@ -18,16 +24,16 @@ namespace Persistence
             }
             else
             {
-                template = new Template(fileName, fileContent);
+                template = new Template(fileName, filePath, fileContent);
             }
             return Task.FromResult(template);
         }
 
         /// <summary>
-        /// Get template
+        /// Отримати шаблон
         /// </summary>
-        /// <param name="name">Template name</param>
-        /// <returns>The successfully completed task</returns>
+        /// <param name="name">назва шаблону</param>
+        /// <returns>Успішність виконання операції</returns>
         public Task<IEnumerable<Template>> Get(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -42,11 +48,11 @@ namespace Persistence
         }
 
         /// <summary>
-        /// Update template
+        /// Оновити шаблон
         /// </summary>
-        /// <param name="oldTemplate">old template</param>
-        /// <param name="newTemplate">new template</param>
-        /// <returns>The successfully completed task</returns>
+        /// <param name="oldTemplate">старий шаблон</param>
+        /// <param name="newTemplate">новий шаблон</param>
+        /// <returns>Успішність виконання операції</returns>
         /// <exception cref="ArgumentNullException"></exception>
         public Task Update(Template oldTemplate, Template newTemplate)
         {
@@ -64,10 +70,10 @@ namespace Persistence
         }
 
         /// <summary>
-        /// Save template
+        /// Зберегети шаблон
         /// </summary>
-        /// <param name="template">template</param>
-        /// <returns>The successfully completed task</returns>
+        /// <param name="template">шаблон</param>
+        /// <returns>Успішність виконання операції</returns>
         public Task Save(Template template)
         {
             var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == template.FileName);
@@ -85,10 +91,10 @@ namespace Persistence
         }
 
         /// <summary>
-        /// Delete Template
+        /// Видалити шаблон
         /// </summary>
-        /// <param name="name">Template name</param>
-        /// <returns>The successfully completed task</returns>
+        /// <param name="name">назва шаблону</param>
+        /// <returns>Успішність виконання операції</returns>
         public Task Delete(string name)
         {
             var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == name);
