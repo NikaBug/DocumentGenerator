@@ -11,6 +11,11 @@ namespace WinFormsUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewBookmarksSetting.Columns[1];
+            theColumn.Items.Add("Текст");
+            theColumn.Items.Add("Таблиця");
+            theColumn.Items.Add("Зображення");
         }
     }
 }

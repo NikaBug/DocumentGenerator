@@ -15,7 +15,7 @@ namespace WinFormsUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            this.materialListUploadTemplate.GridLines = true;
+            this.materialListViewUploadTemplate.GridLines = true;
             this.listTemplates = new List<TemplateViewModel>();
         }
 
@@ -33,7 +33,7 @@ namespace WinFormsUI
                 viewItem.SubItems.Add(template.DateModificationFile);
                 viewItem.SubItems.Add(template.SizeFile.ToString());
             }
-            materialListUploadTemplate.Items.Add(viewItem);
+            materialListViewUploadTemplate.Items.Add(viewItem);
 
         }
 
@@ -101,10 +101,16 @@ namespace WinFormsUI
 
         private void materialListUploadTemplate_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            int index = materialListUploadTemplate.FocusedItem.Index;
+            int index = materialListViewUploadTemplate.FocusedItem.Index;
             string fileName = listTemplates[index].FileName;
             FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
             formEditTemplate.ShowDialog();
+        }
+
+        private void materialButtonCreateTemplate_Click(object sender, EventArgs e)
+        {
+            FormCreateTemplate formCreateTemplate = new FormCreateTemplate();
+            formCreateTemplate.ShowDialog();
         }
     }
 }
