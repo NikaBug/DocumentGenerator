@@ -127,7 +127,7 @@
             // 
             // dataGridViewBookmarksSetting
             // 
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(128, 128, 255);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(192, 192, 255);
             dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 128, 255);
@@ -184,9 +184,9 @@
             // 
             // dataGridViewComboBoxColumnType
             // 
-            dataGridViewCellStyle3.BackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 128, 255);
             dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.MediumSlateBlue;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(128, 128, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewComboBoxColumnType.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewComboBoxColumnType.FlatStyle = FlatStyle.Flat;
