@@ -1,9 +1,9 @@
 # DocumentGenerator
 Частина інтерфейсу (проєкт WinFormsUI)
-https://github.com/NikaBug/DocumentGenerator/assets/149799394/0e7d66fc-f6b9-4f36-adb4-d8c3e99ae867
 
 
 
+![bandicam 2024-02-26 10-41-49-398](https://github.com/NikaBug/DocumentGenerator/assets/149799394/fc61a06b-fa15-4649-94ae-8fca9d0209eb)
 
 
 
