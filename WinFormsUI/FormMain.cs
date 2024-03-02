@@ -2,6 +2,7 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using Presentation.ViewModels;
 using Presentation.Views;
+using System.Diagnostics.Eventing.Reader;
 
 namespace WinFormsUI
 {
@@ -111,6 +112,29 @@ namespace WinFormsUI
         {
             FormCreateTemplate formCreateTemplate = new FormCreateTemplate();
             formCreateTemplate.ShowDialog();
+        }
+
+        private void materialButtonRemoveTemplate_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = CustomMessageBox.Show("Ви впевнені, що хочете видалити шаблон? Видалення скасувати неможливо.",
+                "Видалення шаблону", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (materialListViewUploadTemplate.SelectedItems.Count == 0)
+                {
+                    CustomMessageBox.Show("Для видалення виберіть шаблон зі списку.", "Повідомлення", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    int index = materialListViewUploadTemplate.FocusedItem.Index;
+                    listTemplates.RemoveAt(index);
+                    materialListViewUploadTemplate.Items.RemoveAt(index);
+                }
+            }
+            else
+            {
+
+            }
         }
     }
 }

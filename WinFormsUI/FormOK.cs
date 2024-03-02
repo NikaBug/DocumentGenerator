@@ -1,0 +1,22 @@
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+
+namespace WinFormsUI
+{
+    public partial class FormOK : MaterialForm
+    {
+        public FormOK()
+        {
+            InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+        }
+
+        public string Message
+        {
+            get { return materialLabelTextInfoMessage.Text; }
+            set { materialLabelTextInfoMessage.Text = value; }
+        }
+    }
+}
