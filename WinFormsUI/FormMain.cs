@@ -41,7 +41,16 @@ namespace WinFormsUI
 
         public void SetTemplateList(IEnumerable<TemplateViewModel> templatesViewModel)
         {
-
+            if (templatesViewModel.Count() == 0)
+            {
+                return;
+            }
+            else
+            {
+                dataGridViewTableTemplate.Rows.Add(templatesViewModel.Last().FileName,
+                    templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
+            }
+            // MessageBox.Show("Sms", "Template name", MessageBoxButtons.OK);
 
         }
 
