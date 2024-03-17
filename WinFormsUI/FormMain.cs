@@ -48,7 +48,7 @@ namespace WinFormsUI
             else
             {
                 dataGridViewTableTemplate.Rows.Add(templatesViewModel.Last().FileName,
-                    templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
+                   templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
             }
             // MessageBox.Show("Sms", "Template name", MessageBoxButtons.OK);
 
