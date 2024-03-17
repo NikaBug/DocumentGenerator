@@ -1,8 +1,11 @@
+using Domain;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Presentation.ViewModels;
 using Presentation.Views;
 using System.Diagnostics.Eventing.Reader;
+using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace WinFormsUI
 {
@@ -20,14 +23,14 @@ namespace WinFormsUI
             this.listTemplates = new List<TemplateViewModel>();
             // dataGridViewTableTemplate.Rows.Add();
 
-            dataGridViewTableBookmarks.Rows.Add(new object[] { "Р·Р°РєР»Р°РґРєР°1" });
-            dataGridViewTableBookmarks.Rows.Add(new object[] { "Р·Р°РєР»Р°РґРєР°2" });
-            dataGridViewTableBookmarks.Rows.Add(new object[] { "Р·Р°РєР»Р°РґРєР°3" });
+            //dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка1" });
+            //dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка2" });
+            //dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка3" });
 
             DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewTableBookmarks.Columns[1];
-            theColumn.Items.Add("РўРµРєСЃС‚");
-            theColumn.Items.Add("РўР°Р±Р»РёС†СЏ");
-            theColumn.Items.Add("Р—РѕР±СЂР°Р¶РµРЅРЅСЏ");
+            theColumn.Items.Add("Текст");
+            theColumn.Items.Add("Таблиця");
+            theColumn.Items.Add("Зображення");
 
         }
 
@@ -38,8 +41,8 @@ namespace WinFormsUI
 
         public void SetTemplateList(IEnumerable<TemplateViewModel> templatesViewModel)
         {
-          
-              
+
+
         }
 
         private void materialRadioButtonSaveTmp_CheckedChanged(object sender, EventArgs e)
@@ -103,7 +106,8 @@ namespace WinFormsUI
                 {
                     if (fileInfo.Name == item.FileName)
                     {
-                        CustomMessageBox.Show("Р”Р»СЏ РІРёРґР°Р»РµРЅРЅСЏ РІРёР±РµСЂС–С‚СЊ С€Р°Р±Р»РѕРЅ Р·С– СЃРїРёСЃРєСѓ.", "РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ", MessageBoxButtons.OK);
+                        CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Повідомлення", MessageBoxButtons.OK);
+                        return;
                     }
                 }
 
@@ -130,8 +134,8 @@ namespace WinFormsUI
             DialogResult dialogResult = CustomMessageBox.Show("Ви впевнені, що хочете видалити шаблон? Видалення скасувати неможливо.",
                 "Видалення шаблону", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
-            {
-                if (materialListViewUploadTemplate.SelectedItems.Count == 0)
+            {  // if (materialListViewUploadTemplate.SelectedItems.Count == 0)
+                if (dataGridViewTableTemplate.SelectedRows.Count == 0)
                 {
                     CustomMessageBox.Show("Для видалення виберіть шаблон зі списку.", "Повідомлення", MessageBoxButtons.OK);
                 }
@@ -140,11 +144,12 @@ namespace WinFormsUI
                     //int index = materialListViewUploadTemplate.FocusedItem.Index;
                     //listTemplates.RemoveAt(index);
                     //materialListViewUploadTemplate.Items.RemoveAt(index);
-                    int index = dataGridView2.CurrentCell.RowIndex;
+                    int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
                     listTemplates.RemoveAt(index);
-                    materialListViewUploadTemplate.Items.RemoveAt(index);
+                    this.dataGridViewTableTemplate.Rows.RemoveAt(index);
                 }
             }
+        }
 
         private void dataGridViewTableTemplate_MouseDoubleClick(object sender, MouseEventArgs e)
         {

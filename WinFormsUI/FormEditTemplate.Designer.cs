@@ -74,6 +74,7 @@
             // 
             // dataGridViewBookmarksSetting
             // 
+            dataGridViewBookmarksSetting.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(192, 192, 255);
             dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = Color.Black;
@@ -114,7 +115,6 @@
             dataGridViewTextBoxColumnBookmark.HeaderText = "Закладка";
             dataGridViewTextBoxColumnBookmark.MinimumWidth = 8;
             dataGridViewTextBoxColumnBookmark.Name = "dataGridViewTextBoxColumnBookmark";
-            dataGridViewTextBoxColumnBookmark.ReadOnly = true;
             dataGridViewTextBoxColumnBookmark.Width = 150;
             // 
             // dataGridViewComboBoxColumnType
