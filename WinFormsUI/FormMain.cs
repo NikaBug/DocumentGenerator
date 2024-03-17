@@ -16,8 +16,19 @@ namespace WinFormsUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            this.materialListViewUploadTemplate.GridLines = true;
+            // this.materialListViewUploadTemplate.GridLines = true;
             this.listTemplates = new List<TemplateViewModel>();
+            // dataGridViewTableTemplate.Rows.Add();
+
+            dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка1" });
+            dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка2" });
+            dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка3" });
+
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewTableBookmarks.Columns[1];
+            theColumn.Items.Add("Текст");
+            theColumn.Items.Add("Таблиця");
+            theColumn.Items.Add("Зображення");
+
         }
 
         public void SetCommandsList(IEnumerable<CommandViewModel> commands)
@@ -25,17 +36,10 @@ namespace WinFormsUI
             materialComboBoxCmdList.Items.Add(commands.First().Name);
         }
 
-        public void SetTemplateList(IEnumerable<TemplateViewModel> templates)
+        public void SetTemplateList(IEnumerable<TemplateViewModel> templatesViewModel)
         {
-            ListViewItem viewItem = null;
-            foreach (var template in templates)
-            {
-                viewItem = new ListViewItem(template.FileName);
-                viewItem.SubItems.Add(template.DateModificationFile);
-                viewItem.SubItems.Add(template.SizeFile.ToString());
-            }
-            materialListViewUploadTemplate.Items.Add(viewItem);
-
+          
+              
         }
 
         private void materialRadioButtonSaveTmp_CheckedChanged(object sender, EventArgs e)
@@ -93,20 +97,27 @@ namespace WinFormsUI
                 FileInfo fileInfo = new FileInfo(ofd.FileName);
                 DateTime modification = File.GetLastWriteTime(fileInfo.FullName);
                 double sizeFileKb = fileInfo.Length / 1000;
+                // add check uniquness
+                // if(fileInfo.Name == listTemplates.)
+                foreach (var item in listTemplates)
+                {
+                    if (fileInfo.Name == item.FileName)
+                    {
+                        CustomMessageBox.Show("Для видалення виберіть шаблон зі списку.", "Повідомлення", MessageBoxButtons.OK);
+                    }
+                }
+
                 listTemplates.Add(new TemplateViewModel
-                { FileName = fileInfo.Name, DateModificationFile = modification.ToString(), SizeFile = sizeFileKb });
+                {
+                    FileName = fileInfo.Name,
+                    DateModificationFile = modification.ToString(),
+                    SizeFile = sizeFileKb
+                });
                 this.SetTemplateList(listTemplates);
 
             }
         }
 
-        private void materialListUploadTemplate_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            int index = materialListViewUploadTemplate.FocusedItem.Index;
-            string fileName = listTemplates[index].FileName;
-            FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
-            formEditTemplate.ShowDialog();
-        }
 
         private void materialButtonCreateTemplate_Click(object sender, EventArgs e)
         {
@@ -126,15 +137,22 @@ namespace WinFormsUI
                 }
                 else
                 {
-                    int index = materialListViewUploadTemplate.FocusedItem.Index;
+                    //int index = materialListViewUploadTemplate.FocusedItem.Index;
+                    //listTemplates.RemoveAt(index);
+                    //materialListViewUploadTemplate.Items.RemoveAt(index);
+                    int index = dataGridView2.CurrentCell.RowIndex;
                     listTemplates.RemoveAt(index);
                     materialListViewUploadTemplate.Items.RemoveAt(index);
                 }
             }
-            else
-            {
 
-            }
+        private void dataGridViewTableTemplate_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
+            string fileName = listTemplates[index].FileName;
+            FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
+            formEditTemplate.ShowDialog();
+
         }
     }
 }

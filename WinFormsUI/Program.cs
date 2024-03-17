@@ -20,8 +20,8 @@ namespace WinFormsUI
             var templatePresenter = host.Services.GetRequiredService<ITemplatePresenter>();
             templatePresenter.Run();
             commandPresenter.Run();
-            // Application.Run();
-            Application.Run(new FormMain());
+            Application.Run();
+            // Application.Run(new FormMain());
         }
 
         static IHostBuilder CreateHostBuilder()
