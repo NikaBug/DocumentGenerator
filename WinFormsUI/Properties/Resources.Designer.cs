@@ -73,6 +73,16 @@ namespace WinFormsUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap create_tmp {
+            get {
+                object obj = ResourceManager.GetObject("create_tmp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_doc {
             get {
                 object obj = ResourceManager.GetObject("delete_doc", resourceCulture);

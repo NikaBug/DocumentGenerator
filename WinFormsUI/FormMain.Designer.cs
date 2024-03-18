@@ -47,16 +47,20 @@
             tabPageTemplate = new TabPage();
             panel1 = new Panel();
             dataGridViewTableTemplate = new DataGridView();
+            NameFile = new DataGridViewTextBoxColumn();
+            DateModFile = new DataGridViewTextBoxColumn();
+            SizeFile = new DataGridViewTextBoxColumn();
+            AddTemplate = new DataGridViewImageColumn();
+            DeleteTemplate = new DataGridViewImageColumn();
+            ReadTemplate = new DataGridViewImageColumn();
+            UpdateTemplate = new DataGridViewImageColumn();
             panelBackDataGridView = new Panel();
             dataGridViewTableBookmarks = new DataGridView();
             ColumnBookmark = new DataGridViewTextBoxColumn();
             ColumnType = new DataGridViewComboBoxColumn();
             materialButtonCreateTemplate = new MaterialSkin.Controls.MaterialButton();
-            materialButtonUpdateTemplate = new MaterialSkin.Controls.MaterialButton();
             materialButtonReadTemlate = new MaterialSkin.Controls.MaterialButton();
             materialLabelListTemplate = new MaterialSkin.Controls.MaterialLabel();
-            materialButtonRemoveTemplate = new MaterialSkin.Controls.MaterialButton();
-            materialButtonLoadTemplate = new MaterialSkin.Controls.MaterialButton();
             tabPageGenerateDocument = new TabPage();
             materialComboBoxCommandsSelect = new MaterialSkin.Controls.MaterialComboBox();
             materialSwitchUseCommand = new MaterialSkin.Controls.MaterialSwitch();
@@ -94,9 +98,6 @@
             materialLabelInputTmp = new MaterialSkin.Controls.MaterialLabel();
             materialComboBoxOutputTmp = new MaterialSkin.Controls.MaterialComboBox();
             imageListMenu = new ImageList(components);
-            NameFile = new DataGridViewTextBoxColumn();
-            DateModFile = new DataGridViewTextBoxColumn();
-            SizeFile = new DataGridViewTextBoxColumn();
             materialTabControl.SuspendLayout();
             tabPageTemplate.SuspendLayout();
             panel1.SuspendLayout();
@@ -124,7 +125,7 @@
             materialTabControl.Multiline = true;
             materialTabControl.Name = "materialTabControl";
             materialTabControl.SelectedIndex = 0;
-            materialTabControl.Size = new Size(953, 723);
+            materialTabControl.Size = new Size(1269, 723);
             materialTabControl.TabIndex = 0;
             // 
             // tabPageTemplate
@@ -133,16 +134,13 @@
             tabPageTemplate.Controls.Add(panel1);
             tabPageTemplate.Controls.Add(panelBackDataGridView);
             tabPageTemplate.Controls.Add(materialButtonCreateTemplate);
-            tabPageTemplate.Controls.Add(materialButtonUpdateTemplate);
             tabPageTemplate.Controls.Add(materialButtonReadTemlate);
             tabPageTemplate.Controls.Add(materialLabelListTemplate);
-            tabPageTemplate.Controls.Add(materialButtonRemoveTemplate);
-            tabPageTemplate.Controls.Add(materialButtonLoadTemplate);
             tabPageTemplate.ImageKey = "template.png";
             tabPageTemplate.Location = new Point(4, 39);
             tabPageTemplate.Name = "tabPageTemplate";
             tabPageTemplate.Padding = new Padding(3);
-            tabPageTemplate.Size = new Size(945, 680);
+            tabPageTemplate.Size = new Size(1261, 680);
             tabPageTemplate.TabIndex = 0;
             tabPageTemplate.Text = "Шаблони";
             // 
@@ -152,7 +150,7 @@
             panel1.Controls.Add(dataGridViewTableTemplate);
             panel1.Location = new Point(62, 47);
             panel1.Name = "panel1";
-            panel1.Size = new Size(814, 233);
+            panel1.Size = new Size(1137, 284);
             panel1.TabIndex = 10;
             // 
             // dataGridViewTableTemplate
@@ -174,7 +172,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewTableTemplate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTableTemplate.ColumnHeadersHeight = 35;
-            dataGridViewTableTemplate.Columns.AddRange(new DataGridViewColumn[] { NameFile, DateModFile, SizeFile });
+            dataGridViewTableTemplate.Columns.AddRange(new DataGridViewColumn[] { NameFile, DateModFile, SizeFile, AddTemplate, DeleteTemplate, ReadTemplate, UpdateTemplate });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.White;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -193,17 +191,87 @@
             dataGridViewTableTemplate.RowHeadersWidth = 25;
             dataGridViewTableTemplate.RowTemplate.Height = 25;
             dataGridViewTableTemplate.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTableTemplate.Size = new Size(808, 217);
+            dataGridViewTableTemplate.Size = new Size(1131, 263);
             dataGridViewTableTemplate.TabIndex = 0;
+            dataGridViewTableTemplate.CellContentClick += dataGridViewTableTemplate_CellContentClick;
             dataGridViewTableTemplate.MouseDoubleClick += dataGridViewTableTemplate_MouseDoubleClick;
+            // 
+            // NameFile
+            // 
+            NameFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NameFile.HeaderText = "Назва";
+            NameFile.MinimumWidth = 8;
+            NameFile.Name = "NameFile";
+            NameFile.ReadOnly = true;
+            // 
+            // DateModFile
+            // 
+            DateModFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DateModFile.HeaderText = "Дата зміни";
+            DateModFile.MinimumWidth = 8;
+            DateModFile.Name = "DateModFile";
+            DateModFile.ReadOnly = true;
+            // 
+            // SizeFile
+            // 
+            SizeFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SizeFile.HeaderText = "Розмір (КБ)";
+            SizeFile.MinimumWidth = 8;
+            SizeFile.Name = "SizeFile";
+            SizeFile.ReadOnly = true;
+            // 
+            // AddTemplate
+            // 
+            AddTemplate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            AddTemplate.HeaderText = "Додати";
+            AddTemplate.Image = Properties.Resources.create_tmp;
+            AddTemplate.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            AddTemplate.MinimumWidth = 8;
+            AddTemplate.Name = "AddTemplate";
+            AddTemplate.ReadOnly = true;
+            AddTemplate.Width = 81;
+            // 
+            // DeleteTemplate
+            // 
+            DeleteTemplate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            DeleteTemplate.FillWeight = 90F;
+            DeleteTemplate.HeaderText = "Видалити";
+            DeleteTemplate.Image = Properties.Resources.delete_doc;
+            DeleteTemplate.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            DeleteTemplate.MinimumWidth = 8;
+            DeleteTemplate.Name = "DeleteTemplate";
+            DeleteTemplate.ReadOnly = true;
+            DeleteTemplate.Width = 101;
+            // 
+            // ReadTemplate
+            // 
+            ReadTemplate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            ReadTemplate.HeaderText = "Читати";
+            ReadTemplate.Image = Properties.Resources.file_view;
+            ReadTemplate.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            ReadTemplate.MinimumWidth = 8;
+            ReadTemplate.Name = "ReadTemplate";
+            ReadTemplate.ReadOnly = true;
+            ReadTemplate.Width = 77;
+            // 
+            // UpdateTemplate
+            // 
+            UpdateTemplate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            UpdateTemplate.HeaderText = "Оновити";
+            UpdateTemplate.Image = Properties.Resources.file_upd;
+            UpdateTemplate.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            UpdateTemplate.MinimumWidth = 8;
+            UpdateTemplate.Name = "UpdateTemplate";
+            UpdateTemplate.ReadOnly = true;
+            UpdateTemplate.Width = 92;
             // 
             // panelBackDataGridView
             // 
             panelBackDataGridView.BackColor = Color.MediumSlateBlue;
             panelBackDataGridView.Controls.Add(dataGridViewTableBookmarks);
-            panelBackDataGridView.Location = new Point(110, 357);
+            panelBackDataGridView.Location = new Point(62, 357);
             panelBackDataGridView.Name = "panelBackDataGridView";
-            panelBackDataGridView.Size = new Size(698, 275);
+            panelBackDataGridView.Size = new Size(1134, 275);
             panelBackDataGridView.TabIndex = 9;
             // 
             // dataGridViewTableBookmarks
@@ -243,7 +311,7 @@
             dataGridViewTableBookmarks.RowHeadersWidth = 25;
             dataGridViewTableBookmarks.RowTemplate.Height = 25;
             dataGridViewTableBookmarks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTableBookmarks.Size = new Size(692, 255);
+            dataGridViewTableBookmarks.Size = new Size(1128, 255);
             dataGridViewTableBookmarks.TabIndex = 0;
             // 
             // ColumnBookmark
@@ -269,7 +337,7 @@
             materialButtonCreateTemplate.Depth = 0;
             materialButtonCreateTemplate.HighEmphasis = true;
             materialButtonCreateTemplate.Icon = (Image)resources.GetObject("materialButtonCreateTemplate.Icon");
-            materialButtonCreateTemplate.Location = new Point(394, 635);
+            materialButtonCreateTemplate.Location = new Point(372, 638);
             materialButtonCreateTemplate.Margin = new Padding(4, 6, 4, 6);
             materialButtonCreateTemplate.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonCreateTemplate.Name = "materialButtonCreateTemplate";
@@ -282,26 +350,6 @@
             materialButtonCreateTemplate.UseVisualStyleBackColor = true;
             materialButtonCreateTemplate.Click += materialButtonCreateTemplate_Click;
             // 
-            // materialButtonUpdateTemplate
-            // 
-            materialButtonUpdateTemplate.AutoSize = false;
-            materialButtonUpdateTemplate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonUpdateTemplate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonUpdateTemplate.Depth = 0;
-            materialButtonUpdateTemplate.HighEmphasis = true;
-            materialButtonUpdateTemplate.Icon = Properties.Resources.file_upd;
-            materialButtonUpdateTemplate.Location = new Point(326, 299);
-            materialButtonUpdateTemplate.Margin = new Padding(4, 6, 4, 6);
-            materialButtonUpdateTemplate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonUpdateTemplate.Name = "materialButtonUpdateTemplate";
-            materialButtonUpdateTemplate.NoAccentTextColor = Color.Empty;
-            materialButtonUpdateTemplate.Size = new Size(198, 36);
-            materialButtonUpdateTemplate.TabIndex = 7;
-            materialButtonUpdateTemplate.Text = "Оновити шаблон";
-            materialButtonUpdateTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonUpdateTemplate.UseAccentColor = false;
-            materialButtonUpdateTemplate.UseVisualStyleBackColor = true;
-            // 
             // materialButtonReadTemlate
             // 
             materialButtonReadTemlate.AutoSize = false;
@@ -310,7 +358,7 @@
             materialButtonReadTemlate.Depth = 0;
             materialButtonReadTemlate.HighEmphasis = true;
             materialButtonReadTemlate.Icon = Properties.Resources.file_view;
-            materialButtonReadTemlate.Location = new Point(62, 299);
+            materialButtonReadTemlate.Location = new Point(868, 635);
             materialButtonReadTemlate.Margin = new Padding(4, 6, 4, 6);
             materialButtonReadTemlate.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonReadTemlate.Name = "materialButtonReadTemlate";
@@ -328,52 +376,12 @@
             materialLabelListTemplate.Depth = 0;
             materialLabelListTemplate.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabelListTemplate.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabelListTemplate.Location = new Point(224, 20);
+            materialLabelListTemplate.Location = new Point(480, 20);
             materialLabelListTemplate.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabelListTemplate.Name = "materialLabelListTemplate";
             materialLabelListTemplate.Size = new Size(300, 24);
             materialLabelListTemplate.TabIndex = 3;
             materialLabelListTemplate.Text = "Список завантажених шаблонів";
-            // 
-            // materialButtonRemoveTemplate
-            // 
-            materialButtonRemoveTemplate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonRemoveTemplate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonRemoveTemplate.Depth = 0;
-            materialButtonRemoveTemplate.HighEmphasis = true;
-            materialButtonRemoveTemplate.Icon = Properties.Resources.delete_doc;
-            materialButtonRemoveTemplate.Location = new Point(561, 299);
-            materialButtonRemoveTemplate.Margin = new Padding(4, 6, 4, 6);
-            materialButtonRemoveTemplate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonRemoveTemplate.Name = "materialButtonRemoveTemplate";
-            materialButtonRemoveTemplate.NoAccentTextColor = Color.Empty;
-            materialButtonRemoveTemplate.Size = new Size(198, 36);
-            materialButtonRemoveTemplate.TabIndex = 1;
-            materialButtonRemoveTemplate.Text = "Видалити шаблон";
-            materialButtonRemoveTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonRemoveTemplate.UseAccentColor = false;
-            materialButtonRemoveTemplate.UseVisualStyleBackColor = true;
-            materialButtonRemoveTemplate.Click += materialButtonRemoveTemplate_Click;
-            // 
-            // materialButtonLoadTemplate
-            // 
-            materialButtonLoadTemplate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonLoadTemplate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonLoadTemplate.Depth = 0;
-            materialButtonLoadTemplate.HighEmphasis = true;
-            materialButtonLoadTemplate.Icon = Properties.Resources.file;
-            materialButtonLoadTemplate.Location = new Point(72, 635);
-            materialButtonLoadTemplate.Margin = new Padding(4, 6, 4, 6);
-            materialButtonLoadTemplate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonLoadTemplate.Name = "materialButtonLoadTemplate";
-            materialButtonLoadTemplate.NoAccentTextColor = Color.Empty;
-            materialButtonLoadTemplate.Size = new Size(227, 36);
-            materialButtonLoadTemplate.TabIndex = 0;
-            materialButtonLoadTemplate.Text = "Завантажити шаблон";
-            materialButtonLoadTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonLoadTemplate.UseAccentColor = false;
-            materialButtonLoadTemplate.UseVisualStyleBackColor = true;
-            materialButtonLoadTemplate.Click += materialButtonLoadTemplate_Click;
             // 
             // tabPageGenerateDocument
             // 
@@ -391,7 +399,7 @@
             tabPageGenerateDocument.Location = new Point(4, 39);
             tabPageGenerateDocument.Name = "tabPageGenerateDocument";
             tabPageGenerateDocument.Padding = new Padding(3);
-            tabPageGenerateDocument.Size = new Size(945, 680);
+            tabPageGenerateDocument.Size = new Size(1261, 680);
             tabPageGenerateDocument.TabIndex = 1;
             tabPageGenerateDocument.Text = "Генератор";
             // 
@@ -697,7 +705,7 @@
             tabPageCommand.ImageKey = "command-line.png";
             tabPageCommand.Location = new Point(4, 39);
             tabPageCommand.Name = "tabPageCommand";
-            tabPageCommand.Size = new Size(945, 680);
+            tabPageCommand.Size = new Size(1261, 680);
             tabPageCommand.TabIndex = 2;
             tabPageCommand.Text = "Команди";
             // 
@@ -1018,41 +1026,18 @@
             imageListMenu.Images.SetKeyName(1, "template.png");
             imageListMenu.Images.SetKeyName(2, "writing.png");
             // 
-            // NameFile
-            // 
-            NameFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            NameFile.HeaderText = "Назва";
-            NameFile.MinimumWidth = 8;
-            NameFile.Name = "NameFile";
-            NameFile.ReadOnly = true;
-            // 
-            // DateModFile
-            // 
-            DateModFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DateModFile.HeaderText = "Дата зміни";
-            DateModFile.MinimumWidth = 8;
-            DateModFile.Name = "DateModFile";
-            DateModFile.ReadOnly = true;
-            // 
-            // SizeFile
-            // 
-            SizeFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SizeFile.HeaderText = "Розмір (КБ)";
-            SizeFile.MinimumWidth = 8;
-            SizeFile.Name = "SizeFile";
-            SizeFile.ReadOnly = true;
-            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(959, 790);
+            ClientSize = new Size(1275, 790);
             Controls.Add(materialTabControl);
             DrawerTabControl = materialTabControl;
             HelpButton = true;
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Document Generator";
+            WindowState = FormWindowState.Maximized;
             materialTabControl.ResumeLayout(false);
             tabPageTemplate.ResumeLayout(false);
             tabPageTemplate.PerformLayout();
@@ -1079,8 +1064,6 @@
         private TabPage tabPageTemplate;
         private TabPage tabPageCommand;
         private ImageList imageListMenu;
-        private MaterialSkin.Controls.MaterialButton materialButtonLoadTemplate;
-        private MaterialSkin.Controls.MaterialButton materialButtonRemoveTemplate;
         private MaterialSkin.Controls.MaterialLabel materialLabelListTemplate;
         private MaterialSkin.Controls.MaterialTextBox materialTextBoxCmdName;
         private MaterialSkin.Controls.MaterialLabel materialLabelCmdName;
@@ -1111,7 +1094,6 @@
         private MaterialSkin.Controls.MaterialButton materialButtonFillTableBookmarks;
         private MaterialSkin.Controls.MaterialButton materialButtonDownloadDocument;
         private MaterialSkin.Controls.MaterialButton materialButtonReadTemlate;
-        private MaterialSkin.Controls.MaterialButton materialButtonUpdateTemplate;
         private MaterialSkin.Controls.MaterialSwitch materialSwitchUseCommand;
         private MaterialSkin.Controls.MaterialComboBox materialComboBoxCommandsSelect;
         private MaterialSkin.Controls.MaterialButton materialButtonUpdCommand;
@@ -1129,5 +1111,9 @@
         private DataGridViewTextBoxColumn NameFile;
         private DataGridViewTextBoxColumn DateModFile;
         private DataGridViewTextBoxColumn SizeFile;
+        private DataGridViewImageColumn AddTemplate;
+        private DataGridViewImageColumn DeleteTemplate;
+        private DataGridViewImageColumn ReadTemplate;
+        private DataGridViewImageColumn UpdateTemplate;
     }
 }
