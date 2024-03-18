@@ -47,10 +47,11 @@ namespace WinFormsUI
             }
             else
             {
-                dataGridViewTableTemplate.Rows.Add(templatesViewModel.Last().FileName,
-                   templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
+                dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, templatesViewModel.Last().FileName,
+                  templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
+                IndexRowTemplateTable++;
+
             }
-            // MessageBox.Show("Sms", "Template name", MessageBoxButtons.OK);
 
         }
 
@@ -109,8 +110,6 @@ namespace WinFormsUI
                 FileInfo fileInfo = new FileInfo(ofd.FileName);
                 DateTime modification = File.GetLastWriteTime(fileInfo.FullName);
                 double sizeFileKb = fileInfo.Length / 1000;
-                // add check uniquness
-                // if(fileInfo.Name == listTemplates.)
                 foreach (var item in listTemplates)
                 {
                     if (fileInfo.Name == item.FileName)
@@ -120,16 +119,6 @@ namespace WinFormsUI
                     }
                 }
 
-                listTemplates.Add(new TemplateViewModel
-                {
-                    FileName = fileInfo.Name,
-                    DateModificationFile = modification.ToString(),
-                    SizeFile = sizeFileKb
-                });
-                this.SetTemplateList(listTemplates);
-
-            }
-        }
 
 
         private void materialButtonCreateTemplate_Click(object sender, EventArgs e)
@@ -150,9 +139,6 @@ namespace WinFormsUI
                 }
                 else
                 {
-                    //int index = materialListViewUploadTemplate.FocusedItem.Index;
-                    //listTemplates.RemoveAt(index);
-                    //materialListViewUploadTemplate.Items.RemoveAt(index);
                     int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
                     listTemplates.RemoveAt(index);
                     this.dataGridViewTableTemplate.Rows.RemoveAt(index);
@@ -167,6 +153,73 @@ namespace WinFormsUI
             FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
             formEditTemplate.ShowDialog();
 
+        }
+
+        private void dataGridViewTableTemplate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string col = dataGridViewTableTemplate.Columns[e.ColumnIndex].Name;
+
+            if (col == "AddTemplate")
+            {
+                if (this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells[0].Value != null)
+                {
+                    CustomMessageBox.Show("Шаблон вже доданий до цього рядка.", "Повідомлення", MessageBoxButtons.OK);
+                    return;
+                }
+
+                OpenFileDialog ofd = new OpenFileDialog
+                {
+                    Filter = "Word|*.docx;*.doc"
+                };
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    FileInfo fileInfo = new FileInfo(ofd.FileName);
+                    DateTime modification = File.GetLastWriteTime(fileInfo.FullName);
+                    double sizeFileKb = fileInfo.Length / 1000;
+                    foreach (var item in listTemplates)
+                    {
+                        if (fileInfo.Name == item.FileName)
+                        {
+                            CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Повідомлення", MessageBoxButtons.OK);
+                            return;
+                        }
+                    }
+
+                    listTemplates.Add(new TemplateViewModel
+                    {
+                        FileName = fileInfo.Name,
+                        DateModificationFile = modification.ToString(),
+                        SizeFile = sizeFileKb
+                    });
+                    this.SetTemplateList(listTemplates);
+                }
+            }
+            else if (col == "DeleteTemplate")
+            {
+                if (this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells[0].Value == null)
+                {
+                    CustomMessageBox.Show("Спочатку додайте шаблон до поточного рядка або виберіть інший зі списку.",
+                        "Повідомлення", MessageBoxButtons.OK);
+                    return;
+                }
+
+                DialogResult dialogResult = CustomMessageBox.Show("Ви впевнені, що хочете видалити шаблон? Видалення скасувати неможливо.",
+               "Видалення шаблону", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (dataGridViewTableTemplate.SelectedRows.Count == 0)
+                    {
+                        CustomMessageBox.Show("Для видалення виберіть шаблон зі списку.", "Повідомлення", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
+                        listTemplates.RemoveAt(index);
+                        this.dataGridViewTableTemplate.Rows.RemoveAt(index);
+                    }
+                }
+            }
         }
     }
 }
