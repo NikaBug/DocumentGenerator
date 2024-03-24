@@ -101,25 +101,18 @@ namespace WinFormsUI
             }
         }
 
-        private void materialButtonCreateTemplate_Click(object sender, EventArgs e)
-        {
-            FormCreateTemplate formCreateTemplate = new FormCreateTemplate();
-            formCreateTemplate.ShowDialog();
-        }
-
-
-        private void dataGridViewTableTemplate_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-            string fileName = listTemplates[index].FileName;
-            FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
-            formEditTemplate.ShowDialog();
-
-        }
-
         private void dataGridViewTableTemplate_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string col = dataGridViewTableTemplate.Columns[e.ColumnIndex].Name;
+
+            if (e.ColumnIndex <= 2)
+            {
+                int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
+                string fileName = listTemplates[index].FileName;
+                FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
+                formEditTemplate.ShowDialog();
+
+            }
 
             if (col == "AddTemplate")
             {
@@ -182,6 +175,54 @@ namespace WinFormsUI
                     }
                 }
             }
+        }
+
+        private void materialButtonAddTemplate_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "Word|*.docx;*.doc"
+            };
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                FileInfo fileInfo = new FileInfo(ofd.FileName);
+                DateTime modification = File.GetLastWriteTime(fileInfo.FullName);
+                double sizeFileKb = fileInfo.Length / 1000;
+                foreach (var item in listTemplates)
+                {
+                    if (fileInfo.Name == item.FileName)
+                    {
+                        CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Повідомлення", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
+
+                listTemplates.Add(new TemplateViewModel
+                {
+                    FileName = fileInfo.Name,
+                    DateModificationFile = modification.ToString(),
+                    SizeFile = sizeFileKb
+                });
+                this.SetTemplateList(listTemplates);
+            }
+        }
+
+        private void materialButtonEditTemplate_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTableTemplate.SelectedRows.Count == 0)
+            {
+                CustomMessageBox.Show("Для видалення виберіть шаблон зі списку.", "Повідомлення", MessageBoxButtons.OK);
+            }
+            else
+            {
+            int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
+            string fileName = listTemplates[index].FileName;
+            FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
+            formEditTemplate.ShowDialog();
+
+            }
+          
         }
     }
 }

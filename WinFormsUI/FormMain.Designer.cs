@@ -191,7 +191,7 @@
             dataGridViewTableTemplate.RowHeadersWidth = 25;
             dataGridViewTableTemplate.RowTemplate.Height = 25;
             dataGridViewTableTemplate.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTableTemplate.Size = new Size(1131, 263);
+            dataGridViewTableTemplate.Size = new Size(1255, 674);
             dataGridViewTableTemplate.TabIndex = 0;
             dataGridViewTableTemplate.CellContentClick += dataGridViewTableTemplate_CellContentClick;
             dataGridViewTableTemplate.MouseDoubleClick += dataGridViewTableTemplate_MouseDoubleClick;
@@ -369,19 +369,6 @@
             materialButtonReadTemlate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonReadTemlate.UseAccentColor = false;
             materialButtonReadTemlate.UseVisualStyleBackColor = true;
-            // 
-            // materialLabelListTemplate
-            // 
-            materialLabelListTemplate.AutoSize = true;
-            materialLabelListTemplate.Depth = 0;
-            materialLabelListTemplate.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabelListTemplate.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabelListTemplate.Location = new Point(480, 20);
-            materialLabelListTemplate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelListTemplate.Name = "materialLabelListTemplate";
-            materialLabelListTemplate.Size = new Size(300, 24);
-            materialLabelListTemplate.TabIndex = 3;
-            materialLabelListTemplate.Text = "Список завантажених шаблонів";
             // 
             // tabPageGenerateDocument
             // 

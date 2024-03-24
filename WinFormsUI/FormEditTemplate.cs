@@ -12,11 +12,20 @@ namespace WinFormsUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             this.materialTextBoxTemplateName.Text = fileName;
+            for (int i = 0; i < 3; i++)
+            {
+                // this.dataGridViewTableBookmarks.Rows.Add("");
+                string bookmark = "bookmark" + i.ToString();
+                this.dataGridViewTableBookmarks.Rows.Add(bookmark);
+            }
 
-            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewBookmarksSetting.Columns[1];
-            theColumn.Items.Add("Текст");
-            theColumn.Items.Add("Таблиця");
-            theColumn.Items.Add("Зображення");
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewTableBookmarks.Columns[1];
+            theColumn.Items.Add(typeDataBookmark[0]);
+            theColumn.Items.Add(typeDataBookmark[1]);
+            theColumn.Items.Add(typeDataBookmark[2]);
+            theColumn.DefaultCellStyle.NullValue = typeDataBookmark[0];
+
         }
+
     }
 }
