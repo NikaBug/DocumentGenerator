@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             materialTextBoxTemplateName = new MaterialSkin.Controls.MaterialTextBox();
             materialLabelTemplateName = new MaterialSkin.Controls.MaterialLabel();
-            dataGridViewBookmarksSetting = new DataGridView();
-            dataGridViewTextBoxColumnBookmark = new DataGridViewTextBoxColumn();
-            dataGridViewComboBoxColumnType = new DataGridViewComboBoxColumn();
             materialLabelSettingBookmark = new MaterialSkin.Controls.MaterialLabel();
             materialButtonSaveUpdate = new MaterialSkin.Controls.MaterialButton();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewBookmarksSetting).BeginInit();
+            dataGridViewEditTableBookmarks = new DataGridView();
+            ColumnBookmarkName = new DataGridViewTextBoxColumn();
+            ColumnType = new DataGridViewComboBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEditTableBookmarks).BeginInit();
             SuspendLayout();
             // 
             // materialTextBoxTemplateName
@@ -72,64 +71,6 @@
             materialLabelTemplateName.TabIndex = 1;
             materialLabelTemplateName.Text = "Назва шаблону";
             // 
-            // dataGridViewBookmarksSetting
-            // 
-            dataGridViewBookmarksSetting.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewBookmarksSetting.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewBookmarksSetting.BackgroundColor = Color.Gainsboro;
-            dataGridViewBookmarksSetting.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.MediumPurple;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewBookmarksSetting.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewBookmarksSetting.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewBookmarksSetting.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumnBookmark, dataGridViewComboBoxColumnType });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dataGridViewBookmarksSetting.DefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewBookmarksSetting.EnableHeadersVisualStyles = false;
-            dataGridViewBookmarksSetting.Location = new Point(35, 199);
-            dataGridViewBookmarksSetting.Name = "dataGridViewBookmarksSetting";
-            dataGridViewBookmarksSetting.RowHeadersVisible = false;
-            dataGridViewBookmarksSetting.RowHeadersWidth = 62;
-            dataGridViewBookmarksSetting.RowTemplate.Height = 33;
-            dataGridViewBookmarksSetting.Size = new Size(466, 125);
-            dataGridViewBookmarksSetting.TabIndex = 10;
-            // 
-            // dataGridViewTextBoxColumnBookmark
-            // 
-            dataGridViewTextBoxColumnBookmark.HeaderText = "Закладка";
-            dataGridViewTextBoxColumnBookmark.MinimumWidth = 8;
-            dataGridViewTextBoxColumnBookmark.Name = "dataGridViewTextBoxColumnBookmark";
-            dataGridViewTextBoxColumnBookmark.Width = 150;
-            // 
-            // dataGridViewComboBoxColumnType
-            // 
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewComboBoxColumnType.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewComboBoxColumnType.FlatStyle = FlatStyle.Flat;
-            dataGridViewComboBoxColumnType.HeaderText = "Тип даних";
-            dataGridViewComboBoxColumnType.MinimumWidth = 8;
-            dataGridViewComboBoxColumnType.Name = "dataGridViewComboBoxColumnType";
-            dataGridViewComboBoxColumnType.Width = 150;
-            // 
             // materialLabelSettingBookmark
             // 
             materialLabelSettingBookmark.AutoSize = true;
@@ -161,19 +102,78 @@
             materialButtonSaveUpdate.UseAccentColor = false;
             materialButtonSaveUpdate.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewEditTableBookmarks
+            // 
+            dataGridViewEditTableBookmarks.AllowUserToAddRows = false;
+            dataGridViewEditTableBookmarks.AllowUserToDeleteRows = false;
+            dataGridViewEditTableBookmarks.AllowUserToResizeColumns = false;
+            dataGridViewEditTableBookmarks.AllowUserToResizeRows = false;
+            dataGridViewEditTableBookmarks.BackgroundColor = Color.White;
+            dataGridViewEditTableBookmarks.BorderStyle = BorderStyle.None;
+            dataGridViewEditTableBookmarks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewEditTableBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewEditTableBookmarks.ColumnHeadersHeight = 35;
+            dataGridViewEditTableBookmarks.Columns.AddRange(new DataGridViewColumn[] { ColumnBookmarkName, ColumnType });
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewEditTableBookmarks.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewEditTableBookmarks.EnableHeadersVisualStyles = false;
+            dataGridViewEditTableBookmarks.GridColor = Color.LightGray;
+            dataGridViewEditTableBookmarks.Location = new Point(35, 188);
+            dataGridViewEditTableBookmarks.MultiSelect = false;
+            dataGridViewEditTableBookmarks.Name = "dataGridViewEditTableBookmarks";
+            dataGridViewEditTableBookmarks.RowHeadersVisible = false;
+            dataGridViewEditTableBookmarks.RowHeadersWidth = 25;
+            dataGridViewEditTableBookmarks.RowTemplate.Height = 25;
+            dataGridViewEditTableBookmarks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewEditTableBookmarks.Size = new Size(676, 153);
+            dataGridViewEditTableBookmarks.TabIndex = 13;
+            // 
+            // ColumnBookmarkName
+            // 
+            ColumnBookmarkName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ColumnBookmarkName.HeaderText = "Назва закладки";
+            ColumnBookmarkName.MinimumWidth = 8;
+            ColumnBookmarkName.Name = "ColumnBookmarkName";
+            ColumnBookmarkName.ReadOnly = true;
+            // 
+            // ColumnType
+            // 
+            ColumnType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            ColumnType.DefaultCellStyle = dataGridViewCellStyle5;
+            ColumnType.FlatStyle = FlatStyle.Flat;
+            ColumnType.HeaderText = "Тип закладки";
+            ColumnType.MinimumWidth = 8;
+            ColumnType.Name = "ColumnType";
+            // 
             // FormEditTemplate
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 414);
+            Controls.Add(dataGridViewEditTableBookmarks);
             Controls.Add(materialButtonSaveUpdate);
             Controls.Add(materialLabelSettingBookmark);
-            Controls.Add(dataGridViewBookmarksSetting);
             Controls.Add(materialLabelTemplateName);
             Controls.Add(materialTextBoxTemplateName);
             Name = "FormEditTemplate";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Редагування шаблону";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewBookmarksSetting).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEditTableBookmarks).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,10 +182,10 @@
 
         private MaterialSkin.Controls.MaterialTextBox materialTextBoxTemplateName;
         private MaterialSkin.Controls.MaterialLabel materialLabelTemplateName;
-        private DataGridView dataGridViewBookmarksSetting;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumnBookmark;
-        private DataGridViewComboBoxColumn dataGridViewComboBoxColumnType;
         private MaterialSkin.Controls.MaterialLabel materialLabelSettingBookmark;
         private MaterialSkin.Controls.MaterialButton materialButtonSaveUpdate;
+        private DataGridView dataGridViewEditTableBookmarks;
+        private DataGridViewTextBoxColumn ColumnBookmarkName;
+        private DataGridViewComboBoxColumn ColumnType;
     }
 }

@@ -5,6 +5,8 @@ namespace WinFormsUI
 {
     public partial class FormEditTemplate : MaterialForm
     {
+        List<string> typeDataBookmark = new List<string>() { "Текст", "Таблиця", "Зображення" };
+
         public FormEditTemplate(string fileName)
         {
             InitializeComponent();
@@ -16,10 +18,10 @@ namespace WinFormsUI
             {
                 // this.dataGridViewTableBookmarks.Rows.Add("");
                 string bookmark = "bookmark" + i.ToString();
-                this.dataGridViewTableBookmarks.Rows.Add(bookmark);
+                this.dataGridViewEditTableBookmarks.Rows.Add(bookmark);
             }
 
-            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewTableBookmarks.Columns[1];
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewEditTableBookmarks.Columns[1];
             theColumn.Items.Add(typeDataBookmark[0]);
             theColumn.Items.Add(typeDataBookmark[1]);
             theColumn.Items.Add(typeDataBookmark[2]);

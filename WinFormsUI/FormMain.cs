@@ -1,3 +1,4 @@
+using Core.Services;
 using Domain;
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -23,15 +24,7 @@ namespace WinFormsUI
             // this.materialListViewUploadTemplate.GridLines = true;
             this.listTemplates = new List<TemplateViewModel>();
             dataGridViewTableTemplate.Rows.Insert(0);
-
-            //dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка1" });
-            //dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка2" });
-            //dataGridViewTableBookmarks.Rows.Add(new object[] { "закладка3" });
-
-            //DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewTableBookmarks.Columns[1];
-            //theColumn.Items.Add("Текст");
-            //theColumn.Items.Add("Таблиця");
-            //theColumn.Items.Add("Зображення");
+            this.WindowState = FormWindowState.Maximized;
         }
 
         public void SetCommandsList(IEnumerable<CommandViewModel> commands)
@@ -114,43 +107,8 @@ namespace WinFormsUI
 
             }
 
-            if (col == "AddTemplate")
-            {
-                if (this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells[0].Value != null)
-                {
-                    CustomMessageBox.Show("Шаблон вже доданий до цього рядка.", "Повідомлення", MessageBoxButtons.OK);
-                    return;
-                }
 
-                OpenFileDialog ofd = new OpenFileDialog
-                {
-                    Filter = "Word|*.docx;*.doc"
-                };
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    FileInfo fileInfo = new FileInfo(ofd.FileName);
-                    DateTime modification = File.GetLastWriteTime(fileInfo.FullName);
-                    double sizeFileKb = fileInfo.Length / 1000;
-                    foreach (var item in listTemplates)
-                    {
-                        if (fileInfo.Name == item.FileName)
-                        {
-                            CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Повідомлення", MessageBoxButtons.OK);
-                            return;
-                        }
-                    }
-
-                    listTemplates.Add(new TemplateViewModel
-                    {
-                        FileName = fileInfo.Name,
-                        DateModificationFile = modification.ToString(),
-                        SizeFile = sizeFileKb
-                    });
-                    this.SetTemplateList(listTemplates);
-                }
-            }
-            else if (col == "DeleteTemplate")
+            if (col == "DeleteTemplate")
             {
                 if (this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells[0].Value == null)
                 {
@@ -193,7 +151,7 @@ namespace WinFormsUI
                 {
                     if (fileInfo.Name == item.FileName)
                     {
-                        CustomMessageBox.Show("РЁР°Р±Р»РѕРЅ РјР°С” Р±СѓС‚Рё Р· СѓРЅС–РєР°Р»СЊРЅРёРј С–РјРµРЅРµРј.", "РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ", MessageBoxButtons.OK);
+                        CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Повідомлення", MessageBoxButtons.OK);
                         return;
                     }
                 }
@@ -205,6 +163,7 @@ namespace WinFormsUI
                     SizeFile = sizeFileKb
                 });
                 this.SetTemplateList(listTemplates);
+
             }
         }
 
@@ -212,14 +171,14 @@ namespace WinFormsUI
         {
             if (dataGridViewTableTemplate.SelectedRows.Count == 0)
             {
-                CustomMessageBox.Show("Р”Р»СЏ РІРёРґР°Р»РµРЅРЅСЏ РІРёР±РµСЂС–С‚СЊ С€Р°Р±Р»РѕРЅ Р·С– СЃРїРёСЃРєСѓ.", "РџРѕРІС–РґРѕРјР»РµРЅРЅСЏ", MessageBoxButtons.OK);
+                CustomMessageBox.Show("Для редагування виберіть шаблон зі списку.", "Повідомлення", MessageBoxButtons.OK);
             }
             else
             {
-            int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-            string fileName = listTemplates[index].FileName;
-            FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
-            formEditTemplate.ShowDialog();
+                int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
+                string fileName = listTemplates[index].FileName;
+                FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
+                formEditTemplate.ShowDialog();
 
             }
           
