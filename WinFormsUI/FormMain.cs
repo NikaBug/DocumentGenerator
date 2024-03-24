@@ -1,12 +1,7 @@
-using Core.Services;
-using Domain;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Presentation.ViewModels;
 using Presentation.Views;
-using System.Diagnostics.Eventing.Reader;
-using System.Windows.Forms;
-using System.Windows.Forms.Design;
 
 namespace WinFormsUI
 {
@@ -32,17 +27,16 @@ namespace WinFormsUI
             materialComboBoxCmdList.Items.Add(commands.First().Name);
         }
 
-
-
         public void SetTemplateList(IEnumerable<TemplateViewModel> templatesViewModel)
         {
+
             if (templatesViewModel.Count() == 0)
             {
                 return;
             }
             else
             {
-                dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, templatesViewModel.Last().FileName,
+                dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, 0, templatesViewModel.Last().FileName,
                 templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
                 IndexRowTemplateTable++;
 
@@ -130,6 +124,7 @@ namespace WinFormsUI
                         int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
                         listTemplates.RemoveAt(index);
                         this.dataGridViewTableTemplate.Rows.RemoveAt(index);
+                        IndexRowTemplateTable--;
                     }
                 }
             }
@@ -182,6 +177,31 @@ namespace WinFormsUI
 
             }
           
+        }
+
+        private void materialButtonReadTemplate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialTextBoxSearchTemplate_TrailingIconClick(object sender, EventArgs e)
+        {
+            string nameTemplate = this.materialTextBoxSearchTemplate.Text;
+           
+            if (string.IsNullOrEmpty(nameTemplate) || Path.GetExtension(nameTemplate) != ".docx")
+            {
+                CustomMessageBox.Show("Назва шаблону " + nameTemplate + " має містити .docx наприкінці.",
+                    "Пошук шаблону", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+
+            }
+
+
+
+
         }
     }
 }
