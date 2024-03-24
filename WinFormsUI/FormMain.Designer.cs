@@ -53,7 +53,9 @@
             materialButtonAddTemplate = new MaterialSkin.Controls.MaterialButton();
             materialButtonEditTemplate = new MaterialSkin.Controls.MaterialButton();
             materialButtonReadTemplate = new MaterialSkin.Controls.MaterialButton();
+            materialTextBoxSearchTemplate = new MaterialSkin.Controls.MaterialTextBox();
             dataGridViewTableTemplate = new DataGridView();
+            NumberRows = new DataGridViewTextBoxColumn();
             NameFile = new DataGridViewTextBoxColumn();
             DateModFile = new DataGridViewTextBoxColumn();
             SizeFile = new DataGridViewTextBoxColumn();
@@ -208,6 +210,7 @@
             tableLayoutPanel1.Controls.Add(materialButtonAddTemplate, 0, 0);
             tableLayoutPanel1.Controls.Add(materialButtonEditTemplate, 1, 0);
             tableLayoutPanel1.Controls.Add(materialButtonReadTemplate, 2, 0);
+            tableLayoutPanel1.Controls.Add(materialTextBoxSearchTemplate, 3, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(3, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -280,6 +283,28 @@
             materialButtonReadTemplate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             materialButtonReadTemplate.UseAccentColor = false;
             materialButtonReadTemplate.UseVisualStyleBackColor = true;
+            materialButtonReadTemplate.Click += materialButtonReadTemplate_Click;
+            // 
+            // materialTextBoxSearchTemplate
+            // 
+            materialTextBoxSearchTemplate.AnimateReadOnly = false;
+            materialTextBoxSearchTemplate.BackColor = Color.FromArgb(192, 255, 255);
+            materialTextBoxSearchTemplate.BorderStyle = BorderStyle.None;
+            materialTextBoxSearchTemplate.Depth = 0;
+            materialTextBoxSearchTemplate.Font = new Font("Roboto", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            materialTextBoxSearchTemplate.Hint = "знайти шаблон";
+            materialTextBoxSearchTemplate.ImeMode = ImeMode.NoControl;
+            materialTextBoxSearchTemplate.LeadingIcon = null;
+            materialTextBoxSearchTemplate.Location = new Point(375, 5);
+            materialTextBoxSearchTemplate.MaxLength = 50;
+            materialTextBoxSearchTemplate.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBoxSearchTemplate.Multiline = false;
+            materialTextBoxSearchTemplate.Name = "materialTextBoxSearchTemplate";
+            materialTextBoxSearchTemplate.Size = new Size(383, 50);
+            materialTextBoxSearchTemplate.TabIndex = 15;
+            materialTextBoxSearchTemplate.Text = "BookmarkTest.docx";
+            materialTextBoxSearchTemplate.TrailingIcon = (Image)resources.GetObject("materialTextBoxSearchTemplate.TrailingIcon");
+            materialTextBoxSearchTemplate.TrailingIconClick += materialTextBoxSearchTemplate_TrailingIconClick;
             // 
             // dataGridViewTableTemplate
             // 
@@ -300,7 +325,7 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dataGridViewTableTemplate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewTableTemplate.ColumnHeadersHeight = 35;
-            dataGridViewTableTemplate.Columns.AddRange(new DataGridViewColumn[] { NameFile, DateModFile, SizeFile, DeleteTemplate });
+            dataGridViewTableTemplate.Columns.AddRange(new DataGridViewColumn[] { NumberRows, NameFile, DateModFile, SizeFile, DeleteTemplate });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -322,10 +347,24 @@
             dataGridViewTableTemplate.Size = new Size(1255, 354);
             dataGridViewTableTemplate.TabIndex = 0;
             dataGridViewTableTemplate.CellContentClick += dataGridViewTableTemplate_CellContentClick;
+            dataGridViewTableTemplate.RowPostPaint += dataGridViewTableTemplate_RowPostPaint;
+            // 
+            // NumberRows
+            // 
+            NumberRows.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            NumberRows.DividerWidth = 1;
+            NumberRows.FillWeight = 150F;
+            NumberRows.HeaderText = "Номер";
+            NumberRows.MinimumWidth = 8;
+            NumberRows.Name = "NumberRows";
+            NumberRows.ReadOnly = true;
+            NumberRows.Width = 107;
             // 
             // NameFile
             // 
             NameFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            NameFile.DividerWidth = 1;
+            NameFile.FillWeight = 150F;
             NameFile.HeaderText = "Назва";
             NameFile.MinimumWidth = 8;
             NameFile.Name = "NameFile";
@@ -334,6 +373,8 @@
             // DateModFile
             // 
             DateModFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DateModFile.DividerWidth = 1;
+            DateModFile.FillWeight = 150F;
             DateModFile.HeaderText = "Дата зміни";
             DateModFile.MinimumWidth = 8;
             DateModFile.Name = "DateModFile";
@@ -342,6 +383,8 @@
             // SizeFile
             // 
             SizeFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SizeFile.DividerWidth = 1;
+            SizeFile.FillWeight = 150F;
             SizeFile.HeaderText = "Розмір (КБ)";
             SizeFile.MinimumWidth = 8;
             SizeFile.Name = "SizeFile";
@@ -1077,14 +1120,16 @@
         private DataGridView dataGridViewTableTemplate;
         private TableLayoutPanel tableLayoutPanel1;
         private MaterialSkin.Controls.MaterialButton materialButtonAddTemplate;
-        private DataGridViewTextBoxColumn NameFile;
-        private DataGridViewTextBoxColumn DateModFile;
-        private DataGridViewTextBoxColumn SizeFile;
-        private DataGridViewImageColumn DeleteTemplate;
         private MaterialSkin.Controls.MaterialButton materialButtonEditTemplate;
         private MaterialSkin.Controls.MaterialButton materialButtonReadTemplate;
         private DataGridView dataGridViewTableBookmarks;
         private DataGridViewTextBoxColumn ColumnBookmarkName;
         private DataGridViewComboBoxColumn ColumnType;
+        private MaterialSkin.Controls.MaterialTextBox materialTextBoxSearchTemplate;
+        private DataGridViewTextBoxColumn NumberRows;
+        private DataGridViewTextBoxColumn NameFile;
+        private DataGridViewTextBoxColumn DateModFile;
+        private DataGridViewTextBoxColumn SizeFile;
+        private DataGridViewImageColumn DeleteTemplate;
     }
 }

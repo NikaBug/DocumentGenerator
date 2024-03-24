@@ -269,6 +269,44 @@
         Q7rFLf4f69+2SFS1CrsAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="materialTextBoxSearchTemplate.TrailingIcon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        YII=
+</value>
+  </data>
+  <metadata name="NumberRows.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="NameFile.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -304,7 +342,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAAiQAAAJNU0Z0AUkBTAIBAQMB
-        AAFQAQcBUAEHASABAAEgAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABgAMAASADAAEBAQABIAYAAUCe
+        AAFYAQkBWAEJASABAAEgAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABgAMAASADAAEBAQABIAYAAUCe
         AAM4AV0DYAHzAwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB
         /wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wNgAfMDOAFdDAADDAEPA1MBpgNIAfYD
         AAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8DAAH/AwAB/wMAAf8D

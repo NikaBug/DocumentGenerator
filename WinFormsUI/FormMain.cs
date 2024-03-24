@@ -1,7 +1,9 @@
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Presentation.Presenters;
 using Presentation.ViewModels;
 using Presentation.Views;
+using System.Diagnostics;
 
 namespace WinFormsUI
 {
@@ -18,8 +20,9 @@ namespace WinFormsUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             // this.materialListViewUploadTemplate.GridLines = true;
             this.listTemplates = new List<TemplateViewModel>();
-            dataGridViewTableTemplate.Rows.Insert(0);
+            // dataGridViewTableTemplate.Rows.Insert(0);
             this.WindowState = FormWindowState.Maximized;
+
         }
 
         public void SetCommandsList(IEnumerable<CommandViewModel> commands)
@@ -92,16 +95,6 @@ namespace WinFormsUI
         {
             string col = dataGridViewTableTemplate.Columns[e.ColumnIndex].Name;
 
-            if (e.ColumnIndex <= 2)
-            {
-                int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-                string fileName = listTemplates[index].FileName;
-                FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
-                formEditTemplate.ShowDialog();
-
-            }
-
-
             if (col == "DeleteTemplate")
             {
                 if (this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells[0].Value == null)
@@ -124,7 +117,7 @@ namespace WinFormsUI
                         int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
                         listTemplates.RemoveAt(index);
                         this.dataGridViewTableTemplate.Rows.RemoveAt(index);
-                        IndexRowTemplateTable--;
+                           IndexRowTemplateTable--;
                     }
                 }
             }
@@ -134,7 +127,7 @@ namespace WinFormsUI
         {
             OpenFileDialog ofd = new OpenFileDialog
             {
-                Filter = "Word|*.docx;*.doc"
+                Filter = "Word|*.docx"
             };
 
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -176,7 +169,7 @@ namespace WinFormsUI
                 formEditTemplate.ShowDialog();
 
             }
-          
+
         }
 
         private void materialButtonReadTemplate_Click(object sender, EventArgs e)
@@ -187,21 +180,49 @@ namespace WinFormsUI
         private void materialTextBoxSearchTemplate_TrailingIconClick(object sender, EventArgs e)
         {
             string nameTemplate = this.materialTextBoxSearchTemplate.Text;
-           
+
             if (string.IsNullOrEmpty(nameTemplate) || Path.GetExtension(nameTemplate) != ".docx")
             {
-                CustomMessageBox.Show("РќР°Р·РІР° С€Р°Р±Р»РѕРЅСѓ " + nameTemplate + " РјР°С” РјС–СЃС‚РёС‚Рё .docx РЅР°РїСЂРёРєС–РЅС†С–.",
-                    "РџРѕС€СѓРє С€Р°Р±Р»РѕРЅСѓ", MessageBoxButtons.OK);
+                CustomMessageBox.Show("Перевірте ведення назви шаблону! Назва шаблону " + nameTemplate + " має містити .docx наприкінці.",
+                    "Пошук шаблону", MessageBoxButtons.OK);
                 return;
             }
             else
             {
+                if (this.dataGridViewTableTemplate.Rows.Count == 0)
+                {
+                    CustomMessageBox.Show("Шаблони для пошуку відсутні! Додайте шаблони.", "Пошук шаблону", MessageBoxButtons.OK);
+                    return;
+                }
+
+                for (int i = 0; i < this.dataGridViewTableTemplate.RowCount - 1; i++)
+                {
+                    if (dataGridViewTableTemplate.Rows[i].Cells["NameFile"].Value.ToString() == nameTemplate)
+                    {
+                        dataGridViewTableTemplate.CurrentCell = dataGridViewTableTemplate.Rows[i].Cells[0];
+                        return;
+                    }
+                    else
+                    {
+                        CustomMessageBox.Show("Шаблон з назвою " + nameTemplate + " НЕ знайдено!", "Пошук шаблону", MessageBoxButtons.OK);
+                        return;
+
+                    }
+
+                }
+
+
 
             }
 
 
 
 
+        }
+
+        private void dataGridViewTableTemplate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells["NumberRows"].Value = (e.RowIndex + 1).ToString();
         }
     }
 }

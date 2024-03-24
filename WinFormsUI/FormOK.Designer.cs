@@ -39,7 +39,7 @@
             materialLabelTextInfoMessage.Location = new Point(17, 90);
             materialLabelTextInfoMessage.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabelTextInfoMessage.Name = "materialLabelTextInfoMessage";
-            materialLabelTextInfoMessage.Size = new Size(357, 65);
+            materialLabelTextInfoMessage.Size = new Size(357, 56);
             materialLabelTextInfoMessage.TabIndex = 0;
             materialLabelTextInfoMessage.Text = "materialLabelTextInfoMessage";
             // 
@@ -52,7 +52,7 @@
             materialButtonOK.DialogResult = DialogResult.OK;
             materialButtonOK.HighEmphasis = true;
             materialButtonOK.Icon = null;
-            materialButtonOK.Location = new Point(92, 172);
+            materialButtonOK.Location = new Point(76, 152);
             materialButtonOK.Margin = new Padding(4, 6, 4, 6);
             materialButtonOK.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonOK.Name = "materialButtonOK";
@@ -68,7 +68,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(394, 224);
+            ClientSize = new Size(394, 209);
             Controls.Add(materialButtonOK);
             Controls.Add(materialLabelTextInfoMessage);
             MaximizeBox = false;
