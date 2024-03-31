@@ -7,5 +7,7 @@ namespace Presentation.Views
     public interface ITemplateView : IView
     {
         void SetTemplateList(IEnumerable<TemplateViewModel> templates);
+
+        void SetBookmarksDictionary(IDictionary<string, string> dictionaryBookmarks);
     }
 }

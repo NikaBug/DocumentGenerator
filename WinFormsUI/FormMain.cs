@@ -1,9 +1,11 @@
+using Aspose.Words;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using Presentation.Presenters;
 using Presentation.ViewModels;
 using Presentation.Views;
 using System.Diagnostics;
+//using Syncfusion.DocIO;
+//using Syncfusion.DocIO.DLS;
 
 namespace WinFormsUI
 {
@@ -11,6 +13,7 @@ namespace WinFormsUI
     {
         List<TemplateViewModel> listTemplates;
         static public int IndexRowTemplateTable = 0;
+        List<Dictionary<string, string>> listDictionaryBookmark;
 
         public FormMain()
         {
@@ -18,10 +21,15 @@ namespace WinFormsUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            // this.materialListViewUploadTemplate.GridLines = true;
+
             this.listTemplates = new List<TemplateViewModel>();
-            // dataGridViewTableTemplate.Rows.Insert(0);
+            this.listDictionaryBookmark = new List<Dictionary<string, string>>();
             this.WindowState = FormWindowState.Maximized;
+            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewGeneratorSettingBookmark.Columns[1];
+            theColumn.Items.Add("Текст");
+            theColumn.Items.Add("Таблиця");
+            theColumn.Items.Add("Таблиця");
+            theColumn.DefaultCellStyle.NullValue = "Текст";
 
         }
 
@@ -42,7 +50,17 @@ namespace WinFormsUI
                 dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, 0, templatesViewModel.Last().FileName,
                 templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
                 IndexRowTemplateTable++;
+            }
 
+        }
+
+        public void SetBookmarksDictionary(IDictionary<string, string> dictionaryBookmarks)
+        {
+            this.dataGridViewTableBookmarks.Rows.Clear();
+            this.dataGridViewTableBookmarks.Refresh();
+            foreach (var itemBookmarks in dictionaryBookmarks)
+            {
+                this.dataGridViewTableBookmarks.Rows.Add(0, itemBookmarks.Key, itemBookmarks.Value);
             }
 
         }
@@ -117,7 +135,13 @@ namespace WinFormsUI
                         int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
                         listTemplates.RemoveAt(index);
                         this.dataGridViewTableTemplate.Rows.RemoveAt(index);
-                           IndexRowTemplateTable--;
+                        IndexRowTemplateTable--;
+                        this.listDictionaryBookmark.RemoveAt(index);
+                        if(this.dataGridViewTableTemplate.Rows.Count > 0)
+                        {
+                            this.dataGridViewTableBookmarks.Rows.Clear();
+                            this.dataGridViewTableBookmarks.Refresh();
+                        }
                     }
                 }
             }
@@ -144,11 +168,25 @@ namespace WinFormsUI
                     }
                 }
 
+                Document doc = new Document(fileInfo.FullName);
+                if (doc.Range.Bookmarks.Count == 0)
+                {
+                    CustomMessageBox.Show("Шаблон не містить закладок! Додайте закладки до шаблону.", "Повідомлення", MessageBoxButtons.OK);
+                    return;
+                }
+                Dictionary<string, string> dictionaryBookmarks = new Dictionary<string, string>();
+                for (int i = 0; i < doc.Range.Bookmarks.Count; i++)
+                {
+                    dictionaryBookmarks.Add(doc.Range.Bookmarks[i].Name, "Текст");
+                }
+
+                this.listDictionaryBookmark.Add(dictionaryBookmarks);
                 listTemplates.Add(new TemplateViewModel
                 {
                     FileName = fileInfo.Name,
                     DateModificationFile = modification.ToString(),
-                    SizeFile = sizeFileKb
+                    SizeFile = sizeFileKb,
+                    BookmarksFile = listDictionaryBookmark.Last(),
                 });
                 this.SetTemplateList(listTemplates);
 
@@ -174,6 +212,17 @@ namespace WinFormsUI
 
         private void materialButtonReadTemplate_Click(object sender, EventArgs e)
         {
+            if (dataGridViewTableTemplate.SelectedRows.Count == 0)
+            {
+                CustomMessageBox.Show("Для редагування виберіть шаблон зі списку.", "Повідомлення", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
+                var listBookmarks = listDictionaryBookmark[index];
+                this.SetBookmarksDictionary(listBookmarks);
+            }
+
 
         }
 
@@ -211,8 +260,6 @@ namespace WinFormsUI
 
                 }
 
-
-
             }
 
 
@@ -223,6 +270,20 @@ namespace WinFormsUI
         private void dataGridViewTableTemplate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells["NumberRows"].Value = (e.RowIndex + 1).ToString();
+        }
+
+        private void dataGridViewGeneratorSettingBookmark_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            string column = dataGridViewGeneratorSettingBookmark.Columns[e.ColumnIndex].Name;
+            if (column == "GenEnterData")
+            {
+            }
+        }
+
+        private void dataGridViewTableBookmarks_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            this.dataGridViewTableBookmarks.Rows[e.RowIndex].Cells["ColumnNumber"].Value = (e.RowIndex + 1).ToString();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace WinFormsUI
 {
     public partial class FormEditTemplate : MaterialForm
     {
-        List<string> typeDataBookmark = new List<string>() { "Текст", "Таблиця", "Зображення" };
+       // List<string> typeDataBookmark = new List<string>() { "Текст", "Таблиця", "Зображення" };
 
         public FormEditTemplate(string fileName)
         {
@@ -14,18 +14,18 @@ namespace WinFormsUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             this.materialTextBoxTemplateName.Text = fileName;
-            for (int i = 0; i < 3; i++)
-            {
-                // this.dataGridViewTableBookmarks.Rows.Add("");
-                string bookmark = "bookmark" + i.ToString();
-                this.dataGridViewEditTableBookmarks.Rows.Add(bookmark);
-            }
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    // this.dataGridViewTableBookmarks.Rows.Add("");
+            //    string bookmark = "bookmark" + i.ToString();
+            //    this.dataGridViewEditTableBookmarks.Rows.Add(bookmark);
+            //}
 
-            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewEditTableBookmarks.Columns[1];
-            theColumn.Items.Add(typeDataBookmark[0]);
-            theColumn.Items.Add(typeDataBookmark[1]);
-            theColumn.Items.Add(typeDataBookmark[2]);
-            theColumn.DefaultCellStyle.NullValue = typeDataBookmark[0];
+            //DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewEditTableBookmarks.Columns[1];
+            //theColumn.Items.Add(typeDataBookmark[0]);
+            //theColumn.Items.Add(typeDataBookmark[1]);
+            //theColumn.Items.Add(typeDataBookmark[2]);
+            //theColumn.DefaultCellStyle.NullValue = typeDataBookmark[0];
 
         }
 
