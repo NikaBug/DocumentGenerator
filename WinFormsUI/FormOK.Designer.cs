@@ -36,10 +36,10 @@
             // 
             materialLabelTextInfoMessage.Depth = 0;
             materialLabelTextInfoMessage.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelTextInfoMessage.Location = new Point(17, 90);
+            materialLabelTextInfoMessage.Location = new Point(16, 80);
             materialLabelTextInfoMessage.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabelTextInfoMessage.Name = "materialLabelTextInfoMessage";
-            materialLabelTextInfoMessage.Size = new Size(357, 56);
+            materialLabelTextInfoMessage.Size = new Size(357, 73);
             materialLabelTextInfoMessage.TabIndex = 0;
             materialLabelTextInfoMessage.Text = "materialLabelTextInfoMessage";
             // 
@@ -52,7 +52,7 @@
             materialButtonOK.DialogResult = DialogResult.OK;
             materialButtonOK.HighEmphasis = true;
             materialButtonOK.Icon = null;
-            materialButtonOK.Location = new Point(76, 152);
+            materialButtonOK.Location = new Point(85, 159);
             materialButtonOK.Margin = new Padding(4, 6, 4, 6);
             materialButtonOK.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonOK.Name = "materialButtonOK";

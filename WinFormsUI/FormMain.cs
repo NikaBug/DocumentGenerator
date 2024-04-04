@@ -3,7 +3,6 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using Presentation.ViewModels;
 using Presentation.Views;
-using System.Diagnostics;
 //using Syncfusion.DocIO;
 //using Syncfusion.DocIO.DLS;
 
@@ -11,9 +10,8 @@ namespace WinFormsUI
 {
     public partial class FormMain : MaterialForm, ICommandView, ITemplateView
     {
-        List<TemplateViewModel> listTemplates;
-        static public int IndexRowTemplateTable = 0;
-        List<Dictionary<string, string>> listDictionaryBookmark;
+        private List<TemplateViewModel> listTemplates; // список шаблонів
+        static public int IndexRowTemplateTable = 0; // індекс рядка таблиці шаблонів
 
         public FormMain()
         {
@@ -21,16 +19,8 @@ namespace WinFormsUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-
-            this.listTemplates = new List<TemplateViewModel>();
-            this.listDictionaryBookmark = new List<Dictionary<string, string>>();
             this.WindowState = FormWindowState.Maximized;
-            DataGridViewComboBoxColumn theColumn = (DataGridViewComboBoxColumn)this.dataGridViewGeneratorSettingBookmark.Columns[1];
-            theColumn.Items.Add("Текст");
-            theColumn.Items.Add("Таблиця");
-            theColumn.Items.Add("Таблиця");
-            theColumn.DefaultCellStyle.NullValue = "Текст";
-
+            this.listTemplates = new List<TemplateViewModel>();
         }
 
         public void SetCommandsList(IEnumerable<CommandViewModel> commands)
@@ -38,106 +28,83 @@ namespace WinFormsUI
             materialComboBoxCmdList.Items.Add(commands.First().Name);
         }
 
+        /// <summary>
+        /// Задати список шабонів
+        /// </summary>
+        /// <param name="templatesViewModel">список шаблонів</param>
         public void SetTemplateList(IEnumerable<TemplateViewModel> templatesViewModel)
         {
-
             if (templatesViewModel.Count() == 0)
             {
                 return;
             }
             else
-            {
+            {   // вставка рядка до таблиці з інформацією про шаблон
                 dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, 0, templatesViewModel.Last().FileName,
                 templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
                 IndexRowTemplateTable++;
             }
-
         }
 
+        /// <summary>
+        /// Задання словника закладок
+        /// (ключ: ім'я закладки, значення: тип закладки)
+        /// </summary>
+        /// <param name="dictionaryBookmarks">словник закладо</param>
         public void SetBookmarksDictionary(IDictionary<string, string> dictionaryBookmarks)
-        {
+        {   // очишення та оновлення таблиці закладок
             this.dataGridViewTableBookmarks.Rows.Clear();
             this.dataGridViewTableBookmarks.Refresh();
             foreach (var itemBookmarks in dictionaryBookmarks)
-            {
+            {   // додаваня рядків до таблиці закладок
                 this.dataGridViewTableBookmarks.Rows.Add(0, itemBookmarks.Key, itemBookmarks.Value);
             }
 
         }
-
-        private void materialRadioButtonSaveTmp_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Перевірка назви шаблону 
+        /// на коректність
+        /// </summary>
+        /// <param name="NameTemplate">назва шаблону</param>
+        /// <returns>true - якщо назва коректна, або false - якщо назва некоректна</returns>
+        public bool checkNameTemplate(string NameTemplate)
         {
-            if (materialRadioButtonSaveTmp.Checked)
+            if (string.IsNullOrEmpty(NameTemplate) || Path.GetExtension(NameTemplate) != ".docx")
             {
-                foreach (Control ctrl in panelUploadTemplate.Controls)
-                {
-                    ctrl.Enabled = false;
-                }
-
-                foreach (Control ctrl in panelSavedTemplate.Controls)
-                {
-                    ctrl.Enabled = true;
-                }
+                return false;
             }
+            return true;
         }
-
-        private void materialRadioButtonIUploadTmp_CheckedChanged(object sender, EventArgs e)
-        {
-            if (materialRadioButtonIUploadTmp.Checked)
-            {
-                foreach (Control ctrl in panelUploadTemplate.Controls)
-                {
-                    ctrl.Enabled = true;
-                }
-
-                foreach (Control ctrl in panelSavedTemplate.Controls)
-                {
-                    ctrl.Enabled = false;
-                }
-            }
-        }
-
-        private void materialSwitchUseCommand_CheckedChanged(object sender, EventArgs e)
-        {
-            if (materialSwitchUseCommand.Checked)
-            {
-                materialComboBoxCommandsSelect.Enabled = true;
-            }
-            else
-            {
-                materialComboBoxCommandsSelect.Enabled = false;
-            }
-        }
-
+ 
         private void dataGridViewTableTemplate_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string col = dataGridViewTableTemplate.Columns[e.ColumnIndex].Name;
+        {    // назва стовпця таблиці шаблонів
+            string columnTableTemplate = dataGridViewTableTemplate.Columns[e.ColumnIndex].Name;
 
-            if (col == "DeleteTemplate")
+            if (columnTableTemplate == "DeleteTemplate")
             {
                 if (this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells[0].Value == null)
                 {
                     CustomMessageBox.Show("Спочатку додайте шаблон до поточного рядка або виберіть інший зі списку.",
-                        "Повідомлення", MessageBoxButtons.OK);
+                        "Видалення шаблону", MessageBoxButtons.OK);
                     return;
                 }
 
                 DialogResult dialogResult = CustomMessageBox.Show("Ви впевнені, що хочете видалити шаблон? Видалення скасувати неможливо.",
                "Видалення шаблону", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+
+                if (dialogResult == DialogResult.Yes) // якщо видалити шаблон
                 {
-                    if (dataGridViewTableTemplate.SelectedRows.Count == 0)
+                    if (dataGridViewTableTemplate.SelectedRows.Count == 0) // якщо шаблон не вибрано
                     {
-                        CustomMessageBox.Show("Для видалення виберіть шаблон зі списку.", "Повідомлення", MessageBoxButtons.OK);
+                        CustomMessageBox.Show("Для видалення виберіть шаблон зі списку.", "Видалення шаблону", MessageBoxButtons.OK);
                     }
                     else
-                    {
+                    {   // якщо шаблон вибрано
                         int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-                        listTemplates.RemoveAt(index);
+                        listTemplates.RemoveAt(index); 
                         this.dataGridViewTableTemplate.Rows.RemoveAt(index);
                         IndexRowTemplateTable--;
-                        this.listDictionaryBookmark.RemoveAt(index);
-                        if(this.dataGridViewTableTemplate.Rows.Count > 0)
+                        if (this.dataGridViewTableBookmarks.Rows.Count > 0)
                         {
                             this.dataGridViewTableBookmarks.Rows.Clear();
                             this.dataGridViewTableBookmarks.Refresh();
@@ -146,22 +113,28 @@ namespace WinFormsUI
                 }
             }
         }
-
+       
+        /// <summary>
+        /// Кнопка "Додати" (шаблон)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialButtonAddTemplate_Click(object sender, EventArgs e)
         {
+            // відкрити діалогове вікно з вибором файлу .docx
             OpenFileDialog ofd = new OpenFileDialog
             {
                 Filter = "Word|*.docx"
             };
-
+           
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                FileInfo fileInfo = new FileInfo(ofd.FileName);
-                DateTime modification = File.GetLastWriteTime(fileInfo.FullName);
-                double sizeFileKb = fileInfo.Length / 1000;
+                FileInfo fileInfo = new FileInfo(ofd.FileName); // назва файлу
+                DateTime modification = File.GetLastWriteTime(fileInfo.FullName); // дата зміни
+                double sizeFileKb = fileInfo.Length / 1000; // розмір файлу в КБ
                 foreach (var item in listTemplates)
                 {
-                    if (fileInfo.Name == item.FileName)
+                    if (fileInfo.Name == item.FileName) // якщо існує шаблон з такою назвою
                     {
                         CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Повідомлення", MessageBoxButtons.OK);
                         return;
@@ -170,29 +143,34 @@ namespace WinFormsUI
 
                 Document doc = new Document(fileInfo.FullName);
                 if (doc.Range.Bookmarks.Count == 0)
-                {
+                {   // якщо в документі немає закладок
                     CustomMessageBox.Show("Шаблон не містить закладок! Додайте закладки до шаблону.", "Повідомлення", MessageBoxButtons.OK);
                     return;
                 }
+                // словник закладок
                 Dictionary<string, string> dictionaryBookmarks = new Dictionary<string, string>();
                 for (int i = 0; i < doc.Range.Bookmarks.Count; i++)
                 {
                     dictionaryBookmarks.Add(doc.Range.Bookmarks[i].Name, "Текст");
                 }
-
-                this.listDictionaryBookmark.Add(dictionaryBookmarks);
+                // додати шаблон до списку
                 listTemplates.Add(new TemplateViewModel
                 {
                     FileName = fileInfo.Name,
                     DateModificationFile = modification.ToString(),
                     SizeFile = sizeFileKb,
-                    BookmarksFile = listDictionaryBookmark.Last(),
+                    BookmarksFile = dictionaryBookmarks
                 });
                 this.SetTemplateList(listTemplates);
 
             }
         }
-
+        
+        /// <summary>
+        /// Кнопка "Редагувати" (шаблон)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialButtonEditTemplate_Click(object sender, EventArgs e)
         {
             if (dataGridViewTableTemplate.SelectedRows.Count == 0)
@@ -201,15 +179,26 @@ namespace WinFormsUI
             }
             else
             {
-                int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-                string fileName = listTemplates[index].FileName;
-                FormEditTemplate formEditTemplate = new FormEditTemplate(fileName);
+                int indSelTemplate = dataGridViewTableTemplate.CurrentCell.RowIndex; // індекс вибраного шаблону
+                var selectedTemplate = listTemplates[indSelTemplate]; // вибраний шаблон
+                // форма для редагування
+                FormEditTemplate formEditTemplate = new FormEditTemplate(selectedTemplate);
                 formEditTemplate.ShowDialog();
-
+                listTemplates[indSelTemplate] = formEditTemplate.Template; // оновити дані про шаблон
+                // відобразити оновлені дані шаблону
+                this.dataGridViewTableTemplate.Rows[indSelTemplate].Cells[1].Value = listTemplates[indSelTemplate].FileName.ToString();
+                this.dataGridViewTableTemplate.Rows[indSelTemplate].Cells[2].Value = listTemplates[indSelTemplate].DateModificationFile.ToString();
+                this.SetBookmarksDictionary(listTemplates[indSelTemplate].BookmarksFile);
             }
 
         }
-
+        
+        /// <summary>
+        /// Кнопка "Читати" 
+        /// (показати закладки з шаблону)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialButtonReadTemplate_Click(object sender, EventArgs e)
         {
             if (dataGridViewTableTemplate.SelectedRows.Count == 0)
@@ -219,18 +208,20 @@ namespace WinFormsUI
             else
             {
                 int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-                var listBookmarks = listDictionaryBookmark[index];
-                this.SetBookmarksDictionary(listBookmarks);
+                this.SetBookmarksDictionary(listTemplates[index].BookmarksFile);
             }
-
-
         }
 
+        /// <summary>
+        /// Поле "Знайти шаблон" (обробка події)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void materialTextBoxSearchTemplate_TrailingIconClick(object sender, EventArgs e)
         {
             string nameTemplate = this.materialTextBoxSearchTemplate.Text;
 
-            if (string.IsNullOrEmpty(nameTemplate) || Path.GetExtension(nameTemplate) != ".docx")
+            if (!checkNameTemplate(nameTemplate))
             {
                 CustomMessageBox.Show("Перевірте ведення назви шаблону! Назва шаблону " + nameTemplate + " має містити .docx наприкінці.",
                     "Пошук шаблону", MessageBoxButtons.OK);
@@ -239,52 +230,39 @@ namespace WinFormsUI
             else
             {
                 if (this.dataGridViewTableTemplate.Rows.Count == 0)
-                {
+                {   // якщо доданих шаблонів немає
                     CustomMessageBox.Show("Шаблони для пошуку відсутні! Додайте шаблони.", "Пошук шаблону", MessageBoxButtons.OK);
                     return;
                 }
 
-                for (int i = 0; i < this.dataGridViewTableTemplate.RowCount - 1; i++)
+                int rowCount = dataGridViewTableTemplate.RowCount - 1;
+                int i = 0; // лічильник рядків
+                while (i <= rowCount)
                 {
                     if (dataGridViewTableTemplate.Rows[i].Cells["NameFile"].Value.ToString() == nameTemplate)
-                    {
+                    {   // виділити знайдений шаблон
                         dataGridViewTableTemplate.CurrentCell = dataGridViewTableTemplate.Rows[i].Cells[0];
                         return;
                     }
-                    else
-                    {
-                        CustomMessageBox.Show("Шаблон з назвою " + nameTemplate + " НЕ знайдено!", "Пошук шаблону", MessageBoxButtons.OK);
-                        return;
-
-                    }
-
+                    i++;
                 }
+                CustomMessageBox.Show("Шаблон з назвою " + nameTemplate + " НЕ знайдено!", "Пошук шаблону", MessageBoxButtons.OK);
 
             }
-
-
-
 
         }
 
         private void dataGridViewTableTemplate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
+        {    // нумерація рядків таблиці шаблонів
             this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells["NumberRows"].Value = (e.RowIndex + 1).ToString();
         }
 
-        private void dataGridViewGeneratorSettingBookmark_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            string column = dataGridViewGeneratorSettingBookmark.Columns[e.ColumnIndex].Name;
-            if (column == "GenEnterData")
-            {
-            }
-        }
-
         private void dataGridViewTableBookmarks_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
+        {    // нумерація рядків таблиці закладок
             this.dataGridViewTableBookmarks.Rows[e.RowIndex].Cells["ColumnNumber"].Value = (e.RowIndex + 1).ToString();
         }
+
+
     }
 }
 
