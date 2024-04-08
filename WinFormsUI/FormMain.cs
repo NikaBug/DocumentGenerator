@@ -1,8 +1,10 @@
 using Aspose.Words;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using Presentation.ViewModels;
 using Presentation.Views;
+using System.Diagnostics.Eventing.Reader;
 //using Syncfusion.DocIO;
 //using Syncfusion.DocIO.DLS;
 
@@ -12,6 +14,7 @@ namespace WinFormsUI
     {
         private List<TemplateViewModel> listTemplates; // список шаблонів
         static public int IndexRowTemplateTable = 0; // індекс рядка таблиці шаблонів
+        DataGridViewComboBoxColumn cmbGenSetBookmark;
 
         public FormMain()
         {
@@ -21,11 +24,18 @@ namespace WinFormsUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             this.WindowState = FormWindowState.Maximized;
             this.listTemplates = new List<TemplateViewModel>();
+            //
+            cmbGenSetBookmark = (DataGridViewComboBoxColumn)this.dataGridViewGenSettingBookmarks.Columns[2];
+            cmbGenSetBookmark.Items.Add("Текст");
+            cmbGenSetBookmark.Items.Add("Зображення");
+            cmbGenSetBookmark.Items.Add("Таблиця");
+
+
         }
 
         public void SetCommandsList(IEnumerable<CommandViewModel> commands)
         {
-            materialComboBoxCmdList.Items.Add(commands.First().Name);
+            // materialComboBoxCmdList.Items.Add(commands.First().Name);
         }
 
         /// <summary>
@@ -43,6 +53,12 @@ namespace WinFormsUI
                 dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, 0, templatesViewModel.Last().FileName,
                 templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
                 IndexRowTemplateTable++;
+                //
+                this.materialComboBoxGenSavedTemplate.Items.Add(templatesViewModel.Last().FileName);
+                this.materialComboBoxGenSavedTemplate.SelectedIndex = 0;
+                //materialComboBoxSavedTemplate.Items.Add("Шаблон 2");
+                //materialComboBoxSavedTemplate.Items.Add("Шаблон 3");
+
             }
         }
 
@@ -75,7 +91,7 @@ namespace WinFormsUI
             }
             return true;
         }
- 
+
         private void dataGridViewTableTemplate_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {    // назва стовпця таблиці шаблонів
             string columnTableTemplate = dataGridViewTableTemplate.Columns[e.ColumnIndex].Name;
@@ -101,7 +117,7 @@ namespace WinFormsUI
                     else
                     {   // якщо шаблон вибрано
                         int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-                        listTemplates.RemoveAt(index); 
+                        listTemplates.RemoveAt(index);
                         this.dataGridViewTableTemplate.Rows.RemoveAt(index);
                         IndexRowTemplateTable--;
                         if (this.dataGridViewTableBookmarks.Rows.Count > 0)
@@ -109,11 +125,15 @@ namespace WinFormsUI
                             this.dataGridViewTableBookmarks.Rows.Clear();
                             this.dataGridViewTableBookmarks.Refresh();
                         }
+                        // generator
+                        this.materialComboBoxGenSavedTemplate.Items.RemoveAt(index);
+                        this.dataGridViewGenSettingBookmarks.Rows.Clear();
+                        this.dataGridViewTableBookmarks.Refresh();
                     }
                 }
             }
         }
-       
+
         /// <summary>
         /// Кнопка "Додати" (шаблон)
         /// </summary>
@@ -126,7 +146,7 @@ namespace WinFormsUI
             {
                 Filter = "Word|*.docx"
             };
-           
+
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 FileInfo fileInfo = new FileInfo(ofd.FileName); // назва файлу
@@ -165,7 +185,7 @@ namespace WinFormsUI
 
             }
         }
-        
+
         /// <summary>
         /// Кнопка "Редагувати" (шаблон)
         /// </summary>
@@ -189,10 +209,13 @@ namespace WinFormsUI
                 this.dataGridViewTableTemplate.Rows[indSelTemplate].Cells[1].Value = listTemplates[indSelTemplate].FileName.ToString();
                 this.dataGridViewTableTemplate.Rows[indSelTemplate].Cells[2].Value = listTemplates[indSelTemplate].DateModificationFile.ToString();
                 this.SetBookmarksDictionary(listTemplates[indSelTemplate].BookmarksFile);
+
+                // обробник зміни вибору збереженого шаблону (модуль "Генератор")
+                materialComboBoxGenSavedTemplate_SelectedValueChanged(sender, e);
             }
 
         }
-        
+
         /// <summary>
         /// Кнопка "Читати" 
         /// (показати закладки з шаблону)
@@ -262,7 +285,70 @@ namespace WinFormsUI
             this.dataGridViewTableBookmarks.Rows[e.RowIndex].Cells["ColumnNumber"].Value = (e.RowIndex + 1).ToString();
         }
 
+        // Generator
+        //
+        private void materialComboBoxGenSavedTemplate_SelectedValueChanged(object sender, EventArgs e)
+        {
 
+            //string selectedTemplate = materialComboBoxGenSavedTemplate.SelectedItem.ToString();
+            int indexSelectedTemplate = materialComboBoxGenSavedTemplate.SelectedIndex;
+
+
+            this.dataGridViewGenSettingBookmarks.Rows.Clear();
+            this.dataGridViewGenSettingBookmarks.Refresh();
+
+            int i = 0;
+            foreach (var item in listTemplates.ElementAt(indexSelectedTemplate).BookmarksFile)
+            {
+                string val = item.Value.ToString();
+                this.dataGridViewGenSettingBookmarks.Rows.Add(0, item.Key);
+                this.dataGridViewGenSettingBookmarks.Rows[i].Cells[2].Value = val;
+                cmbGenSetBookmark.DefaultCellStyle.NullValue = val;
+                i++;
+            }
+
+        }
+
+        private void materialButtonSelectPathForSaved_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = "C:\\Users";
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                // MessageBox.Show("You selected: " + dialog.FileName);
+                this.materialTextBoxPathForSaveDocument.Text = dialog.FileName;
+            }
+        }
+
+        private void dataGridViewGenSettingBookmarks_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            this.dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells["GenNumberRows"].Value = (e.RowIndex + 1).ToString();
+
+        }
+
+        private void dataGridViewGenSettingBookmarks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string columnTableBookmark = this.dataGridViewGenSettingBookmarks.Columns[e.ColumnIndex].Name;
+
+            if (columnTableBookmark == "GenEnterData")
+            {
+                string typeData = Convert.ToString(dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells[2].FormattedValue.ToString());
+                if(typeData == "Текст")
+                {
+                    FormTextData formTextData = new FormTextData();
+                    formTextData.ShowDialog();
+
+                } else if(typeData == "Зображення")
+                {
+
+                } else if(typeData == "Таблиця")
+                {
+                    FormTableData formTableData = new FormTableData();
+                    formTableData.ShowDialog();
+                }
+            }
+        }
     }
 }
 

@@ -35,10 +35,14 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
             materialTabControl = new MaterialSkin.Controls.MaterialTabControl();
             tabPageTemplate = new TabPage();
             dataGridViewTableBookmarks = new DataGridView();
@@ -57,32 +61,63 @@
             SizeFile = new DataGridViewTextBoxColumn();
             DeleteTemplate = new DataGridViewImageColumn();
             tabPageGenerateDocument = new TabPage();
+            groupBoxGenSetting = new GroupBox();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            materialButtonSelectPathForSaved = new MaterialSkin.Controls.MaterialButton();
+            materialTextBoxPathForSaveDocument = new MaterialSkin.Controls.MaterialTextBox2();
+            materialLabelNameOutputDocument = new MaterialSkin.Controls.MaterialLabel();
+            materialTextBoxGenNameOutputDocument = new MaterialSkin.Controls.MaterialTextBox2();
+            materialComboBoxGenCommandList = new MaterialSkin.Controls.MaterialComboBox();
+            materialSwitchUseCommand = new MaterialSkin.Controls.MaterialSwitch();
+            dataGridViewGenSettingBookmarks = new DataGridView();
+            GenNumberRows = new DataGridViewTextBoxColumn();
+            GenNameBookmark = new DataGridViewTextBoxColumn();
+            GenDataType = new DataGridViewComboBoxColumn();
+            GenEnterData = new DataGridViewImageColumn();
+            groupBoxGenChoseTemplate = new GroupBox();
+            dataGridViewGenLoadTemplateTable = new DataGridView();
+            GenTmpRowNumber = new DataGridViewTextBoxColumn();
+            GenTmpNameBookmark = new DataGridViewTextBoxColumn();
+            GenTmpDateModification = new DataGridViewTextBoxColumn();
+            GenTmpSize = new DataGridViewTextBoxColumn();
+            GenTmpDelete = new DataGridViewImageColumn();
+            materialComboBoxGenSavedTemplate = new MaterialSkin.Controls.MaterialComboBox();
+            materialRadioButtonGenLoadTemplate = new MaterialSkin.Controls.MaterialRadioButton();
+            materialRadioButtonGenSavedTemplate = new MaterialSkin.Controls.MaterialRadioButton();
             tabPageCommand = new TabPage();
-            materialLabelSelCmd = new MaterialSkin.Controls.MaterialLabel();
-            materialComboBoxCmdList = new MaterialSkin.Controls.MaterialComboBox();
-            materialButtonReadCmd = new MaterialSkin.Controls.MaterialButton();
-            materialButtonDeleteCommand = new MaterialSkin.Controls.MaterialButton();
-            materialButtonUpdCommand = new MaterialSkin.Controls.MaterialButton();
-            materialButtonFillTableBookmarks = new MaterialSkin.Controls.MaterialButton();
-            dataGridViewBookmarksForCmd = new DataGridView();
-            InputBookmark = new DataGridViewComboBoxColumn();
-            dataGridViewComboBoxColumnOB = new DataGridViewComboBoxColumn();
-            materialLabelBookmarksTable = new MaterialSkin.Controls.MaterialLabel();
-            materialButtonCreateCmd = new MaterialSkin.Controls.MaterialButton();
-            materialTextBoxCmdName = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabelCmdName = new MaterialSkin.Controls.MaterialLabel();
-            materialComboBoxInputTmp = new MaterialSkin.Controls.MaterialComboBox();
-            materialLabelOutputTmp = new MaterialSkin.Controls.MaterialLabel();
-            materialLabelInputTmp = new MaterialSkin.Controls.MaterialLabel();
-            materialComboBoxOutputTmp = new MaterialSkin.Controls.MaterialComboBox();
+            groupBoxCmdTable = new GroupBox();
+            dataGridViewTableCommand = new DataGridView();
+            CmdNumberRowCommand = new DataGridViewTextBoxColumn();
+            CommandName = new DataGridViewTextBoxColumn();
+            CmdInputTemplate = new DataGridViewTextBoxColumn();
+            CmdOutputTemplate = new DataGridViewTextBoxColumn();
+            CmdDeleteCommand = new DataGridViewImageColumn();
+            groupBoxCmdSettingConvert = new GroupBox();
+            dataGridViewCmdTemplateTable = new DataGridView();
+            CmdNumberRowTmp = new DataGridViewTextBoxColumn();
+            CmdInputBookmark = new DataGridViewComboBoxColumn();
+            CmdOutputBookmark = new DataGridViewComboBoxColumn();
+            groupBoxSettingCommand = new GroupBox();
+            materialTextBoxCmdCommandName = new MaterialSkin.Controls.MaterialTextBox2();
+            materialComboBoxCmdOutputTemplate = new MaterialSkin.Controls.MaterialComboBox();
+            materialComboBoxCmdInputTemplate = new MaterialSkin.Controls.MaterialComboBox();
             imageListMenu = new ImageList(components);
             materialTabControl.SuspendLayout();
             tabPageTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableBookmarks).BeginInit();
             tableLayoutPanelTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableTemplate).BeginInit();
+            tabPageGenerateDocument.SuspendLayout();
+            groupBoxGenSetting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewGenSettingBookmarks).BeginInit();
+            groupBoxGenChoseTemplate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewGenLoadTemplateTable).BeginInit();
             tabPageCommand.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewBookmarksForCmd).BeginInit();
+            groupBoxCmdTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTableCommand).BeginInit();
+            groupBoxCmdSettingConvert.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCmdTemplateTable).BeginInit();
+            groupBoxSettingCommand.SuspendLayout();
             SuspendLayout();
             // 
             // materialTabControl
@@ -270,6 +305,7 @@
             // 
             // materialTextBoxSearchTemplate
             // 
+            materialTextBoxSearchTemplate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             materialTextBoxSearchTemplate.AnimateReadOnly = false;
             materialTextBoxSearchTemplate.BackColor = Color.FromArgb(192, 255, 255);
             materialTextBoxSearchTemplate.BorderStyle = BorderStyle.None;
@@ -279,11 +315,12 @@
             materialTextBoxSearchTemplate.ImeMode = ImeMode.NoControl;
             materialTextBoxSearchTemplate.LeadingIcon = null;
             materialTextBoxSearchTemplate.Location = new Point(375, 5);
-            materialTextBoxSearchTemplate.MaxLength = 50;
+            materialTextBoxSearchTemplate.MaxLength = 100;
+            materialTextBoxSearchTemplate.MinimumSize = new Size(312, 50);
             materialTextBoxSearchTemplate.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBoxSearchTemplate.Multiline = false;
             materialTextBoxSearchTemplate.Name = "materialTextBoxSearchTemplate";
-            materialTextBoxSearchTemplate.Size = new Size(383, 50);
+            materialTextBoxSearchTemplate.Size = new Size(312, 50);
             materialTextBoxSearchTemplate.TabIndex = 15;
             materialTextBoxSearchTemplate.Text = "BookmarkTest.docx";
             materialTextBoxSearchTemplate.TrailingIcon = (Image)resources.GetObject("materialTextBoxSearchTemplate.TrailingIcon");
@@ -388,6 +425,8 @@
             // tabPageGenerateDocument
             // 
             tabPageGenerateDocument.BackColor = Color.White;
+            tabPageGenerateDocument.Controls.Add(groupBoxGenSetting);
+            tabPageGenerateDocument.Controls.Add(groupBoxGenChoseTemplate);
             tabPageGenerateDocument.ImageKey = "writing.png";
             tabPageGenerateDocument.Location = new Point(4, 39);
             tabPageGenerateDocument.Name = "tabPageGenerateDocument";
@@ -396,24 +435,412 @@
             tabPageGenerateDocument.TabIndex = 1;
             tabPageGenerateDocument.Text = "Генератор";
             // 
+            // groupBoxGenSetting
+            // 
+            groupBoxGenSetting.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxGenSetting.Controls.Add(materialLabel1);
+            groupBoxGenSetting.Controls.Add(materialButtonSelectPathForSaved);
+            groupBoxGenSetting.Controls.Add(materialTextBoxPathForSaveDocument);
+            groupBoxGenSetting.Controls.Add(materialLabelNameOutputDocument);
+            groupBoxGenSetting.Controls.Add(materialTextBoxGenNameOutputDocument);
+            groupBoxGenSetting.Controls.Add(materialComboBoxGenCommandList);
+            groupBoxGenSetting.Controls.Add(materialSwitchUseCommand);
+            groupBoxGenSetting.Controls.Add(dataGridViewGenSettingBookmarks);
+            groupBoxGenSetting.Location = new Point(6, 270);
+            groupBoxGenSetting.Name = "groupBoxGenSetting";
+            groupBoxGenSetting.Size = new Size(1261, 361);
+            groupBoxGenSetting.TabIndex = 17;
+            groupBoxGenSetting.TabStop = false;
+            groupBoxGenSetting.Text = "Налаштування";
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(18, 226);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(108, 19);
+            materialLabel1.TabIndex = 24;
+            materialLabel1.Text = "Куди зберегти";
+            // 
+            // materialButtonSelectPathForSaved
+            // 
+            materialButtonSelectPathForSaved.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButtonSelectPathForSaved.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButtonSelectPathForSaved.Depth = 0;
+            materialButtonSelectPathForSaved.HighEmphasis = true;
+            materialButtonSelectPathForSaved.Icon = null;
+            materialButtonSelectPathForSaved.Location = new Point(15, 305);
+            materialButtonSelectPathForSaved.Margin = new Padding(4, 6, 4, 6);
+            materialButtonSelectPathForSaved.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButtonSelectPathForSaved.Name = "materialButtonSelectPathForSaved";
+            materialButtonSelectPathForSaved.NoAccentTextColor = Color.Empty;
+            materialButtonSelectPathForSaved.Size = new Size(142, 36);
+            materialButtonSelectPathForSaved.TabIndex = 23;
+            materialButtonSelectPathForSaved.Text = "Вибрати папку";
+            materialButtonSelectPathForSaved.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButtonSelectPathForSaved.UseAccentColor = false;
+            materialButtonSelectPathForSaved.UseVisualStyleBackColor = true;
+            materialButtonSelectPathForSaved.Click += materialButtonSelectPathForSaved_Click;
+            // 
+            // materialTextBoxPathForSaveDocument
+            // 
+            materialTextBoxPathForSaveDocument.AnimateReadOnly = false;
+            materialTextBoxPathForSaveDocument.BackgroundImageLayout = ImageLayout.None;
+            materialTextBoxPathForSaveDocument.CharacterCasing = CharacterCasing.Normal;
+            materialTextBoxPathForSaveDocument.Depth = 0;
+            materialTextBoxPathForSaveDocument.Enabled = false;
+            materialTextBoxPathForSaveDocument.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBoxPathForSaveDocument.HideSelection = true;
+            materialTextBoxPathForSaveDocument.Hint = "шлях";
+            materialTextBoxPathForSaveDocument.LeadingIcon = null;
+            materialTextBoxPathForSaveDocument.Location = new Point(15, 248);
+            materialTextBoxPathForSaveDocument.MaxLength = 300;
+            materialTextBoxPathForSaveDocument.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBoxPathForSaveDocument.Name = "materialTextBoxPathForSaveDocument";
+            materialTextBoxPathForSaveDocument.PasswordChar = '\0';
+            materialTextBoxPathForSaveDocument.PrefixSuffixText = null;
+            materialTextBoxPathForSaveDocument.ReadOnly = false;
+            materialTextBoxPathForSaveDocument.RightToLeft = RightToLeft.No;
+            materialTextBoxPathForSaveDocument.SelectedText = "";
+            materialTextBoxPathForSaveDocument.SelectionLength = 0;
+            materialTextBoxPathForSaveDocument.SelectionStart = 0;
+            materialTextBoxPathForSaveDocument.ShortcutsEnabled = true;
+            materialTextBoxPathForSaveDocument.Size = new Size(300, 48);
+            materialTextBoxPathForSaveDocument.TabIndex = 22;
+            materialTextBoxPathForSaveDocument.TabStop = false;
+            materialTextBoxPathForSaveDocument.TextAlign = HorizontalAlignment.Left;
+            materialTextBoxPathForSaveDocument.TrailingIcon = null;
+            materialTextBoxPathForSaveDocument.UseSystemPasswordChar = false;
+            // 
+            // materialLabelNameOutputDocument
+            // 
+            materialLabelNameOutputDocument.AutoSize = true;
+            materialLabelNameOutputDocument.Depth = 0;
+            materialLabelNameOutputDocument.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabelNameOutputDocument.Location = new Point(18, 142);
+            materialLabelNameOutputDocument.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabelNameOutputDocument.Name = "materialLabelNameOutputDocument";
+            materialLabelNameOutputDocument.Size = new Size(211, 19);
+            materialLabelNameOutputDocument.TabIndex = 21;
+            materialLabelNameOutputDocument.Text = "Назва вихідного документа";
+            // 
+            // materialTextBoxGenNameOutputDocument
+            // 
+            materialTextBoxGenNameOutputDocument.AnimateReadOnly = false;
+            materialTextBoxGenNameOutputDocument.BackgroundImageLayout = ImageLayout.None;
+            materialTextBoxGenNameOutputDocument.CharacterCasing = CharacterCasing.Normal;
+            materialTextBoxGenNameOutputDocument.Depth = 0;
+            materialTextBoxGenNameOutputDocument.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBoxGenNameOutputDocument.HideSelection = true;
+            materialTextBoxGenNameOutputDocument.LeadingIcon = null;
+            materialTextBoxGenNameOutputDocument.Location = new Point(18, 164);
+            materialTextBoxGenNameOutputDocument.MaxLength = 300;
+            materialTextBoxGenNameOutputDocument.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBoxGenNameOutputDocument.Name = "materialTextBoxGenNameOutputDocument";
+            materialTextBoxGenNameOutputDocument.PasswordChar = '\0';
+            materialTextBoxGenNameOutputDocument.PrefixSuffixText = null;
+            materialTextBoxGenNameOutputDocument.ReadOnly = false;
+            materialTextBoxGenNameOutputDocument.RightToLeft = RightToLeft.No;
+            materialTextBoxGenNameOutputDocument.SelectedText = "";
+            materialTextBoxGenNameOutputDocument.SelectionLength = 0;
+            materialTextBoxGenNameOutputDocument.SelectionStart = 0;
+            materialTextBoxGenNameOutputDocument.ShortcutsEnabled = true;
+            materialTextBoxGenNameOutputDocument.Size = new Size(297, 48);
+            materialTextBoxGenNameOutputDocument.TabIndex = 20;
+            materialTextBoxGenNameOutputDocument.TabStop = false;
+            materialTextBoxGenNameOutputDocument.Text = "OutputDocument.docx";
+            materialTextBoxGenNameOutputDocument.TextAlign = HorizontalAlignment.Left;
+            materialTextBoxGenNameOutputDocument.TrailingIcon = null;
+            materialTextBoxGenNameOutputDocument.UseSystemPasswordChar = false;
+            // 
+            // materialComboBoxGenCommandList
+            // 
+            materialComboBoxGenCommandList.AutoResize = false;
+            materialComboBoxGenCommandList.BackColor = Color.FromArgb(255, 255, 255);
+            materialComboBoxGenCommandList.Depth = 0;
+            materialComboBoxGenCommandList.DrawMode = DrawMode.OwnerDrawVariable;
+            materialComboBoxGenCommandList.DropDownHeight = 174;
+            materialComboBoxGenCommandList.DropDownStyle = ComboBoxStyle.DropDownList;
+            materialComboBoxGenCommandList.DropDownWidth = 121;
+            materialComboBoxGenCommandList.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialComboBoxGenCommandList.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialComboBoxGenCommandList.FormattingEnabled = true;
+            materialComboBoxGenCommandList.IntegralHeight = false;
+            materialComboBoxGenCommandList.ItemHeight = 43;
+            materialComboBoxGenCommandList.Location = new Point(25, 67);
+            materialComboBoxGenCommandList.MaxDropDownItems = 4;
+            materialComboBoxGenCommandList.MouseState = MaterialSkin.MouseState.OUT;
+            materialComboBoxGenCommandList.Name = "materialComboBoxGenCommandList";
+            materialComboBoxGenCommandList.Size = new Size(290, 49);
+            materialComboBoxGenCommandList.StartIndex = 0;
+            materialComboBoxGenCommandList.TabIndex = 18;
+            // 
+            // materialSwitchUseCommand
+            // 
+            materialSwitchUseCommand.AutoSize = true;
+            materialSwitchUseCommand.Depth = 0;
+            materialSwitchUseCommand.Location = new Point(15, 27);
+            materialSwitchUseCommand.Margin = new Padding(0);
+            materialSwitchUseCommand.MouseLocation = new Point(-1, -1);
+            materialSwitchUseCommand.MouseState = MaterialSkin.MouseState.HOVER;
+            materialSwitchUseCommand.Name = "materialSwitchUseCommand";
+            materialSwitchUseCommand.Ripple = true;
+            materialSwitchUseCommand.Size = new Size(261, 37);
+            materialSwitchUseCommand.TabIndex = 17;
+            materialSwitchUseCommand.Text = "використати дані команди";
+            materialSwitchUseCommand.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewGenSettingBookmarks
+            // 
+            dataGridViewGenSettingBookmarks.AllowUserToAddRows = false;
+            dataGridViewGenSettingBookmarks.AllowUserToDeleteRows = false;
+            dataGridViewGenSettingBookmarks.AllowUserToResizeColumns = false;
+            dataGridViewGenSettingBookmarks.AllowUserToResizeRows = false;
+            dataGridViewGenSettingBookmarks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewGenSettingBookmarks.BackgroundColor = Color.White;
+            dataGridViewGenSettingBookmarks.BorderStyle = BorderStyle.None;
+            dataGridViewGenSettingBookmarks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewGenSettingBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewGenSettingBookmarks.ColumnHeadersHeight = 35;
+            dataGridViewGenSettingBookmarks.Columns.AddRange(new DataGridViewColumn[] { GenNumberRows, GenNameBookmark, GenDataType, GenEnterData });
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridViewGenSettingBookmarks.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewGenSettingBookmarks.EnableHeadersVisualStyles = false;
+            dataGridViewGenSettingBookmarks.GridColor = Color.LightGray;
+            dataGridViewGenSettingBookmarks.Location = new Point(391, 27);
+            dataGridViewGenSettingBookmarks.MultiSelect = false;
+            dataGridViewGenSettingBookmarks.Name = "dataGridViewGenSettingBookmarks";
+            dataGridViewGenSettingBookmarks.RowHeadersVisible = false;
+            dataGridViewGenSettingBookmarks.RowHeadersWidth = 25;
+            dataGridViewGenSettingBookmarks.RowTemplate.Height = 25;
+            dataGridViewGenSettingBookmarks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewGenSettingBookmarks.Size = new Size(867, 314);
+            dataGridViewGenSettingBookmarks.TabIndex = 16;
+            dataGridViewGenSettingBookmarks.CellContentClick += dataGridViewGenSettingBookmarks_CellContentClick;
+            dataGridViewGenSettingBookmarks.RowPostPaint += dataGridViewGenSettingBookmarks_RowPostPaint;
+            // 
+            // GenNumberRows
+            // 
+            GenNumberRows.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            GenNumberRows.HeaderText = "Номер";
+            GenNumberRows.MinimumWidth = 8;
+            GenNumberRows.Name = "GenNumberRows";
+            GenNumberRows.Width = 107;
+            // 
+            // GenNameBookmark
+            // 
+            GenNameBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            GenNameBookmark.HeaderText = "Закладка";
+            GenNameBookmark.MinimumWidth = 8;
+            GenNameBookmark.Name = "GenNameBookmark";
+            // 
+            // GenDataType
+            // 
+            GenDataType.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            GenDataType.DefaultCellStyle = dataGridViewCellStyle6;
+            GenDataType.FlatStyle = FlatStyle.Flat;
+            GenDataType.HeaderText = "Тип даних";
+            GenDataType.MinimumWidth = 8;
+            GenDataType.Name = "GenDataType";
+            // 
+            // GenEnterData
+            // 
+            GenEnterData.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            GenEnterData.HeaderText = "Дані";
+            GenEnterData.Image = Properties.Resources.create_cmd;
+            GenEnterData.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            GenEnterData.MinimumWidth = 8;
+            GenEnterData.Name = "GenEnterData";
+            GenEnterData.Width = 57;
+            // 
+            // groupBoxGenChoseTemplate
+            // 
+            groupBoxGenChoseTemplate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxGenChoseTemplate.Controls.Add(dataGridViewGenLoadTemplateTable);
+            groupBoxGenChoseTemplate.Controls.Add(materialComboBoxGenSavedTemplate);
+            groupBoxGenChoseTemplate.Controls.Add(materialRadioButtonGenLoadTemplate);
+            groupBoxGenChoseTemplate.Controls.Add(materialRadioButtonGenSavedTemplate);
+            groupBoxGenChoseTemplate.Location = new Point(6, 6);
+            groupBoxGenChoseTemplate.Name = "groupBoxGenChoseTemplate";
+            groupBoxGenChoseTemplate.Size = new Size(1261, 258);
+            groupBoxGenChoseTemplate.TabIndex = 0;
+            groupBoxGenChoseTemplate.TabStop = false;
+            groupBoxGenChoseTemplate.Text = "Вибір шаблона";
+            // 
+            // dataGridViewGenLoadTemplateTable
+            // 
+            dataGridViewGenLoadTemplateTable.AllowUserToAddRows = false;
+            dataGridViewGenLoadTemplateTable.AllowUserToDeleteRows = false;
+            dataGridViewGenLoadTemplateTable.AllowUserToResizeColumns = false;
+            dataGridViewGenLoadTemplateTable.AllowUserToResizeRows = false;
+            dataGridViewGenLoadTemplateTable.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewGenLoadTemplateTable.BackgroundColor = Color.White;
+            dataGridViewGenLoadTemplateTable.BorderStyle = BorderStyle.None;
+            dataGridViewGenLoadTemplateTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridViewGenLoadTemplateTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewGenLoadTemplateTable.ColumnHeadersHeight = 35;
+            dataGridViewGenLoadTemplateTable.Columns.AddRange(new DataGridViewColumn[] { GenTmpRowNumber, GenTmpNameBookmark, GenTmpDateModification, GenTmpSize, GenTmpDelete });
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridViewGenLoadTemplateTable.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewGenLoadTemplateTable.EnableHeadersVisualStyles = false;
+            dataGridViewGenLoadTemplateTable.GridColor = Color.LightGray;
+            dataGridViewGenLoadTemplateTable.Location = new Point(362, 56);
+            dataGridViewGenLoadTemplateTable.MultiSelect = false;
+            dataGridViewGenLoadTemplateTable.Name = "dataGridViewGenLoadTemplateTable";
+            dataGridViewGenLoadTemplateTable.ReadOnly = true;
+            dataGridViewGenLoadTemplateTable.RowHeadersVisible = false;
+            dataGridViewGenLoadTemplateTable.RowHeadersWidth = 25;
+            dataGridViewGenLoadTemplateTable.RowTemplate.Height = 25;
+            dataGridViewGenLoadTemplateTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewGenLoadTemplateTable.Size = new Size(896, 190);
+            dataGridViewGenLoadTemplateTable.TabIndex = 3;
+            // 
+            // GenTmpRowNumber
+            // 
+            GenTmpRowNumber.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            GenTmpRowNumber.DividerWidth = 1;
+            GenTmpRowNumber.FillWeight = 150F;
+            GenTmpRowNumber.HeaderText = "Номер";
+            GenTmpRowNumber.MinimumWidth = 8;
+            GenTmpRowNumber.Name = "GenTmpRowNumber";
+            GenTmpRowNumber.ReadOnly = true;
+            GenTmpRowNumber.Width = 107;
+            // 
+            // GenTmpNameBookmark
+            // 
+            GenTmpNameBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            GenTmpNameBookmark.DividerWidth = 1;
+            GenTmpNameBookmark.FillWeight = 150F;
+            GenTmpNameBookmark.HeaderText = "Назва";
+            GenTmpNameBookmark.MinimumWidth = 8;
+            GenTmpNameBookmark.Name = "GenTmpNameBookmark";
+            GenTmpNameBookmark.ReadOnly = true;
+            // 
+            // GenTmpDateModification
+            // 
+            GenTmpDateModification.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            GenTmpDateModification.DividerWidth = 1;
+            GenTmpDateModification.FillWeight = 150F;
+            GenTmpDateModification.HeaderText = "Дата зміни";
+            GenTmpDateModification.MinimumWidth = 8;
+            GenTmpDateModification.Name = "GenTmpDateModification";
+            GenTmpDateModification.ReadOnly = true;
+            // 
+            // GenTmpSize
+            // 
+            GenTmpSize.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            GenTmpSize.DividerWidth = 1;
+            GenTmpSize.FillWeight = 150F;
+            GenTmpSize.HeaderText = "Розмір (КБ)";
+            GenTmpSize.MinimumWidth = 8;
+            GenTmpSize.Name = "GenTmpSize";
+            GenTmpSize.ReadOnly = true;
+            // 
+            // GenTmpDelete
+            // 
+            GenTmpDelete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            GenTmpDelete.FillWeight = 90F;
+            GenTmpDelete.HeaderText = "Видалити";
+            GenTmpDelete.Image = Properties.Resources.delete_doc;
+            GenTmpDelete.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            GenTmpDelete.MinimumWidth = 8;
+            GenTmpDelete.Name = "GenTmpDelete";
+            GenTmpDelete.ReadOnly = true;
+            GenTmpDelete.Width = 101;
+            // 
+            // materialComboBoxGenSavedTemplate
+            // 
+            materialComboBoxGenSavedTemplate.AutoResize = false;
+            materialComboBoxGenSavedTemplate.BackColor = Color.FromArgb(255, 255, 255);
+            materialComboBoxGenSavedTemplate.Depth = 0;
+            materialComboBoxGenSavedTemplate.DrawMode = DrawMode.OwnerDrawVariable;
+            materialComboBoxGenSavedTemplate.DropDownHeight = 174;
+            materialComboBoxGenSavedTemplate.DropDownStyle = ComboBoxStyle.DropDownList;
+            materialComboBoxGenSavedTemplate.DropDownWidth = 121;
+            materialComboBoxGenSavedTemplate.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialComboBoxGenSavedTemplate.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialComboBoxGenSavedTemplate.FormattingEnabled = true;
+            materialComboBoxGenSavedTemplate.IntegralHeight = false;
+            materialComboBoxGenSavedTemplate.ItemHeight = 43;
+            materialComboBoxGenSavedTemplate.Location = new Point(25, 75);
+            materialComboBoxGenSavedTemplate.MaxDropDownItems = 4;
+            materialComboBoxGenSavedTemplate.MouseState = MaterialSkin.MouseState.OUT;
+            materialComboBoxGenSavedTemplate.Name = "materialComboBoxGenSavedTemplate";
+            materialComboBoxGenSavedTemplate.Size = new Size(290, 49);
+            materialComboBoxGenSavedTemplate.StartIndex = 0;
+            materialComboBoxGenSavedTemplate.TabIndex = 2;
+            materialComboBoxGenSavedTemplate.SelectedValueChanged += materialComboBoxGenSavedTemplate_SelectedValueChanged;
+            // 
+            // materialRadioButtonGenLoadTemplate
+            // 
+            materialRadioButtonGenLoadTemplate.AutoSize = true;
+            materialRadioButtonGenLoadTemplate.Depth = 0;
+            materialRadioButtonGenLoadTemplate.Location = new Point(535, 25);
+            materialRadioButtonGenLoadTemplate.Margin = new Padding(0);
+            materialRadioButtonGenLoadTemplate.MouseLocation = new Point(-1, -1);
+            materialRadioButtonGenLoadTemplate.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButtonGenLoadTemplate.Name = "materialRadioButtonGenLoadTemplate";
+            materialRadioButtonGenLoadTemplate.Ripple = true;
+            materialRadioButtonGenLoadTemplate.Size = new Size(200, 37);
+            materialRadioButtonGenLoadTemplate.TabIndex = 1;
+            materialRadioButtonGenLoadTemplate.TabStop = true;
+            materialRadioButtonGenLoadTemplate.Text = "завантажені шаблони";
+            materialRadioButtonGenLoadTemplate.UseVisualStyleBackColor = true;
+            // 
+            // materialRadioButtonGenSavedTemplate
+            // 
+            materialRadioButtonGenSavedTemplate.AutoSize = true;
+            materialRadioButtonGenSavedTemplate.Checked = true;
+            materialRadioButtonGenSavedTemplate.Depth = 0;
+            materialRadioButtonGenSavedTemplate.Location = new Point(25, 35);
+            materialRadioButtonGenSavedTemplate.Margin = new Padding(0);
+            materialRadioButtonGenSavedTemplate.MouseLocation = new Point(-1, -1);
+            materialRadioButtonGenSavedTemplate.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButtonGenSavedTemplate.Name = "materialRadioButtonGenSavedTemplate";
+            materialRadioButtonGenSavedTemplate.Ripple = true;
+            materialRadioButtonGenSavedTemplate.Size = new Size(181, 37);
+            materialRadioButtonGenSavedTemplate.TabIndex = 0;
+            materialRadioButtonGenSavedTemplate.TabStop = true;
+            materialRadioButtonGenSavedTemplate.Text = "збережені шаблони";
+            materialRadioButtonGenSavedTemplate.UseVisualStyleBackColor = true;
+            // 
             // tabPageCommand
             // 
             tabPageCommand.BackColor = Color.White;
-            tabPageCommand.Controls.Add(materialLabelSelCmd);
-            tabPageCommand.Controls.Add(materialComboBoxCmdList);
-            tabPageCommand.Controls.Add(materialButtonReadCmd);
-            tabPageCommand.Controls.Add(materialButtonDeleteCommand);
-            tabPageCommand.Controls.Add(materialButtonUpdCommand);
-            tabPageCommand.Controls.Add(materialButtonFillTableBookmarks);
-            tabPageCommand.Controls.Add(dataGridViewBookmarksForCmd);
-            tabPageCommand.Controls.Add(materialLabelBookmarksTable);
-            tabPageCommand.Controls.Add(materialButtonCreateCmd);
-            tabPageCommand.Controls.Add(materialTextBoxCmdName);
-            tabPageCommand.Controls.Add(materialLabelCmdName);
-            tabPageCommand.Controls.Add(materialComboBoxInputTmp);
-            tabPageCommand.Controls.Add(materialLabelOutputTmp);
-            tabPageCommand.Controls.Add(materialLabelInputTmp);
-            tabPageCommand.Controls.Add(materialComboBoxOutputTmp);
+            tabPageCommand.Controls.Add(groupBoxCmdTable);
+            tabPageCommand.Controls.Add(groupBoxCmdSettingConvert);
+            tabPageCommand.Controls.Add(groupBoxSettingCommand);
             tabPageCommand.ImageKey = "command-line.png";
             tabPageCommand.Location = new Point(4, 39);
             tabPageCommand.Name = "tabPageCommand";
@@ -421,313 +848,263 @@
             tabPageCommand.TabIndex = 2;
             tabPageCommand.Text = "Команди";
             // 
-            // materialLabelSelCmd
+            // groupBoxCmdTable
             // 
-            materialLabelSelCmd.AutoSize = true;
-            materialLabelSelCmd.Depth = 0;
-            materialLabelSelCmd.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelSelCmd.Location = new Point(18, 512);
-            materialLabelSelCmd.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelSelCmd.Name = "materialLabelSelCmd";
-            materialLabelSelCmd.Size = new Size(137, 19);
-            materialLabelSelCmd.TabIndex = 14;
-            materialLabelSelCmd.Text = "Виберіть команду";
+            groupBoxCmdTable.Controls.Add(dataGridViewTableCommand);
+            groupBoxCmdTable.Location = new Point(30, 314);
+            groupBoxCmdTable.Name = "groupBoxCmdTable";
+            groupBoxCmdTable.Size = new Size(1170, 274);
+            groupBoxCmdTable.TabIndex = 17;
+            groupBoxCmdTable.TabStop = false;
+            groupBoxCmdTable.Text = "Таблиця команд";
             // 
-            // materialComboBoxCmdList
+            // dataGridViewTableCommand
             // 
-            materialComboBoxCmdList.AutoResize = false;
-            materialComboBoxCmdList.BackColor = Color.FromArgb(255, 255, 255);
-            materialComboBoxCmdList.Depth = 0;
-            materialComboBoxCmdList.DrawMode = DrawMode.OwnerDrawVariable;
-            materialComboBoxCmdList.DropDownHeight = 174;
-            materialComboBoxCmdList.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialComboBoxCmdList.DropDownWidth = 121;
-            materialComboBoxCmdList.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialComboBoxCmdList.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialComboBoxCmdList.FormattingEnabled = true;
-            materialComboBoxCmdList.Hint = "список команд";
-            materialComboBoxCmdList.IntegralHeight = false;
-            materialComboBoxCmdList.ItemHeight = 43;
-            materialComboBoxCmdList.Location = new Point(175, 495);
-            materialComboBoxCmdList.MaxDropDownItems = 4;
-            materialComboBoxCmdList.MouseState = MaterialSkin.MouseState.OUT;
-            materialComboBoxCmdList.Name = "materialComboBoxCmdList";
-            materialComboBoxCmdList.Size = new Size(200, 49);
-            materialComboBoxCmdList.StartIndex = 0;
-            materialComboBoxCmdList.TabIndex = 13;
+            dataGridViewTableCommand.AllowUserToAddRows = false;
+            dataGridViewTableCommand.AllowUserToDeleteRows = false;
+            dataGridViewTableCommand.AllowUserToResizeColumns = false;
+            dataGridViewTableCommand.AllowUserToResizeRows = false;
+            dataGridViewTableCommand.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewTableCommand.BackgroundColor = Color.White;
+            dataGridViewTableCommand.BorderStyle = BorderStyle.None;
+            dataGridViewTableCommand.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridViewTableCommand.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewTableCommand.ColumnHeadersHeight = 35;
+            dataGridViewTableCommand.Columns.AddRange(new DataGridViewColumn[] { CmdNumberRowCommand, CommandName, CmdInputTemplate, CmdOutputTemplate, CmdDeleteCommand });
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = Color.White;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle11.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dataGridViewTableCommand.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewTableCommand.EnableHeadersVisualStyles = false;
+            dataGridViewTableCommand.GridColor = Color.LightGray;
+            dataGridViewTableCommand.Location = new Point(14, 30);
+            dataGridViewTableCommand.MultiSelect = false;
+            dataGridViewTableCommand.Name = "dataGridViewTableCommand";
+            dataGridViewTableCommand.ReadOnly = true;
+            dataGridViewTableCommand.RowHeadersVisible = false;
+            dataGridViewTableCommand.RowHeadersWidth = 25;
+            dataGridViewTableCommand.RowTemplate.Height = 25;
+            dataGridViewTableCommand.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewTableCommand.Size = new Size(1150, 218);
+            dataGridViewTableCommand.TabIndex = 16;
             // 
-            // materialButtonReadCmd
+            // CmdNumberRowCommand
             // 
-            materialButtonReadCmd.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonReadCmd.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonReadCmd.Depth = 0;
-            materialButtonReadCmd.HighEmphasis = true;
-            materialButtonReadCmd.Icon = Properties.Resources.read_cmd;
-            materialButtonReadCmd.Location = new Point(246, 570);
-            materialButtonReadCmd.Margin = new Padding(4, 6, 4, 6);
-            materialButtonReadCmd.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonReadCmd.Name = "materialButtonReadCmd";
-            materialButtonReadCmd.NoAccentTextColor = Color.Empty;
-            materialButtonReadCmd.Size = new Size(185, 36);
-            materialButtonReadCmd.TabIndex = 12;
-            materialButtonReadCmd.Text = "Читати команду";
-            materialButtonReadCmd.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonReadCmd.UseAccentColor = false;
-            materialButtonReadCmd.UseVisualStyleBackColor = true;
+            CmdNumberRowCommand.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            CmdNumberRowCommand.HeaderText = "Номер";
+            CmdNumberRowCommand.MinimumWidth = 8;
+            CmdNumberRowCommand.Name = "CmdNumberRowCommand";
+            CmdNumberRowCommand.ReadOnly = true;
+            CmdNumberRowCommand.Width = 107;
             // 
-            // materialButtonDeleteCommand
+            // CommandName
             // 
-            materialButtonDeleteCommand.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonDeleteCommand.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonDeleteCommand.Depth = 0;
-            materialButtonDeleteCommand.HighEmphasis = true;
-            materialButtonDeleteCommand.Icon = Properties.Resources.delete_doc;
-            materialButtonDeleteCommand.Location = new Point(246, 618);
-            materialButtonDeleteCommand.Margin = new Padding(4, 6, 4, 6);
-            materialButtonDeleteCommand.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonDeleteCommand.Name = "materialButtonDeleteCommand";
-            materialButtonDeleteCommand.NoAccentTextColor = Color.Empty;
-            materialButtonDeleteCommand.Size = new Size(207, 36);
-            materialButtonDeleteCommand.TabIndex = 11;
-            materialButtonDeleteCommand.Text = "Видалити команду";
-            materialButtonDeleteCommand.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonDeleteCommand.UseAccentColor = false;
-            materialButtonDeleteCommand.UseVisualStyleBackColor = true;
+            CommandName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CommandName.HeaderText = "Назва команди";
+            CommandName.MinimumWidth = 8;
+            CommandName.Name = "CommandName";
+            CommandName.ReadOnly = true;
             // 
-            // materialButtonUpdCommand
+            // CmdInputTemplate
             // 
-            materialButtonUpdCommand.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonUpdCommand.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonUpdCommand.Depth = 0;
-            materialButtonUpdCommand.HighEmphasis = true;
-            materialButtonUpdCommand.Icon = Properties.Resources.upd_cmd;
-            materialButtonUpdCommand.Location = new Point(25, 618);
-            materialButtonUpdCommand.Margin = new Padding(4, 6, 4, 6);
-            materialButtonUpdCommand.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonUpdCommand.Name = "materialButtonUpdCommand";
-            materialButtonUpdCommand.NoAccentTextColor = Color.Empty;
-            materialButtonUpdCommand.Size = new Size(196, 36);
-            materialButtonUpdCommand.TabIndex = 10;
-            materialButtonUpdCommand.Text = "оновити команду";
-            materialButtonUpdCommand.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonUpdCommand.UseAccentColor = false;
-            materialButtonUpdCommand.UseVisualStyleBackColor = true;
+            CmdInputTemplate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CmdInputTemplate.HeaderText = "Вхідний шаблон";
+            CmdInputTemplate.MinimumWidth = 8;
+            CmdInputTemplate.Name = "CmdInputTemplate";
+            CmdInputTemplate.ReadOnly = true;
             // 
-            // materialButtonFillTableBookmarks
+            // CmdOutputTemplate
             // 
-            materialButtonFillTableBookmarks.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonFillTableBookmarks.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonFillTableBookmarks.Depth = 0;
-            materialButtonFillTableBookmarks.HighEmphasis = true;
-            materialButtonFillTableBookmarks.Icon = null;
-            materialButtonFillTableBookmarks.Location = new Point(277, 450);
-            materialButtonFillTableBookmarks.Margin = new Padding(4, 6, 4, 6);
-            materialButtonFillTableBookmarks.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonFillTableBookmarks.Name = "materialButtonFillTableBookmarks";
-            materialButtonFillTableBookmarks.NoAccentTextColor = Color.Empty;
-            materialButtonFillTableBookmarks.Size = new Size(270, 36);
-            materialButtonFillTableBookmarks.TabIndex = 9;
-            materialButtonFillTableBookmarks.Text = "Заповнити таблицю закладок";
-            materialButtonFillTableBookmarks.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonFillTableBookmarks.UseAccentColor = false;
-            materialButtonFillTableBookmarks.UseVisualStyleBackColor = true;
+            CmdOutputTemplate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CmdOutputTemplate.HeaderText = "Вихідний шаблон";
+            CmdOutputTemplate.MinimumWidth = 8;
+            CmdOutputTemplate.Name = "CmdOutputTemplate";
+            CmdOutputTemplate.ReadOnly = true;
             // 
-            // dataGridViewBookmarksForCmd
+            // CmdDeleteCommand
             // 
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewBookmarksForCmd.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewBookmarksForCmd.BackgroundColor = Color.FromArgb(224, 224, 224);
-            dataGridViewBookmarksForCmd.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.MediumPurple;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridViewBookmarksForCmd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            dataGridViewBookmarksForCmd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewBookmarksForCmd.Columns.AddRange(new DataGridViewColumn[] { InputBookmark, dataGridViewComboBoxColumnOB });
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dataGridViewBookmarksForCmd.DefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewBookmarksForCmd.EnableHeadersVisualStyles = false;
-            dataGridViewBookmarksForCmd.Location = new Point(33, 221);
-            dataGridViewBookmarksForCmd.Name = "dataGridViewBookmarksForCmd";
-            dataGridViewBookmarksForCmd.RowHeadersVisible = false;
-            dataGridViewBookmarksForCmd.RowHeadersWidth = 62;
-            dataGridViewBookmarksForCmd.RowTemplate.Height = 33;
-            dataGridViewBookmarksForCmd.Size = new Size(781, 220);
-            dataGridViewBookmarksForCmd.TabIndex = 8;
+            CmdDeleteCommand.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            CmdDeleteCommand.HeaderText = "Видалити";
+            CmdDeleteCommand.Image = Properties.Resources.delete_doc;
+            CmdDeleteCommand.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            CmdDeleteCommand.MinimumWidth = 8;
+            CmdDeleteCommand.Name = "CmdDeleteCommand";
+            CmdDeleteCommand.ReadOnly = true;
+            CmdDeleteCommand.Width = 102;
             // 
-            // InputBookmark
+            // groupBoxCmdSettingConvert
             // 
-            dataGridViewCellStyle7.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            InputBookmark.DefaultCellStyle = dataGridViewCellStyle7;
-            InputBookmark.FlatStyle = FlatStyle.Flat;
-            InputBookmark.HeaderText = "Вхідна закладка";
-            InputBookmark.MinimumWidth = 8;
-            InputBookmark.Name = "InputBookmark";
-            InputBookmark.Width = 150;
+            groupBoxCmdSettingConvert.Controls.Add(dataGridViewCmdTemplateTable);
+            groupBoxCmdSettingConvert.Location = new Point(442, 15);
+            groupBoxCmdSettingConvert.Name = "groupBoxCmdSettingConvert";
+            groupBoxCmdSettingConvert.Size = new Size(751, 259);
+            groupBoxCmdSettingConvert.TabIndex = 5;
+            groupBoxCmdSettingConvert.TabStop = false;
+            groupBoxCmdSettingConvert.Text = "Параметри конвертування";
             // 
-            // dataGridViewComboBoxColumnOB
+            // dataGridViewCmdTemplateTable
             // 
-            dataGridViewCellStyle8.BackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = Color.MediumSlateBlue;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewComboBoxColumnOB.DefaultCellStyle = dataGridViewCellStyle8;
-            dataGridViewComboBoxColumnOB.FlatStyle = FlatStyle.Flat;
-            dataGridViewComboBoxColumnOB.HeaderText = "Вихідна закладка";
-            dataGridViewComboBoxColumnOB.MinimumWidth = 8;
-            dataGridViewComboBoxColumnOB.Name = "dataGridViewComboBoxColumnOB";
-            dataGridViewComboBoxColumnOB.Width = 150;
+            dataGridViewCmdTemplateTable.AllowUserToAddRows = false;
+            dataGridViewCmdTemplateTable.AllowUserToDeleteRows = false;
+            dataGridViewCmdTemplateTable.AllowUserToResizeColumns = false;
+            dataGridViewCmdTemplateTable.AllowUserToResizeRows = false;
+            dataGridViewCmdTemplateTable.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCmdTemplateTable.BackgroundColor = Color.White;
+            dataGridViewCmdTemplateTable.BorderStyle = BorderStyle.None;
+            dataGridViewCmdTemplateTable.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dataGridViewCmdTemplateTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCmdTemplateTable.ColumnHeadersHeight = 35;
+            dataGridViewCmdTemplateTable.Columns.AddRange(new DataGridViewColumn[] { CmdNumberRowTmp, CmdInputBookmark, CmdOutputBookmark });
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = Color.White;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle13.ForeColor = Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle13.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.False;
+            dataGridViewCmdTemplateTable.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCmdTemplateTable.EnableHeadersVisualStyles = false;
+            dataGridViewCmdTemplateTable.GridColor = Color.LightGray;
+            dataGridViewCmdTemplateTable.Location = new Point(6, 30);
+            dataGridViewCmdTemplateTable.MultiSelect = false;
+            dataGridViewCmdTemplateTable.Name = "dataGridViewCmdTemplateTable";
+            dataGridViewCmdTemplateTable.ReadOnly = true;
+            dataGridViewCmdTemplateTable.RowHeadersVisible = false;
+            dataGridViewCmdTemplateTable.RowHeadersWidth = 25;
+            dataGridViewCmdTemplateTable.RowTemplate.Height = 25;
+            dataGridViewCmdTemplateTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewCmdTemplateTable.Size = new Size(739, 223);
+            dataGridViewCmdTemplateTable.TabIndex = 15;
             // 
-            // materialLabelBookmarksTable
+            // CmdNumberRowTmp
             // 
-            materialLabelBookmarksTable.AutoSize = true;
-            materialLabelBookmarksTable.Depth = 0;
-            materialLabelBookmarksTable.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelBookmarksTable.Location = new Point(216, 199);
-            materialLabelBookmarksTable.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelBookmarksTable.Name = "materialLabelBookmarksTable";
-            materialLabelBookmarksTable.Size = new Size(384, 19);
-            materialLabelBookmarksTable.TabIndex = 7;
-            materialLabelBookmarksTable.Text = "Таблиця закладок вхідного та вихідного шаблонів";
+            CmdNumberRowTmp.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            CmdNumberRowTmp.HeaderText = "Номер";
+            CmdNumberRowTmp.MinimumWidth = 8;
+            CmdNumberRowTmp.Name = "CmdNumberRowTmp";
+            CmdNumberRowTmp.ReadOnly = true;
+            CmdNumberRowTmp.Width = 107;
             // 
-            // materialButtonCreateCmd
+            // CmdInputBookmark
             // 
-            materialButtonCreateCmd.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonCreateCmd.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonCreateCmd.Depth = 0;
-            materialButtonCreateCmd.HighEmphasis = true;
-            materialButtonCreateCmd.Icon = Properties.Resources.create_cmd;
-            materialButtonCreateCmd.Location = new Point(25, 570);
-            materialButtonCreateCmd.Margin = new Padding(4, 6, 4, 6);
-            materialButtonCreateCmd.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonCreateCmd.Name = "materialButtonCreateCmd";
-            materialButtonCreateCmd.NoAccentTextColor = Color.Empty;
-            materialButtonCreateCmd.Size = new Size(204, 36);
-            materialButtonCreateCmd.TabIndex = 6;
-            materialButtonCreateCmd.Text = "Створити команду";
-            materialButtonCreateCmd.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonCreateCmd.UseAccentColor = false;
-            materialButtonCreateCmd.UseVisualStyleBackColor = true;
+            CmdInputBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CmdInputBookmark.HeaderText = "Вхідна закладка";
+            CmdInputBookmark.MinimumWidth = 8;
+            CmdInputBookmark.Name = "CmdInputBookmark";
+            CmdInputBookmark.ReadOnly = true;
             // 
-            // materialTextBoxCmdName
+            // CmdOutputBookmark
             // 
-            materialTextBoxCmdName.AnimateReadOnly = false;
-            materialTextBoxCmdName.BorderStyle = BorderStyle.None;
-            materialTextBoxCmdName.Depth = 0;
-            materialTextBoxCmdName.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBoxCmdName.Hint = "назва";
-            materialTextBoxCmdName.LeadingIcon = null;
-            materialTextBoxCmdName.LeaveOnEnterKey = true;
-            materialTextBoxCmdName.Location = new Point(163, 9);
-            materialTextBoxCmdName.MaxLength = 150;
-            materialTextBoxCmdName.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBoxCmdName.Multiline = false;
-            materialTextBoxCmdName.Name = "materialTextBoxCmdName";
-            materialTextBoxCmdName.Size = new Size(375, 36);
-            materialTextBoxCmdName.TabIndex = 1;
-            materialTextBoxCmdName.Text = "";
-            materialTextBoxCmdName.TrailingIcon = null;
-            materialTextBoxCmdName.UseAccent = false;
-            materialTextBoxCmdName.UseTallSize = false;
+            CmdOutputBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CmdOutputBookmark.HeaderText = "Вихідна закладка";
+            CmdOutputBookmark.MinimumWidth = 8;
+            CmdOutputBookmark.Name = "CmdOutputBookmark";
+            CmdOutputBookmark.ReadOnly = true;
             // 
-            // materialLabelCmdName
+            // groupBoxSettingCommand
             // 
-            materialLabelCmdName.AutoSize = true;
-            materialLabelCmdName.Depth = 0;
-            materialLabelCmdName.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelCmdName.Location = new Point(18, 11);
-            materialLabelCmdName.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelCmdName.Name = "materialLabelCmdName";
-            materialLabelCmdName.Size = new Size(118, 19);
-            materialLabelCmdName.TabIndex = 0;
-            materialLabelCmdName.Text = "Назва команди";
+            groupBoxSettingCommand.Controls.Add(materialTextBoxCmdCommandName);
+            groupBoxSettingCommand.Controls.Add(materialComboBoxCmdOutputTemplate);
+            groupBoxSettingCommand.Controls.Add(materialComboBoxCmdInputTemplate);
+            groupBoxSettingCommand.Location = new Point(19, 15);
+            groupBoxSettingCommand.Name = "groupBoxSettingCommand";
+            groupBoxSettingCommand.Size = new Size(406, 259);
+            groupBoxSettingCommand.TabIndex = 4;
+            groupBoxSettingCommand.TabStop = false;
+            groupBoxSettingCommand.Text = "Налаштування команди";
             // 
-            // materialComboBoxInputTmp
+            // materialTextBoxCmdCommandName
             // 
-            materialComboBoxInputTmp.AutoResize = false;
-            materialComboBoxInputTmp.BackColor = Color.FromArgb(255, 255, 255);
-            materialComboBoxInputTmp.Depth = 0;
-            materialComboBoxInputTmp.DrawMode = DrawMode.OwnerDrawVariable;
-            materialComboBoxInputTmp.DropDownHeight = 174;
-            materialComboBoxInputTmp.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialComboBoxInputTmp.DropDownWidth = 121;
-            materialComboBoxInputTmp.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialComboBoxInputTmp.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialComboBoxInputTmp.FormattingEnabled = true;
-            materialComboBoxInputTmp.Hint = "вхідний шаблон";
-            materialComboBoxInputTmp.IntegralHeight = false;
-            materialComboBoxInputTmp.ItemHeight = 43;
-            materialComboBoxInputTmp.Location = new Point(163, 51);
-            materialComboBoxInputTmp.MaxDropDownItems = 4;
-            materialComboBoxInputTmp.MouseState = MaterialSkin.MouseState.OUT;
-            materialComboBoxInputTmp.Name = "materialComboBoxInputTmp";
-            materialComboBoxInputTmp.Size = new Size(375, 49);
-            materialComboBoxInputTmp.StartIndex = 0;
-            materialComboBoxInputTmp.TabIndex = 3;
+            materialTextBoxCmdCommandName.AnimateReadOnly = false;
+            materialTextBoxCmdCommandName.BackgroundImageLayout = ImageLayout.None;
+            materialTextBoxCmdCommandName.CharacterCasing = CharacterCasing.Normal;
+            materialTextBoxCmdCommandName.Depth = 0;
+            materialTextBoxCmdCommandName.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBoxCmdCommandName.HideSelection = true;
+            materialTextBoxCmdCommandName.Hint = "назва команди";
+            materialTextBoxCmdCommandName.LeadingIcon = null;
+            materialTextBoxCmdCommandName.Location = new Point(35, 43);
+            materialTextBoxCmdCommandName.MaxLength = 300;
+            materialTextBoxCmdCommandName.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBoxCmdCommandName.Name = "materialTextBoxCmdCommandName";
+            materialTextBoxCmdCommandName.PasswordChar = '\0';
+            materialTextBoxCmdCommandName.PrefixSuffixText = null;
+            materialTextBoxCmdCommandName.ReadOnly = false;
+            materialTextBoxCmdCommandName.RightToLeft = RightToLeft.No;
+            materialTextBoxCmdCommandName.SelectedText = "";
+            materialTextBoxCmdCommandName.SelectionLength = 0;
+            materialTextBoxCmdCommandName.SelectionStart = 0;
+            materialTextBoxCmdCommandName.ShortcutsEnabled = true;
+            materialTextBoxCmdCommandName.Size = new Size(297, 48);
+            materialTextBoxCmdCommandName.TabIndex = 1;
+            materialTextBoxCmdCommandName.TabStop = false;
+            materialTextBoxCmdCommandName.TextAlign = HorizontalAlignment.Left;
+            materialTextBoxCmdCommandName.TrailingIcon = null;
+            materialTextBoxCmdCommandName.UseSystemPasswordChar = false;
             // 
-            // materialLabelOutputTmp
+            // materialComboBoxCmdOutputTemplate
             // 
-            materialLabelOutputTmp.AutoSize = true;
-            materialLabelOutputTmp.Depth = 0;
-            materialLabelOutputTmp.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelOutputTmp.Location = new Point(18, 133);
-            materialLabelOutputTmp.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelOutputTmp.Name = "materialLabelOutputTmp";
-            materialLabelOutputTmp.Size = new Size(131, 19);
-            materialLabelOutputTmp.TabIndex = 4;
-            materialLabelOutputTmp.Text = "Вихідний шаблон";
+            materialComboBoxCmdOutputTemplate.AutoResize = false;
+            materialComboBoxCmdOutputTemplate.BackColor = Color.FromArgb(255, 255, 255);
+            materialComboBoxCmdOutputTemplate.Depth = 0;
+            materialComboBoxCmdOutputTemplate.DrawMode = DrawMode.OwnerDrawVariable;
+            materialComboBoxCmdOutputTemplate.DropDownHeight = 174;
+            materialComboBoxCmdOutputTemplate.DropDownStyle = ComboBoxStyle.DropDownList;
+            materialComboBoxCmdOutputTemplate.DropDownWidth = 121;
+            materialComboBoxCmdOutputTemplate.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialComboBoxCmdOutputTemplate.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialComboBoxCmdOutputTemplate.FormattingEnabled = true;
+            materialComboBoxCmdOutputTemplate.Hint = "вихідний шаблон";
+            materialComboBoxCmdOutputTemplate.IntegralHeight = false;
+            materialComboBoxCmdOutputTemplate.ItemHeight = 43;
+            materialComboBoxCmdOutputTemplate.Location = new Point(35, 175);
+            materialComboBoxCmdOutputTemplate.MaxDropDownItems = 4;
+            materialComboBoxCmdOutputTemplate.MouseState = MaterialSkin.MouseState.OUT;
+            materialComboBoxCmdOutputTemplate.Name = "materialComboBoxCmdOutputTemplate";
+            materialComboBoxCmdOutputTemplate.Size = new Size(297, 49);
+            materialComboBoxCmdOutputTemplate.StartIndex = 0;
+            materialComboBoxCmdOutputTemplate.TabIndex = 3;
             // 
-            // materialLabelInputTmp
+            // materialComboBoxCmdInputTemplate
             // 
-            materialLabelInputTmp.AutoSize = true;
-            materialLabelInputTmp.Depth = 0;
-            materialLabelInputTmp.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelInputTmp.Location = new Point(18, 71);
-            materialLabelInputTmp.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelInputTmp.Name = "materialLabelInputTmp";
-            materialLabelInputTmp.Size = new Size(122, 19);
-            materialLabelInputTmp.TabIndex = 2;
-            materialLabelInputTmp.Text = "Вхідний шаблон";
-            // 
-            // materialComboBoxOutputTmp
-            // 
-            materialComboBoxOutputTmp.AutoResize = false;
-            materialComboBoxOutputTmp.BackColor = Color.FromArgb(255, 255, 255);
-            materialComboBoxOutputTmp.Depth = 0;
-            materialComboBoxOutputTmp.DrawMode = DrawMode.OwnerDrawVariable;
-            materialComboBoxOutputTmp.DropDownHeight = 174;
-            materialComboBoxOutputTmp.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialComboBoxOutputTmp.DropDownWidth = 121;
-            materialComboBoxOutputTmp.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialComboBoxOutputTmp.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialComboBoxOutputTmp.FormattingEnabled = true;
-            materialComboBoxOutputTmp.Hint = "вихідний шаблон";
-            materialComboBoxOutputTmp.IntegralHeight = false;
-            materialComboBoxOutputTmp.ItemHeight = 43;
-            materialComboBoxOutputTmp.Location = new Point(163, 119);
-            materialComboBoxOutputTmp.MaxDropDownItems = 4;
-            materialComboBoxOutputTmp.MouseState = MaterialSkin.MouseState.OUT;
-            materialComboBoxOutputTmp.Name = "materialComboBoxOutputTmp";
-            materialComboBoxOutputTmp.Size = new Size(375, 49);
-            materialComboBoxOutputTmp.StartIndex = 0;
-            materialComboBoxOutputTmp.TabIndex = 5;
+            materialComboBoxCmdInputTemplate.AutoResize = false;
+            materialComboBoxCmdInputTemplate.BackColor = Color.FromArgb(255, 255, 255);
+            materialComboBoxCmdInputTemplate.Depth = 0;
+            materialComboBoxCmdInputTemplate.DrawMode = DrawMode.OwnerDrawVariable;
+            materialComboBoxCmdInputTemplate.DropDownHeight = 174;
+            materialComboBoxCmdInputTemplate.DropDownStyle = ComboBoxStyle.DropDownList;
+            materialComboBoxCmdInputTemplate.DropDownWidth = 121;
+            materialComboBoxCmdInputTemplate.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialComboBoxCmdInputTemplate.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialComboBoxCmdInputTemplate.FormattingEnabled = true;
+            materialComboBoxCmdInputTemplate.Hint = "вхідний шаблон";
+            materialComboBoxCmdInputTemplate.IntegralHeight = false;
+            materialComboBoxCmdInputTemplate.ItemHeight = 43;
+            materialComboBoxCmdInputTemplate.Location = new Point(35, 111);
+            materialComboBoxCmdInputTemplate.MaxDropDownItems = 4;
+            materialComboBoxCmdInputTemplate.MouseState = MaterialSkin.MouseState.OUT;
+            materialComboBoxCmdInputTemplate.Name = "materialComboBoxCmdInputTemplate";
+            materialComboBoxCmdInputTemplate.Size = new Size(297, 49);
+            materialComboBoxCmdInputTemplate.StartIndex = 0;
+            materialComboBoxCmdInputTemplate.TabIndex = 2;
             // 
             // imageListMenu
             // 
@@ -756,9 +1133,19 @@
             tableLayoutPanelTools.ResumeLayout(false);
             tableLayoutPanelTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableTemplate).EndInit();
+            tabPageGenerateDocument.ResumeLayout(false);
+            groupBoxGenSetting.ResumeLayout(false);
+            groupBoxGenSetting.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewGenSettingBookmarks).EndInit();
+            groupBoxGenChoseTemplate.ResumeLayout(false);
+            groupBoxGenChoseTemplate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewGenLoadTemplateTable).EndInit();
             tabPageCommand.ResumeLayout(false);
-            tabPageCommand.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewBookmarksForCmd).EndInit();
+            groupBoxCmdTable.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTableCommand).EndInit();
+            groupBoxCmdSettingConvert.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCmdTemplateTable).EndInit();
+            groupBoxSettingCommand.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -768,24 +1155,7 @@
         private TabPage tabPageTemplate;
         private TabPage tabPageCommand;
         private ImageList imageListMenu;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBoxCmdName;
-        private MaterialSkin.Controls.MaterialLabel materialLabelCmdName;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBoxInputTmp;
-        private MaterialSkin.Controls.MaterialLabel materialLabelOutputTmp;
-        private MaterialSkin.Controls.MaterialLabel materialLabelInputTmp;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBoxOutputTmp;
-        private MaterialSkin.Controls.MaterialButton materialButtonCreateCmd;
-        private MaterialSkin.Controls.MaterialLabel materialLabelBookmarksTable;
         private TabPage tabPageGenerateDocument;
-        private DataGridView dataGridViewBookmarksForCmd;
-        private DataGridViewComboBoxColumn InputBookmark;
-        private DataGridViewComboBoxColumn dataGridViewComboBoxColumnOB;
-        private MaterialSkin.Controls.MaterialButton materialButtonFillTableBookmarks;
-        private MaterialSkin.Controls.MaterialButton materialButtonUpdCommand;
-        private MaterialSkin.Controls.MaterialButton materialButtonDeleteCommand;
-        private MaterialSkin.Controls.MaterialButton materialButtonReadCmd;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBoxCmdList;
-        private MaterialSkin.Controls.MaterialLabel materialLabelSelCmd;
         private DataGridView dataGridViewTableTemplate;
         private TableLayoutPanel tableLayoutPanelTools;
         private MaterialSkin.Controls.MaterialButton materialButtonAddTemplate;
@@ -801,5 +1171,44 @@
         private DataGridViewTextBoxColumn ColumnNumber;
         private DataGridViewTextBoxColumn ColumnBookmarkName;
         private DataGridViewTextBoxColumn TypeBookmark;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBoxCmdCommandName;
+        private MaterialSkin.Controls.MaterialComboBox materialComboBoxCmdInputTemplate;
+        private MaterialSkin.Controls.MaterialComboBox materialComboBoxCmdOutputTemplate;
+        private GroupBox groupBoxSettingCommand;
+        private GroupBox groupBoxCmdSettingConvert;
+        private DataGridView dataGridViewCmdTemplateTable;
+        private DataGridView dataGridViewTableCommand;
+        private DataGridViewTextBoxColumn CmdNumberRowTmp;
+        private DataGridViewComboBoxColumn CmdInputBookmark;
+        private DataGridViewComboBoxColumn CmdOutputBookmark;
+        private DataGridViewTextBoxColumn CmdNumberRowCommand;
+        private DataGridViewTextBoxColumn CommandName;
+        private DataGridViewTextBoxColumn CmdInputTemplate;
+        private DataGridViewTextBoxColumn CmdOutputTemplate;
+        private DataGridViewImageColumn CmdDeleteCommand;
+        private GroupBox groupBoxCmdTable;
+        private GroupBox groupBoxGenChoseTemplate;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonGenSavedTemplate;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonGenLoadTemplate;
+        private MaterialSkin.Controls.MaterialComboBox materialComboBoxGenSavedTemplate;
+        private DataGridView dataGridViewGenSettingBookmarks;
+        private DataGridView dataGridViewGenLoadTemplateTable;
+        private GroupBox groupBoxGenSetting;
+        private MaterialSkin.Controls.MaterialSwitch materialSwitchUseCommand;
+        private MaterialSkin.Controls.MaterialComboBox materialComboBoxGenCommandList;
+        private DataGridViewTextBoxColumn GenTmpRowNumber;
+        private DataGridViewTextBoxColumn GenTmpNameBookmark;
+        private DataGridViewTextBoxColumn GenTmpDateModification;
+        private DataGridViewTextBoxColumn GenTmpSize;
+        private DataGridViewImageColumn GenTmpDelete;
+        private DataGridViewTextBoxColumn GenNumberRows;
+        private DataGridViewTextBoxColumn GenNameBookmark;
+        private DataGridViewComboBoxColumn GenDataType;
+        private DataGridViewImageColumn GenEnterData;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBoxGenNameOutputDocument;
+        private MaterialSkin.Controls.MaterialLabel materialLabelNameOutputDocument;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBoxPathForSaveDocument;
+        private MaterialSkin.Controls.MaterialButton materialButtonSelectPathForSaved;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

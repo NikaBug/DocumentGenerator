@@ -13,5 +13,14 @@ namespace WinFormsUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             //this.dataGridViewTableData.
         }
+
+        private void materialButtonGenerateTable_Click(object sender, EventArgs e)
+        {
+            int numberRows = Convert.ToInt32(numericUpDownNumberRows.Value);
+            int numberColumns = Convert.ToInt32(numericUpDownNumberColumns.Value);
+            this.dataGridViewTableData.RowCount = numberRows;
+            this.dataGridViewTableData.ColumnCount  = numberColumns;
+
+        }
     }
 }

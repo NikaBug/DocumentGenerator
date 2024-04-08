@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dataGridViewTableData = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
-            numericUpDownRowsTable = new NumericUpDown();
-            numericUpDownNumbersColumns = new NumericUpDown();
             materialLabelNumbersRows = new MaterialSkin.Controls.MaterialLabel();
             materialLabelNumbersColums = new MaterialSkin.Controls.MaterialLabel();
             materialButtonGenerateTable = new MaterialSkin.Controls.MaterialButton();
+            numericUpDownNumberRows = new NumericUpDown();
+            numericUpDownNumberColumns = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableData).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownRowsTable).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownNumbersColumns).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownNumberRows).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownNumberColumns).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewTableData
@@ -49,25 +49,26 @@
             dataGridViewTableData.AllowUserToResizeColumns = false;
             dataGridViewTableData.AllowUserToResizeRows = false;
             dataGridViewTableData.BackgroundColor = Color.White;
+            dataGridViewTableData.BorderStyle = BorderStyle.None;
             dataGridViewTableData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(113, 96, 232);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(113, 96, 232);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewTableData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewTableData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTableData.ColumnHeadersHeight = 35;
             dataGridViewTableData.Columns.AddRange(new DataGridViewColumn[] { Column1 });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(100, 100, 180);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewTableData.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridViewTableData.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewTableData.EnableHeadersVisualStyles = false;
             dataGridViewTableData.GridColor = Color.LightGray;
             dataGridViewTableData.Location = new Point(32, 233);
@@ -85,30 +86,6 @@
             Column1.MinimumWidth = 8;
             Column1.Name = "Column1";
             Column1.Width = 150;
-            // 
-            // numericUpDownRowsTable
-            // 
-            numericUpDownRowsTable.BackColor = Color.MediumSlateBlue;
-            numericUpDownRowsTable.BorderStyle = BorderStyle.FixedSingle;
-            numericUpDownRowsTable.ForeColor = SystemColors.Window;
-            numericUpDownRowsTable.Location = new Point(186, 90);
-            numericUpDownRowsTable.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownRowsTable.Name = "numericUpDownRowsTable";
-            numericUpDownRowsTable.Size = new Size(77, 31);
-            numericUpDownRowsTable.TabIndex = 15;
-            numericUpDownRowsTable.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
-            // numericUpDownNumbersColumns
-            // 
-            numericUpDownNumbersColumns.BackColor = Color.MediumSlateBlue;
-            numericUpDownNumbersColumns.BorderStyle = BorderStyle.FixedSingle;
-            numericUpDownNumbersColumns.ForeColor = SystemColors.Window;
-            numericUpDownNumbersColumns.Location = new Point(186, 133);
-            numericUpDownNumbersColumns.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownNumbersColumns.Name = "numericUpDownNumbersColumns";
-            numericUpDownNumbersColumns.Size = new Size(77, 31);
-            numericUpDownNumbersColumns.TabIndex = 16;
-            numericUpDownNumbersColumns.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // materialLabelNumbersRows
             // 
@@ -152,23 +129,44 @@
             materialButtonGenerateTable.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonGenerateTable.UseAccentColor = false;
             materialButtonGenerateTable.UseVisualStyleBackColor = true;
+            materialButtonGenerateTable.Click += materialButtonGenerateTable_Click;
+            // 
+            // numericUpDownNumberRows
+            // 
+            numericUpDownNumberRows.BorderStyle = BorderStyle.FixedSingle;
+            numericUpDownNumberRows.Location = new Point(212, 84);
+            numericUpDownNumberRows.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDownNumberRows.Name = "numericUpDownNumberRows";
+            numericUpDownNumberRows.Size = new Size(76, 31);
+            numericUpDownNumberRows.TabIndex = 20;
+            numericUpDownNumberRows.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // numericUpDownNumberColumns
+            // 
+            numericUpDownNumberColumns.BorderStyle = BorderStyle.FixedSingle;
+            numericUpDownNumberColumns.Location = new Point(212, 133);
+            numericUpDownNumberColumns.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDownNumberColumns.Name = "numericUpDownNumberColumns";
+            numericUpDownNumberColumns.Size = new Size(76, 31);
+            numericUpDownNumberColumns.TabIndex = 21;
+            numericUpDownNumberColumns.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // FormTableData
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(734, 482);
+            Controls.Add(numericUpDownNumberColumns);
+            Controls.Add(numericUpDownNumberRows);
             Controls.Add(materialButtonGenerateTable);
             Controls.Add(materialLabelNumbersColums);
             Controls.Add(materialLabelNumbersRows);
-            Controls.Add(numericUpDownNumbersColumns);
-            Controls.Add(numericUpDownRowsTable);
             Controls.Add(dataGridViewTableData);
             Name = "FormTableData";
             Text = "Заповнити таблицю";
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableData).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownRowsTable).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownNumbersColumns).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownNumberRows).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownNumberColumns).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -176,11 +174,11 @@
         #endregion
 
         private DataGridView dataGridViewTableData;
-        private NumericUpDown numericUpDownRowsTable;
-        private NumericUpDown numericUpDownNumbersColumns;
         private MaterialSkin.Controls.MaterialLabel materialLabelNumbersRows;
         private MaterialSkin.Controls.MaterialLabel materialLabelNumbersColums;
         private MaterialSkin.Controls.MaterialButton materialButtonGenerateTable;
         private DataGridViewTextBoxColumn Column1;
+        private NumericUpDown numericUpDownNumberRows;
+        private NumericUpDown numericUpDownNumberColumns;
     }
 }
