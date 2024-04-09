@@ -61,6 +61,7 @@
             SizeFile = new DataGridViewTextBoxColumn();
             DeleteTemplate = new DataGridViewImageColumn();
             tabPageGenerateDocument = new TabPage();
+            materialButtonGenerateDocument = new MaterialSkin.Controls.MaterialButton();
             groupBoxGenSetting = new GroupBox();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             materialButtonSelectPathForSaved = new MaterialSkin.Controls.MaterialButton();
@@ -425,6 +426,7 @@
             // tabPageGenerateDocument
             // 
             tabPageGenerateDocument.BackColor = Color.White;
+            tabPageGenerateDocument.Controls.Add(materialButtonGenerateDocument);
             tabPageGenerateDocument.Controls.Add(groupBoxGenSetting);
             tabPageGenerateDocument.Controls.Add(groupBoxGenChoseTemplate);
             tabPageGenerateDocument.ImageKey = "writing.png";
@@ -434,6 +436,25 @@
             tabPageGenerateDocument.Size = new Size(1270, 722);
             tabPageGenerateDocument.TabIndex = 1;
             tabPageGenerateDocument.Text = "Генератор";
+            // 
+            // materialButtonGenerateDocument
+            // 
+            materialButtonGenerateDocument.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButtonGenerateDocument.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButtonGenerateDocument.Depth = 0;
+            materialButtonGenerateDocument.HighEmphasis = true;
+            materialButtonGenerateDocument.Icon = null;
+            materialButtonGenerateDocument.Location = new Point(21, 659);
+            materialButtonGenerateDocument.Margin = new Padding(4, 6, 4, 6);
+            materialButtonGenerateDocument.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButtonGenerateDocument.Name = "materialButtonGenerateDocument";
+            materialButtonGenerateDocument.NoAccentTextColor = Color.Empty;
+            materialButtonGenerateDocument.Size = new Size(207, 36);
+            materialButtonGenerateDocument.TabIndex = 18;
+            materialButtonGenerateDocument.Text = "Сформувати документ";
+            materialButtonGenerateDocument.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButtonGenerateDocument.UseAccentColor = false;
+            materialButtonGenerateDocument.UseVisualStyleBackColor = true;
             // 
             // groupBoxGenSetting
             // 
@@ -1134,6 +1155,7 @@
             tableLayoutPanelTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableTemplate).EndInit();
             tabPageGenerateDocument.ResumeLayout(false);
+            tabPageGenerateDocument.PerformLayout();
             groupBoxGenSetting.ResumeLayout(false);
             groupBoxGenSetting.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewGenSettingBookmarks).EndInit();
@@ -1210,5 +1232,6 @@
         private MaterialSkin.Controls.MaterialTextBox2 materialTextBoxPathForSaveDocument;
         private MaterialSkin.Controls.MaterialButton materialButtonSelectPathForSaved;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialButton materialButtonGenerateDocument;
     }
 }

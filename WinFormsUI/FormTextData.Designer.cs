@@ -33,6 +33,7 @@
             materialLabelCurrentCountSymbols = new MaterialSkin.Controls.MaterialLabel();
             materialLabelMaxLengthSymbol = new MaterialSkin.Controls.MaterialLabel();
             materialButtonSaveTextData = new MaterialSkin.Controls.MaterialButton();
+            materialButtonClearTextData = new MaterialSkin.Controls.MaterialButton();
             SuspendLayout();
             // 
             // materialMultiLineTextBoxTextData
@@ -116,12 +117,34 @@
             materialButtonSaveTextData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonSaveTextData.UseAccentColor = false;
             materialButtonSaveTextData.UseVisualStyleBackColor = true;
+            materialButtonSaveTextData.Click += materialButtonSaveTextData_Click;
+            // 
+            // materialButtonClearTextData
+            // 
+            materialButtonClearTextData.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButtonClearTextData.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButtonClearTextData.Depth = 0;
+            materialButtonClearTextData.HighEmphasis = true;
+            materialButtonClearTextData.Icon = null;
+            materialButtonClearTextData.Location = new Point(203, 396);
+            materialButtonClearTextData.Margin = new Padding(4, 6, 4, 6);
+            materialButtonClearTextData.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButtonClearTextData.Name = "materialButtonClearTextData";
+            materialButtonClearTextData.NoAccentTextColor = Color.Empty;
+            materialButtonClearTextData.Size = new Size(150, 36);
+            materialButtonClearTextData.TabIndex = 5;
+            materialButtonClearTextData.Text = "Очистити текст";
+            materialButtonClearTextData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButtonClearTextData.UseAccentColor = false;
+            materialButtonClearTextData.UseVisualStyleBackColor = true;
+            materialButtonClearTextData.Click += materialButtonClearTextData_Click;
             // 
             // FormTextData
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(796, 450);
+            Controls.Add(materialButtonClearTextData);
             Controls.Add(materialButtonSaveTextData);
             Controls.Add(materialLabelMaxLengthSymbol);
             Controls.Add(materialLabelCurrentCountSymbols);
@@ -141,5 +164,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabelCurrentCountSymbols;
         private MaterialSkin.Controls.MaterialLabel materialLabelMaxLengthSymbol;
         private MaterialSkin.Controls.MaterialButton materialButtonSaveTextData;
+        private MaterialSkin.Controls.MaterialButton materialButtonClearTextData;
     }
 }

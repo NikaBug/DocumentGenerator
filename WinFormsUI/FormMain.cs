@@ -210,6 +210,7 @@ namespace WinFormsUI
                 this.dataGridViewTableTemplate.Rows[indSelTemplate].Cells[2].Value = listTemplates[indSelTemplate].DateModificationFile.ToString();
                 this.SetBookmarksDictionary(listTemplates[indSelTemplate].BookmarksFile);
 
+                this.materialComboBoxGenSavedTemplate.Items[indSelTemplate] = listTemplates[indSelTemplate].FileName.ToString();
                 // обробник зміни вибору збереженого шаблону (модуль "Генератор")
                 materialComboBoxGenSavedTemplate_SelectedValueChanged(sender, e);
             }
@@ -341,7 +342,8 @@ namespace WinFormsUI
 
                 } else if(typeData == "Зображення")
                 {
-
+                    FormImageData formImageData = new FormImageData();
+                    formImageData.ShowDialog();
                 } else if(typeData == "Таблиця")
                 {
                     FormTableData formTableData = new FormTableData();
