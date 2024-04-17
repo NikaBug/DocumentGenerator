@@ -1,13 +1,11 @@
 ﻿using Presentation.ViewModels;
 
 namespace Presentation.Views
-{   /// <summary>
-    /// Інтерфейс представлення шаблона
-    /// </summary>
-    public interface ITemplateView : IView
+{
+    public interface IMainView : IView
     {
+        void SetCommandsList(IEnumerable<CommandViewModel> commands);
         void SetTemplateList(IEnumerable<TemplateViewModel> templates);
-
         void SetBookmarksDictionary(IDictionary<string, string> dictionaryBookmarks);
     }
 }

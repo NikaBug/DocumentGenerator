@@ -455,6 +455,7 @@
             materialButtonGenerateDocument.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonGenerateDocument.UseAccentColor = false;
             materialButtonGenerateDocument.UseVisualStyleBackColor = true;
+            materialButtonGenerateDocument.Click += materialButtonGenerateDocument_Click;
             // 
             // groupBoxGenSetting
             // 

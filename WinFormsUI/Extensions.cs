@@ -12,8 +12,10 @@ namespace WinFormsUI
         /// <param name="services"></param>
         public static void AddViews(this IServiceCollection services)
         {
-            services.AddScoped<ITemplateView, FormMain>();
-            services.AddScoped<ICommandView, FormMain>();
+            //services.AddScoped<ITemplateView, FormMain>();
+            //services.AddScoped<ICommandView, FormMain>();
+            services.AddScoped<IMainView, FormMain>();
+
         }
     }
 }

@@ -4,13 +4,12 @@ using MaterialSkin.Controls;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Presentation.ViewModels;
 using Presentation.Views;
-using System.Diagnostics.Eventing.Reader;
 //using Syncfusion.DocIO;
 //using Syncfusion.DocIO.DLS;
 
 namespace WinFormsUI
 {
-    public partial class FormMain : MaterialForm, ICommandView, ITemplateView
+    public partial class FormMain : MaterialForm, IMainView
     {
         private List<TemplateViewModel> listTemplates; // список шаблонів
         static public int IndexRowTemplateTable = 0; // індекс рядка таблиці шаблонів
@@ -325,7 +324,6 @@ namespace WinFormsUI
         private void dataGridViewGenSettingBookmarks_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             this.dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells["GenNumberRows"].Value = (e.RowIndex + 1).ToString();
-
         }
 
         private void dataGridViewGenSettingBookmarks_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -335,21 +333,35 @@ namespace WinFormsUI
             if (columnTableBookmark == "GenEnterData")
             {
                 string typeData = Convert.ToString(dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells[2].FormattedValue.ToString());
-                if(typeData == "Текст")
+                if (typeData == "Текст")
                 {
+                    string b = dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                    // MessageBox.Show("name bookmark: " + b.ToString());
                     FormTextData formTextData = new FormTextData();
                     formTextData.ShowDialog();
+                    // MessageBox.Show("text data: " + formTextData.TextData);
 
-                } else if(typeData == "Зображення")
+                }
+                else if (typeData == "Зображення")
                 {
                     FormImageData formImageData = new FormImageData();
                     formImageData.ShowDialog();
-                } else if(typeData == "Таблиця")
+                }
+                else if (typeData == "Таблиця")
                 {
                     FormTableData formTableData = new FormTableData();
                     formTableData.ShowDialog();
+                    // string firstCell =  formTableData.tableData.arrayData[0, 0].ToString();
+                    //MessageBox.Show("table data, [0,0]: " + firstCell);
+
                 }
             }
+        }
+
+        private void materialButtonGenerateDocument_Click(object sender, EventArgs e)
+        {
+            string pathFile = this.materialButtonSelectPathForSaved.Text.ToString();
+            string nameFile = this.materialTextBoxGenNameOutputDocument.Text.ToString();
         }
     }
 }

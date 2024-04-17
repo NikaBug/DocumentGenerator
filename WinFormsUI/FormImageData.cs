@@ -5,6 +5,8 @@ namespace WinFormsUI
 {
     public partial class FormImageData : MaterialForm
     {
+        public Image imageData { get; set; }
+
         public FormImageData()
         {
             InitializeComponent();
@@ -21,7 +23,24 @@ namespace WinFormsUI
             if (open.ShowDialog() == DialogResult.OK)
             {
                 pictureBoxImageData.Image = new Bitmap(open.FileName);
+                pictureBoxImageData.Tag = "imageData";
             }
+        }
+
+        private void materialButtonSaveImage_Click(object sender, EventArgs e)
+        {
+            if((string)pictureBoxImageData.Tag != "imageData")
+            {
+                CustomMessageBox.Show("Завантажте зображення!", "Збереження зображення", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                this.imageData = pictureBoxImageData.Image;
+                CustomMessageBox.Show("Зображення збережене успішно!", "Збереження зображення", MessageBoxButtons.OK);
+            }
+            
+            this.Close();
         }
     }
 }

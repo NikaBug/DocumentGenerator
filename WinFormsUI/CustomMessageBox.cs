@@ -4,6 +4,13 @@ namespace WinFormsUI
 {
     public static class CustomMessageBox
     {
+        /// <summary>
+        /// Показати вікно повідомлення
+        /// </summary>
+        /// <param name="message">текст повідомлення</param>
+        /// <param name="caption">заголовок вікна</param>
+        /// <param name="buttons"> MessageBoxButtons кнопки (YesNo або OK)</param>
+        /// <returns></returns>
         public static DialogResult Show(string message, string caption, MessageBoxButtons buttons)
         {
             DialogResult dialogResult = DialogResult.None;

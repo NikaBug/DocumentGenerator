@@ -84,6 +84,7 @@
             materialButtonSaveImage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButtonSaveImage.UseAccentColor = false;
             materialButtonSaveImage.UseVisualStyleBackColor = true;
+            materialButtonSaveImage.Click += materialButtonSaveImage_Click;
             // 
             // FormImageData
             // 

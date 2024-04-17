@@ -13,17 +13,13 @@ namespace WinFormsUI
         [STAThread]
         static void Main()
         {
-           ApplicationConfiguration.Initialize();
+            ApplicationConfiguration.Initialize();
 
             var host = CreateHostBuilder().Build();
-           
-            var commandPresenter = host.Services.GetRequiredService<ICommandPresenter>();
-            //var templatePresenter = host.Services.GetRequiredService<ITemplatePresenter>();
-            //templatePresenter.Run();
-            commandPresenter.Run();
-            Application.Run();
-            // Application.Run(new FormMain());
+            var mainPresenter = host.Services.GetRequiredService<IMainPresenter>();
 
+            mainPresenter.Run();
+            Application.Run();
         }
 
         static IHostBuilder CreateHostBuilder()
