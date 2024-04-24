@@ -63,7 +63,7 @@
             tabPageGenerateDocument = new TabPage();
             materialButtonGenerateDocument = new MaterialSkin.Controls.MaterialButton();
             groupBoxGenSetting = new GroupBox();
-            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabelPathSaved = new MaterialSkin.Controls.MaterialLabel();
             materialButtonSelectPathForSaved = new MaterialSkin.Controls.MaterialButton();
             materialTextBoxPathForSaveDocument = new MaterialSkin.Controls.MaterialTextBox2();
             materialLabelNameOutputDocument = new MaterialSkin.Controls.MaterialLabel();
@@ -460,7 +460,7 @@
             // groupBoxGenSetting
             // 
             groupBoxGenSetting.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            groupBoxGenSetting.Controls.Add(materialLabel1);
+            groupBoxGenSetting.Controls.Add(materialLabelPathSaved);
             groupBoxGenSetting.Controls.Add(materialButtonSelectPathForSaved);
             groupBoxGenSetting.Controls.Add(materialTextBoxPathForSaveDocument);
             groupBoxGenSetting.Controls.Add(materialLabelNameOutputDocument);
@@ -475,17 +475,17 @@
             groupBoxGenSetting.TabStop = false;
             groupBoxGenSetting.Text = "Налаштування";
             // 
-            // materialLabel1
+            // materialLabelPathSaved
             // 
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(18, 226);
-            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(108, 19);
-            materialLabel1.TabIndex = 24;
-            materialLabel1.Text = "Куди зберегти";
+            materialLabelPathSaved.AutoSize = true;
+            materialLabelPathSaved.Depth = 0;
+            materialLabelPathSaved.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabelPathSaved.Location = new Point(18, 226);
+            materialLabelPathSaved.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabelPathSaved.Name = "materialLabelPathSaved";
+            materialLabelPathSaved.Size = new Size(108, 19);
+            materialLabelPathSaved.TabIndex = 24;
+            materialLabelPathSaved.Text = "Куди зберегти";
             // 
             // materialButtonSelectPathForSaved
             // 
@@ -1232,7 +1232,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabelNameOutputDocument;
         private MaterialSkin.Controls.MaterialTextBox2 materialTextBoxPathForSaveDocument;
         private MaterialSkin.Controls.MaterialButton materialButtonSelectPathForSaved;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabelPathSaved;
         private MaterialSkin.Controls.MaterialButton materialButtonGenerateDocument;
     }
 }

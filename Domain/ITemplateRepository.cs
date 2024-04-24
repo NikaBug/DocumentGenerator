@@ -5,7 +5,7 @@
     /// </summary>
     public interface ITemplateRepository
     {
-        Task<Template> Create(string fileName, string filePath, byte[] fileContent);
+        Task<Template> Create(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks);
         Task<IEnumerable<Template>> Get(string name);
         Task Update(Template oldTemplate, Template newTemplate);
         Task Save(Template template);

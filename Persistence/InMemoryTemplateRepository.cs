@@ -1,4 +1,5 @@
 ﻿using Domain;
+using System.Runtime.CompilerServices;
 
 namespace Persistence
 {
@@ -7,15 +8,39 @@ namespace Persistence
     /// </summary>
     public class InMemoryTemplateRepository : ITemplateRepository
     {
-        private static IList<Template> inMemoryTemplates = new List<Template>();
-        /// <summary>
-        /// Створити шаблон
-        /// </summary>
-        /// <param name="fileName">назва шаблону</param>
-        /// <param name="fileContent">зміст файлу</param>
-        /// <returns>Успішність виконання операції</returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        public Task<Template> Create(string fileName, string filePath, byte[] fileContent)
+        private static string pathTemplate1 = "C:\\Users\\nika6\\source\\repos\\DocumentGenerator\\Persistence\\exampleTemplate\\BookmarkTest.docx";
+        private static string pathTemplate2 = "C:\\Users\\nika6\\source\\repos\\DocumentGenerator\\Persistence\\exampleTemplate\\DocTest.docx";
+
+        private static Dictionary<string, string> GetTemplateBookmarks(string filePath)
+        {
+            Aspose.Words.Document doc = new Aspose.Words.Document(filePath);
+            Dictionary<string, string> dictionaryBookmarks = new Dictionary<string, string>();
+            for (int i = 0; i < doc.Range.Bookmarks.Count; i++)
+            {
+                dictionaryBookmarks.Add(doc.Range.Bookmarks[i].Name, "Текст");
+
+            }
+            return dictionaryBookmarks;
+        }
+
+        private static IList<Template> inMemoryTemplates = new List<Template>()
+        {
+
+          new Template("BookmarkTest.docx", pathTemplate1,
+             File.ReadAllBytes(pathTemplate1), GetTemplateBookmarks(pathTemplate1)),
+          new Template("DocTest.docx", pathTemplate2,
+              File.ReadAllBytes(pathTemplate2), GetTemplateBookmarks(pathTemplate2))
+
+        };
+
+    /// <summary>
+    /// Створити шаблон
+    /// </summary>
+    /// <param name="fileName">назва шаблону</param>
+    /// <param name="fileContent">зміст файлу</param>
+    /// <returns>Успішність виконання операції</returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    public Task<Template> Create(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks)
         {
             Template template;
             if (string.IsNullOrEmpty(fileName) || fileContent == null)
@@ -24,7 +49,7 @@ namespace Persistence
             }
             else
             {
-                template = new Template(fileName, filePath, fileContent);
+                template = new Template(fileName, filePath, fileContent, fileBookmarks);
             }
             return Task.FromResult(template);
         }

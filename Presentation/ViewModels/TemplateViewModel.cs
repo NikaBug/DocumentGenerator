@@ -8,5 +8,6 @@
         public string DateModificationFile { get; set; }
         public double SizeFile { get; set; }
         public Dictionary<string, string> BookmarksFile { get; set; }
+        public byte[] ContentFile { get; set; }
     }
 }

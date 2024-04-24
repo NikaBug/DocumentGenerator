@@ -23,10 +23,7 @@ namespace Presentation
 
         private static void AddPresenters(IServiceCollection services)
         {
-            //services.AddScoped<ITemplatePresenter, TemplatePresenter>();
-            //services.AddScoped<ICommandPresenter, CommandPresenter>();
             services.AddScoped<IMainPresenter, MainPresenter>();
-
         }
     }
 }

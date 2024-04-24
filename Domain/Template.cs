@@ -11,7 +11,7 @@ namespace Domain
         /// <param name="fileName">назва файлу</param>
         /// <param name="fileContent">зміст файлу</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public Template(string fileName, string filePath, byte[] fileContent)
+        public Template(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks)
         {
             if (fileContent == null || !fileContent.Any())
             {
@@ -21,6 +21,7 @@ namespace Domain
             this.FileName = fileName ?? throw new ArgumentNullException(nameof(fileName));
             this.FileContent = fileContent;
             this.FilePath = filePath ?? throw new ArgumentNullException(nameof(filePath));
+            this.FileBookmarks = fileBookmarks;
         }
 
         /// <summary>
@@ -37,5 +38,10 @@ namespace Domain
         /// Зміст файлу
         /// </summary>
         public byte[] FileContent { get; }
+
+        /// <summary>
+        /// Закладки
+        /// </summary>
+        public Dictionary<string, string> FileBookmarks { get; }
     }
 }

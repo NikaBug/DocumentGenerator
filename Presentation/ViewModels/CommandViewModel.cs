@@ -4,6 +4,6 @@
     /// </summary>
     public class CommandViewModel
     {
-        public string Name { get; set; }
+        public string NameCommand { get; set; }
     }
 }

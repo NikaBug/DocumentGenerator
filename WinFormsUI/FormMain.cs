@@ -1,9 +1,13 @@
 using Aspose.Words;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Wordprocessing;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Presentation.ViewModels;
 using Presentation.Views;
+using System.Reflection;
+using Document = Aspose.Words.Document;
 //using Syncfusion.DocIO;
 //using Syncfusion.DocIO.DLS;
 
@@ -13,7 +17,8 @@ namespace WinFormsUI
     {
         private List<TemplateViewModel> listTemplates; // список шаблонів
         static public int IndexRowTemplateTable = 0; // індекс рядка таблиці шаблонів
-        DataGridViewComboBoxColumn cmbGenSetBookmark;
+        private DataGridViewComboBoxColumn cmbGenSetBookmark;
+       // private TemplateViewModel fillTemplate;
 
         public FormMain()
         {
@@ -29,6 +34,8 @@ namespace WinFormsUI
             cmbGenSetBookmark.Items.Add("Зображення");
             cmbGenSetBookmark.Items.Add("Таблиця");
 
+            //MessageBox.Show(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName);
+
 
         }
 
@@ -43,22 +50,37 @@ namespace WinFormsUI
         /// <param name="templatesViewModel">список шаблонів</param>
         public void SetTemplateList(IEnumerable<TemplateViewModel> templatesViewModel)
         {
-            if (templatesViewModel.Count() == 0)
+            if (this.dataGridViewTableTemplate.Rows.Count == 0) // якщо шаблони не завантажені до таблиці
             {
-                return;
+                int counter = 0; // лічильник шаблонів в пам'яті
+                while (templatesViewModel.Count() > counter)
+                {
+                    // вставити рядок з інформацією про шаблон
+                    dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, 0, templatesViewModel.ElementAt(counter).FileName,
+                        templatesViewModel.ElementAt(counter).DateModificationFile, templatesViewModel.ElementAt(counter).SizeFile);
+                    // templatesViewModel.ElementAt(i).BookmarksFile
+                    listTemplates.Add(templatesViewModel.ElementAt(counter)); // додати до списку шаблонів
+                    // додати списку збережених шаблонів в модулі "Генератор"
+                    this.materialComboBoxGenSavedTemplate.Items.Add(templatesViewModel.ElementAt(counter).FileName);
+                   // this.materialComboBoxGenSavedTemplate.SelectedIndex = 0;
+                    IndexRowTemplateTable++; // збільшення індекса рядка таблиці шаблонів
+                    counter++;
+                }
+                //return;
+               
             }
             else
-            {   // вставка рядка до таблиці з інформацією про шаблон
+            {   // якщо в таблиці вже завантажені шаблони
+
+                // вставка рядка до таблиці з інформацією про шаблон
                 dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, 0, templatesViewModel.Last().FileName,
-                templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
+                     templatesViewModel.Last().DateModificationFile, templatesViewModel.Last().SizeFile);
                 IndexRowTemplateTable++;
                 //
                 this.materialComboBoxGenSavedTemplate.Items.Add(templatesViewModel.Last().FileName);
-                this.materialComboBoxGenSavedTemplate.SelectedIndex = 0;
-                //materialComboBoxSavedTemplate.Items.Add("Шаблон 2");
-                //materialComboBoxSavedTemplate.Items.Add("Шаблон 3");
-
             }
+            this.materialComboBoxGenSavedTemplate.SelectedIndex = 0;
+
         }
 
         /// <summary>
@@ -124,7 +146,8 @@ namespace WinFormsUI
                             this.dataGridViewTableBookmarks.Rows.Clear();
                             this.dataGridViewTableBookmarks.Refresh();
                         }
-                        // generator
+
+                        //// generator
                         this.materialComboBoxGenSavedTemplate.Items.RemoveAt(index);
                         this.dataGridViewGenSettingBookmarks.Rows.Clear();
                         this.dataGridViewTableBookmarks.Refresh();
@@ -178,7 +201,8 @@ namespace WinFormsUI
                     FileName = fileInfo.Name,
                     DateModificationFile = modification.ToString(),
                     SizeFile = sizeFileKb,
-                    BookmarksFile = dictionaryBookmarks
+                    BookmarksFile = dictionaryBookmarks,
+                    ContentFile = File.ReadAllBytes(fileInfo.FullName)
                 });
                 this.SetTemplateList(listTemplates);
 
@@ -231,7 +255,12 @@ namespace WinFormsUI
             else
             {
                 int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-                this.SetBookmarksDictionary(listTemplates[index].BookmarksFile);
+                if(listTemplates.Count() == 0)
+                {
+                    CustomMessageBox.Show("List template is empty.", "Повідомлення", MessageBoxButtons.OK);
+
+                } else
+                    this.SetBookmarksDictionary(listTemplates[index].BookmarksFile);
             }
         }
 
@@ -292,8 +321,6 @@ namespace WinFormsUI
 
             //string selectedTemplate = materialComboBoxGenSavedTemplate.SelectedItem.ToString();
             int indexSelectedTemplate = materialComboBoxGenSavedTemplate.SelectedIndex;
-
-
             this.dataGridViewGenSettingBookmarks.Rows.Clear();
             this.dataGridViewGenSettingBookmarks.Refresh();
 
@@ -333,13 +360,16 @@ namespace WinFormsUI
             if (columnTableBookmark == "GenEnterData")
             {
                 string typeData = Convert.ToString(dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells[2].FormattedValue.ToString());
+               // MessageBox.Show(materialComboBoxGenSavedTemplate.SelectedItem.ToString());
+
                 if (typeData == "Текст")
                 {
-                    string b = dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                    // MessageBox.Show("name bookmark: " + b.ToString());
+                    string nameBookmark = dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                   // MessageBox.Show("name bookmark: " + nameBoomark.ToString());
                     FormTextData formTextData = new FormTextData();
                     formTextData.ShowDialog();
                     // MessageBox.Show("text data: " + formTextData.TextData);
+                    // fillTemplate.BookmarksFile[nameBookmark] = formTextData.TextData;
 
                 }
                 else if (typeData == "Зображення")
@@ -362,6 +392,7 @@ namespace WinFormsUI
         {
             string pathFile = this.materialButtonSelectPathForSaved.Text.ToString();
             string nameFile = this.materialTextBoxGenNameOutputDocument.Text.ToString();
+
         }
     }
 }
