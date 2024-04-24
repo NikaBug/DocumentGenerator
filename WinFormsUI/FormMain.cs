@@ -18,7 +18,6 @@ namespace WinFormsUI
         private List<TemplateViewModel> listTemplates; // список шаблонів
         static public int IndexRowTemplateTable = 0; // індекс рядка таблиці шаблонів
         private DataGridViewComboBoxColumn cmbGenSetBookmark;
-       // private TemplateViewModel fillTemplate;
 
         public FormMain()
         {
@@ -33,9 +32,6 @@ namespace WinFormsUI
             cmbGenSetBookmark.Items.Add("Текст");
             cmbGenSetBookmark.Items.Add("Зображення");
             cmbGenSetBookmark.Items.Add("Таблиця");
-
-            //MessageBox.Show(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName);
-
 
         }
 
@@ -62,12 +58,12 @@ namespace WinFormsUI
                     listTemplates.Add(templatesViewModel.ElementAt(counter)); // додати до списку шаблонів
                     // додати списку збережених шаблонів в модулі "Генератор"
                     this.materialComboBoxGenSavedTemplate.Items.Add(templatesViewModel.ElementAt(counter).FileName);
-                   // this.materialComboBoxGenSavedTemplate.SelectedIndex = 0;
+                    // this.materialComboBoxGenSavedTemplate.SelectedIndex = 0;
                     IndexRowTemplateTable++; // збільшення індекса рядка таблиці шаблонів
                     counter++;
                 }
                 //return;
-               
+
             }
             else
             {   // якщо в таблиці вже завантажені шаблони
@@ -255,11 +251,12 @@ namespace WinFormsUI
             else
             {
                 int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
-                if(listTemplates.Count() == 0)
+                if (listTemplates.Count() == 0)
                 {
                     CustomMessageBox.Show("List template is empty.", "Повідомлення", MessageBoxButtons.OK);
 
-                } else
+                }
+                else
                     this.SetBookmarksDictionary(listTemplates[index].BookmarksFile);
             }
         }
@@ -318,8 +315,6 @@ namespace WinFormsUI
         //
         private void materialComboBoxGenSavedTemplate_SelectedValueChanged(object sender, EventArgs e)
         {
-
-            //string selectedTemplate = materialComboBoxGenSavedTemplate.SelectedItem.ToString();
             int indexSelectedTemplate = materialComboBoxGenSavedTemplate.SelectedIndex;
             this.dataGridViewGenSettingBookmarks.Rows.Clear();
             this.dataGridViewGenSettingBookmarks.Refresh();
@@ -360,12 +355,12 @@ namespace WinFormsUI
             if (columnTableBookmark == "GenEnterData")
             {
                 string typeData = Convert.ToString(dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells[2].FormattedValue.ToString());
-               // MessageBox.Show(materialComboBoxGenSavedTemplate.SelectedItem.ToString());
+                // MessageBox.Show(materialComboBoxGenSavedTemplate.SelectedItem.ToString());
 
                 if (typeData == "Текст")
                 {
                     string nameBookmark = dataGridViewGenSettingBookmarks.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                   // MessageBox.Show("name bookmark: " + nameBoomark.ToString());
+                    // MessageBox.Show("name bookmark: " + nameBoomark.ToString());
                     FormTextData formTextData = new FormTextData();
                     formTextData.ShowDialog();
                     // MessageBox.Show("text data: " + formTextData.TextData);
@@ -393,6 +388,21 @@ namespace WinFormsUI
             string pathFile = this.materialButtonSelectPathForSaved.Text.ToString();
             string nameFile = this.materialTextBoxGenNameOutputDocument.Text.ToString();
 
+        }
+
+        private void materialRadioButtonGenLoadTemplate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.materialRadioButtonGenLoadTemplate.Checked)
+            {
+                this.materialComboBoxGenSavedTemplate.Enabled = false;
+                this.dataGridViewGenSettingBookmarks.Rows.Clear();
+            }
+            else
+            {
+                this.materialComboBoxGenSavedTemplate.Enabled = true;
+                this.dataGridViewGenSettingBookmarks.Refresh();
+                this.materialComboBoxGenSavedTemplate_SelectedValueChanged(sender, e);
+            }
         }
     }
 }
