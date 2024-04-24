@@ -27,11 +27,16 @@ namespace WinFormsUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             this.WindowState = FormWindowState.Maximized;
             this.listTemplates = new List<TemplateViewModel>();
+
             //
             cmbGenSetBookmark = (DataGridViewComboBoxColumn)this.dataGridViewGenSettingBookmarks.Columns[2];
             cmbGenSetBookmark.Items.Add("Текст");
             cmbGenSetBookmark.Items.Add("Зображення");
             cmbGenSetBookmark.Items.Add("Таблиця");
+            this.materialButtonGenLoadTemplate.Enabled = false;
+            this.materialButtonGenRemoveLoadTemplate.Enabled = false;
+
+
 
         }
 
@@ -338,7 +343,6 @@ namespace WinFormsUI
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                // MessageBox.Show("You selected: " + dialog.FileName);
                 this.materialTextBoxPathForSaveDocument.Text = dialog.FileName;
             }
         }
@@ -395,10 +399,14 @@ namespace WinFormsUI
             if (this.materialRadioButtonGenLoadTemplate.Checked)
             {
                 this.materialComboBoxGenSavedTemplate.Enabled = false;
+                this.materialButtonGenLoadTemplate.Enabled = true;
+                this.materialButtonGenRemoveLoadTemplate.Enabled = true;
                 this.dataGridViewGenSettingBookmarks.Rows.Clear();
             }
             else
             {
+                this.materialButtonGenLoadTemplate.Enabled = false;
+                this.materialButtonGenRemoveLoadTemplate.Enabled = false;
                 this.materialComboBoxGenSavedTemplate.Enabled = true;
                 this.dataGridViewGenSettingBookmarks.Refresh();
                 this.materialComboBoxGenSavedTemplate_SelectedValueChanged(sender, e);
