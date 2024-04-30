@@ -130,6 +130,12 @@
   <data name="file_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\file_view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="upload-big-arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\upload-big-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="create_tmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\create_tmp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="delete_doc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\delete_doc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,7 +145,7 @@
   <data name="file" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="create_tmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\create_tmp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="upload-arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\upload-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

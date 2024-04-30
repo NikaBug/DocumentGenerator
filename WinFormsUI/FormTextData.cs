@@ -5,7 +5,7 @@ namespace WinFormsUI
 {
     public partial class FormTextData : MaterialForm
     {
-        public string TextData { get; set;}
+        public string TextData { get; set; }
 
         public FormTextData()
         {

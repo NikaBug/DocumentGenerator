@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace WinFormsUI
+﻿namespace WinFormsUI
 {
     public static class CustomMessageBox
     {

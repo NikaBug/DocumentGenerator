@@ -22,8 +22,8 @@ namespace Presentation.Presenters
         {
             //var commands = await commandService.GetAllCommands();
             //var viewModelCommands = commands.Select(c => new CommandViewModel { NameCommand = c.CommandName }).ToList();
-           // Dictionary<string, string> dictionaryBookmarks = new Dictionary<string, string>();
-           // dictionaryBookmarks.Add("bookmark1", "Текст");
+            // Dictionary<string, string> dictionaryBookmarks = new Dictionary<string, string>();
+            // dictionaryBookmarks.Add("bookmark1", "Текст");
 
             var templates = await templateService.GetAllTemplates();
             var viewModelTemplates = templates.Select(c => new TemplateViewModel

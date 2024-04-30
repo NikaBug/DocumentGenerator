@@ -53,9 +53,9 @@ namespace Core.Services
         /// </summary>
         /// <param name="commandName">назва команди</param>
         /// <returns>успішність виконання операції</returns>
-        public Task DeleteCommand(string commandName) 
+        public Task DeleteCommand(string commandName)
         {
-            return commandRepository.Delete(commandName); 
+            return commandRepository.Delete(commandName);
         }
 
         /// <summary>

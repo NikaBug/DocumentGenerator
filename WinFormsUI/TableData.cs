@@ -1,5 +1,5 @@
 ﻿namespace WinFormsUI
-{ 
+{
     /// <summary>
     /// Дані таблиці
     /// </summary>
@@ -9,8 +9,8 @@
         public int numberColumns { get; set; }
         public string[,] arrayData { get; set; }
 
-        public TableData(int rows, int cols) 
-        { 
+        public TableData(int rows, int cols)
+        {
             this.numberRows = rows;
             this.numberColumns = cols;
             this.arrayData = new string[rows, cols];

@@ -1,5 +1,4 @@
-﻿using Aspose.Words;
-using MaterialSkin;
+﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using Presentation.ViewModels;
 
@@ -39,10 +38,10 @@ namespace WinFormsUI
 
         private void materialButtonSaveUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.materialTextBoxTemplateName.Text) 
+            if (string.IsNullOrEmpty(this.materialTextBoxTemplateName.Text)
                 || Path.GetExtension(this.materialTextBoxTemplateName.Text) != ".docx")
             {
-                CustomMessageBox.Show("Перевірте ведення назви шаблону! Назва шаблону " 
+                CustomMessageBox.Show("Перевірте ведення назви шаблону! Назва шаблону "
                     + this.materialTextBoxTemplateName.Text + " має містити.docx наприкінці.", "Редагування шаблону", MessageBoxButtons.OK);
                 return;
             }

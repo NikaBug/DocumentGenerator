@@ -1,5 +1,4 @@
 ﻿using Domain;
-using System.Runtime.CompilerServices;
 
 namespace Persistence
 {
@@ -33,14 +32,14 @@ namespace Persistence
 
         };
 
-    /// <summary>
-    /// Створити шаблон
-    /// </summary>
-    /// <param name="fileName">назва шаблону</param>
-    /// <param name="fileContent">зміст файлу</param>
-    /// <returns>Успішність виконання операції</returns>
-    /// <exception cref="ArgumentNullException"></exception>
-    public Task<Template> Create(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks)
+        /// <summary>
+        /// Створити шаблон
+        /// </summary>
+        /// <param name="fileName">назва шаблону</param>
+        /// <param name="fileContent">зміст файлу</param>
+        /// <returns>Успішність виконання операції</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public Task<Template> Create(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks)
         {
             Template template;
             if (string.IsNullOrEmpty(fileName) || fileContent == null)

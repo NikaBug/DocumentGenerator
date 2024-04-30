@@ -18,7 +18,7 @@ namespace WinFormsUI
         private void materialButtonLoadImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp)";
 
             if (open.ShowDialog() == DialogResult.OK)
             {
@@ -29,7 +29,7 @@ namespace WinFormsUI
 
         private void materialButtonSaveImage_Click(object sender, EventArgs e)
         {
-            if((string)pictureBoxImageData.Tag != "imageData")
+            if ((string)pictureBoxImageData.Tag != "imageData")
             {
                 CustomMessageBox.Show("Завантажте зображення!", "Збереження зображення", MessageBoxButtons.OK);
                 return;
@@ -39,7 +39,7 @@ namespace WinFormsUI
                 this.imageData = pictureBoxImageData.Image;
                 CustomMessageBox.Show("Зображення збережене успішно!", "Збереження зображення", MessageBoxButtons.OK);
             }
-            
+
             this.Close();
         }
     }
