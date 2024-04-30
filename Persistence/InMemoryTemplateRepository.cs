@@ -7,8 +7,8 @@ namespace Persistence
     /// </summary>
     public class InMemoryTemplateRepository : ITemplateRepository
     {
-        private static string pathTemplate1 = "C:\\Users\\nika6\\source\\repos\\DocumentGenerator\\Persistence\\exampleTemplate\\BookmarkTest.docx";
-        private static string pathTemplate2 = "C:\\Users\\nika6\\source\\repos\\DocumentGenerator\\Persistence\\exampleTemplate\\DocTest.docx";
+        private static string pathTemplate1 = ResourceTemplates.BookmarkTestTemplate;
+        private static string pathTemplate2 = ResourceTemplates.DocTestTemplate;
 
         private static Dictionary<string, string> GetTemplateBookmarks(string filePath)
         {
