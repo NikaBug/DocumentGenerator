@@ -28,21 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            materialLabelTextMessage = new MaterialSkin.Controls.MaterialLabel();
             materialButtonYes = new MaterialSkin.Controls.MaterialButton();
             materialButtonNo = new MaterialSkin.Controls.MaterialButton();
+            LabelTextMessage = new MaterialSkin.Controls.MaterialLabel();
             SuspendLayout();
-            // 
-            // materialLabelTextMessage
-            // 
-            materialLabelTextMessage.Depth = 0;
-            materialLabelTextMessage.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelTextMessage.Location = new Point(25, 90);
-            materialLabelTextMessage.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelTextMessage.Name = "materialLabelTextMessage";
-            materialLabelTextMessage.Size = new Size(366, 65);
-            materialLabelTextMessage.TabIndex = 0;
-            materialLabelTextMessage.Text = "materialLabelTextMessage";
             // 
             // materialButtonYes
             // 
@@ -53,7 +42,7 @@
             materialButtonYes.DialogResult = DialogResult.Yes;
             materialButtonYes.HighEmphasis = true;
             materialButtonYes.Icon = null;
-            materialButtonYes.Location = new Point(25, 172);
+            materialButtonYes.Location = new Point(41, 177);
             materialButtonYes.Margin = new Padding(4, 6, 4, 6);
             materialButtonYes.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonYes.Name = "materialButtonYes";
@@ -74,7 +63,7 @@
             materialButtonNo.DialogResult = DialogResult.No;
             materialButtonNo.HighEmphasis = true;
             materialButtonNo.Icon = null;
-            materialButtonNo.Location = new Point(244, 172);
+            materialButtonNo.Location = new Point(224, 177);
             materialButtonNo.Margin = new Padding(4, 6, 4, 6);
             materialButtonNo.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonNo.Name = "materialButtonNo";
@@ -86,14 +75,25 @@
             materialButtonNo.UseAccentColor = false;
             materialButtonNo.UseVisualStyleBackColor = true;
             // 
+            // LabelTextMessage
+            // 
+            LabelTextMessage.Depth = 0;
+            LabelTextMessage.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            LabelTextMessage.Location = new Point(18, 73);
+            LabelTextMessage.MouseState = MaterialSkin.MouseState.HOVER;
+            LabelTextMessage.Name = "LabelTextMessage";
+            LabelTextMessage.Size = new Size(402, 89);
+            LabelTextMessage.TabIndex = 3;
+            LabelTextMessage.Text = "materialLabelTextMessage";
+            // 
             // FormYesNo
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(438, 235);
+            ClientSize = new Size(438, 225);
+            Controls.Add(LabelTextMessage);
             Controls.Add(materialButtonNo);
             Controls.Add(materialButtonYes);
-            Controls.Add(materialLabelTextMessage);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormYesNo";
@@ -103,9 +103,8 @@
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel materialLabelTextMessage;
         private MaterialSkin.Controls.MaterialButton materialButtonYes;
         private MaterialSkin.Controls.MaterialButton materialButtonNo;
+        private MaterialSkin.Controls.MaterialLabel LabelTextMessage;
     }
 }

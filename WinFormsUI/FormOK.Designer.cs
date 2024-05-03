@@ -28,20 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            materialLabelTextInfoMessage = new MaterialSkin.Controls.MaterialLabel();
             materialButtonOK = new MaterialSkin.Controls.MaterialButton();
+            LabelTextInfoMessage = new MaterialSkin.Controls.MaterialLabel();
             SuspendLayout();
-            // 
-            // materialLabelTextInfoMessage
-            // 
-            materialLabelTextInfoMessage.Depth = 0;
-            materialLabelTextInfoMessage.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelTextInfoMessage.Location = new Point(16, 80);
-            materialLabelTextInfoMessage.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelTextInfoMessage.Name = "materialLabelTextInfoMessage";
-            materialLabelTextInfoMessage.Size = new Size(357, 73);
-            materialLabelTextInfoMessage.TabIndex = 0;
-            materialLabelTextInfoMessage.Text = "materialLabelTextInfoMessage";
             // 
             // materialButtonOK
             // 
@@ -52,7 +41,7 @@
             materialButtonOK.DialogResult = DialogResult.OK;
             materialButtonOK.HighEmphasis = true;
             materialButtonOK.Icon = null;
-            materialButtonOK.Location = new Point(85, 159);
+            materialButtonOK.Location = new Point(97, 169);
             materialButtonOK.Margin = new Padding(4, 6, 4, 6);
             materialButtonOK.MouseState = MaterialSkin.MouseState.HOVER;
             materialButtonOK.Name = "materialButtonOK";
@@ -64,13 +53,24 @@
             materialButtonOK.UseAccentColor = false;
             materialButtonOK.UseVisualStyleBackColor = true;
             // 
+            // LabelTextInfoMessage
+            // 
+            LabelTextInfoMessage.Depth = 0;
+            LabelTextInfoMessage.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            LabelTextInfoMessage.Location = new Point(13, 79);
+            LabelTextInfoMessage.MouseState = MaterialSkin.MouseState.HOVER;
+            LabelTextInfoMessage.Name = "LabelTextInfoMessage";
+            LabelTextInfoMessage.Size = new Size(375, 84);
+            LabelTextInfoMessage.TabIndex = 4;
+            LabelTextInfoMessage.Text = "LabelTextInfoMessage";
+            // 
             // FormOK
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(394, 209);
+            ClientSize = new Size(394, 218);
+            Controls.Add(LabelTextInfoMessage);
             Controls.Add(materialButtonOK);
-            Controls.Add(materialLabelTextInfoMessage);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormOK";
@@ -80,8 +80,7 @@
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialLabel materialLabelTextInfoMessage;
         private MaterialSkin.Controls.MaterialButton materialButtonOK;
+        private MaterialSkin.Controls.MaterialLabel LabelTextInfoMessage;
     }
 }

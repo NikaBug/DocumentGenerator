@@ -40,9 +40,8 @@
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             materialTabControlMainMenu = new MaterialSkin.Controls.MaterialTabControl();
             tabPageTemplate = new TabPage();
             dataGridViewTableBookmarks = new DataGridView();
@@ -68,7 +67,7 @@
             materialButtonSelectPathForSaved = new MaterialSkin.Controls.MaterialButton();
             materialLabelNameOutputDocument = new MaterialSkin.Controls.MaterialLabel();
             materialTextBoxGenNameOutputDocument = new MaterialSkin.Controls.MaterialTextBox2();
-            materialComboBoxGenCommandList = new MaterialSkin.Controls.MaterialComboBox();
+            ComboBoxGenCommandList = new MaterialSkin.Controls.MaterialComboBox();
             materialSwitchUseCommand = new MaterialSkin.Controls.MaterialSwitch();
             dataGridViewGenSettingBookmarks = new DataGridView();
             GenNumberRows = new DataGridViewTextBoxColumn();
@@ -83,6 +82,7 @@
             materialTabSelectorGenSelectTemplate = new MaterialSkin.Controls.MaterialTabSelector();
             tabPageCommand = new TabPage();
             groupBoxCmdTable = new GroupBox();
+            ButtonEditCommand = new MaterialSkin.Controls.MaterialButton();
             ButtonCreateCommand = new MaterialSkin.Controls.MaterialButton();
             dataGridViewTableCommand = new DataGridView();
             CmdNumberRowCommand = new DataGridViewTextBoxColumn();
@@ -93,7 +93,7 @@
             groupBoxCmdSettingConvert = new GroupBox();
             dataGridViewCmdBookmarkMatch = new DataGridView();
             CmdNumberRow = new DataGridViewTextBoxColumn();
-            CmdInputBookmark = new DataGridViewComboBoxColumn();
+            CmdInputBookmark = new DataGridViewTextBoxColumn();
             CmdOutputBookmark = new DataGridViewComboBoxColumn();
             groupBoxSettingCommand = new GroupBox();
             ButtonCmdViewBookmark = new MaterialSkin.Controls.MaterialButton();
@@ -445,7 +445,7 @@
             groupBoxGenSetting.Controls.Add(materialButtonSelectPathForSaved);
             groupBoxGenSetting.Controls.Add(materialLabelNameOutputDocument);
             groupBoxGenSetting.Controls.Add(materialTextBoxGenNameOutputDocument);
-            groupBoxGenSetting.Controls.Add(materialComboBoxGenCommandList);
+            groupBoxGenSetting.Controls.Add(ComboBoxGenCommandList);
             groupBoxGenSetting.Controls.Add(materialSwitchUseCommand);
             groupBoxGenSetting.Controls.Add(dataGridViewGenSettingBookmarks);
             groupBoxGenSetting.Location = new Point(6, 337);
@@ -567,27 +567,27 @@
             materialTextBoxGenNameOutputDocument.TrailingIcon = null;
             materialTextBoxGenNameOutputDocument.UseSystemPasswordChar = false;
             // 
-            // materialComboBoxGenCommandList
+            // ComboBoxGenCommandList
             // 
-            materialComboBoxGenCommandList.AutoResize = false;
-            materialComboBoxGenCommandList.BackColor = Color.FromArgb(255, 255, 255);
-            materialComboBoxGenCommandList.Depth = 0;
-            materialComboBoxGenCommandList.DrawMode = DrawMode.OwnerDrawVariable;
-            materialComboBoxGenCommandList.DropDownHeight = 174;
-            materialComboBoxGenCommandList.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialComboBoxGenCommandList.DropDownWidth = 121;
-            materialComboBoxGenCommandList.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialComboBoxGenCommandList.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialComboBoxGenCommandList.FormattingEnabled = true;
-            materialComboBoxGenCommandList.IntegralHeight = false;
-            materialComboBoxGenCommandList.ItemHeight = 43;
-            materialComboBoxGenCommandList.Location = new Point(25, 67);
-            materialComboBoxGenCommandList.MaxDropDownItems = 4;
-            materialComboBoxGenCommandList.MouseState = MaterialSkin.MouseState.OUT;
-            materialComboBoxGenCommandList.Name = "materialComboBoxGenCommandList";
-            materialComboBoxGenCommandList.Size = new Size(334, 49);
-            materialComboBoxGenCommandList.StartIndex = 0;
-            materialComboBoxGenCommandList.TabIndex = 18;
+            ComboBoxGenCommandList.AutoResize = false;
+            ComboBoxGenCommandList.BackColor = Color.FromArgb(255, 255, 255);
+            ComboBoxGenCommandList.Depth = 0;
+            ComboBoxGenCommandList.DrawMode = DrawMode.OwnerDrawVariable;
+            ComboBoxGenCommandList.DropDownHeight = 174;
+            ComboBoxGenCommandList.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxGenCommandList.DropDownWidth = 121;
+            ComboBoxGenCommandList.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            ComboBoxGenCommandList.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            ComboBoxGenCommandList.FormattingEnabled = true;
+            ComboBoxGenCommandList.IntegralHeight = false;
+            ComboBoxGenCommandList.ItemHeight = 43;
+            ComboBoxGenCommandList.Location = new Point(25, 67);
+            ComboBoxGenCommandList.MaxDropDownItems = 4;
+            ComboBoxGenCommandList.MouseState = MaterialSkin.MouseState.OUT;
+            ComboBoxGenCommandList.Name = "ComboBoxGenCommandList";
+            ComboBoxGenCommandList.Size = new Size(334, 49);
+            ComboBoxGenCommandList.StartIndex = 0;
+            ComboBoxGenCommandList.TabIndex = 18;
             // 
             // materialSwitchUseCommand
             // 
@@ -779,6 +779,7 @@
             // groupBoxCmdTable
             // 
             groupBoxCmdTable.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxCmdTable.Controls.Add(ButtonEditCommand);
             groupBoxCmdTable.Controls.Add(ButtonCreateCommand);
             groupBoxCmdTable.Controls.Add(dataGridViewTableCommand);
             groupBoxCmdTable.Location = new Point(17, 362);
@@ -788,25 +789,48 @@
             groupBoxCmdTable.TabStop = false;
             groupBoxCmdTable.Text = "Таблиця команд";
             // 
+            // ButtonEditCommand
+            // 
+            ButtonEditCommand.AutoSize = false;
+            ButtonEditCommand.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonEditCommand.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonEditCommand.Depth = 0;
+            ButtonEditCommand.Enabled = false;
+            ButtonEditCommand.HighEmphasis = true;
+            ButtonEditCommand.Icon = (Image)resources.GetObject("ButtonEditCommand.Icon");
+            ButtonEditCommand.Location = new Point(170, 42);
+            ButtonEditCommand.Margin = new Padding(4, 6, 4, 6);
+            ButtonEditCommand.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonEditCommand.Name = "ButtonEditCommand";
+            ButtonEditCommand.NoAccentTextColor = Color.Empty;
+            ButtonEditCommand.Size = new Size(155, 47);
+            ButtonEditCommand.TabIndex = 19;
+            ButtonEditCommand.Text = "Редагувати";
+            ButtonEditCommand.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            ButtonEditCommand.UseAccentColor = false;
+            ButtonEditCommand.UseVisualStyleBackColor = true;
+            // 
             // ButtonCreateCommand
             // 
             ButtonCreateCommand.AutoSize = false;
             ButtonCreateCommand.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ButtonCreateCommand.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             ButtonCreateCommand.Depth = 0;
+            ButtonCreateCommand.Enabled = false;
             ButtonCreateCommand.HighEmphasis = true;
-            ButtonCreateCommand.Icon = Properties.Resources.create_cmd;
+            ButtonCreateCommand.Icon = (Image)resources.GetObject("ButtonCreateCommand.Icon");
             ButtonCreateCommand.Location = new Point(14, 42);
             ButtonCreateCommand.Margin = new Padding(4, 6, 4, 6);
             ButtonCreateCommand.MouseState = MaterialSkin.MouseState.HOVER;
             ButtonCreateCommand.Name = "ButtonCreateCommand";
             ButtonCreateCommand.NoAccentTextColor = Color.Empty;
-            ButtonCreateCommand.Size = new Size(202, 47);
+            ButtonCreateCommand.Size = new Size(134, 47);
             ButtonCreateCommand.TabIndex = 18;
-            ButtonCreateCommand.Text = "Створити команду";
+            ButtonCreateCommand.Text = "Створити";
             ButtonCreateCommand.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             ButtonCreateCommand.UseAccentColor = false;
             ButtonCreateCommand.UseVisualStyleBackColor = true;
+            ButtonCreateCommand.Click += ButtonCreateCommand_Click;
             // 
             // dataGridViewTableCommand
             // 
@@ -846,8 +870,10 @@
             dataGridViewTableCommand.RowHeadersWidth = 25;
             dataGridViewTableCommand.RowTemplate.Height = 25;
             dataGridViewTableCommand.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTableCommand.Size = new Size(1218, 218);
+            dataGridViewTableCommand.Size = new Size(1218, 233);
             dataGridViewTableCommand.TabIndex = 16;
+            dataGridViewTableCommand.CellContentClick += dataGridViewTableCommand_CellContentClick;
+            dataGridViewTableCommand.RowPostPaint += dataGridViewTableCommand_RowPostPaint;
             // 
             // CmdNumberRowCommand
             // 
@@ -887,7 +913,7 @@
             CmdDeleteCommand.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             CmdDeleteCommand.HeaderText = "Видалити";
             CmdDeleteCommand.Image = Properties.Resources.delete_doc;
-            CmdDeleteCommand.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            CmdDeleteCommand.ImageLayout = DataGridViewImageCellLayout.Zoom;
             CmdDeleteCommand.MinimumWidth = 8;
             CmdDeleteCommand.Name = "CmdDeleteCommand";
             CmdDeleteCommand.ReadOnly = true;
@@ -924,14 +950,14 @@
             dataGridViewCmdBookmarkMatch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridViewCmdBookmarkMatch.ColumnHeadersHeight = 35;
             dataGridViewCmdBookmarkMatch.Columns.AddRange(new DataGridViewColumn[] { CmdNumberRow, CmdInputBookmark, CmdOutputBookmark });
-            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = Color.White;
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle13.ForeColor = Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle13.SelectionForeColor = Color.FromArgb(100, 100, 180);
-            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.False;
-            dataGridViewCmdBookmarkMatch.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = Color.White;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle12.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dataGridViewCmdBookmarkMatch.DefaultCellStyle = dataGridViewCellStyle12;
             dataGridViewCmdBookmarkMatch.EnableHeadersVisualStyles = false;
             dataGridViewCmdBookmarkMatch.GridColor = Color.LightGray;
             dataGridViewCmdBookmarkMatch.Location = new Point(20, 30);
@@ -951,25 +977,23 @@
             CmdNumberRow.HeaderText = "Номер";
             CmdNumberRow.MinimumWidth = 8;
             CmdNumberRow.Name = "CmdNumberRow";
+            CmdNumberRow.ReadOnly = true;
             CmdNumberRow.Width = 107;
             // 
             // CmdInputBookmark
             // 
             CmdInputBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            CmdInputBookmark.DefaultCellStyle = dataGridViewCellStyle11;
-            CmdInputBookmark.FlatStyle = FlatStyle.Flat;
             CmdInputBookmark.HeaderText = "Вхідна закладка";
             CmdInputBookmark.MinimumWidth = 8;
             CmdInputBookmark.Name = "CmdInputBookmark";
+            CmdInputBookmark.ReadOnly = true;
             // 
             // CmdOutputBookmark
             // 
             CmdOutputBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            CmdOutputBookmark.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            CmdOutputBookmark.DefaultCellStyle = dataGridViewCellStyle11;
             CmdOutputBookmark.FlatStyle = FlatStyle.Flat;
             CmdOutputBookmark.HeaderText = "Вихідна закладка";
             CmdOutputBookmark.MinimumWidth = 8;
@@ -1034,6 +1058,7 @@
             TextBoxCmdInputDocument.MouseState = MaterialSkin.MouseState.OUT;
             TextBoxCmdInputDocument.Multiline = false;
             TextBoxCmdInputDocument.Name = "TextBoxCmdInputDocument";
+            TextBoxCmdInputDocument.ReadOnly = true;
             TextBoxCmdInputDocument.Size = new Size(365, 50);
             TextBoxCmdInputDocument.TabIndex = 5;
             TextBoxCmdInputDocument.Text = "";
@@ -1164,16 +1189,11 @@
         private GroupBox groupBoxCmdSettingConvert;
         private DataGridView dataGridViewCmdBookmarkMatch;
         private DataGridView dataGridViewTableCommand;
-        private DataGridViewTextBoxColumn CmdNumberRowCommand;
-        private DataGridViewTextBoxColumn CommandName;
-        private DataGridViewTextBoxColumn CmdInputTemplate;
-        private DataGridViewTextBoxColumn CmdOutputTemplate;
-        private DataGridViewImageColumn CmdDeleteCommand;
         private GroupBox groupBoxCmdTable;
         private DataGridView dataGridViewGenSettingBookmarks;
         private GroupBox groupBoxGenSetting;
         private MaterialSkin.Controls.MaterialSwitch materialSwitchUseCommand;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBoxGenCommandList;
+        private MaterialSkin.Controls.MaterialComboBox ComboBoxGenCommandList;
         private DataGridViewTextBoxColumn GenNumberRows;
         private DataGridViewTextBoxColumn GenNameBookmark;
         private DataGridViewComboBoxColumn GenDataType;
@@ -1195,7 +1215,13 @@
         private MaterialSkin.Controls.MaterialLabel LabelCmdInputDocument;
         private MaterialSkin.Controls.MaterialButton ButtonCmdViewBookmark;
         private DataGridViewTextBoxColumn CmdNumberRow;
-        private DataGridViewComboBoxColumn CmdInputBookmark;
+        private DataGridViewTextBoxColumn CmdInputBookmark;
         private DataGridViewComboBoxColumn CmdOutputBookmark;
+        private DataGridViewTextBoxColumn CmdNumberRowCommand;
+        private DataGridViewTextBoxColumn CommandName;
+        private DataGridViewTextBoxColumn CmdInputTemplate;
+        private DataGridViewTextBoxColumn CmdOutputTemplate;
+        private DataGridViewImageColumn CmdDeleteCommand;
+        private MaterialSkin.Controls.MaterialButton ButtonEditCommand;
     }
 }

@@ -15,8 +15,8 @@ namespace WinFormsUI
 
         public string Message
         {
-            get { return materialLabelTextMessage.Text; }
-            set { materialLabelTextMessage.Text = value; }
+            get { return LabelTextMessage.Text; }
+            set { LabelTextMessage.Text = value; }
         }
     }
 }
