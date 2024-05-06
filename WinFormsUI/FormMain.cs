@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Presentation.ViewModels;
 using Presentation.Views;
+using System.Diagnostics.Metrics;
 using System.IO;
 using Document = Aspose.Words.Document;
 //using Syncfusion.DocIO;
@@ -93,6 +94,7 @@ namespace WinFormsUI
                      templates.Last().DateModificationFile, templates.Last().SizeFile);
                 IndexRowTemplateTable++;
                 this.ComboBoxCmdOutputTemplate.Items.Add(templates.Last().FileName);
+                listTemplates.Add(templates.Last());
                 // генератор
                 MaterialListBoxItem listBoxItem = new MaterialListBoxItem();
                 listBoxItem.Text = templates.Last().FileName;
