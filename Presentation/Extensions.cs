@@ -2,6 +2,7 @@
 using Core.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Presenters;
+using Presentation.Views;
 
 namespace Presentation
 {
@@ -24,6 +25,8 @@ namespace Presentation
         private static void AddPresenters(IServiceCollection services)
         {
             services.AddScoped<IMainPresenter, MainPresenter>();
+            //
+            // services.AddScoped<IEditTemplatePresenter, MainPresenter>();
         }
     }
 }

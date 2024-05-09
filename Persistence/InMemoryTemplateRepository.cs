@@ -78,20 +78,20 @@ namespace Persistence
         /// <param name="newTemplate">новий шаблон</param>
         /// <returns>Успішність виконання операції</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public Task Update(Template oldTemplate, Template newTemplate)
-        {
-            var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == oldTemplate.FileName);
-            if (item == null)
-            {
-                throw new ArgumentNullException(nameof(oldTemplate.FileName));
-            }
-            else
-            {
-                var index = inMemoryTemplates.IndexOf(item);
-                inMemoryTemplates[index] = newTemplate;
-            }
-            return Task.CompletedTask;
-        }
+        //public Task Update(Template oldTemplate, Template newTemplate)
+        //{
+        //    var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == oldTemplate.FileName);
+        //    if (item == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(oldTemplate.FileName));
+        //    }
+        //    else
+        //    {
+        //        var index = inMemoryTemplates.IndexOf(item);
+        //        inMemoryTemplates[index] = newTemplate;
+        //    }
+        //    return Task.CompletedTask;
+        //}
 
         /// <summary>
         /// Зберегети шаблон
@@ -125,6 +125,24 @@ namespace Persistence
             if (item != null)
             {
                 inMemoryTemplates.Remove(item);
+            }
+            return Task.CompletedTask;
+        }
+
+        public Task Update(string oldName,  
+            string newName, 
+            IDictionary<string, string> newBookmarks)
+        {
+            var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == oldName);
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(oldName));
+            }
+            else
+            {
+                var index = inMemoryTemplates.IndexOf(item);
+                inMemoryTemplates[index].FileName = newName;
+                inMemoryTemplates[index].FileBookmarks = (Dictionary<string, string>)newBookmarks;
             }
             return Task.CompletedTask;
         }

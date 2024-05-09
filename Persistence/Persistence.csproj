@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Aspose.Words" Version="24.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
   </ItemGroup>
 
   <ItemGroup>

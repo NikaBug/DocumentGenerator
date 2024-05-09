@@ -56,9 +56,8 @@
             dataGridViewTableTemplate = new DataGridView();
             NumberRows = new DataGridViewTextBoxColumn();
             NameFile = new DataGridViewTextBoxColumn();
-            DateModFile = new DataGridViewTextBoxColumn();
-            SizeFile = new DataGridViewTextBoxColumn();
-            DeleteTemplate = new DataGridViewImageColumn();
+            PathFile = new DataGridViewTextBoxColumn();
+            RemoveTemplate = new DataGridViewImageColumn();
             tabPageGenerateDocument = new TabPage();
             groupBoxGenSetting = new GroupBox();
             materialTextBoxPathForSaveDocument = new MaterialSkin.Controls.MaterialTextBox();
@@ -181,7 +180,7 @@
             dataGridViewTableBookmarks.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewTableBookmarks.EnableHeadersVisualStyles = false;
             dataGridViewTableBookmarks.GridColor = Color.LightGray;
-            dataGridViewTableBookmarks.Location = new Point(3, 424);
+            dataGridViewTableBookmarks.Location = new Point(3, 449);
             dataGridViewTableBookmarks.MultiSelect = false;
             dataGridViewTableBookmarks.Name = "dataGridViewTableBookmarks";
             dataGridViewTableBookmarks.ReadOnly = true;
@@ -189,7 +188,7 @@
             dataGridViewTableBookmarks.RowHeadersWidth = 25;
             dataGridViewTableBookmarks.RowTemplate.Height = 25;
             dataGridViewTableBookmarks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTableBookmarks.Size = new Size(1261, 295);
+            dataGridViewTableBookmarks.Size = new Size(1261, 270);
             dataGridViewTableBookmarks.TabIndex = 14;
             dataGridViewTableBookmarks.RowPostPaint += dataGridViewTableBookmarks_RowPostPaint;
             // 
@@ -346,7 +345,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridViewTableTemplate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTableTemplate.ColumnHeadersHeight = 35;
-            dataGridViewTableTemplate.Columns.AddRange(new DataGridViewColumn[] { NumberRows, NameFile, DateModFile, SizeFile, DeleteTemplate });
+            dataGridViewTableTemplate.Columns.AddRange(new DataGridViewColumn[] { NumberRows, NameFile, PathFile, RemoveTemplate });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -365,10 +364,11 @@
             dataGridViewTableTemplate.RowHeadersWidth = 25;
             dataGridViewTableTemplate.RowTemplate.Height = 25;
             dataGridViewTableTemplate.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTableTemplate.Size = new Size(1264, 339);
+            dataGridViewTableTemplate.Size = new Size(1264, 366);
             dataGridViewTableTemplate.TabIndex = 0;
             dataGridViewTableTemplate.CellContentClick += dataGridViewTableTemplate_CellContentClick;
             dataGridViewTableTemplate.RowPostPaint += dataGridViewTableTemplate_RowPostPaint;
+            dataGridViewTableTemplate.SelectionChanged += dataGridViewTableTemplate_SelectionChanged;
             // 
             // NumberRows
             // 
@@ -391,37 +391,27 @@
             NameFile.Name = "NameFile";
             NameFile.ReadOnly = true;
             // 
-            // DateModFile
+            // PathFile
             // 
-            DateModFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DateModFile.DividerWidth = 1;
-            DateModFile.FillWeight = 150F;
-            DateModFile.HeaderText = "Дата зміни";
-            DateModFile.MinimumWidth = 8;
-            DateModFile.Name = "DateModFile";
-            DateModFile.ReadOnly = true;
+            PathFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PathFile.DividerWidth = 1;
+            PathFile.FillWeight = 150F;
+            PathFile.HeaderText = "Шлях до файлу";
+            PathFile.MinimumWidth = 8;
+            PathFile.Name = "PathFile";
+            PathFile.ReadOnly = true;
             // 
-            // SizeFile
+            // RemoveTemplate
             // 
-            SizeFile.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SizeFile.DividerWidth = 1;
-            SizeFile.FillWeight = 150F;
-            SizeFile.HeaderText = "Розмір (КБ)";
-            SizeFile.MinimumWidth = 8;
-            SizeFile.Name = "SizeFile";
-            SizeFile.ReadOnly = true;
-            // 
-            // DeleteTemplate
-            // 
-            DeleteTemplate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            DeleteTemplate.FillWeight = 90F;
-            DeleteTemplate.HeaderText = "Видалити";
-            DeleteTemplate.Image = Properties.Resources.delete_doc;
-            DeleteTemplate.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            DeleteTemplate.MinimumWidth = 8;
-            DeleteTemplate.Name = "DeleteTemplate";
-            DeleteTemplate.ReadOnly = true;
-            DeleteTemplate.Width = 101;
+            RemoveTemplate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            RemoveTemplate.FillWeight = 90F;
+            RemoveTemplate.HeaderText = "Видалити";
+            RemoveTemplate.Image = Properties.Resources.delete_doc;
+            RemoveTemplate.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            RemoveTemplate.MinimumWidth = 8;
+            RemoveTemplate.Name = "RemoveTemplate";
+            RemoveTemplate.ReadOnly = true;
+            RemoveTemplate.Width = 101;
             // 
             // tabPageGenerateDocument
             // 
@@ -1175,11 +1165,6 @@
         private MaterialSkin.Controls.MaterialButton ButtonReadTemplate;
         private DataGridView dataGridViewTableBookmarks;
         private MaterialSkin.Controls.MaterialTextBox TextBoxSearchTemplate;
-        private DataGridViewTextBoxColumn NumberRows;
-        private DataGridViewTextBoxColumn NameFile;
-        private DataGridViewTextBoxColumn DateModFile;
-        private DataGridViewTextBoxColumn SizeFile;
-        private DataGridViewImageColumn DeleteTemplate;
         private DataGridViewTextBoxColumn ColumnNumber;
         private DataGridViewTextBoxColumn ColumnBookmarkName;
         private DataGridViewTextBoxColumn TypeBookmark;
@@ -1223,5 +1208,9 @@
         private DataGridViewTextBoxColumn CmdOutputTemplate;
         private DataGridViewImageColumn CmdDeleteCommand;
         private MaterialSkin.Controls.MaterialButton ButtonEditCommand;
+        private DataGridViewTextBoxColumn NumberRows;
+        private DataGridViewTextBoxColumn NameFile;
+        private DataGridViewTextBoxColumn PathFile;
+        private DataGridViewImageColumn RemoveTemplate;
     }
 }

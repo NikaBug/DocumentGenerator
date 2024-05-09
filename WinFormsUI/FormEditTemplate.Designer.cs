@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            materialTextBoxTemplateName = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabelTemplateName = new MaterialSkin.Controls.MaterialLabel();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            TextBoxTemplateName = new MaterialSkin.Controls.MaterialTextBox();
+            LabelTemplateName = new MaterialSkin.Controls.MaterialLabel();
             materialLabelSettingBookmark = new MaterialSkin.Controls.MaterialLabel();
-            materialButtonSaveUpdate = new MaterialSkin.Controls.MaterialButton();
+            ButtonSaveUpdate = new MaterialSkin.Controls.MaterialButton();
             dataGridViewEditTableBookmarks = new DataGridView();
             EditRowNumbers = new DataGridViewTextBoxColumn();
             EditBookmarkName = new DataGridViewTextBoxColumn();
@@ -42,35 +42,35 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewEditTableBookmarks).BeginInit();
             SuspendLayout();
             // 
-            // materialTextBoxTemplateName
+            // TextBoxTemplateName
             // 
-            materialTextBoxTemplateName.AnimateReadOnly = false;
-            materialTextBoxTemplateName.BorderStyle = BorderStyle.None;
-            materialTextBoxTemplateName.Depth = 0;
-            materialTextBoxTemplateName.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBoxTemplateName.LeadingIcon = null;
-            materialTextBoxTemplateName.Location = new Point(153, 83);
-            materialTextBoxTemplateName.MaxLength = 50;
-            materialTextBoxTemplateName.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBoxTemplateName.Multiline = false;
-            materialTextBoxTemplateName.Name = "materialTextBoxTemplateName";
-            materialTextBoxTemplateName.Size = new Size(255, 36);
-            materialTextBoxTemplateName.TabIndex = 0;
-            materialTextBoxTemplateName.Text = "";
-            materialTextBoxTemplateName.TrailingIcon = null;
-            materialTextBoxTemplateName.UseTallSize = false;
+            TextBoxTemplateName.AnimateReadOnly = false;
+            TextBoxTemplateName.BorderStyle = BorderStyle.None;
+            TextBoxTemplateName.Depth = 0;
+            TextBoxTemplateName.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            TextBoxTemplateName.LeadingIcon = null;
+            TextBoxTemplateName.Location = new Point(153, 83);
+            TextBoxTemplateName.MaxLength = 50;
+            TextBoxTemplateName.MouseState = MaterialSkin.MouseState.OUT;
+            TextBoxTemplateName.Multiline = false;
+            TextBoxTemplateName.Name = "TextBoxTemplateName";
+            TextBoxTemplateName.Size = new Size(255, 36);
+            TextBoxTemplateName.TabIndex = 0;
+            TextBoxTemplateName.Text = "";
+            TextBoxTemplateName.TrailingIcon = null;
+            TextBoxTemplateName.UseTallSize = false;
             // 
-            // materialLabelTemplateName
+            // LabelTemplateName
             // 
-            materialLabelTemplateName.AutoSize = true;
-            materialLabelTemplateName.Depth = 0;
-            materialLabelTemplateName.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelTemplateName.Location = new Point(19, 85);
-            materialLabelTemplateName.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabelTemplateName.Name = "materialLabelTemplateName";
-            materialLabelTemplateName.Size = new Size(117, 19);
-            materialLabelTemplateName.TabIndex = 1;
-            materialLabelTemplateName.Text = "Назва шаблону";
+            LabelTemplateName.AutoSize = true;
+            LabelTemplateName.Depth = 0;
+            LabelTemplateName.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            LabelTemplateName.Location = new Point(19, 85);
+            LabelTemplateName.MouseState = MaterialSkin.MouseState.HOVER;
+            LabelTemplateName.Name = "LabelTemplateName";
+            LabelTemplateName.Size = new Size(117, 19);
+            LabelTemplateName.TabIndex = 1;
+            LabelTemplateName.Text = "Назва шаблону";
             // 
             // materialLabelSettingBookmark
             // 
@@ -84,25 +84,25 @@
             materialLabelSettingBookmark.TabIndex = 11;
             materialLabelSettingBookmark.Text = "Налаштування закладок";
             // 
-            // materialButtonSaveUpdate
+            // ButtonSaveUpdate
             // 
-            materialButtonSaveUpdate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonSaveUpdate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonSaveUpdate.Depth = 0;
-            materialButtonSaveUpdate.HighEmphasis = true;
-            materialButtonSaveUpdate.Icon = null;
-            materialButtonSaveUpdate.Location = new Point(6, 424);
-            materialButtonSaveUpdate.Margin = new Padding(4, 6, 4, 6);
-            materialButtonSaveUpdate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonSaveUpdate.Name = "materialButtonSaveUpdate";
-            materialButtonSaveUpdate.NoAccentTextColor = Color.Empty;
-            materialButtonSaveUpdate.Size = new Size(187, 36);
-            materialButtonSaveUpdate.TabIndex = 12;
-            materialButtonSaveUpdate.Text = "Зберегти оновлення";
-            materialButtonSaveUpdate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonSaveUpdate.UseAccentColor = false;
-            materialButtonSaveUpdate.UseVisualStyleBackColor = true;
-            materialButtonSaveUpdate.Click += materialButtonSaveUpdate_Click;
+            ButtonSaveUpdate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonSaveUpdate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonSaveUpdate.Depth = 0;
+            ButtonSaveUpdate.HighEmphasis = true;
+            ButtonSaveUpdate.Icon = null;
+            ButtonSaveUpdate.Location = new Point(6, 424);
+            ButtonSaveUpdate.Margin = new Padding(4, 6, 4, 6);
+            ButtonSaveUpdate.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonSaveUpdate.Name = "ButtonSaveUpdate";
+            ButtonSaveUpdate.NoAccentTextColor = Color.Empty;
+            ButtonSaveUpdate.Size = new Size(187, 36);
+            ButtonSaveUpdate.TabIndex = 12;
+            ButtonSaveUpdate.Text = "Зберегти оновлення";
+            ButtonSaveUpdate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonSaveUpdate.UseAccentColor = false;
+            ButtonSaveUpdate.UseVisualStyleBackColor = true;
+            ButtonSaveUpdate.Click += materialButtonSaveUpdate_Click;
             // 
             // dataGridViewEditTableBookmarks
             // 
@@ -113,24 +113,24 @@
             dataGridViewEditTableBookmarks.BackgroundColor = Color.White;
             dataGridViewEditTableBookmarks.BorderStyle = BorderStyle.None;
             dataGridViewEditTableBookmarks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(113, 96, 232);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(113, 96, 232);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewEditTableBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewEditTableBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewEditTableBookmarks.ColumnHeadersHeight = 35;
             dataGridViewEditTableBookmarks.Columns.AddRange(new DataGridViewColumn[] { EditRowNumbers, EditBookmarkName, EditTypeBookmark });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(100, 100, 180);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewEditTableBookmarks.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridViewEditTableBookmarks.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewEditTableBookmarks.EnableHeadersVisualStyles = false;
             dataGridViewEditTableBookmarks.GridColor = Color.LightGray;
             dataGridViewEditTableBookmarks.Location = new Point(6, 159);
@@ -163,9 +163,9 @@
             // EditTypeBookmark
             // 
             EditTypeBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            EditTypeBookmark.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            EditTypeBookmark.DefaultCellStyle = dataGridViewCellStyle5;
             EditTypeBookmark.FlatStyle = FlatStyle.Flat;
             EditTypeBookmark.HeaderText = "Тип закладки";
             EditTypeBookmark.MinimumWidth = 8;
@@ -177,10 +177,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(909, 469);
             Controls.Add(dataGridViewEditTableBookmarks);
-            Controls.Add(materialButtonSaveUpdate);
+            Controls.Add(ButtonSaveUpdate);
             Controls.Add(materialLabelSettingBookmark);
-            Controls.Add(materialLabelTemplateName);
-            Controls.Add(materialTextBoxTemplateName);
+            Controls.Add(LabelTemplateName);
+            Controls.Add(TextBoxTemplateName);
             MaximizeBox = false;
             Name = "FormEditTemplate";
             StartPosition = FormStartPosition.CenterParent;
@@ -192,10 +192,10 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialTextBox materialTextBoxTemplateName;
-        private MaterialSkin.Controls.MaterialLabel materialLabelTemplateName;
+        private MaterialSkin.Controls.MaterialTextBox TextBoxTemplateName;
+        private MaterialSkin.Controls.MaterialLabel LabelTemplateName;
         private MaterialSkin.Controls.MaterialLabel materialLabelSettingBookmark;
-        private MaterialSkin.Controls.MaterialButton materialButtonSaveUpdate;
+        private MaterialSkin.Controls.MaterialButton ButtonSaveUpdate;
         private DataGridView dataGridViewEditTableBookmarks;
         private DataGridViewTextBoxColumn EditRowNumbers;
         private DataGridViewTextBoxColumn EditBookmarkName;

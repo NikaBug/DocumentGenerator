@@ -27,7 +27,7 @@ namespace Domain
         /// <summary>
         /// Назва файлу
         /// </summary>
-        public string FileName { get; }
+        public string FileName { get; set; }
 
         /// <summary>
         /// Шлях до файлу
@@ -42,6 +42,6 @@ namespace Domain
         /// <summary>
         /// Закладки
         /// </summary>
-        public Dictionary<string, string> FileBookmarks { get; }
+        public Dictionary<string, string> FileBookmarks { get; set; }
     }
 }

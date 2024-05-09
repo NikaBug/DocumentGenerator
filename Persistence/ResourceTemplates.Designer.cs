@@ -61,7 +61,7 @@ namespace Persistence {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\\Users\\nika6\\source\\repos\\DocumentGenerator\\Persistence\\exampleTemplate\\BookmarkTest.docx.
+        ///   Looks up a localized string similar to ..\..\..\..\Persistence\exampleTemplate\BookmarkTest.docx.
         /// </summary>
         internal static string BookmarkTestTemplate {
             get {
@@ -70,7 +70,7 @@ namespace Persistence {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\nika6\source\repos\DocumentGenerator\Persistence\exampleTemplate\DocTest.docx.
+        ///   Looks up a localized string similar to ..\..\..\..\Persistence\exampleTemplate\DocTest.docx.
         /// </summary>
         internal static string DocTestTemplate {
             get {

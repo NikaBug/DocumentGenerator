@@ -7,7 +7,9 @@
     {
         Task<Template> Create(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks);
         Task<IEnumerable<Template>> Get(string name);
-        Task Update(Template oldTemplate, Template newTemplate);
+        Task Update(string oldName,
+            string newName,
+            IDictionary<string, string> newBookmarks);
         Task Save(Template template);
         Task Delete(string name);
     }
