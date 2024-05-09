@@ -40,7 +40,7 @@ namespace Core.Services
         /// <param name="inputTemplate">вхідний шаблон</param>
         /// <param name="outputTemplate">вихідний шаблон</param>
         /// <returns>успішність виконання операції</returns>
-        public Task CreateCommand(string commandName,
+        public Task<Command> CreateCommand(string commandName,
             IReadOnlyDictionary<string, string> commandSetting,
             Template inputTemplate,
             Template outputTemplate)
@@ -64,9 +64,11 @@ namespace Core.Services
         /// <param name="oldCommand">стара команда</param>
         /// <param name="newCommand">нова команда</param>
         /// <returns>успішність виконання операції</returns>
-        public Task UpdateCommand(Command oldCommand, Command newCommand)
+        public Task UpdateCommand(string oldName,
+            string newName,
+            IDictionary<string, string> newSetting)
         {
-            return commandRepository.Update(oldCommand, newCommand);
+            return commandRepository.Update(oldName, newName, newSetting);
         }
 
 

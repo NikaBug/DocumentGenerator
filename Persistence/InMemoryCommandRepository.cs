@@ -53,24 +53,29 @@ namespace Persistence
                 return Task.FromResult(commandFound);
             }
         }
+     
         /// <summary>
         /// Оновити команду
         /// </summary>
-        /// <param name="oldCommand">стара команда</param>
-        /// <param name="newCommand">нова команда</param>
-        /// <returns>Успішність виконання операції</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public Task Update(Command oldCommand, Command newCommand)
+        /// <param name="oldName"></param>
+        /// <param name="newName"></param>
+        /// <param name="newSetting"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public Task Update(string oldName,
+            string newName,
+            IDictionary<string, string> newSetting)
         {
-            var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == oldCommand.CommandName);
+            var item = inMemoryCommands.FirstOrDefault(c => c.CommandName == oldName);
             if (item == null)
             {
-                throw new ArgumentNullException(nameof(oldCommand.CommandName));
+                throw new ArgumentNullException(nameof(oldName));
             }
             else
             {
                 var index = inMemoryCommands.IndexOf(item);
-                inMemoryCommands[index] = newCommand;
+                inMemoryCommands[index].CommandName = newName;
+                inMemoryCommands[index].CommandSetting = (IReadOnlyDictionary<string, string>)newSetting;
             }
             return Task.CompletedTask;
         }

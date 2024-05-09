@@ -368,7 +368,6 @@
             dataGridViewTableTemplate.TabIndex = 0;
             dataGridViewTableTemplate.CellContentClick += dataGridViewTableTemplate_CellContentClick;
             dataGridViewTableTemplate.RowPostPaint += dataGridViewTableTemplate_RowPostPaint;
-            dataGridViewTableTemplate.SelectionChanged += dataGridViewTableTemplate_SelectionChanged;
             // 
             // NumberRows
             // 
@@ -769,7 +768,7 @@
             // 
             // groupBoxCmdTable
             // 
-            groupBoxCmdTable.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBoxCmdTable.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBoxCmdTable.Controls.Add(ButtonEditCommand);
             groupBoxCmdTable.Controls.Add(ButtonCreateCommand);
             groupBoxCmdTable.Controls.Add(dataGridViewTableCommand);
@@ -786,20 +785,20 @@
             ButtonEditCommand.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ButtonEditCommand.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             ButtonEditCommand.Depth = 0;
-            ButtonEditCommand.Enabled = false;
             ButtonEditCommand.HighEmphasis = true;
             ButtonEditCommand.Icon = (Image)resources.GetObject("ButtonEditCommand.Icon");
-            ButtonEditCommand.Location = new Point(170, 42);
+            ButtonEditCommand.Location = new Point(160, 33);
             ButtonEditCommand.Margin = new Padding(4, 6, 4, 6);
             ButtonEditCommand.MouseState = MaterialSkin.MouseState.HOVER;
             ButtonEditCommand.Name = "ButtonEditCommand";
             ButtonEditCommand.NoAccentTextColor = Color.Empty;
-            ButtonEditCommand.Size = new Size(155, 47);
+            ButtonEditCommand.Size = new Size(134, 47);
             ButtonEditCommand.TabIndex = 19;
             ButtonEditCommand.Text = "Редагувати";
             ButtonEditCommand.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
             ButtonEditCommand.UseAccentColor = false;
             ButtonEditCommand.UseVisualStyleBackColor = true;
+            ButtonEditCommand.Click += ButtonEditCommand_Click;
             // 
             // ButtonCreateCommand
             // 
@@ -807,10 +806,9 @@
             ButtonCreateCommand.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ButtonCreateCommand.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             ButtonCreateCommand.Depth = 0;
-            ButtonCreateCommand.Enabled = false;
             ButtonCreateCommand.HighEmphasis = true;
             ButtonCreateCommand.Icon = (Image)resources.GetObject("ButtonCreateCommand.Icon");
-            ButtonCreateCommand.Location = new Point(14, 42);
+            ButtonCreateCommand.Location = new Point(7, 33);
             ButtonCreateCommand.Margin = new Padding(4, 6, 4, 6);
             ButtonCreateCommand.MouseState = MaterialSkin.MouseState.HOVER;
             ButtonCreateCommand.Name = "ButtonCreateCommand";
@@ -829,7 +827,7 @@
             dataGridViewTableCommand.AllowUserToDeleteRows = false;
             dataGridViewTableCommand.AllowUserToResizeColumns = false;
             dataGridViewTableCommand.AllowUserToResizeRows = false;
-            dataGridViewTableCommand.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewTableCommand.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewTableCommand.BackgroundColor = Color.White;
             dataGridViewTableCommand.BorderStyle = BorderStyle.None;
             dataGridViewTableCommand.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -853,7 +851,7 @@
             dataGridViewTableCommand.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridViewTableCommand.EnableHeadersVisualStyles = false;
             dataGridViewTableCommand.GridColor = Color.LightGray;
-            dataGridViewTableCommand.Location = new Point(6, 107);
+            dataGridViewTableCommand.Location = new Point(6, 89);
             dataGridViewTableCommand.MultiSelect = false;
             dataGridViewTableCommand.Name = "dataGridViewTableCommand";
             dataGridViewTableCommand.ReadOnly = true;
@@ -861,7 +859,7 @@
             dataGridViewTableCommand.RowHeadersWidth = 25;
             dataGridViewTableCommand.RowTemplate.Height = 25;
             dataGridViewTableCommand.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTableCommand.Size = new Size(1218, 233);
+            dataGridViewTableCommand.Size = new Size(1218, 251);
             dataGridViewTableCommand.TabIndex = 16;
             dataGridViewTableCommand.CellContentClick += dataGridViewTableCommand_CellContentClick;
             dataGridViewTableCommand.RowPostPaint += dataGridViewTableCommand_RowPostPaint;

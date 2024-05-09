@@ -10,7 +10,9 @@
             Template inputTemplate,
             Template outputTemplate);
         Task<IEnumerable<Command>> Get(string cmdName);
-        Task Update(Command oldCommand, Command newCommand);
+        Task Update(string oldName,
+            string newName,
+            IDictionary<string, string> newSetting);
         Task Save(Command command);
         Task Delete(string cmdName);
     }

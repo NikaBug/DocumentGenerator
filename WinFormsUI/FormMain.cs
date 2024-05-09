@@ -4,29 +4,27 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using Presentation.ViewModels;
 using Presentation.Views;
 using Spire.Doc;
-//using Document = Aspose.Words.Document;
-//using Syncfusion.DocIO;
-//using Syncfusion.DocIO.DLS;
 
 namespace WinFormsUI
 {
     public partial class FormMain : MaterialForm, IMainView
     {
-        private List<TemplateViewModel> listTemplates; // список шаблонів
-        private List<CommandViewModel> listCommands; // список команд
         static public int IndexRowCommandTable = 0; // індекс рядка таблиці шаблонів
         static public int IndexRowTemplateTable = 0; // індекс рядка таблиці команд
-        private DataGridViewComboBoxColumn cmbGenSetBookmark;
-        private TemplateViewModel cmdInputDoc;
+        private DataGridViewComboBoxColumn cmbGenTypeDataBookmarks; // тип даних закладки [модуль генерації]
+        private TemplateViewModel cmdInputDoc; // вхідний документ [модуль команд]
 
+        // події для шаблонів
         public event EventHandler? DeleteTemplate;
         public event EventHandler? SaveTemplate;
         public event EventHandler? UpdateTemplate;
         public event EventHandler<TemplateViewModel> GetTemplate;
-        // events command
+
+        // події для команд
         public event EventHandler? SaveCommand;
         public event EventHandler? DeleteCommand;
         public event EventHandler<CommandViewModel> GetCommand;
+        public event EventHandler? UpdateCommand;
 
         private TemplateViewModel templateViewModel;
         private string templateName;
@@ -45,15 +43,13 @@ namespace WinFormsUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             this.WindowState = FormWindowState.Maximized;
-            this.listTemplates = new List<TemplateViewModel>();
-            this.listCommands = new List<CommandViewModel>();
 
             // [Модуль Генерації]
             // додати у стовпець таблиці закладок типи даних
-            cmbGenSetBookmark = (DataGridViewComboBoxColumn)this.dataGridViewGenSettingBookmarks.Columns[2];
-            cmbGenSetBookmark.Items.Add("Текст");
-            cmbGenSetBookmark.Items.Add("Зображення");
-            cmbGenSetBookmark.Items.Add("Таблиця");
+            cmbGenTypeDataBookmarks = (DataGridViewComboBoxColumn)this.dataGridViewGenSettingBookmarks.Columns[2];
+            cmbGenTypeDataBookmarks.Items.Add("Текст");
+            cmbGenTypeDataBookmarks.Items.Add("Зображення");
+            cmbGenTypeDataBookmarks.Items.Add("Таблиця");
             this.TextBoxCmdInputDocument.ReadOnly = true;
 
             this.ComboBoxGenCommandList.Enabled = false;
@@ -176,11 +172,6 @@ namespace WinFormsUI
                 dictionaryBookmarks.Add(doc.Bookmarks[i].Name, "Текст");
             }
             return dictionaryBookmarks;
-        }
-
-        private void dataGridViewTableTemplate_SelectionChanged(object sender, EventArgs e)
-        {
-            int indSelTemplate = dataGridViewTableTemplate.CurrentCell.RowIndex;
         }
 
         /// <summary>
@@ -511,7 +502,7 @@ namespace WinFormsUI
                 string val = Template.BookmarksFile.ElementAt(i).Value.ToString();
                 this.dataGridViewGenSettingBookmarks.Rows.Add(0, Template.BookmarksFile.ElementAt(i).Key);
                 this.dataGridViewGenSettingBookmarks.Rows[i].Cells[2].Value = val;
-                cmbGenSetBookmark.DefaultCellStyle.NullValue = val;
+                cmbGenTypeDataBookmarks.DefaultCellStyle.NullValue = val;
             }
         }
 
@@ -643,13 +634,15 @@ namespace WinFormsUI
             string commandName = this.TextBoxCmdCommandName.Text;
             int indexOutputTemplate = ComboBoxCmdOutputTemplate.SelectedIndex;
 
-            foreach (var cmd in this.listCommands)
+            foreach (DataGridViewRow row in this.dataGridViewTableCommand.Rows)
             {
-                if (cmd.NameCommand == commandName)
+                string name = row.Cells[1].Value.ToString();
+                if (commandName == name)
                 {
                     CustomMessageBox.Show("Команда з такою назвою вже існує!", "Створення команди", MessageBoxButtons.OK);
                     return;
                 }
+                    
             }
 
             Dictionary<string, string> cmdSetting = new Dictionary<string, string>();
@@ -675,7 +668,7 @@ namespace WinFormsUI
             SaveCommand?.Invoke(sender, e);
 
             List<CommandViewModel> command = new List<CommandViewModel>()
-            { commandViewModel };
+            { Command };
 
             this.SetCommandsList(command);
         }
@@ -708,13 +701,6 @@ namespace WinFormsUI
                         this.dataGridViewTableCommand.Rows.RemoveAt(index);
                         IndexRowCommandTable--;
 
-                        //if(this.dataGridViewCmdBookmarkMatch.Rows.Count > 0)
-                        //{
-                        //    this.dataGridViewCmdBookmarkMatch.Rows.Clear();
-                        //    this.dataGridViewCmdBookmarkMatch.Refresh();
-                        //}
-
-
                         // видалення зі списку команд у модулі генерації
                         this.ComboBoxGenCommandList.Items.RemoveAt(index);
                     }
@@ -733,6 +719,47 @@ namespace WinFormsUI
             else
             {
                 this.ComboBoxGenCommandList.Enabled = false;
+            }
+        }
+
+        private void ButtonEditCommand_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridViewTableCommand.SelectedRows.Count == 0)
+            {
+                CustomMessageBox.Show("Для редагування виберіть команду з таблиці.", "Редагування команди", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int indexCmd = this.dataGridViewTableCommand.CurrentCell.RowIndex; // індекс вибраної команди
+                this.commandName = this.dataGridViewTableCommand.Rows[indexCmd].Cells[1].Value.ToString();
+
+                GetCommand?.Invoke(sender, Command);
+
+                List<string> namesCommand = new List<string>();
+                foreach (DataGridViewRow row in this.dataGridViewTableCommand.Rows)
+                {
+                    string name = row.Cells[1].Value.ToString();
+                    if (Command.NameCommand != name)
+                    {
+                        namesCommand.Add(name);
+                    }
+                }
+                FormEditCommand formEditCommand = new FormEditCommand(Command.NameCommand, Command.OutputTemplate.BookmarksFile,
+                    Command.CommandSetting, namesCommand);
+                formEditCommand.ShowDialog();
+                if (!formEditCommand.SavedChanges)
+                    return;
+
+                commandViewModel = new CommandViewModel();
+                commandViewModel.NameCommand = formEditCommand.newNameCommand;
+                commandViewModel.CommandSetting = formEditCommand.newCommandSetting;
+
+                UpdateCommand?.Invoke(sender, e);
+
+                this.dataGridViewTableCommand.Rows[indexCmd].Cells[1].Value = Command.NameCommand;
+                this.ComboBoxGenCommandList.Items[indexCmd] = Command.NameCommand;
+
+
             }
         }
     }

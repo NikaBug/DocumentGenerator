@@ -27,12 +27,12 @@
         /// <summary>
         /// Налаштування команди
         /// </summary>
-        public IReadOnlyDictionary<string, string> CommandSetting { get; }
+        public IReadOnlyDictionary<string, string> CommandSetting { get; set; }
 
         /// <summary>
         /// Назва команди
         /// </summary>
-        public string CommandName { get; }
+        public string CommandName { get; set; }
 
         /// <summary>
         /// Вхідий шаблон

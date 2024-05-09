@@ -1,4 +1,6 @@
 ﻿using Domain;
+using Spire.Doc;
+using Template = Domain.Template;
 
 namespace Persistence
 {
@@ -12,11 +14,11 @@ namespace Persistence
 
         private static Dictionary<string, string> GetTemplateBookmarks(string filePath)
         {
-            Aspose.Words.Document doc = new Aspose.Words.Document(filePath);
+            Document doc = new Document(filePath);
             Dictionary<string, string> dictionaryBookmarks = new Dictionary<string, string>();
-            for (int i = 0; i < doc.Range.Bookmarks.Count; i++)
+            for (int i = 0; i < doc.Bookmarks.Count; i++)
             {
-                dictionaryBookmarks.Add(doc.Range.Bookmarks[i].Name, "Текст");
+                dictionaryBookmarks.Add(doc.Bookmarks[i].Name, "Текст");
 
             }
             return dictionaryBookmarks;

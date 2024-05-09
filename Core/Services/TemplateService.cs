@@ -38,7 +38,10 @@ namespace Core.Services
         /// <param name="filePath">шлях до шаблону</param>
         /// <param name="fileContent">зміст шаблону</param>
         /// <returns>успішність виконання операції</returns>
-        public Task<Template> CreateTemplate(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks)
+        public Task<Template> CreateTemplate(string fileName, 
+            string filePath, 
+            byte[] fileContent, 
+            Dictionary<string, string> fileBookmarks)
         {
             return templateRepository.Create(fileName, filePath, fileContent, fileBookmarks);
         }

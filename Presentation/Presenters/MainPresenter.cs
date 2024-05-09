@@ -30,6 +30,7 @@ namespace Presentation.Presenters
             this.mainView.SaveCommand += (s, e) => SaveCommand(s, e);
             this.mainView.DeleteCommand += (s, e) => DeleteCommad(s, e);
             this.mainView.GetCommand += (s, e) => GetCommand(s, this.mainView.Command);
+            this.mainView.UpdateCommand += (s, e) => UpdateCommand(s, e, this.mainView.nameCommand, this.mainView.Command);
         }
 
         // події для сховища даних КОМАНД
@@ -61,19 +62,25 @@ namespace Presentation.Presenters
             this.commandService.DeleteCommand(this.mainView.nameCommand);
         }
 
-        public async void SaveCommand(object sender, EventArgs e)
+        public async Task SaveCommand(object sender, EventArgs e)
         {
             var inputTmp = await templateService.CreateTemplate(mainView.Command.InputTemplate.FileName,
                 mainView.Command.InputTemplate.FilePath,
                 mainView.Command.InputTemplate.ContentFile,
                 mainView.Command.InputTemplate.BookmarksFile);
             var outputTmp = await templateService.GetTemplate(mainView.Command.OutputTemplate.FileName);
+            var cmd = await commandService.CreateCommand(this.mainView.Command.NameCommand, this.mainView.Command.CommandSetting,
+               inputTmp, outputTmp.Last());
 
-            _ = this.commandService.CreateCommand(this.mainView.Command.NameCommand, this.mainView.Command.CommandSetting,
-                inputTmp, outputTmp.First());
+            _ = this.commandService.SaveCommand(cmd);
         }
 
         // події для сховища даних ШАБЛОНІВ
+
+        public void UpdateCommand(object sender, EventArgs e, string oldName, CommandViewModel newCommand)
+        {
+            this.commandService.UpdateCommand(oldName, newCommand.NameCommand, newCommand.CommandSetting);
+        }
 
         public async Task GetTemplate(object sender, TemplateViewModel e)
         {
