@@ -6,7 +6,7 @@
     {
         public string NameCommand { get; set; }
         public TemplateViewModel InputTemplate { get; set; }
-        public TemplateViewModel OutputTemplate { get; set;}
+        public TemplateViewModel OutputTemplate { get; set; }
         public Dictionary<string, string> CommandSetting { get; set; }
     }
 }

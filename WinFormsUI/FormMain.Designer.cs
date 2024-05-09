@@ -67,7 +67,7 @@
             materialLabelNameOutputDocument = new MaterialSkin.Controls.MaterialLabel();
             materialTextBoxGenNameOutputDocument = new MaterialSkin.Controls.MaterialTextBox2();
             ComboBoxGenCommandList = new MaterialSkin.Controls.MaterialComboBox();
-            materialSwitchUseCommand = new MaterialSkin.Controls.MaterialSwitch();
+            SwitchGenUseCommand = new MaterialSkin.Controls.MaterialSwitch();
             dataGridViewGenSettingBookmarks = new DataGridView();
             GenNumberRows = new DataGridViewTextBoxColumn();
             GenNameBookmark = new DataGridViewTextBoxColumn();
@@ -436,7 +436,7 @@
             groupBoxGenSetting.Controls.Add(materialLabelNameOutputDocument);
             groupBoxGenSetting.Controls.Add(materialTextBoxGenNameOutputDocument);
             groupBoxGenSetting.Controls.Add(ComboBoxGenCommandList);
-            groupBoxGenSetting.Controls.Add(materialSwitchUseCommand);
+            groupBoxGenSetting.Controls.Add(SwitchGenUseCommand);
             groupBoxGenSetting.Controls.Add(dataGridViewGenSettingBookmarks);
             groupBoxGenSetting.Location = new Point(6, 337);
             groupBoxGenSetting.Name = "groupBoxGenSetting";
@@ -579,20 +579,21 @@
             ComboBoxGenCommandList.StartIndex = 0;
             ComboBoxGenCommandList.TabIndex = 18;
             // 
-            // materialSwitchUseCommand
+            // SwitchGenUseCommand
             // 
-            materialSwitchUseCommand.AutoSize = true;
-            materialSwitchUseCommand.Depth = 0;
-            materialSwitchUseCommand.Location = new Point(15, 27);
-            materialSwitchUseCommand.Margin = new Padding(0);
-            materialSwitchUseCommand.MouseLocation = new Point(-1, -1);
-            materialSwitchUseCommand.MouseState = MaterialSkin.MouseState.HOVER;
-            materialSwitchUseCommand.Name = "materialSwitchUseCommand";
-            materialSwitchUseCommand.Ripple = true;
-            materialSwitchUseCommand.Size = new Size(261, 37);
-            materialSwitchUseCommand.TabIndex = 17;
-            materialSwitchUseCommand.Text = "використати дані команди";
-            materialSwitchUseCommand.UseVisualStyleBackColor = true;
+            SwitchGenUseCommand.AutoSize = true;
+            SwitchGenUseCommand.Depth = 0;
+            SwitchGenUseCommand.Location = new Point(15, 27);
+            SwitchGenUseCommand.Margin = new Padding(0);
+            SwitchGenUseCommand.MouseLocation = new Point(-1, -1);
+            SwitchGenUseCommand.MouseState = MaterialSkin.MouseState.HOVER;
+            SwitchGenUseCommand.Name = "SwitchGenUseCommand";
+            SwitchGenUseCommand.Ripple = true;
+            SwitchGenUseCommand.Size = new Size(261, 37);
+            SwitchGenUseCommand.TabIndex = 17;
+            SwitchGenUseCommand.Text = "використати дані команди";
+            SwitchGenUseCommand.UseVisualStyleBackColor = true;
+            SwitchGenUseCommand.CheckedChanged += SwitchGenUseCommand_CheckedChanged;
             // 
             // dataGridViewGenSettingBookmarks
             // 
@@ -695,7 +696,7 @@
             materialTabControlGenSelectTemplate.Multiline = true;
             materialTabControlGenSelectTemplate.Name = "materialTabControlGenSelectTemplate";
             materialTabControlGenSelectTemplate.SelectedIndex = 0;
-            materialTabControlGenSelectTemplate.Size = new Size(900, 219);
+            materialTabControlGenSelectTemplate.Size = new Size(1236, 219);
             materialTabControlGenSelectTemplate.TabIndex = 7;
             materialTabControlGenSelectTemplate.SelectedIndexChanged += materialTabControlGenSelectTemplate_SelectedIndexChanged;
             // 
@@ -708,7 +709,7 @@
             tabPageGenSaveTemplate.Location = new Point(4, 34);
             tabPageGenSaveTemplate.Name = "tabPageGenSaveTemplate";
             tabPageGenSaveTemplate.Padding = new Padding(3);
-            tabPageGenSaveTemplate.Size = new Size(892, 181);
+            tabPageGenSaveTemplate.Size = new Size(1228, 181);
             tabPageGenSaveTemplate.TabIndex = 0;
             tabPageGenSaveTemplate.Text = "Збережені шаблони";
             // 
@@ -724,7 +725,7 @@
             ListBoxGenSavedTemplates.Name = "ListBoxGenSavedTemplates";
             ListBoxGenSavedTemplates.SelectedIndex = -1;
             ListBoxGenSavedTemplates.SelectedItem = null;
-            ListBoxGenSavedTemplates.Size = new Size(884, 173);
+            ListBoxGenSavedTemplates.Size = new Size(1220, 173);
             ListBoxGenSavedTemplates.TabIndex = 3;
             ListBoxGenSavedTemplates.SelectedValueChanged += ListBoxGenSavedTemplates_SelectedValueChanged;
             // 
@@ -734,7 +735,7 @@
             tabPageGenLoadTemplate.Location = new Point(4, 34);
             tabPageGenLoadTemplate.Name = "tabPageGenLoadTemplate";
             tabPageGenLoadTemplate.Padding = new Padding(3);
-            tabPageGenLoadTemplate.Size = new Size(892, 181);
+            tabPageGenLoadTemplate.Size = new Size(1228, 181);
             tabPageGenLoadTemplate.TabIndex = 1;
             tabPageGenLoadTemplate.Text = "Завантажити шаблон";
             tabPageGenLoadTemplate.UseVisualStyleBackColor = true;
@@ -746,10 +747,10 @@
             materialTabSelectorGenSelectTemplate.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
             materialTabSelectorGenSelectTemplate.Depth = 0;
             materialTabSelectorGenSelectTemplate.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTabSelectorGenSelectTemplate.Location = new Point(23, 30);
+            materialTabSelectorGenSelectTemplate.Location = new Point(25, 30);
             materialTabSelectorGenSelectTemplate.MouseState = MaterialSkin.MouseState.HOVER;
             materialTabSelectorGenSelectTemplate.Name = "materialTabSelectorGenSelectTemplate";
-            materialTabSelectorGenSelectTemplate.Size = new Size(900, 56);
+            materialTabSelectorGenSelectTemplate.Size = new Size(1229, 56);
             materialTabSelectorGenSelectTemplate.TabIndex = 6;
             materialTabSelectorGenSelectTemplate.Text = "materialTabSelector1";
             // 
@@ -1177,7 +1178,7 @@
         private GroupBox groupBoxCmdTable;
         private DataGridView dataGridViewGenSettingBookmarks;
         private GroupBox groupBoxGenSetting;
-        private MaterialSkin.Controls.MaterialSwitch materialSwitchUseCommand;
+        private MaterialSkin.Controls.MaterialSwitch SwitchGenUseCommand;
         private MaterialSkin.Controls.MaterialComboBox ComboBoxGenCommandList;
         private DataGridViewTextBoxColumn GenNumberRows;
         private DataGridViewTextBoxColumn GenNameBookmark;

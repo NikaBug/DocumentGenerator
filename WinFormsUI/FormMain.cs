@@ -55,6 +55,8 @@ namespace WinFormsUI
             cmbGenSetBookmark.Items.Add("Зображення");
             cmbGenSetBookmark.Items.Add("Таблиця");
             this.TextBoxCmdInputDocument.ReadOnly = true;
+
+            this.ComboBoxGenCommandList.Enabled = false;
             // [Модуль Команд]
             // вхідна закладна (з вхідного документа) для команди
             CmdOutputBookmark = (DataGridViewComboBoxColumn)this.dataGridViewCmdBookmarkMatch.Columns[2];
@@ -213,7 +215,7 @@ namespace WinFormsUI
                     {   // якщо шаблон вибрано
                         int index = dataGridViewTableTemplate.CurrentCell.RowIndex;
                         this.TextBoxSearchTemplate.Text = dataGridViewTableTemplate.Rows[index].Cells[1].Value.ToString();
-                       // this.TextBoxTmpSelectedTemplate.Text = dataGridViewTableTemplate.Rows[index].Cells[1].Value.ToString();
+                        // this.TextBoxTmpSelectedTemplate.Text = dataGridViewTableTemplate.Rows[index].Cells[1].Value.ToString();
                         templateName = dataGridViewTableTemplate.Rows[index].Cells[1].Value.ToString();
                         DeleteTemplate?.Invoke(sender, e);
 
@@ -266,7 +268,7 @@ namespace WinFormsUI
                 templateViewModel.FilePath = fileInfo.FullName;
                 templateViewModel.ContentFile = File.ReadAllBytes(fileInfo.FullName);
                 templateViewModel.BookmarksFile = GetBookmarksFromDoc(fileInfo.FullName);
-                
+
                 // збереження шаблона в пам'яті
                 SaveTemplate?.Invoke(sender, e);
 
@@ -500,11 +502,11 @@ namespace WinFormsUI
 
             this.templateViewModel = new TemplateViewModel();
             templateViewModel.FileName = ListBoxGenSavedTemplates.Items[indexSelectedTemplate].Text;
-            
+
             // отримати шаблон з пам'яті
             this.GetTemplate.Invoke(sender, Template);
 
-            for(int i = 0; i < Template.BookmarksFile.Count; i++)
+            for (int i = 0; i < Template.BookmarksFile.Count; i++)
             {
                 string val = Template.BookmarksFile.ElementAt(i).Value.ToString();
                 this.dataGridViewGenSettingBookmarks.Rows.Add(0, Template.BookmarksFile.ElementAt(i).Key);
@@ -534,8 +536,8 @@ namespace WinFormsUI
             {
                 // інформація про файл
                 FileInfo fileInfo = new FileInfo(ofd.FileName);
-                
-                if(ComboBoxCmdOutputTemplate.Items.Count > 0)
+
+                if (ComboBoxCmdOutputTemplate.Items.Count > 0)
                 {
                     var isContains = ComboBoxCmdOutputTemplate.Items.Contains(ofd.FileName);
                     if (isContains)
@@ -545,7 +547,7 @@ namespace WinFormsUI
                         return;
                     }
                 }
-               
+
                 this.TextBoxCmdInputDocument.Text = fileInfo.Name;
 
                 Document doc = new Document(fileInfo.FullName);
@@ -701,7 +703,7 @@ namespace WinFormsUI
 
                         GetCommand?.Invoke(sender, Command);
                         DeleteCommand?.Invoke(sender, e);
-                        
+
                         // видалення з таблиці
                         this.dataGridViewTableCommand.Rows.RemoveAt(index);
                         IndexRowCommandTable--;
@@ -722,6 +724,17 @@ namespace WinFormsUI
 
         }
 
+        private void SwitchGenUseCommand_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.SwitchGenUseCommand.Checked)
+            {
+                this.ComboBoxGenCommandList.Enabled = true;
+            }
+            else
+            {
+                this.ComboBoxGenCommandList.Enabled = false;
+            }
+        }
     }
 }
 

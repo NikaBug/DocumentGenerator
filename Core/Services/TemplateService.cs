@@ -49,8 +49,8 @@ namespace Core.Services
         /// <param name="oldTemplate">стариий шаблон</param>
         /// <param name="newTemplate">новий шаблон</param>
         /// <returns>успішність виконання операції</returns>
-        public Task UpdateTemplate(string oldName, 
-            string newName, 
+        public Task UpdateTemplate(string oldName,
+            string newName,
             IDictionary<string, string> newBookmarks)
         {
             //return templateRepository.Update(oldTemplate, newTemplate);

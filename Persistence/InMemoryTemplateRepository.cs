@@ -129,8 +129,8 @@ namespace Persistence
             return Task.CompletedTask;
         }
 
-        public Task Update(string oldName,  
-            string newName, 
+        public Task Update(string oldName,
+            string newName,
             IDictionary<string, string> newBookmarks)
         {
             var item = inMemoryTemplates.FirstOrDefault(t => t.FileName == oldName);

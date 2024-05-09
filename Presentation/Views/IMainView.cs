@@ -18,7 +18,7 @@ namespace Presentation.Views
 
         // commad model
         public CommandViewModel Command { get; set; }
-        public string nameCommand {  get; set; }
+        public string nameCommand { get; set; }
 
         // events command
         public event EventHandler? SaveCommand;

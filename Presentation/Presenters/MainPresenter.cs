@@ -1,5 +1,4 @@
 ﻿using Core.Services;
-using Domain;
 using Presentation.ViewModels;
 using Presentation.Views;
 
@@ -54,7 +53,7 @@ namespace Presentation.Presenters
 
             e.InputTemplate = inputTmp;
             e.OutputTemplate = outputTmp;
-            e.CommandSetting = (Dictionary<string, string>)cmd.First().CommandSetting;    
+            e.CommandSetting = (Dictionary<string, string>)cmd.First().CommandSetting;
         }
 
         public void DeleteCommad(object sender, EventArgs e)
@@ -65,7 +64,7 @@ namespace Presentation.Presenters
         public async void SaveCommand(object sender, EventArgs e)
         {
             var inputTmp = await templateService.CreateTemplate(mainView.Command.InputTemplate.FileName,
-                mainView.Command.InputTemplate.FilePath, 
+                mainView.Command.InputTemplate.FilePath,
                 mainView.Command.InputTemplate.ContentFile,
                 mainView.Command.InputTemplate.BookmarksFile);
             var outputTmp = await templateService.GetTemplate(mainView.Command.OutputTemplate.FileName);
@@ -92,7 +91,7 @@ namespace Presentation.Presenters
 
         public void UpdateTemplate(object? sender, EventArgs e, string oldName, TemplateViewModel newTemplate)
         {
-           this.templateService.UpdateTemplate(oldName, newTemplate.FileName, newTemplate.BookmarksFile);
+            this.templateService.UpdateTemplate(oldName, newTemplate.FileName, newTemplate.BookmarksFile);
         }
 
         public void RemoveTemplate(object sender, EventArgs e)
@@ -102,10 +101,10 @@ namespace Presentation.Presenters
 
         public async Task SaveTemplate(object sender, EventArgs e)
         {
-            var template = await this.templateService.CreateTemplate(this.mainView.Template.FileName, 
+            var template = await this.templateService.CreateTemplate(this.mainView.Template.FileName,
                 this.mainView.Template.FileName, this.mainView.Template.ContentFile,
                 this.mainView.Template.BookmarksFile);
-             _ = templateService.Save(template);
+            _ = templateService.Save(template);
         }
 
         public async Task Run()

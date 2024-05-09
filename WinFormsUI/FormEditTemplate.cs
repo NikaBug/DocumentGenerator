@@ -40,7 +40,7 @@ namespace WinFormsUI
                 this.dataGridViewEditTableBookmarks.Rows.Add(0, itemBookmarks.Key);
             }
 
-            this.namesSavedTemplates = namesSavedTemplates; 
+            this.namesSavedTemplates = namesSavedTemplates;
         }
 
         private void dataGridViewEditTableBookmarks_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -57,11 +57,12 @@ namespace WinFormsUI
                     + this.TextBoxTemplateName.Text + " має містити.docx наприкінці.",
                     "Редагування шаблону", MessageBoxButtons.OK);
                 return;
-            } else
+            }
+            else
             {
-                foreach(var name in namesSavedTemplates)
+                foreach (var name in namesSavedTemplates)
                 {
-                    if(name == this.TextBoxTemplateName.Text)
+                    if (name == this.TextBoxTemplateName.Text)
                     {
                         CustomMessageBox.Show("Назва шаблону "
                          + this.TextBoxTemplateName.Text + " немає співпадати зі вже збереженими шаблонами!",

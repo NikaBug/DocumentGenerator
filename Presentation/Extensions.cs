@@ -2,7 +2,6 @@
 using Core.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Presentation.Presenters;
-using Presentation.Views;
 
 namespace Presentation
 {

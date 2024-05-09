@@ -16,7 +16,7 @@ namespace WinFormsUI
         public string Message
         {
             get { return LabelTextInfoMessage.Text; }
-            set { LabelTextInfoMessage.Text = value;}
+            set { LabelTextInfoMessage.Text = value; }
         }
     }
 }
