@@ -33,11 +33,11 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             LabelEditNameCmd = new MaterialSkin.Controls.MaterialLabel();
             TextBoxNewNameCommand = new MaterialSkin.Controls.MaterialTextBox();
+            ButtonSaveChangeCommand = new MaterialSkin.Controls.MaterialButton();
             dataGridViewEditBookmarkMatch = new DataGridView();
             CmdEditNumberRow = new DataGridViewTextBoxColumn();
-            CmdEditInputBookmark = new DataGridViewTextBoxColumn();
-            CmdEditOutputBookmark = new DataGridViewComboBoxColumn();
-            ButtonSaveChangeCommand = new MaterialSkin.Controls.MaterialButton();
+            CmdEditOutputBookmark = new DataGridViewTextBoxColumn();
+            CmdEditInputBookmark = new DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEditBookmarkMatch).BeginInit();
             SuspendLayout();
             // 
@@ -70,75 +70,6 @@
             TextBoxNewNameCommand.Text = "";
             TextBoxNewNameCommand.TrailingIcon = null;
             // 
-            // dataGridViewEditBookmarkMatch
-            // 
-            dataGridViewEditBookmarkMatch.AllowUserToAddRows = false;
-            dataGridViewEditBookmarkMatch.AllowUserToDeleteRows = false;
-            dataGridViewEditBookmarkMatch.AllowUserToResizeColumns = false;
-            dataGridViewEditBookmarkMatch.AllowUserToResizeRows = false;
-            dataGridViewEditBookmarkMatch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewEditBookmarkMatch.BackgroundColor = Color.White;
-            dataGridViewEditBookmarkMatch.BorderStyle = BorderStyle.None;
-            dataGridViewEditBookmarkMatch.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(113, 96, 232);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(113, 96, 232);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewEditBookmarkMatch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewEditBookmarkMatch.ColumnHeadersHeight = 35;
-            dataGridViewEditBookmarkMatch.Columns.AddRange(new DataGridViewColumn[] { CmdEditNumberRow, CmdEditInputBookmark, CmdEditOutputBookmark });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(100, 100, 180);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridViewEditBookmarkMatch.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewEditBookmarkMatch.EnableHeadersVisualStyles = false;
-            dataGridViewEditBookmarkMatch.GridColor = Color.LightGray;
-            dataGridViewEditBookmarkMatch.Location = new Point(6, 159);
-            dataGridViewEditBookmarkMatch.MultiSelect = false;
-            dataGridViewEditBookmarkMatch.Name = "dataGridViewEditBookmarkMatch";
-            dataGridViewEditBookmarkMatch.RowHeadersVisible = false;
-            dataGridViewEditBookmarkMatch.RowHeadersWidth = 25;
-            dataGridViewEditBookmarkMatch.RowTemplate.Height = 25;
-            dataGridViewEditBookmarkMatch.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewEditBookmarkMatch.Size = new Size(888, 333);
-            dataGridViewEditBookmarkMatch.TabIndex = 16;
-            dataGridViewEditBookmarkMatch.RowPostPaint += dataGridViewEditBookmarkMatch_RowPostPaint;
-            // 
-            // CmdEditNumberRow
-            // 
-            CmdEditNumberRow.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            CmdEditNumberRow.HeaderText = "Номер";
-            CmdEditNumberRow.MinimumWidth = 8;
-            CmdEditNumberRow.Name = "CmdEditNumberRow";
-            CmdEditNumberRow.ReadOnly = true;
-            CmdEditNumberRow.Width = 107;
-            // 
-            // CmdEditInputBookmark
-            // 
-            CmdEditInputBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CmdEditInputBookmark.HeaderText = "Вхідна закладка";
-            CmdEditInputBookmark.MinimumWidth = 8;
-            CmdEditInputBookmark.Name = "CmdEditInputBookmark";
-            CmdEditInputBookmark.ReadOnly = true;
-            // 
-            // CmdEditOutputBookmark
-            // 
-            CmdEditOutputBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            CmdEditOutputBookmark.DefaultCellStyle = dataGridViewCellStyle2;
-            CmdEditOutputBookmark.FlatStyle = FlatStyle.Flat;
-            CmdEditOutputBookmark.HeaderText = "Вихідна закладка";
-            CmdEditOutputBookmark.MinimumWidth = 8;
-            CmdEditOutputBookmark.Name = "CmdEditOutputBookmark";
-            // 
             // ButtonSaveChangeCommand
             // 
             ButtonSaveChangeCommand.AutoSize = false;
@@ -160,13 +91,82 @@
             ButtonSaveChangeCommand.UseVisualStyleBackColor = true;
             ButtonSaveChangeCommand.Click += ButtonSaveChangeCommand_Click;
             // 
+            // dataGridViewEditBookmarkMatch
+            // 
+            dataGridViewEditBookmarkMatch.AllowUserToAddRows = false;
+            dataGridViewEditBookmarkMatch.AllowUserToDeleteRows = false;
+            dataGridViewEditBookmarkMatch.AllowUserToResizeColumns = false;
+            dataGridViewEditBookmarkMatch.AllowUserToResizeRows = false;
+            dataGridViewEditBookmarkMatch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewEditBookmarkMatch.BackgroundColor = Color.White;
+            dataGridViewEditBookmarkMatch.BorderStyle = BorderStyle.None;
+            dataGridViewEditBookmarkMatch.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewEditBookmarkMatch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewEditBookmarkMatch.ColumnHeadersHeight = 35;
+            dataGridViewEditBookmarkMatch.Columns.AddRange(new DataGridViewColumn[] { CmdEditNumberRow, CmdEditOutputBookmark, CmdEditInputBookmark });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewEditBookmarkMatch.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewEditBookmarkMatch.EnableHeadersVisualStyles = false;
+            dataGridViewEditBookmarkMatch.GridColor = Color.LightGray;
+            dataGridViewEditBookmarkMatch.Location = new Point(21, 153);
+            dataGridViewEditBookmarkMatch.MultiSelect = false;
+            dataGridViewEditBookmarkMatch.Name = "dataGridViewEditBookmarkMatch";
+            dataGridViewEditBookmarkMatch.RowHeadersVisible = false;
+            dataGridViewEditBookmarkMatch.RowHeadersWidth = 25;
+            dataGridViewEditBookmarkMatch.RowTemplate.Height = 25;
+            dataGridViewEditBookmarkMatch.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewEditBookmarkMatch.Size = new Size(862, 339);
+            dataGridViewEditBookmarkMatch.TabIndex = 18;
+            dataGridViewEditBookmarkMatch.RowPostPaint += dataGridViewEditBookmarkMatch_RowPostPaint;
+            // 
+            // CmdEditNumberRow
+            // 
+            CmdEditNumberRow.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            CmdEditNumberRow.HeaderText = "Номер";
+            CmdEditNumberRow.MinimumWidth = 8;
+            CmdEditNumberRow.Name = "CmdEditNumberRow";
+            CmdEditNumberRow.ReadOnly = true;
+            CmdEditNumberRow.Width = 107;
+            // 
+            // CmdEditOutputBookmark
+            // 
+            CmdEditOutputBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CmdEditOutputBookmark.HeaderText = "Вихідна закладка (шаблон)";
+            CmdEditOutputBookmark.MinimumWidth = 8;
+            CmdEditOutputBookmark.Name = "CmdEditOutputBookmark";
+            CmdEditOutputBookmark.ReadOnly = true;
+            // 
+            // CmdEditInputBookmark
+            // 
+            CmdEditInputBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            CmdEditInputBookmark.DefaultCellStyle = dataGridViewCellStyle2;
+            CmdEditInputBookmark.FlatStyle = FlatStyle.Flat;
+            CmdEditInputBookmark.HeaderText = "Вхідна закладка (документ)";
+            CmdEditInputBookmark.MinimumWidth = 8;
+            CmdEditInputBookmark.Name = "CmdEditInputBookmark";
+            // 
             // FormEditCommand
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 560);
-            Controls.Add(ButtonSaveChangeCommand);
             Controls.Add(dataGridViewEditBookmarkMatch);
+            Controls.Add(ButtonSaveChangeCommand);
             Controls.Add(TextBoxNewNameCommand);
             Controls.Add(LabelEditNameCmd);
             Name = "FormEditCommand";
@@ -181,10 +181,10 @@
 
         private MaterialSkin.Controls.MaterialLabel LabelEditNameCmd;
         private MaterialSkin.Controls.MaterialTextBox TextBoxNewNameCommand;
+        private MaterialSkin.Controls.MaterialButton ButtonSaveChangeCommand;
         private DataGridView dataGridViewEditBookmarkMatch;
         private DataGridViewTextBoxColumn CmdEditNumberRow;
-        private DataGridViewTextBoxColumn CmdEditInputBookmark;
-        private DataGridViewComboBoxColumn CmdEditOutputBookmark;
-        private MaterialSkin.Controls.MaterialButton ButtonSaveChangeCommand;
+        private DataGridViewTextBoxColumn CmdEditOutputBookmark;
+        private DataGridViewComboBoxColumn CmdEditInputBookmark;
     }
 }

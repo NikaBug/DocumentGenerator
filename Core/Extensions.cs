@@ -16,8 +16,8 @@ namespace Core
         /// <returns></returns>
         public static IServiceCollection AddInMemoryRepositories(this IServiceCollection services)
         {
-            services.AddScoped<ITemplateRepository, InMemoryTemplateRepository>();
-            services.AddScoped<ICommandRepository, InMemoryCommandRepository>();
+            services.AddScoped<ITemplateRepository, InDatabaseTemplateRepository>();
+            services.AddScoped<ICommandRepository, InDatabaseCommandsRepository>();
             return services;
         }
     }

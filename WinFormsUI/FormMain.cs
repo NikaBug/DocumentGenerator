@@ -4,6 +4,8 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using Presentation.ViewModels;
 using Presentation.Views;
 using Spire.Doc;
+using Spire.Doc.Documents;
+using System.Windows.Controls;
 
 namespace WinFormsUI
 {
@@ -54,8 +56,7 @@ namespace WinFormsUI
 
             this.ComboBoxGenCommandList.Enabled = false;
             // [Модуль Команд]
-            // вхідна закладна (з вхідного документа) для команди
-            CmdOutputBookmark = (DataGridViewComboBoxColumn)this.dataGridViewCmdBookmarkMatch.Columns[2];
+            CmdInputBookmark = (DataGridViewComboBoxColumn)this.dataGridViewCmdBookmarkMatch.Columns[2];
             // представлення вхідного документа для команди
             this.cmdInputDoc = new TemplateViewModel();
         }
@@ -149,6 +150,23 @@ namespace WinFormsUI
             }
             return true;
         }
+
+        // перевірка чи знаходиться початок і кінець закладки
+        // в одному TextBody (для таблиць)
+        private bool checkIsSameTextBody(Document doc)
+        {
+            foreach (Bookmark bookmark in doc.Bookmarks)
+            {
+                var start = bookmark.BookmarkStart.OwnerParagraph.OwnerTextBody;
+                var end = bookmark.BookmarkEnd.OwnerParagraph.OwnerTextBody;
+                if(!object.Equals(start, end)) 
+                {  return false; 
+
+                }
+            }
+           return true;
+        }
+
 
         /// <summary>
         /// Отримати словник закладок з документу
@@ -267,6 +285,7 @@ namespace WinFormsUI
                 List<TemplateViewModel> templates = new List<TemplateViewModel>
                 {
                     templateViewModel
+                   // Template
                 };
                 this.SetTemplateList(templates);
             }
@@ -342,8 +361,8 @@ namespace WinFormsUI
 
                 this.templateViewModel = new TemplateViewModel();
                 templateViewModel.FileName = nameTemplate;
-
-                this.GetTemplate.Invoke(sender, Template);
+                // sms wrone
+                GetTemplate?.Invoke(sender, Template);
 
                 if (Template != null)
                     this.SetBookmarksDictionary(Template.BookmarksFile);
@@ -418,7 +437,7 @@ namespace WinFormsUI
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                this.materialTextBoxPathForSaveDocument.Text = dialog.FileName;
+                this.TextBoxGenPathSaveDocument.Text = dialog.FileName;
             }
         }
 
@@ -464,8 +483,61 @@ namespace WinFormsUI
 
         private void materialButtonGenerateDocument_Click(object sender, EventArgs e)
         {
-            string pathFile = this.materialButtonSelectPathForSaved.Text.ToString();
-            string nameFile = this.materialTextBoxGenNameOutputDocument.Text.ToString();
+            string pathFile = this.TextBoxGenPathSaveDocument.Text.ToString();
+            string nameFile = this.TextBoxGenNameOutputDocument.Text;
+            if(string.IsNullOrEmpty(pathFile) || (checkNameTemplate(nameFile) == false))
+            {
+                CustomMessageBox.Show("Документ не сформовано! Або не вказаний шлях для збереження, " +
+                    "або некорекна назва вихідного документа.", "Формування документа", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                if (SwitchGenUseCommand.Checked)
+                {
+                    //  CustomMessageBox.Show("Ви вибрали використати дані команди", "Повідомлення", MessageBoxButtons.OK);
+                    int indexSelectedCommand = ComboBoxGenCommandList.SelectedIndex;
+                    string nameSelectedCommand = ComboBoxGenCommandList.Items[indexSelectedCommand].ToString();
+
+                    this.commandViewModel = new CommandViewModel();
+                    commandViewModel.NameCommand = nameSelectedCommand;
+
+                    this.GetCommand(sender, Command);
+
+                    CustomMessageBox.Show("Назва: " + Command.NameCommand + ", Вхідний документ: " +
+                        Command.InputTemplate.FileName + ", Вихідний шаблон: " + Command.OutputTemplate.FileName,
+                        "Вибрана команда", MessageBoxButtons.OK);
+
+                    // вхідний документ
+                    Document inputDocument = new Document();
+                    MemoryStream streamInput = new MemoryStream(Command.InputTemplate.ContentFile);
+                    inputDocument.LoadFromStream(streamInput, FileFormat.Docx);
+
+                    // вихідний шаблон
+                    Document outputTemplate = new Document();
+                    MemoryStream streamOutput = new MemoryStream(Command.OutputTemplate.ContentFile);
+                    outputTemplate.LoadFromStream(streamOutput, FileFormat.Docx);
+
+                    // навігатори по закладкам вхідного документа та вихідного шаблона відповідно
+                    BookmarksNavigator navigatorInput = new BookmarksNavigator(inputDocument);
+                    BookmarksNavigator navigatorOutput = new BookmarksNavigator(outputTemplate);
+
+                    foreach (var setting in Command.CommandSetting)
+                    {
+                        navigatorInput.MoveToBookmark(setting.Value); // до вхідної закладки
+                        TextBodyPart inTextBodyPart = navigatorInput.GetBookmarkContent();
+
+                        navigatorOutput.MoveToBookmark(setting.Key); // до вихідної закладки
+                        navigatorOutput.ReplaceBookmarkContent(inTextBodyPart); // замінити
+                    }
+
+                    outputTemplate.SaveToFile(pathFile + @"\" + nameFile, FileFormat.Docx);
+                    CustomMessageBox.Show("Документ успішно створено!", "Формування документа", MessageBoxButtons.OK);
+
+                }
+            }
+
+           
 
         }
 
@@ -547,6 +619,17 @@ namespace WinFormsUI
                     CustomMessageBox.Show("Шаблон не містить закладок! Додайте закладки до шаблону.", "Завантаження документа", MessageBoxButtons.OK);
                     return;
                 }
+
+                if (!checkIsSameTextBody(doc))
+                {
+                    CustomMessageBox.Show("Початок і кінець закладки має бути в одному текстовому тілі! " +
+                        "Перевірте закладку до таблиці: початок має бути на один рядок вище таблиці, а кінець - нижче.", 
+                        "Завантаження документа", 
+                        MessageBoxButtons.OK);
+                    this.TextBoxCmdInputDocument.Text = "";
+                    return;
+                }
+
                 // словник закладок
                 Dictionary<string, string> dictionaryBookmarks = new Dictionary<string, string>();
                 for (int i = 0; i < doc.Bookmarks.Count; i++)
@@ -570,7 +653,8 @@ namespace WinFormsUI
               "Показ закладок", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    CmdOutputBookmark.Items.Clear();
+                    //CmdOutputBookmark.Items.Clear();
+                    CmdInputBookmark.Items.Clear();
                     this.dataGridViewCmdBookmarkMatch.Rows.Clear();
                     this.dataGridViewCmdBookmarkMatch.Refresh();
                 }
@@ -605,17 +689,17 @@ namespace WinFormsUI
                     return;
                 }
 
-                DataGridViewComboBoxColumn outDocBookmarks = (DataGridViewComboBoxColumn)this.dataGridViewCmdBookmarkMatch.Columns[2];
+                DataGridViewComboBoxColumn inputBookmarks = (DataGridViewComboBoxColumn)this.dataGridViewCmdBookmarkMatch.Columns[2];
 
                 for (int i = 0; i < countInput; i++) // цикл по закладкам
                 {
                     //outDocBookmarks.Items.Add(listTemplates.ElementAt(indexOutputTemplate).BookmarksFile.ElementAt(i).Key);
-                    outDocBookmarks.Items.Add(Template.BookmarksFile.ElementAt(i).Key);
-                    outDocBookmarks.DefaultCellStyle.NullValue = outDocBookmarks.Items[0].ToString();
-                    this.dataGridViewCmdBookmarkMatch.Rows.Add(0, cmdInputDoc.BookmarksFile.ElementAt(i).Key);
-                }
 
-                this.ButtonCreateCommand.Enabled = true;
+                    // ключ - вихідна закладка, значення - вхідна закладка
+                    inputBookmarks.Items.Add(cmdInputDoc.BookmarksFile.ElementAt(i).Key); // cmdInputDoc.BookmarksFile.ElementAt(i).Key
+                    inputBookmarks.DefaultCellStyle.NullValue = inputBookmarks.Items[0].ToString();
+                    this.dataGridViewCmdBookmarkMatch.Rows.Add(0, Template.BookmarksFile.ElementAt(i).Key);
+                }
             }
         }
 
@@ -642,15 +726,22 @@ namespace WinFormsUI
                     CustomMessageBox.Show("Команда з такою назвою вже існує!", "Створення команди", MessageBoxButtons.OK);
                     return;
                 }
-                    
             }
 
             Dictionary<string, string> cmdSetting = new Dictionary<string, string>();
             for (int indexRow = 0; indexRow < this.dataGridViewCmdBookmarkMatch.Rows.Count; indexRow++)
             {
-                string InputBookmark = this.dataGridViewCmdBookmarkMatch.Rows[indexRow].Cells[1].Value.ToString();//this.dataGridViewCmdBookmarkMatch.Rows[indexRow].Cells[1].FormattedValue.ToString());
-                string OutputBookmark = this.dataGridViewCmdBookmarkMatch.Rows[indexRow].Cells[2].FormattedValue.ToString();
-                cmdSetting.Add(InputBookmark, OutputBookmark);
+                string OutputBookmark = this.dataGridViewCmdBookmarkMatch.Rows[indexRow].Cells[1].Value.ToString();
+                string InputBookmark = this.dataGridViewCmdBookmarkMatch.Rows[indexRow].Cells[2].FormattedValue.ToString();
+                if(string.Equals(OutputBookmark, InputBookmark)) 
+                {
+                    CustomMessageBox.Show("Назви вхідної та вихідної закладки не мають співпадати! Або виберіть закладку з іншою назвою, " +
+                        " або змініть назву закладки в " + this.TextBoxCmdInputDocument.Text + " та завантажте його знову.", 
+                        "Створення команди", MessageBoxButtons.OK);
+                    return;
+                }
+
+                cmdSetting.Add(OutputBookmark, InputBookmark);
             }
 
             this.templateViewModel = new TemplateViewModel();
@@ -694,6 +785,9 @@ namespace WinFormsUI
                         // listCommands.RemoveAt(index);
                         nameCommand = this.dataGridViewTableCommand.Rows[index].Cells[1].Value.ToString();
 
+                        commandViewModel = new CommandViewModel();
+                        commandViewModel.NameCommand = nameCommand;
+
                         GetCommand?.Invoke(sender, Command);
                         DeleteCommand?.Invoke(sender, e);
 
@@ -732,6 +826,9 @@ namespace WinFormsUI
             {
                 int indexCmd = this.dataGridViewTableCommand.CurrentCell.RowIndex; // індекс вибраної команди
                 this.commandName = this.dataGridViewTableCommand.Rows[indexCmd].Cells[1].Value.ToString();
+               
+                commandViewModel = new CommandViewModel(); 
+                commandViewModel.NameCommand = commandName;
 
                 GetCommand?.Invoke(sender, Command);
 
@@ -744,7 +841,8 @@ namespace WinFormsUI
                         namesCommand.Add(name);
                     }
                 }
-                FormEditCommand formEditCommand = new FormEditCommand(Command.NameCommand, Command.OutputTemplate.BookmarksFile,
+
+                FormEditCommand formEditCommand = new FormEditCommand(Command.NameCommand, Command.InputTemplate.BookmarksFile,
                     Command.CommandSetting, namesCommand);
                 formEditCommand.ShowDialog();
                 if (!formEditCommand.SavedChanges)
@@ -753,13 +851,10 @@ namespace WinFormsUI
                 commandViewModel = new CommandViewModel();
                 commandViewModel.NameCommand = formEditCommand.newNameCommand;
                 commandViewModel.CommandSetting = formEditCommand.newCommandSetting;
-
                 UpdateCommand?.Invoke(sender, e);
 
                 this.dataGridViewTableCommand.Rows[indexCmd].Cells[1].Value = Command.NameCommand;
                 this.ComboBoxGenCommandList.Items[indexCmd] = Command.NameCommand;
-
-
             }
         }
     }

@@ -16,7 +16,6 @@ namespace WinFormsUI
             ApplicationConfiguration.Initialize();
 
             var host = CreateHostBuilder().Build();
-            //  var editPresenter = host.Services.GetRequiredService<IEditTemplatePresenter>();
             var mainPresenter = host.Services.GetRequiredService<IMainPresenter>();
 
             mainPresenter.Run();

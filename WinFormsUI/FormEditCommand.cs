@@ -1,15 +1,14 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace WinFormsUI
 {
     public partial class FormEditCommand : MaterialForm
     {
 
-        private string oldNameCommand;
+       // private string oldNameCommand;
         private Dictionary<string, string> newCmdSetting;
-        private Dictionary<string, string> outputBookmarks;
+        private Dictionary<string, string> inputBookmarks;
         private List<string> NamesSavedCommands;
 
         public string newNameCommand { get => this.TextBoxNewNameCommand.Text; set => this.TextBoxNewNameCommand.Text = value; }
@@ -18,7 +17,7 @@ namespace WinFormsUI
         private bool flagSave;
         public bool SavedChanges { get => flagSave; }
 
-        public FormEditCommand(string oldCmdName, Dictionary<string, string> outputDocBookmarks, Dictionary<string, string> oldCmdSetting,
+        public FormEditCommand(string oldCmdName, Dictionary<string, string> inputDocBookmarks, Dictionary<string, string> oldCmdSetting,
             List<string> namesSavedCommands)
         {
             InitializeComponent();
@@ -27,21 +26,23 @@ namespace WinFormsUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 
             this.TextBoxNewNameCommand.Text = oldCmdName;
-            this.outputBookmarks = outputDocBookmarks;
+            this.inputBookmarks = inputDocBookmarks;
             this.flagSave = false;
             this.NamesSavedCommands = namesSavedCommands;
 
-            // вихідні заклакди
+
+
+            // стовпець - вхідні закладки (документ)
             DataGridViewComboBoxColumn cmbColBookmarks = (DataGridViewComboBoxColumn)this.dataGridViewEditBookmarkMatch.Columns[2];
 
-            // key - input, value - output
-            for (int i = 0; i < outputDocBookmarks.Count; i++) // цикл по закладкам
+            for (int i = 0; i < inputDocBookmarks.Count; i++) // цикл по закладкам
             {
-                string def = oldCmdSetting.ElementAt(i).Value;
-                cmbColBookmarks.Items.Add(outputDocBookmarks.ElementAt(i).Key);
+                string def = oldCmdSetting.ElementAt(i).Value; // назва вибраної раніше вхідної закладки (документ)
+                // inputBookmarks: ключ - назва, value - тип
+                cmbColBookmarks.Items.Add(inputBookmarks.ElementAt(i).Key); // назви вхідних закладок (документ)
                 this.dataGridViewEditBookmarkMatch.Rows.Add(0, oldCmdSetting.ElementAt(i).Key);
                 this.dataGridViewEditBookmarkMatch.Rows[i].Cells[2].Value = def;
-                CmdEditOutputBookmark.DefaultCellStyle.NullValue = def;
+                CmdEditInputBookmark.DefaultCellStyle.NullValue = def;
             }
         }
 
@@ -74,9 +75,9 @@ namespace WinFormsUI
                 this.newCmdSetting = new Dictionary<string, string>();
                 for (int indexRow = 0; indexRow < this.dataGridViewEditBookmarkMatch.Rows.Count; indexRow++)
                 {
-                    string inputBoookmark = this.dataGridViewEditBookmarkMatch.Rows[indexRow].Cells[1].FormattedValue.ToString();
-                    string SelectedOutputBookmark = this.dataGridViewEditBookmarkMatch.Rows[indexRow].Cells[2].FormattedValue.ToString();
-                    newCmdSetting.Add(inputBoookmark, SelectedOutputBookmark);
+                    string outputBoookmark = this.dataGridViewEditBookmarkMatch.Rows[indexRow].Cells[1].Value.ToString();
+                    string SelectedInputBookmark = this.dataGridViewEditBookmarkMatch.Rows[indexRow].Cells[2].FormattedValue.ToString();
+                    newCmdSetting.Add(outputBoookmark, SelectedInputBookmark);
                 }
 
                 flagSave = true;

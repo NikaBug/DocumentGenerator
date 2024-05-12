@@ -1,3 +1,5 @@
+using System.Xml.Serialization;
+
 namespace Domain
 {
     /// <summary>
@@ -5,6 +7,8 @@ namespace Domain
     /// </summary>
     public class Template
     {
+        public Template() { }
+
         /// <summary>
         /// Конструктор шаблона
         /// </summary>
@@ -32,12 +36,12 @@ namespace Domain
         /// <summary>
         /// Шлях до файлу
         /// </summary>
-        public string FilePath { get; }
+        public string FilePath { get; set; }
 
         /// <summary>
         /// Зміст файлу
         /// </summary>
-        public byte[] FileContent { get; }
+        public byte[] FileContent { get; set; }
 
         /// <summary>
         /// Закладки

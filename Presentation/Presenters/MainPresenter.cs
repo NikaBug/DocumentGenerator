@@ -9,8 +9,6 @@ namespace Presentation.Presenters
         private readonly IMainView mainView;
         private readonly CommandService commandService;
         private readonly TemplateService templateService;
-        //private readonly ITemplateView templateView;
-        // private readonly IEditTemplateView editTemplateView;
 
         public MainPresenter(IMainView mainView, CommandService commandService, TemplateService templateService)
         {
@@ -76,7 +74,6 @@ namespace Presentation.Presenters
         }
 
         // події для сховища даних ШАБЛОНІВ
-
         public void UpdateCommand(object sender, EventArgs e, string oldName, CommandViewModel newCommand)
         {
             this.commandService.UpdateCommand(oldName, newCommand.NameCommand, newCommand.CommandSetting);
@@ -89,12 +86,6 @@ namespace Presentation.Presenters
             e.ContentFile = tmp.First().FileContent;
             e.BookmarksFile = tmp.First().FileBookmarks;
         }
-
-
-        //public void EditTemplate(object? sender, EventArgs e, string oldName, string newName, IDictionary<string, string> newBookmark)
-        //{
-        //    this.templateService.UpdateTemplate(oldName, newName, newBookmark);
-        //}
 
         public void UpdateTemplate(object? sender, EventArgs e, string oldName, TemplateViewModel newTemplate)
         {
@@ -109,29 +100,52 @@ namespace Presentation.Presenters
         public async Task SaveTemplate(object sender, EventArgs e)
         {
             var template = await this.templateService.CreateTemplate(this.mainView.Template.FileName,
-                this.mainView.Template.FileName, this.mainView.Template.ContentFile,
+                this.mainView.Template.FilePath, this.mainView.Template.ContentFile,
                 this.mainView.Template.BookmarksFile);
             _ = templateService.Save(template);
         }
 
         public async Task Run()
         {
-            //var commands = await commandService.GetAllCommands();
-            //var viewModelCommands = commands.Select(c => new CommandViewModel { NameCommand = c.CommandName }).ToList();
-            // Dictionary<string, string> dictionaryBookmarks = new Dictionary<string, string>();
-            // dictionaryBookmarks.Add("bookmark1", "Текст");
 
             var templates = await templateService.GetAllTemplates();
-            var viewModelTemplates = templates.Select(t => new TemplateViewModel
+            if (templates.Count() != 0)
             {
-                FileName = t.FileName,
-                FilePath = Path.GetFullPath(t.FilePath),
-                BookmarksFile = t.FileBookmarks,
-                ContentFile = t.FileContent
-            }).ToList();
+                var viewModelTemplates = templates.Select(t => new TemplateViewModel
+                {
+                    FileName = t.FileName,
+                    FilePath = Path.GetFullPath(t.FilePath),
+                    BookmarksFile = t.FileBookmarks,
+                    ContentFile = t.FileContent
+                }).ToList();
 
-            // mainView.SetCommandsList(viewModelCommands);
-            mainView.SetTemplateList(viewModelTemplates);
+                mainView.SetTemplateList(viewModelTemplates);
+            }
+
+            var commands = await commandService.GetAllCommands();
+            if(commands.Count() != 0)
+            {
+                var viewModelCommands = commands.Select(c => new CommandViewModel 
+                { NameCommand = c.CommandName, // назва команди
+                  InputTemplate = new TemplateViewModel()  // вхідний документ
+                  { FileName = c.InputTemplate.FileName,
+                    FilePath = c.InputTemplate.FilePath,
+                    ContentFile = c.InputTemplate.FileContent,
+                    BookmarksFile= c.InputTemplate.FileBookmarks,
+                  },
+                  OutputTemplate = new TemplateViewModel() // вихідний шаблон
+                  {
+                      FileName = c.OutputTemplate.FileName,
+                      FilePath = c.OutputTemplate.FilePath,
+                      ContentFile = c.OutputTemplate.FileContent,
+                      BookmarksFile = c.OutputTemplate.FileBookmarks,
+                  },
+                  CommandSetting = (Dictionary<string, string>)c.CommandSetting // налаштування
+
+                }).ToList();
+
+                mainView.SetCommandsList(viewModelCommands);
+            }
             mainView.Show();
         }
     }
