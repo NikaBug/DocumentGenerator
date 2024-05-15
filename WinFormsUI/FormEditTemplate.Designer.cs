@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             TextBoxTemplateName = new MaterialSkin.Controls.MaterialTextBox();
             LabelTemplateName = new MaterialSkin.Controls.MaterialLabel();
             materialLabelSettingBookmark = new MaterialSkin.Controls.MaterialLabel();
@@ -86,17 +86,18 @@
             // 
             // ButtonSaveUpdate
             // 
+            ButtonSaveUpdate.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             ButtonSaveUpdate.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ButtonSaveUpdate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             ButtonSaveUpdate.Depth = 0;
             ButtonSaveUpdate.HighEmphasis = true;
-            ButtonSaveUpdate.Icon = null;
+            ButtonSaveUpdate.Icon = Properties.Resources.icons8_save_50;
             ButtonSaveUpdate.Location = new Point(6, 424);
             ButtonSaveUpdate.Margin = new Padding(4, 6, 4, 6);
             ButtonSaveUpdate.MouseState = MaterialSkin.MouseState.HOVER;
             ButtonSaveUpdate.Name = "ButtonSaveUpdate";
             ButtonSaveUpdate.NoAccentTextColor = Color.Empty;
-            ButtonSaveUpdate.Size = new Size(187, 36);
+            ButtonSaveUpdate.Size = new Size(215, 36);
             ButtonSaveUpdate.TabIndex = 12;
             ButtonSaveUpdate.Text = "Зберегти оновлення";
             ButtonSaveUpdate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -110,27 +111,28 @@
             dataGridViewEditTableBookmarks.AllowUserToDeleteRows = false;
             dataGridViewEditTableBookmarks.AllowUserToResizeColumns = false;
             dataGridViewEditTableBookmarks.AllowUserToResizeRows = false;
+            dataGridViewEditTableBookmarks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewEditTableBookmarks.BackgroundColor = Color.White;
             dataGridViewEditTableBookmarks.BorderStyle = BorderStyle.None;
             dataGridViewEditTableBookmarks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(113, 96, 232);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(113, 96, 232);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridViewEditTableBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(113, 96, 232);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewEditTableBookmarks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewEditTableBookmarks.ColumnHeadersHeight = 35;
             dataGridViewEditTableBookmarks.Columns.AddRange(new DataGridViewColumn[] { EditRowNumbers, EditBookmarkName, EditTypeBookmark });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(235, 230, 255);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(100, 100, 180);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dataGridViewEditTableBookmarks.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(235, 230, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(100, 100, 180);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewEditTableBookmarks.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewEditTableBookmarks.EnableHeadersVisualStyles = false;
             dataGridViewEditTableBookmarks.GridColor = Color.LightGray;
             dataGridViewEditTableBookmarks.Location = new Point(6, 159);
@@ -163,9 +165,9 @@
             // EditTypeBookmark
             // 
             EditTypeBookmark.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(192, 192, 255);
-            EditTypeBookmark.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(192, 192, 255);
+            EditTypeBookmark.DefaultCellStyle = dataGridViewCellStyle2;
             EditTypeBookmark.FlatStyle = FlatStyle.Flat;
             EditTypeBookmark.HeaderText = "Тип закладки";
             EditTypeBookmark.MinimumWidth = 8;
@@ -181,7 +183,6 @@
             Controls.Add(materialLabelSettingBookmark);
             Controls.Add(LabelTemplateName);
             Controls.Add(TextBoxTemplateName);
-            MaximizeBox = false;
             Name = "FormEditTemplate";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Редагування шаблону";

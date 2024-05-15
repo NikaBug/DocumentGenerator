@@ -30,14 +30,16 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTableData));
             dataGridViewTableData = new DataGridView();
             materialLabelNumbersRows = new MaterialSkin.Controls.MaterialLabel();
             materialLabelNumbersColums = new MaterialSkin.Controls.MaterialLabel();
-            materialButtonGenerateTable = new MaterialSkin.Controls.MaterialButton();
+            ButtonGenerateTable = new MaterialSkin.Controls.MaterialButton();
             numericUpDownNumberRows = new NumericUpDown();
             numericUpDownNumberColumns = new NumericUpDown();
-            materialButtonClearTableData = new MaterialSkin.Controls.MaterialButton();
-            materialButtonSaveTableData = new MaterialSkin.Controls.MaterialButton();
+            ButtonClearTableData = new MaterialSkin.Controls.MaterialButton();
+            ButtonSaveTableData = new MaterialSkin.Controls.MaterialButton();
+            LabelNoteFillTable = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableData).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNumberRows).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownNumberColumns).BeginInit();
@@ -72,13 +74,13 @@
             dataGridViewTableData.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewTableData.EnableHeadersVisualStyles = false;
             dataGridViewTableData.GridColor = Color.LightGray;
-            dataGridViewTableData.Location = new Point(17, 185);
+            dataGridViewTableData.Location = new Point(6, 267);
             dataGridViewTableData.MultiSelect = false;
             dataGridViewTableData.Name = "dataGridViewTableData";
             dataGridViewTableData.RowHeadersWidth = 25;
             dataGridViewTableData.RowTemplate.Height = 25;
             dataGridViewTableData.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTableData.Size = new Size(733, 263);
+            dataGridViewTableData.Size = new Size(830, 249);
             dataGridViewTableData.TabIndex = 14;
             dataGridViewTableData.CellEndEdit += dataGridViewTableData_CellEndEdit;
             // 
@@ -87,7 +89,7 @@
             materialLabelNumbersRows.AutoSize = true;
             materialLabelNumbersRows.Depth = 0;
             materialLabelNumbersRows.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelNumbersRows.Location = new Point(32, 90);
+            materialLabelNumbersRows.Location = new Point(13, 90);
             materialLabelNumbersRows.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabelNumbersRows.Name = "materialLabelNumbersRows";
             materialLabelNumbersRows.Size = new Size(125, 19);
@@ -99,39 +101,39 @@
             materialLabelNumbersColums.AutoSize = true;
             materialLabelNumbersColums.Depth = 0;
             materialLabelNumbersColums.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabelNumbersColums.Location = new Point(326, 90);
+            materialLabelNumbersColums.Location = new Point(6, 146);
             materialLabelNumbersColums.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabelNumbersColums.Name = "materialLabelNumbersColums";
             materialLabelNumbersColums.Size = new Size(140, 19);
             materialLabelNumbersColums.TabIndex = 18;
             materialLabelNumbersColums.Text = "Кількість стовпців";
             // 
-            // materialButtonGenerateTable
+            // ButtonGenerateTable
             // 
-            materialButtonGenerateTable.AutoSize = false;
-            materialButtonGenerateTable.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonGenerateTable.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonGenerateTable.Depth = 0;
-            materialButtonGenerateTable.HighEmphasis = true;
-            materialButtonGenerateTable.Icon = null;
-            materialButtonGenerateTable.Location = new Point(17, 127);
-            materialButtonGenerateTable.Margin = new Padding(4, 6, 4, 6);
-            materialButtonGenerateTable.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonGenerateTable.Name = "materialButtonGenerateTable";
-            materialButtonGenerateTable.NoAccentTextColor = Color.Empty;
-            materialButtonGenerateTable.Size = new Size(175, 36);
-            materialButtonGenerateTable.TabIndex = 19;
-            materialButtonGenerateTable.Text = "Створити таблицю";
-            materialButtonGenerateTable.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonGenerateTable.UseAccentColor = false;
-            materialButtonGenerateTable.UseVisualStyleBackColor = true;
-            materialButtonGenerateTable.Click += materialButtonGenerateTable_Click;
+            ButtonGenerateTable.AutoSize = false;
+            ButtonGenerateTable.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonGenerateTable.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonGenerateTable.Depth = 0;
+            ButtonGenerateTable.HighEmphasis = true;
+            ButtonGenerateTable.Icon = (Image)resources.GetObject("ButtonGenerateTable.Icon");
+            ButtonGenerateTable.Location = new Point(6, 187);
+            ButtonGenerateTable.Margin = new Padding(4, 6, 4, 6);
+            ButtonGenerateTable.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonGenerateTable.Name = "ButtonGenerateTable";
+            ButtonGenerateTable.NoAccentTextColor = Color.Empty;
+            ButtonGenerateTable.Size = new Size(138, 37);
+            ButtonGenerateTable.TabIndex = 19;
+            ButtonGenerateTable.Text = "Створити";
+            ButtonGenerateTable.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            ButtonGenerateTable.UseAccentColor = false;
+            ButtonGenerateTable.UseVisualStyleBackColor = true;
+            ButtonGenerateTable.Click += ButtonGenerateTable_Click;
             // 
             // numericUpDownNumberRows
             // 
             numericUpDownNumberRows.BorderStyle = BorderStyle.FixedSingle;
-            numericUpDownNumberRows.Location = new Point(175, 84);
-            numericUpDownNumberRows.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDownNumberRows.Location = new Point(159, 84);
+            numericUpDownNumberRows.Maximum = new decimal(new int[] { 8, 0, 0, 0 });
             numericUpDownNumberRows.Name = "numericUpDownNumberRows";
             numericUpDownNumberRows.Size = new Size(76, 31);
             numericUpDownNumberRows.TabIndex = 20;
@@ -140,65 +142,80 @@
             // numericUpDownNumberColumns
             // 
             numericUpDownNumberColumns.BorderStyle = BorderStyle.FixedSingle;
-            numericUpDownNumberColumns.Location = new Point(472, 84);
-            numericUpDownNumberColumns.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDownNumberColumns.Location = new Point(159, 137);
+            numericUpDownNumberColumns.Maximum = new decimal(new int[] { 8, 0, 0, 0 });
             numericUpDownNumberColumns.Name = "numericUpDownNumberColumns";
             numericUpDownNumberColumns.Size = new Size(76, 31);
             numericUpDownNumberColumns.TabIndex = 21;
             numericUpDownNumberColumns.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // materialButtonClearTableData
+            // ButtonClearTableData
             // 
-            materialButtonClearTableData.AutoSize = false;
-            materialButtonClearTableData.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonClearTableData.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonClearTableData.Depth = 0;
-            materialButtonClearTableData.HighEmphasis = true;
-            materialButtonClearTableData.Icon = null;
-            materialButtonClearTableData.Location = new Point(212, 127);
-            materialButtonClearTableData.Margin = new Padding(4, 6, 4, 6);
-            materialButtonClearTableData.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonClearTableData.Name = "materialButtonClearTableData";
-            materialButtonClearTableData.NoAccentTextColor = Color.Empty;
-            materialButtonClearTableData.Size = new Size(173, 36);
-            materialButtonClearTableData.TabIndex = 22;
-            materialButtonClearTableData.Text = "Очистити дані";
-            materialButtonClearTableData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonClearTableData.UseAccentColor = false;
-            materialButtonClearTableData.UseVisualStyleBackColor = true;
-            materialButtonClearTableData.Click += materialButtonClearTableData_Click;
+            ButtonClearTableData.AutoSize = false;
+            ButtonClearTableData.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonClearTableData.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonClearTableData.Depth = 0;
+            ButtonClearTableData.HighEmphasis = true;
+            ButtonClearTableData.Icon = (Image)resources.GetObject("ButtonClearTableData.Icon");
+            ButtonClearTableData.Location = new Point(305, 187);
+            ButtonClearTableData.Margin = new Padding(4, 6, 4, 6);
+            ButtonClearTableData.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonClearTableData.Name = "ButtonClearTableData";
+            ButtonClearTableData.NoAccentTextColor = Color.Empty;
+            ButtonClearTableData.Size = new Size(138, 36);
+            ButtonClearTableData.TabIndex = 22;
+            ButtonClearTableData.Text = "Очистити";
+            ButtonClearTableData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonClearTableData.UseAccentColor = false;
+            ButtonClearTableData.UseVisualStyleBackColor = true;
+            ButtonClearTableData.Click += ButtonClearTableData_Click;
             // 
-            // materialButtonSaveTableData
+            // ButtonSaveTableData
             // 
-            materialButtonSaveTableData.AutoSize = false;
-            materialButtonSaveTableData.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonSaveTableData.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonSaveTableData.Depth = 0;
-            materialButtonSaveTableData.HighEmphasis = true;
-            materialButtonSaveTableData.Icon = null;
-            materialButtonSaveTableData.Location = new Point(410, 127);
-            materialButtonSaveTableData.Margin = new Padding(4, 6, 4, 6);
-            materialButtonSaveTableData.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonSaveTableData.Name = "materialButtonSaveTableData";
-            materialButtonSaveTableData.NoAccentTextColor = Color.Empty;
-            materialButtonSaveTableData.Size = new Size(173, 36);
-            materialButtonSaveTableData.TabIndex = 23;
-            materialButtonSaveTableData.Text = "Зберегти дані";
-            materialButtonSaveTableData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonSaveTableData.UseAccentColor = false;
-            materialButtonSaveTableData.UseVisualStyleBackColor = true;
-            materialButtonSaveTableData.Click += materialButtonSaveTableData_Click;
+            ButtonSaveTableData.AutoSize = false;
+            ButtonSaveTableData.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonSaveTableData.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonSaveTableData.Depth = 0;
+            ButtonSaveTableData.HighEmphasis = true;
+            ButtonSaveTableData.Icon = (Image)resources.GetObject("ButtonSaveTableData.Icon");
+            ButtonSaveTableData.Location = new Point(159, 186);
+            ButtonSaveTableData.Margin = new Padding(4, 6, 4, 6);
+            ButtonSaveTableData.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonSaveTableData.Name = "ButtonSaveTableData";
+            ButtonSaveTableData.NoAccentTextColor = Color.Empty;
+            ButtonSaveTableData.Size = new Size(138, 36);
+            ButtonSaveTableData.TabIndex = 23;
+            ButtonSaveTableData.Text = "Зберегти";
+            ButtonSaveTableData.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonSaveTableData.UseAccentColor = false;
+            ButtonSaveTableData.UseVisualStyleBackColor = true;
+            ButtonSaveTableData.Click += ButtonSaveTableData_Click;
+            // 
+            // LabelNoteFillTable
+            // 
+            LabelNoteFillTable.AutoSize = true;
+            LabelNoteFillTable.Depth = 0;
+            LabelNoteFillTable.Font = new Font("Roboto", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            LabelNoteFillTable.FontType = MaterialSkin.MaterialSkinManager.fontType.Button;
+            LabelNoteFillTable.HighEmphasis = true;
+            LabelNoteFillTable.Location = new Point(6, 247);
+            LabelNoteFillTable.MouseState = MaterialSkin.MouseState.HOVER;
+            LabelNoteFillTable.Name = "LabelNoteFillTable";
+            LabelNoteFillTable.Size = new Size(456, 17);
+            LabelNoteFillTable.TabIndex = 24;
+            LabelNoteFillTable.Text = "Примітка. Перший рядок таблиці — шапка таблиці у Word документі";
             // 
             // FormTableData
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(766, 479);
-            Controls.Add(materialButtonSaveTableData);
-            Controls.Add(materialButtonClearTableData);
+            ClientSize = new Size(842, 522);
+            Controls.Add(LabelNoteFillTable);
+            Controls.Add(ButtonSaveTableData);
+            Controls.Add(ButtonClearTableData);
             Controls.Add(numericUpDownNumberColumns);
             Controls.Add(numericUpDownNumberRows);
-            Controls.Add(materialButtonGenerateTable);
+            Controls.Add(ButtonGenerateTable);
             Controls.Add(materialLabelNumbersColums);
             Controls.Add(materialLabelNumbersRows);
             Controls.Add(dataGridViewTableData);
@@ -217,10 +234,11 @@
         private DataGridView dataGridViewTableData;
         private MaterialSkin.Controls.MaterialLabel materialLabelNumbersRows;
         private MaterialSkin.Controls.MaterialLabel materialLabelNumbersColums;
-        private MaterialSkin.Controls.MaterialButton materialButtonGenerateTable;
+        private MaterialSkin.Controls.MaterialButton ButtonGenerateTable;
         private NumericUpDown numericUpDownNumberRows;
         private NumericUpDown numericUpDownNumberColumns;
-        private MaterialSkin.Controls.MaterialButton materialButtonClearTableData;
-        private MaterialSkin.Controls.MaterialButton materialButtonSaveTableData;
+        private MaterialSkin.Controls.MaterialButton ButtonClearTableData;
+        private MaterialSkin.Controls.MaterialButton ButtonSaveTableData;
+        private MaterialSkin.Controls.MaterialLabel LabelNoteFillTable;
     }
 }

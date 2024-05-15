@@ -36,7 +36,6 @@ namespace WinFormsUI
             theColumn.DefaultCellStyle.NullValue = "Текст";
             foreach (var itemBookmarks in templateBookmarks)
             {
-                // this.dataGridViewEditTableBookmarks.Rows.Add(0, itemBookmarks.Key, itemBookmarks.Value);
                 this.dataGridViewEditTableBookmarks.Rows.Add(0, itemBookmarks.Key);
             }
 

@@ -118,34 +118,49 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="create_cmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\create_cmd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="upd_cmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\upd_cmd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="file_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\file_view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="file_upd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\file_upd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="file_view" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\file_view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="create_cmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\create_cmd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="upload-big-arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\upload-big-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="create_tmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\create_tmp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delete_doc" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\delete_doc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="read_cmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\read_cmd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="upload-arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\upload-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="file" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="upload-arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\upload-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-folder-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\icons8-folder-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="create_tmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\create_tmp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="read_cmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\read_cmd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-save-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\icons8-save-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-document-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\icons8-document-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_doc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\delete_doc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-upload-image-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\icons8-upload-image-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="upd_cmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\upd_cmd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="upload-big-arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\upload-big-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-bookmark-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\icons8-bookmark-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

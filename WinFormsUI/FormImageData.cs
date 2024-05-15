@@ -15,7 +15,7 @@ namespace WinFormsUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
         }
 
-        private void materialButtonLoadImage_Click(object sender, EventArgs e)
+        private void ButtonLoadImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp)";
@@ -27,7 +27,7 @@ namespace WinFormsUI
             }
         }
 
-        private void materialButtonSaveImage_Click(object sender, EventArgs e)
+        private void ButtonSaveImage_Click(object sender, EventArgs e)
         {
             if ((string)pictureBoxImageData.Tag != "imageData")
             {
@@ -42,5 +42,6 @@ namespace WinFormsUI
 
             this.Close();
         }
+
     }
 }

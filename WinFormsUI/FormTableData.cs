@@ -21,7 +21,7 @@ namespace WinFormsUI
             // виведення номерів стовпців таблиці і заборона сортування їх змісту
             for (int i = 0; i < this.tableData.numberColumns; i++)
             {
-                this.dataGridViewTableData.Columns[i].HeaderCell.Value = "Column" + Convert.ToString(i + 1);
+                this.dataGridViewTableData.Columns[i].HeaderCell.Value = "C" + Convert.ToString(i + 1);
                 this.dataGridViewTableData.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                 this.dataGridViewTableData.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -34,7 +34,7 @@ namespace WinFormsUI
             }
         }
 
-        private void materialButtonGenerateTable_Click(object sender, EventArgs e)
+        private void ButtonGenerateTable_Click(object sender, EventArgs e)
         {
             if (this.tableData.arrayData != null)
             {
@@ -55,7 +55,7 @@ namespace WinFormsUI
             ShowTable();
         }
 
-        private void materialButtonSaveTableData_Click(object sender, EventArgs e)
+        private void ButtonSaveTableData_Click(object sender, EventArgs e)
         {
             if (this.dataGridViewTableData.Rows.Count == 0)
             {
@@ -82,13 +82,13 @@ namespace WinFormsUI
             }
             else
             {
-                string value = Convert.ToString(dataGridViewTableData.CurrentCell.Value);
+                string value = dataGridViewTableData.CurrentCell.Value.ToString() ?? throw new ArgumentNullException();
                 this.tableData.arrayData[i, j] = value;
             }
 
         }
 
-        private void materialButtonClearTableData_Click(object sender, EventArgs e)
+        private void ButtonClearTableData_Click(object sender, EventArgs e)
         {
             // Array.Clear(this.tableData.arrayData, 0, this.tableData.arrayData.Length);
             if (this.dataGridViewTableData.Rows.Count == 0)
@@ -102,5 +102,6 @@ namespace WinFormsUI
             // this.dataGridViewTableData.Rows.Clear();
             ShowTable();
         }
+
     }
 }

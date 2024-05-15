@@ -16,19 +16,19 @@ namespace Presentation.Presenters
             this.commandService = commandService;
             this.templateService = templateService;
             this.mainView.DeleteTemplate += (s, e) => RemoveTemplate(s, e);
-            this.mainView.SaveTemplate += (s, e) => SaveTemplate(s, e);
+            this.mainView.SaveTemplate += (s, e) => _ = SaveTemplate(s, e);
             //this.mainView.UpdateTemplate += delegate (object? sender, EventArgs e)
             //{
             //    EditTemplate(sender, e, this.mainView.oldNameTemplate,
             //    this.mainView.newNameTemplate, this.mainView.newBookmarksTemplate);
             //};
-            this.mainView.UpdateTemplate += (s, e) => UpdateTemplate(s, e, this.mainView.nameTemplate, this.mainView.Template);
-            this.mainView.GetTemplate += (s, e) => GetTemplate(s, this.mainView.Template);
+            this.mainView.UpdateTemplate += (s, e) => UpdateTemplate(s, e, this.mainView.viewNameTemplate, this.mainView.viewTemplate);
+            this.mainView.GetTemplate += (s, e) => _ = GetTemplate(s, this.mainView.viewTemplate); // GetTemplate(s, this.mainView.viewTemplate);
 
-            this.mainView.SaveCommand += (s, e) => SaveCommand(s, e);
+            this.mainView.SaveCommand += (s, e) => _ = SaveCommand(s, e);
             this.mainView.DeleteCommand += (s, e) => DeleteCommad(s, e);
-            this.mainView.GetCommand += (s, e) => GetCommand(s, this.mainView.Command);
-            this.mainView.UpdateCommand += (s, e) => UpdateCommand(s, e, this.mainView.nameCommand, this.mainView.Command);
+            this.mainView.GetCommand += (s, e) => _ = GetCommand(s, this.mainView.viewCommand);
+            this.mainView.UpdateCommand += (s, e) => UpdateCommand(s, e, this.mainView.viewNameCommand, this.mainView.viewCommand);
         }
 
         // події для сховища даних КОМАНД
@@ -57,17 +57,17 @@ namespace Presentation.Presenters
 
         public void DeleteCommad(object sender, EventArgs e)
         {
-            this.commandService.DeleteCommand(this.mainView.nameCommand);
+            this.commandService.DeleteCommand(this.mainView.viewNameCommand);
         }
 
         public async Task SaveCommand(object sender, EventArgs e)
         {
-            var inputTmp = await templateService.CreateTemplate(mainView.Command.InputTemplate.FileName,
-                mainView.Command.InputTemplate.FilePath,
-                mainView.Command.InputTemplate.ContentFile,
-                mainView.Command.InputTemplate.BookmarksFile);
-            var outputTmp = await templateService.GetTemplate(mainView.Command.OutputTemplate.FileName);
-            var cmd = await commandService.CreateCommand(this.mainView.Command.NameCommand, this.mainView.Command.CommandSetting,
+            var inputTmp = await templateService.CreateTemplate(mainView.viewCommand.InputTemplate.FileName,
+                mainView.viewCommand.InputTemplate.FilePath,
+                mainView.viewCommand.InputTemplate.ContentFile,
+                mainView.viewCommand.InputTemplate.BookmarksFile);
+            var outputTmp = await templateService.GetTemplate(mainView.viewCommand.OutputTemplate.FileName);
+            var cmd = await commandService.CreateCommand(this.mainView.viewCommand.NameCommand, this.mainView.viewCommand.CommandSetting,
                inputTmp, outputTmp.Last());
 
             _ = this.commandService.SaveCommand(cmd);
@@ -94,14 +94,14 @@ namespace Presentation.Presenters
 
         public void RemoveTemplate(object sender, EventArgs e)
         {
-            this.templateService.DeleteTemplate(this.mainView.nameTemplate);
+            this.templateService.DeleteTemplate(this.mainView.viewNameTemplate);
         }
 
         public async Task SaveTemplate(object sender, EventArgs e)
         {
-            var template = await this.templateService.CreateTemplate(this.mainView.Template.FileName,
-                this.mainView.Template.FilePath, this.mainView.Template.ContentFile,
-                this.mainView.Template.BookmarksFile);
+            var template = await this.templateService.CreateTemplate(this.mainView.viewTemplate.FileName,
+                this.mainView.viewTemplate.FilePath, this.mainView.viewTemplate.ContentFile,
+                this.mainView.viewTemplate.BookmarksFile);
             _ = templateService.Save(template);
         }
 

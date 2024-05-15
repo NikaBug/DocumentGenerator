@@ -5,8 +5,6 @@ namespace WinFormsUI
 {
     public partial class FormEditCommand : MaterialForm
     {
-
-       // private string oldNameCommand;
         private Dictionary<string, string> newCmdSetting;
         private Dictionary<string, string> inputBookmarks;
         private List<string> NamesSavedCommands;
@@ -30,19 +28,23 @@ namespace WinFormsUI
             this.flagSave = false;
             this.NamesSavedCommands = namesSavedCommands;
 
-
-
             // стовпець - вхідні закладки (документ)
             DataGridViewComboBoxColumn cmbColBookmarks = (DataGridViewComboBoxColumn)this.dataGridViewEditBookmarkMatch.Columns[2];
-
-            for (int i = 0; i < inputDocBookmarks.Count; i++) // цикл по закладкам
+            
+            // всі назви вхідних закладок (документ)
+            foreach (var inputBookmark in inputBookmarks.Keys)
             {
-                string def = oldCmdSetting.ElementAt(i).Value; // назва вибраної раніше вхідної закладки (документ)
-                // inputBookmarks: ключ - назва, value - тип
-                cmbColBookmarks.Items.Add(inputBookmarks.ElementAt(i).Key); // назви вхідних закладок (документ)
-                this.dataGridViewEditBookmarkMatch.Rows.Add(0, oldCmdSetting.ElementAt(i).Key);
-                this.dataGridViewEditBookmarkMatch.Rows[i].Cells[2].Value = def;
-                CmdEditInputBookmark.DefaultCellStyle.NullValue = def;
+                cmbColBookmarks.Items.Add(inputBookmark);
+            }
+
+            int j = 0;
+            foreach (var oldSetting in oldCmdSetting) // налаштування команди: key - вихід, value - вхід
+            {   // назва вибраної вхідної закладки (документ)
+                string defaultValue = oldSetting.Value;
+                this.dataGridViewEditBookmarkMatch.Rows.Add(0, oldSetting.Key); // назва вихідної закладки (шаблон)
+                this.dataGridViewEditBookmarkMatch.Rows[j].Cells[2].Value = defaultValue;
+                CmdEditInputBookmark.DefaultCellStyle.NullValue = defaultValue;
+                j++;
             }
         }
 

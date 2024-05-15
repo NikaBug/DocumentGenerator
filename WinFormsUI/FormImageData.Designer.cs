@@ -29,70 +29,72 @@
         private void InitializeComponent()
         {
             pictureBoxImageData = new PictureBox();
-            materialButtonLoadImage = new MaterialSkin.Controls.MaterialButton();
-            materialButtonSaveImage = new MaterialSkin.Controls.MaterialButton();
+            ButtonLoadImage = new MaterialSkin.Controls.MaterialButton();
+            ButtonSaveImage = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImageData).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxImageData
             // 
-            pictureBoxImageData.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBoxImageData.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBoxImageData.BorderStyle = BorderStyle.FixedSingle;
             pictureBoxImageData.Location = new Point(6, 67);
             pictureBoxImageData.Name = "pictureBoxImageData";
-            pictureBoxImageData.Size = new Size(908, 393);
+            pictureBoxImageData.Size = new Size(908, 403);
             pictureBoxImageData.TabIndex = 0;
             pictureBoxImageData.TabStop = false;
             // 
-            // materialButtonLoadImage
+            // ButtonLoadImage
             // 
-            materialButtonLoadImage.AutoSize = false;
-            materialButtonLoadImage.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonLoadImage.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonLoadImage.Depth = 0;
-            materialButtonLoadImage.HighEmphasis = true;
-            materialButtonLoadImage.Icon = null;
-            materialButtonLoadImage.Location = new Point(166, 482);
-            materialButtonLoadImage.Margin = new Padding(4, 6, 4, 6);
-            materialButtonLoadImage.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonLoadImage.Name = "materialButtonLoadImage";
-            materialButtonLoadImage.NoAccentTextColor = Color.Empty;
-            materialButtonLoadImage.Size = new Size(198, 41);
-            materialButtonLoadImage.TabIndex = 1;
-            materialButtonLoadImage.Text = "Завантажити зображення";
-            materialButtonLoadImage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonLoadImage.UseAccentColor = false;
-            materialButtonLoadImage.UseVisualStyleBackColor = true;
-            materialButtonLoadImage.Click += materialButtonLoadImage_Click;
+            ButtonLoadImage.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            ButtonLoadImage.AutoSize = false;
+            ButtonLoadImage.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonLoadImage.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonLoadImage.Depth = 0;
+            ButtonLoadImage.HighEmphasis = true;
+            ButtonLoadImage.Icon = Properties.Resources.icons8_upload_image_50;
+            ButtonLoadImage.Location = new Point(190, 482);
+            ButtonLoadImage.Margin = new Padding(4, 6, 4, 6);
+            ButtonLoadImage.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonLoadImage.Name = "ButtonLoadImage";
+            ButtonLoadImage.NoAccentTextColor = Color.Empty;
+            ButtonLoadImage.Size = new Size(198, 41);
+            ButtonLoadImage.TabIndex = 1;
+            ButtonLoadImage.Text = "Завантажити зображення";
+            ButtonLoadImage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonLoadImage.UseAccentColor = false;
+            ButtonLoadImage.UseVisualStyleBackColor = true;
+            ButtonLoadImage.Click += ButtonLoadImage_Click;
             // 
-            // materialButtonSaveImage
+            // ButtonSaveImage
             // 
-            materialButtonSaveImage.AutoSize = false;
-            materialButtonSaveImage.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButtonSaveImage.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButtonSaveImage.Depth = 0;
-            materialButtonSaveImage.HighEmphasis = true;
-            materialButtonSaveImage.Icon = null;
-            materialButtonSaveImage.Location = new Point(394, 482);
-            materialButtonSaveImage.Margin = new Padding(4, 6, 4, 6);
-            materialButtonSaveImage.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButtonSaveImage.Name = "materialButtonSaveImage";
-            materialButtonSaveImage.NoAccentTextColor = Color.Empty;
-            materialButtonSaveImage.Size = new Size(198, 41);
-            materialButtonSaveImage.TabIndex = 2;
-            materialButtonSaveImage.Text = "Зберегти зображення";
-            materialButtonSaveImage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButtonSaveImage.UseAccentColor = false;
-            materialButtonSaveImage.UseVisualStyleBackColor = true;
-            materialButtonSaveImage.Click += materialButtonSaveImage_Click;
+            ButtonSaveImage.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            ButtonSaveImage.AutoSize = false;
+            ButtonSaveImage.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ButtonSaveImage.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            ButtonSaveImage.Depth = 0;
+            ButtonSaveImage.HighEmphasis = true;
+            ButtonSaveImage.Icon = Properties.Resources.icons8_save_50;
+            ButtonSaveImage.Location = new Point(430, 482);
+            ButtonSaveImage.Margin = new Padding(4, 6, 4, 6);
+            ButtonSaveImage.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonSaveImage.Name = "ButtonSaveImage";
+            ButtonSaveImage.NoAccentTextColor = Color.Empty;
+            ButtonSaveImage.Size = new Size(198, 41);
+            ButtonSaveImage.TabIndex = 2;
+            ButtonSaveImage.Text = "Зберегти зображення";
+            ButtonSaveImage.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            ButtonSaveImage.UseAccentColor = false;
+            ButtonSaveImage.UseVisualStyleBackColor = true;
+            ButtonSaveImage.Click += ButtonSaveImage_Click;
             // 
             // FormImageData
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(920, 536);
-            Controls.Add(materialButtonSaveImage);
-            Controls.Add(materialButtonLoadImage);
+            ClientSize = new Size(920, 533);
+            Controls.Add(ButtonSaveImage);
+            Controls.Add(ButtonLoadImage);
             Controls.Add(pictureBoxImageData);
             Name = "FormImageData";
             StartPosition = FormStartPosition.CenterParent;
@@ -104,7 +106,7 @@
         #endregion
 
         private PictureBox pictureBoxImageData;
-        private MaterialSkin.Controls.MaterialButton materialButtonLoadImage;
-        private MaterialSkin.Controls.MaterialButton materialButtonSaveImage;
+        private MaterialSkin.Controls.MaterialButton ButtonLoadImage;
+        private MaterialSkin.Controls.MaterialButton ButtonSaveImage;
     }
 }

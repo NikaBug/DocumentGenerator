@@ -5,7 +5,7 @@ namespace WinFormsUI
 {
     public partial class FormTextData : MaterialForm
     {
-        public string TextData { get; set; }
+        public string textData { get; set; }
 
         public FormTextData()
         {
@@ -13,28 +13,28 @@ namespace WinFormsUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            this.materialLabelMaxLengthSymbol.Text += " " + this.materialMultiLineTextBoxTextData.MaxLength.ToString();
+            this.materialLabelMaxLengthSymbol.Text += " " + this.MultiLineTextBoxTextData.MaxLength.ToString();
 
         }
 
-        private void materialMultiLineTextBoxTextData_TextChanged(object sender, EventArgs e)
+        private void MultiLineTextBoxTextData_TextChanged(object sender, EventArgs e)
         {
-            this.materialLabelCurrentCountSymbols.Text = this.materialMultiLineTextBoxTextData.Text.Length.ToString();
+            this.materialLabelCurrentCountSymbols.Text = this.MultiLineTextBoxTextData.Text.Length.ToString();
         }
 
-        private void materialButtonClearTextData_Click(object sender, EventArgs e)
+        private void ButtonClearTextData_Click(object sender, EventArgs e)
         {
-            if (this.materialMultiLineTextBoxTextData.Text.Length > 0)
-                this.materialMultiLineTextBoxTextData.Clear();
+            if (this.MultiLineTextBoxTextData.Text.Length > 0)
+                this.MultiLineTextBoxTextData.Clear();
             else
                 CustomMessageBox.Show("Поле для введення тексту вже очищене!", "Очищення", MessageBoxButtons.OK);
         }
 
-        private void materialButtonSaveTextData_Click(object sender, EventArgs e)
+        private void ButtonSaveTextData_Click(object sender, EventArgs e)
         {
-            if (this.materialMultiLineTextBoxTextData.Text.Length > 0)
+            if (this.MultiLineTextBoxTextData.Text.Length > 0)
             {
-                TextData = this.materialMultiLineTextBoxTextData.Text;
+                textData = this.MultiLineTextBoxTextData.Text;
                 CustomMessageBox.Show("Введений текст успішно збережено!", "Збереження", MessageBoxButtons.OK);
             }
             else
