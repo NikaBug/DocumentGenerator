@@ -46,13 +46,9 @@ namespace Persistence
         {
             Template template;
             if (string.IsNullOrEmpty(fileName) || fileContent == null)
-            {
                 throw new ArgumentNullException();
-            }
             else
-            {
                 template = new Template(fileName, filePath, fileContent, fileBookmarks);
-            }
             return Task.FromResult(template);
         }
         

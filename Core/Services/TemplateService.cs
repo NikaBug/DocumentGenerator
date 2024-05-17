@@ -15,7 +15,7 @@ namespace Core.Services
         /// <summary>
         /// Отримати всі шаблони
         /// </summary>
-        /// <returns>успішність виконання операції</returns>
+        /// <returns>успішність виконання операції з результатом</returns>
         public Task<IEnumerable<Template>> GetAllTemplates()
         {
             return templateRepository.Get(string.Empty);
@@ -25,7 +25,7 @@ namespace Core.Services
         /// Отримати шаблон
         /// </summary>
         /// <param name="templateName">шаблон</param>
-        /// <returns>успішність виконання операції</returns>
+        /// <returns>успішність виконання операції з результатом</returns>
         public Task<IEnumerable<Template>> GetTemplate(string templateName)
         {
             return templateRepository.Get(templateName);
@@ -37,7 +37,7 @@ namespace Core.Services
         /// <param name="fileName">назва шаблону</param>
         /// <param name="filePath">шлях до шаблону</param>
         /// <param name="fileContent">зміст шаблону</param>
-        /// <returns>успішність виконання операції</returns>
+        /// <returns>успішність виконання операції з результатом</returns>
         public Task<Template> CreateTemplate(string fileName,
             string filePath,
             byte[] fileContent,
