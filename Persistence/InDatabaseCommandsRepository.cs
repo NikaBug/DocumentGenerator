@@ -49,14 +49,9 @@ namespace Persistence
         {
             Command command;
             if (string.IsNullOrEmpty(commandName) || commandSetting == null || inputTemplate == null || outputTemplate == null)
-            {
                 throw new ArgumentNullException();
-            }
             else
-            {
                 command = new Command(commandName, commandSetting, inputTemplate, outputTemplate);
-            }
-
             return Task.FromResult(command);
         }
 
