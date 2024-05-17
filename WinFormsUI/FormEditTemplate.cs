@@ -1,16 +1,14 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
-using Presentation.Views;
 
 namespace WinFormsUI
 {
-    public partial class FormEditTemplate : MaterialForm, IEditTemplateView
+    public partial class FormEditTemplate : MaterialForm
     {
         private string _oldNameTemplate;
         private Dictionary<string, string> _newBookmarksTemplate;
         private List<string> namesSavedTemplates;
 
-        // public TemplateViewModel Template { get; set; }
         public string oldNameTemplate { get => _oldNameTemplate; set => _oldNameTemplate = value; }
         public string newNameTemplate { get => TextBoxTemplateName.Text; set => TextBoxTemplateName.Text = value; }
         public Dictionary<string, string> newBookmarksTemplate { get => _newBookmarksTemplate; set => _newBookmarksTemplate = value; }
@@ -25,7 +23,6 @@ namespace WinFormsUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
 
-            // Template = models;
             this.TextBoxTemplateName.Text = templateName;
             oldNameTemplate = TextBoxTemplateName.Text;
             flagSave = false;
