@@ -4,10 +4,20 @@ using System.Data.SQLite;
 using Template = Domain.Template;
 
 namespace Persistence
-{
+{ 
+    /// <summary>
+    /// Репозиторій шаблонів у базі даних
+    /// </summary>
     public class InDatabaseTemplateRepository : ITemplateRepository
     {
         private SQLiteConnection connection;
+
+        /// <summary>
+        /// Створення підключення до
+        /// бази даних SQLite
+        /// </summary>
+        /// <returns>підключення до бази даних sqlite</returns>
+        /// <exception cref="Exception">виключення</exception>
         private SQLiteConnection CreateConnection()
         {
             SQLiteConnection conn = new SQLiteConnection(@"Data Source=..\..\..\..\repos.db; Version = 3;");
@@ -22,6 +32,16 @@ namespace Persistence
             return conn;
         }
 
+        /// <summary>
+        /// Створення шаблону 
+        /// (в пам'яті)
+        /// </summary>
+        /// <param name="fileName">назва файлу</param>
+        /// <param name="filePath">шлях до файлу</param>
+        /// <param name="fileContent">зміст файлу</param>
+        /// <param name="fileBookmarks">закладки файлу</param>
+        /// <returns>успішність виконання операції з результатом</returns>
+        /// <exception cref="ArgumentNullException">виключення</exception>
         public Task<Template> Create(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks)
         {
             Template template;
@@ -35,7 +55,12 @@ namespace Persistence
             }
             return Task.FromResult(template);
         }
-
+        
+        /// <summary>
+        /// Видалення шаблону з бази даних
+        /// </summary>
+        /// <param name="name">назва шаблону</param>
+        /// <returns>успішність виконання операціії</returns>
         public Task Delete(string name)
         {
             connection = CreateConnection();
@@ -48,6 +73,11 @@ namespace Persistence
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Отримання шаблону з бази даних
+        /// </summary>
+        /// <param name="name">назва шаблону</param>
+        /// <returns>успішність виконання операції з результатом</returns>
         public Task<IEnumerable<Template>> Get(string name)
         {
             connection = CreateConnection();
@@ -80,6 +110,11 @@ namespace Persistence
             }
         }
 
+        /// <summary>
+        /// Збереження шаблону до бази даних
+        /// </summary>
+        /// <param name="template">шаблон</param>
+        /// <returns>успішність виконання операції</returns>
         public Task Save(Template template)
         {
             connection = CreateConnection();
@@ -100,6 +135,13 @@ namespace Persistence
 
         }
 
+        /// <summary>
+        /// Оновлення шаблону в базі данхи
+        /// </summary>
+        /// <param name="oldName">назва шаблону для оновлення</param>
+        /// <param name="newName">нова назва шаблону</param>
+        /// <param name="newBookmarks">оновлені закладки</param>
+        /// <returns>успішність виконання операції</returns>
         public Task Update(string oldName, string newName, IDictionary<string, string> newBookmarks)
         {
             connection = CreateConnection();

@@ -1,16 +1,23 @@
 ﻿using Domain;
 using Newtonsoft.Json;
-using Spire.Doc;
-using System.Data;
 using System.Data.SQLite;
 using Template = Domain.Template;
 
 namespace Persistence
 {
+    /// <summary>
+    /// Репозиторій команд у базі даних
+    /// </summary>
     public class InDatabaseCommandsRepository : ICommandRepository
     {
         private SQLiteConnection connection;
 
+        /// <summary>
+        /// Створення підключення до
+        /// бази даних SQLite
+        /// </summary>
+        /// <returns>підключення до бази даних sqlite</returns>
+        /// <exception cref="Exception">виключення</exception>
         private SQLiteConnection CreateConnection()
         {
             SQLiteConnection conn = new SQLiteConnection(@"Data Source=..\..\..\..\repos.db; Version = 3;");
@@ -25,6 +32,16 @@ namespace Persistence
             return conn;
         }
 
+        /// <summary>
+        /// Створення команди
+        /// (в пам'яті)
+        /// </summary>
+        /// <param name="commandName">назва команди</param>
+        /// <param name="commandSetting">налаштування команди ()</param>
+        /// <param name="inputTemplate">вхідний документ</param>
+        /// <param name="outputTemplate">вихідний шаблон</param>
+        /// <returns>успішність виконання операції з результатом</returns>
+        /// <exception cref="ArgumentNullException">виключення</exception>
         public Task<Command> Create(string commandName,
             IReadOnlyDictionary<string, string> commandSetting,
             Template inputTemplate,
@@ -43,6 +60,11 @@ namespace Persistence
             return Task.FromResult(command);
         }
 
+        /// <summary>
+        /// Видалення команди з бази даних
+        /// </summary>
+        /// <param name="cmdName">назва команди</param>
+        /// <returns>успішність виконання операції</returns>
         public Task Delete(string cmdName)
         {
             connection = CreateConnection();
@@ -55,6 +77,11 @@ namespace Persistence
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Отримання команди з бази даних
+        /// </summary>
+        /// <param name="cmdName">назва команди</param>
+        /// <returns>успішність виконання операції з результатом</returns>
         public Task<IEnumerable<Command>> Get(string cmdName)
         {
             connection = CreateConnection();
@@ -75,8 +102,8 @@ namespace Persistence
                 while (reader.Read())
                 {
                     var name = reader.GetString(1);
-                    var input_document = JsonConvert.DeserializeObject<Template>(reader["InputDoc"].ToString()); 
-                    var output_template = JsonConvert.DeserializeObject<Template>(reader["OutputTemplate"].ToString()); 
+                    var input_document = JsonConvert.DeserializeObject<Template>(reader["InputDoc"].ToString());
+                    var output_template = JsonConvert.DeserializeObject<Template>(reader["OutputTemplate"].ToString());
                     var setting_bookmarks = JsonConvert.DeserializeObject<Dictionary<string, string>>(reader.GetString(4));
                     commands.Add(new Command(name, setting_bookmarks, input_document, output_template));
                 }
@@ -86,6 +113,11 @@ namespace Persistence
             }
         }
 
+        /// <summary>
+        /// Збереження команди в базі даних
+        /// </summary>
+        /// <param name="command">команда</param>
+        /// <returns>успішність виконання операції з результатом</returns>
         public Task Save(Command command)
         {
             string json_inputdoc = JsonConvert.SerializeObject(command.InputTemplate);
@@ -102,13 +134,18 @@ namespace Persistence
             sqlite_cmd.Parameters.AddWithValue("@setting", json_setting);
             var insertResult = sqlite_cmd.ExecuteNonQuery();
             sqlite_cmd.Connection.Close();
-           
             connection.Close();
 
             return Task.FromResult(insertResult);
-
         }
 
+        /// <summary>
+        /// Оновлення команди в базі даних
+        /// </summary>
+        /// <param name="oldName">назва команди для оновлення</param>
+        /// <param name="newName">нова назва команди</param>
+        /// <param name="newSetting">нові налаштування команди</param>
+        /// <returns>успішність виконання операції</returns>
         public Task Update(string oldName, string newName, IDictionary<string, string> newSetting)
         {
             connection = CreateConnection();
