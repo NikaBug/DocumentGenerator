@@ -12,7 +12,7 @@
         /// <param name="commandSetting">налаштування команди</param>
         /// <param name="inputTemplate">вхідний шаблон</param>
         /// <param name="outputTemplate">вихідний шаблон</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">виключення</exception>
         public Command(string commandName,
             IReadOnlyDictionary<string, string> commandSetting,
             Template inputTemplate,
@@ -27,12 +27,12 @@
         /// <summary>
         /// Налаштування команди
         /// </summary>
-        public IReadOnlyDictionary<string, string> CommandSetting { get; set; }
+        public IReadOnlyDictionary<string, string> CommandSetting { get; }
 
         /// <summary>
         /// Назва команди
         /// </summary>
-        public string CommandName { get; set; }
+        public string CommandName { get; }
 
         /// <summary>
         /// Вхідий шаблон

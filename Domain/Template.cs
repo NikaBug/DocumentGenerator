@@ -1,5 +1,3 @@
-using System.Xml.Serialization;
-
 namespace Domain
 {
     /// <summary>
@@ -7,7 +5,6 @@ namespace Domain
     /// </summary>
     public class Template
     {
-        public Template() { }
 
         /// <summary>
         /// Конструктор шаблона
@@ -31,21 +28,22 @@ namespace Domain
         /// <summary>
         /// Назва файлу
         /// </summary>
-        public string FileName { get; set; }
+        public string FileName { get; }
 
         /// <summary>
         /// Шлях до файлу
         /// </summary>
-        public string FilePath { get; set; }
+        public string FilePath { get; }
 
         /// <summary>
         /// Зміст файлу
         /// </summary>
-        public byte[] FileContent { get; set; }
+        public byte[] FileContent { get; }
 
         /// <summary>
-        /// Закладки
+        /// Закладки файлу
+        /// (ключ - назва, значення - тип)
         /// </summary>
-        public Dictionary<string, string> FileBookmarks { get; set; }
+        public Dictionary<string, string> FileBookmarks { get; }
     }
 }
