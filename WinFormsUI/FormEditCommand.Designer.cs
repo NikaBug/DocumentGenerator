@@ -77,7 +77,7 @@
             ButtonSaveChangeCommand.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             ButtonSaveChangeCommand.Depth = 0;
             ButtonSaveChangeCommand.HighEmphasis = true;
-            ButtonSaveChangeCommand.Icon = null;
+            ButtonSaveChangeCommand.Icon = Properties.Resources.icons8_save_50;
             ButtonSaveChangeCommand.Location = new Point(33, 501);
             ButtonSaveChangeCommand.Margin = new Padding(4, 6, 4, 6);
             ButtonSaveChangeCommand.MouseState = MaterialSkin.MouseState.HOVER;

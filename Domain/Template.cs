@@ -5,7 +5,6 @@ namespace Domain
     /// </summary>
     public class Template
     {
-
         /// <summary>
         /// Конструктор шаблона
         /// </summary>
