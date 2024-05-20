@@ -233,6 +233,9 @@ namespace WinFormsUI
                         }
 
                         this.ListBoxGenSavedTemplates.Items.RemoveAt(index);
+                        // +
+                        this.ListBoxGenSavedTemplates.SelectedIndex = index > 0 ? index - 1 : 0;
+
                         this.dataGridViewGenSettingBookmarks.Rows.Clear();
                         this.dataGridViewGenSettingBookmarks.Refresh();
 

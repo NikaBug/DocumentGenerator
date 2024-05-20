@@ -31,6 +31,7 @@ namespace WinFormsUI
             theColumn.Items.Add("Зображення");
             theColumn.Items.Add("Таблиця");
             theColumn.DefaultCellStyle.NullValue = "Текст";
+
             foreach (var itemBookmarks in templateBookmarks)
             {
                 this.dataGridViewEditTableBookmarks.Rows.Add(0, itemBookmarks.Key);
@@ -75,12 +76,8 @@ namespace WinFormsUI
                 string SelectedType = dataGridViewEditTableBookmarks.Rows[indexRow].Cells[2].FormattedValue.ToString();
                 _newBookmarksTemplate.Add(NameBookmark, SelectedType);
             }
-
             flagSave = true;
-
             this.Close();
         }
-
-
     }
 }

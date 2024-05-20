@@ -6,7 +6,6 @@ namespace WinFormsUI
     public partial class FormTableData : MaterialForm
     {
         public TableData tableData { get; set; }
-
         public FormTableData()
         {
             InitializeComponent();
@@ -90,7 +89,6 @@ namespace WinFormsUI
 
         private void ButtonClearTableData_Click(object sender, EventArgs e)
         {
-            // Array.Clear(this.tableData.arrayData, 0, this.tableData.arrayData.Length);
             if (this.dataGridViewTableData.Rows.Count == 0)
             {
                 CustomMessageBox.Show("Таблиця для очищення не створена!", "Очищення", MessageBoxButtons.OK);
@@ -99,9 +97,7 @@ namespace WinFormsUI
             for (int i = 0; i < this.tableData.numberRows; i++)
                 for (int j = 0; j < this.tableData.numberColumns; j++)
                     this.tableData.arrayData[i, j] = "";
-            // this.dataGridViewTableData.Rows.Clear();
             ShowTable();
         }
-
     }
 }

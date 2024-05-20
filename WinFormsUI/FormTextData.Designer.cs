@@ -130,7 +130,7 @@
             MultiLineTextBoxTextData.HideSelection = true;
             MultiLineTextBoxTextData.Hint = "Текст для заповнення";
             MultiLineTextBoxTextData.Location = new Point(6, 74);
-            MultiLineTextBoxTextData.MaxLength = 32767;
+            MultiLineTextBoxTextData.MaxLength = 5000;
             MultiLineTextBoxTextData.MouseState = MaterialSkin.MouseState.OUT;
             MultiLineTextBoxTextData.Name = "MultiLineTextBoxTextData";
             MultiLineTextBoxTextData.PasswordChar = '\0';

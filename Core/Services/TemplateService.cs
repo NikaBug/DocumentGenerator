@@ -75,7 +75,7 @@ namespace Core.Services
         /// </summary>
         /// <param name="template">шаблон</param>
         /// <returns>успішність виконання операції</returns>
-        public Task Save(Template template)
+        public Task SaveTemplate(Template template)
         {
             return templateRepository.Save(template);
         }

@@ -50,7 +50,7 @@
             TextBoxTemplateName.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             TextBoxTemplateName.LeadingIcon = null;
             TextBoxTemplateName.Location = new Point(153, 83);
-            TextBoxTemplateName.MaxLength = 50;
+            TextBoxTemplateName.MaxLength = 100;
             TextBoxTemplateName.MouseState = MaterialSkin.MouseState.OUT;
             TextBoxTemplateName.Multiline = false;
             TextBoxTemplateName.Name = "TextBoxTemplateName";

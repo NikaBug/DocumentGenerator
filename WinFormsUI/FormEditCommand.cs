@@ -83,7 +83,6 @@ namespace WinFormsUI
                 }
 
                 flagSave = true;
-
                 this.Close();
             }
         }

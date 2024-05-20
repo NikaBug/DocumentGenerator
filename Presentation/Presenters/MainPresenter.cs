@@ -117,7 +117,7 @@ namespace Presentation.Presenters
             var template = await this.templateService.CreateTemplate(this.mainView.viewTemplate.FileName,
                 this.mainView.viewTemplate.FilePath, this.mainView.viewTemplate.ContentFile,
                 this.mainView.viewTemplate.BookmarksFile);
-            _ = templateService.Save(template);
+            _ = templateService.SaveTemplate(template);
         }
 
         public async Task Run()
