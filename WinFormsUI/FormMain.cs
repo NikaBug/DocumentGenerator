@@ -145,7 +145,7 @@ namespace WinFormsUI
         /// </summary>
         /// <param name="NameTemplate">назва шаблону</param>
         /// <returns>true - якщо назва коректна, або false - якщо назва некоректна</returns>
-        public bool checkNameTemplate(string NameTemplate)
+        private bool checkNameTemplate(string NameTemplate)
         {
             if (string.IsNullOrEmpty(NameTemplate) || Path.GetExtension(NameTemplate) != ".docx")
             {
@@ -202,12 +202,12 @@ namespace WinFormsUI
 
             if (columnTableTemplate == "RemoveTemplate")
             {
-                if (this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells[0].Value == null)
-                {
-                    CustomMessageBox.Show("Спочатку додайте шаблон до поточного рядка або виберіть інший зі списку.",
-                        "Видалення шаблону", MessageBoxButtons.OK);
-                    return;
-                }
+                //if (this.dataGridViewTableTemplate.Rows[e.RowIndex].Cells[0].Value == null)
+                //{
+                //    CustomMessageBox.Show("Спочатку додайте шаблон до поточного рядка або виберіть інший зі списку.",
+                //        "Видалення шаблону", MessageBoxButtons.OK);
+                //    return;
+                //}
 
                 DialogResult dialogResult = CustomMessageBox.Show("Ви впевнені, що хочете видалити шаблон? Видалення скасувати неможливо.",
                "Видалення шаблону", MessageBoxButtons.YesNo);
@@ -234,7 +234,7 @@ namespace WinFormsUI
 
                         this.ListBoxGenSavedTemplates.Items.RemoveAt(index);
                         // +
-                        this.ListBoxGenSavedTemplates.SelectedIndex = index > 0 ? index - 1 : 0;
+                        //this.ListBoxGenSavedTemplates.SelectedIndex = index > 0 ? index - 1 : 0;
 
                         this.dataGridViewGenSettingBookmarks.Rows.Clear();
                         this.dataGridViewGenSettingBookmarks.Refresh();
