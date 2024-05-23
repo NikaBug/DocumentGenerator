@@ -265,7 +265,7 @@ namespace WinFormsUI
                     string columnValue = row.Cells[1].Value.ToString() ?? throw new ArgumentNullException(); ;
                     if (columnValue == fileInfo.Name)
                     {
-                        CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Повідомлення", MessageBoxButtons.OK);
+                        CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Додавання шаблону", MessageBoxButtons.OK);
                         return;
                     }
                 }
@@ -276,7 +276,7 @@ namespace WinFormsUI
                 templateViewModel.ContentFile = File.ReadAllBytes(fileInfo.FullName);
                 templateViewModel.BookmarksFile = GetBookmarksFromDoc(fileInfo.FullName);
 
-                // збереження шаблона в пам'яті
+                // збереження шаблона
                 SaveTemplate?.Invoke(sender, e);
 
                 // додати шаблон до списку для показу
@@ -360,7 +360,7 @@ namespace WinFormsUI
                 if (viewTemplate != null)
                     this.SetBookmarksDictionary(viewTemplate.BookmarksFile);
                 else
-                    CustomMessageBox.Show("Шаблон не знайдено.", "Повідомлення", MessageBoxButtons.OK);
+                    CustomMessageBox.Show("Шаблон не знайдено.", "Пошук шаблона", MessageBoxButtons.OK);
             }
         }
 
@@ -597,7 +597,7 @@ namespace WinFormsUI
                 || (this.dataGridViewGenSettingBookmarks.Rows.Count == 0))
             {
                 CustomMessageBox.Show("Документ не сформовано! Можливо, не вказаний шлях для збереження, " +
-                    "або некорекна назва вихідного документа чи не показані закладки шаблона.", "Формування документа", MessageBoxButtons.OK);
+                    "або некоректна назва вихідного документа чи не показані закладки шаблона.", "Формування документа", MessageBoxButtons.OK);
                 return;
             }
             else
@@ -949,7 +949,7 @@ namespace WinFormsUI
                 return; 
             }
 
-            if(this.dataGridViewTableBookmarks.Rows.Count > 0)
+            if(this.dataGridViewTableCommand.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in this.dataGridViewTableCommand.Rows)
                 {
