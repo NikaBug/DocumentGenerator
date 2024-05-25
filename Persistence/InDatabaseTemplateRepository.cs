@@ -45,7 +45,7 @@ namespace Persistence
         public Task<Template> Create(string fileName, string filePath, byte[] fileContent, Dictionary<string, string> fileBookmarks)
         {
             Template template;
-            if (string.IsNullOrEmpty(fileName) || fileContent == null)
+            if (string.IsNullOrEmpty(fileName) || string.IsNullOrEmpty(filePath) || fileContent == null)
                 throw new ArgumentNullException();
             else
                 template = new Template(fileName, filePath, fileContent, fileBookmarks);
