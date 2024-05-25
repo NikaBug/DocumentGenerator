@@ -778,10 +778,8 @@ namespace WinFormsUI
         private void ListBoxGenSavedTemplates_SelectedValueChanged(object sender, MaterialListBoxItem selectedItem)
         {
             int indexSelectedTemplate = ListBoxGenSavedTemplates.SelectedIndex;
-            if(indexSelectedTemplate == -1)
-            {
+            if (indexSelectedTemplate == -1)
                 return;
-            }
 
             if (bookmarksData.Count > 0)
             {
