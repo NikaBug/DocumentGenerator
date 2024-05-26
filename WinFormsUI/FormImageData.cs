@@ -6,13 +6,14 @@ namespace WinFormsUI
     public partial class FormImageData : MaterialForm
     {
         public Image imageData { get; set; }
-
+        public bool isSavedImage { get; set; }
         public FormImageData()
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            this.isSavedImage = false;
         }
 
         private void ButtonLoadImage_Click(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace WinFormsUI
             else
             {
                 this.imageData = pictureBoxImageData.Image;
+                this.isSavedImage = true;
                 CustomMessageBox.Show("Зображення збережене успішно!", "Збереження зображення", MessageBoxButtons.OK);
             }
             this.Close();

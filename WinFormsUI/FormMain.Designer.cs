@@ -42,7 +42,7 @@
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            materialTabControlMainMenu = new MaterialSkin.Controls.MaterialTabControl();
+            TabControlMainMenu = new MaterialSkin.Controls.MaterialTabControl();
             tabPageTemplate = new TabPage();
             dataGridViewTableBookmarks = new DataGridView();
             ColumnNumber = new DataGridViewTextBoxColumn();
@@ -75,14 +75,14 @@
             GenDataType = new DataGridViewComboBoxColumn();
             GenEnterData = new DataGridViewImageColumn();
             groupBoxGenChoseTemplate = new GroupBox();
-            materialTabControlGenSelectTemplate = new MaterialSkin.Controls.MaterialTabControl();
+            TabControlGenSelectTemplate = new MaterialSkin.Controls.MaterialTabControl();
             tabPageGenSaveTemplate = new TabPage();
             ListBoxGenSavedTemplates = new MaterialSkin.Controls.MaterialListBox();
             tabPageGenLoadTemplate = new TabPage();
             LabelGenNoteUploadTmp = new MaterialSkin.Controls.MaterialLabel();
             LabelGenUploadTemplate = new MaterialSkin.Controls.MaterialLabel();
             TextBoxGenUploadTemplate = new MaterialSkin.Controls.MaterialTextBox();
-            materialTabSelectorGenSelectTemplate = new MaterialSkin.Controls.MaterialTabSelector();
+            TabSelectorGenSelectTemplate = new MaterialSkin.Controls.MaterialTabSelector();
             tabPageCommand = new TabPage();
             groupBoxCmdTable = new GroupBox();
             ButtonEditCommand = new MaterialSkin.Controls.MaterialButton();
@@ -105,7 +105,7 @@
             TextBoxCmdCommandName = new MaterialSkin.Controls.MaterialTextBox2();
             ComboBoxCmdOutputTemplate = new MaterialSkin.Controls.MaterialComboBox();
             imageListMenu = new ImageList(components);
-            materialTabControlMainMenu.SuspendLayout();
+            TabControlMainMenu.SuspendLayout();
             tabPageTemplate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableBookmarks).BeginInit();
             tableLayoutPanelTools.SuspendLayout();
@@ -115,7 +115,7 @@
             groupBoxGenSetDataBookmarks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewGenSettingBookmarks).BeginInit();
             groupBoxGenChoseTemplate.SuspendLayout();
-            materialTabControlGenSelectTemplate.SuspendLayout();
+            TabControlGenSelectTemplate.SuspendLayout();
             tabPageGenSaveTemplate.SuspendLayout();
             tabPageGenLoadTemplate.SuspendLayout();
             tabPageCommand.SuspendLayout();
@@ -126,22 +126,21 @@
             groupBoxSettingCommand.SuspendLayout();
             SuspendLayout();
             // 
-            // materialTabControlMainMenu
+            // TabControlMainMenu
             // 
-            materialTabControlMainMenu.Controls.Add(tabPageTemplate);
-            materialTabControlMainMenu.Controls.Add(tabPageGenerateDocument);
-            materialTabControlMainMenu.Controls.Add(tabPageCommand);
-            materialTabControlMainMenu.Depth = 0;
-            materialTabControlMainMenu.Dock = DockStyle.Fill;
-            materialTabControlMainMenu.ImageList = imageListMenu;
-            materialTabControlMainMenu.Location = new Point(3, 64);
-            materialTabControlMainMenu.MouseState = MaterialSkin.MouseState.HOVER;
-            materialTabControlMainMenu.Multiline = true;
-            materialTabControlMainMenu.Name = "materialTabControlMainMenu";
-            materialTabControlMainMenu.SelectedIndex = 0;
-            materialTabControlMainMenu.Size = new Size(1278, 765);
-            materialTabControlMainMenu.TabIndex = 0;
-            materialTabControlMainMenu.SelectedIndexChanged += TabControlGenSelectTemplate_SelectedIndexChanged;
+            TabControlMainMenu.Controls.Add(tabPageTemplate);
+            TabControlMainMenu.Controls.Add(tabPageGenerateDocument);
+            TabControlMainMenu.Controls.Add(tabPageCommand);
+            TabControlMainMenu.Depth = 0;
+            TabControlMainMenu.Dock = DockStyle.Fill;
+            TabControlMainMenu.ImageList = imageListMenu;
+            TabControlMainMenu.Location = new Point(3, 64);
+            TabControlMainMenu.MouseState = MaterialSkin.MouseState.HOVER;
+            TabControlMainMenu.Multiline = true;
+            TabControlMainMenu.Name = "TabControlMainMenu";
+            TabControlMainMenu.SelectedIndex = 0;
+            TabControlMainMenu.Size = new Size(1278, 765);
+            TabControlMainMenu.TabIndex = 0;
             // 
             // tabPageTemplate
             // 
@@ -694,8 +693,8 @@
             // 
             // groupBoxGenChoseTemplate
             // 
-            groupBoxGenChoseTemplate.Controls.Add(materialTabControlGenSelectTemplate);
-            groupBoxGenChoseTemplate.Controls.Add(materialTabSelectorGenSelectTemplate);
+            groupBoxGenChoseTemplate.Controls.Add(TabControlGenSelectTemplate);
+            groupBoxGenChoseTemplate.Controls.Add(TabSelectorGenSelectTemplate);
             groupBoxGenChoseTemplate.Location = new Point(6, 6);
             groupBoxGenChoseTemplate.Name = "groupBoxGenChoseTemplate";
             groupBoxGenChoseTemplate.Size = new Size(771, 315);
@@ -703,19 +702,18 @@
             groupBoxGenChoseTemplate.TabStop = false;
             groupBoxGenChoseTemplate.Text = "Вибір шаблона";
             // 
-            // materialTabControlGenSelectTemplate
+            // TabControlGenSelectTemplate
             // 
-            materialTabControlGenSelectTemplate.Controls.Add(tabPageGenSaveTemplate);
-            materialTabControlGenSelectTemplate.Controls.Add(tabPageGenLoadTemplate);
-            materialTabControlGenSelectTemplate.Depth = 0;
-            materialTabControlGenSelectTemplate.Location = new Point(17, 88);
-            materialTabControlGenSelectTemplate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialTabControlGenSelectTemplate.Multiline = true;
-            materialTabControlGenSelectTemplate.Name = "materialTabControlGenSelectTemplate";
-            materialTabControlGenSelectTemplate.SelectedIndex = 0;
-            materialTabControlGenSelectTemplate.Size = new Size(687, 219);
-            materialTabControlGenSelectTemplate.TabIndex = 7;
-            materialTabControlGenSelectTemplate.SelectedIndexChanged += TabControlGenSelectTemplate_SelectedIndexChanged;
+            TabControlGenSelectTemplate.Controls.Add(tabPageGenSaveTemplate);
+            TabControlGenSelectTemplate.Controls.Add(tabPageGenLoadTemplate);
+            TabControlGenSelectTemplate.Depth = 0;
+            TabControlGenSelectTemplate.Location = new Point(17, 88);
+            TabControlGenSelectTemplate.MouseState = MaterialSkin.MouseState.HOVER;
+            TabControlGenSelectTemplate.Multiline = true;
+            TabControlGenSelectTemplate.Name = "TabControlGenSelectTemplate";
+            TabControlGenSelectTemplate.SelectedIndex = 0;
+            TabControlGenSelectTemplate.Size = new Size(687, 219);
+            TabControlGenSelectTemplate.TabIndex = 7;
             // 
             // tabPageGenSaveTemplate
             // 
@@ -804,18 +802,18 @@
             TextBoxGenUploadTemplate.TrailingIcon = Properties.Resources.upload_big_arrow;
             TextBoxGenUploadTemplate.TrailingIconClick += TextBoxGenUploadTemplate_TrailingIconClick;
             // 
-            // materialTabSelectorGenSelectTemplate
+            // TabSelectorGenSelectTemplate
             // 
-            materialTabSelectorGenSelectTemplate.BaseTabControl = materialTabControlGenSelectTemplate;
-            materialTabSelectorGenSelectTemplate.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
-            materialTabSelectorGenSelectTemplate.Depth = 0;
-            materialTabSelectorGenSelectTemplate.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTabSelectorGenSelectTemplate.Location = new Point(17, 30);
-            materialTabSelectorGenSelectTemplate.MouseState = MaterialSkin.MouseState.HOVER;
-            materialTabSelectorGenSelectTemplate.Name = "materialTabSelectorGenSelectTemplate";
-            materialTabSelectorGenSelectTemplate.Size = new Size(687, 56);
-            materialTabSelectorGenSelectTemplate.TabIndex = 6;
-            materialTabSelectorGenSelectTemplate.Text = "materialTabSelector1";
+            TabSelectorGenSelectTemplate.BaseTabControl = TabControlGenSelectTemplate;
+            TabSelectorGenSelectTemplate.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            TabSelectorGenSelectTemplate.Depth = 0;
+            TabSelectorGenSelectTemplate.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            TabSelectorGenSelectTemplate.Location = new Point(17, 30);
+            TabSelectorGenSelectTemplate.MouseState = MaterialSkin.MouseState.HOVER;
+            TabSelectorGenSelectTemplate.Name = "TabSelectorGenSelectTemplate";
+            TabSelectorGenSelectTemplate.Size = new Size(687, 56);
+            TabSelectorGenSelectTemplate.TabIndex = 6;
+            TabSelectorGenSelectTemplate.Text = "materialTabSelector1";
             // 
             // tabPageCommand
             // 
@@ -1184,14 +1182,14 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1284, 832);
-            Controls.Add(materialTabControlMainMenu);
-            DrawerTabControl = materialTabControlMainMenu;
+            Controls.Add(TabControlMainMenu);
+            DrawerTabControl = TabControlMainMenu;
             HelpButton = true;
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Document Generator";
             WindowState = FormWindowState.Maximized;
-            materialTabControlMainMenu.ResumeLayout(false);
+            TabControlMainMenu.ResumeLayout(false);
             tabPageTemplate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewTableBookmarks).EndInit();
             tableLayoutPanelTools.ResumeLayout(false);
@@ -1204,7 +1202,7 @@
             groupBoxGenSetDataBookmarks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewGenSettingBookmarks).EndInit();
             groupBoxGenChoseTemplate.ResumeLayout(false);
-            materialTabControlGenSelectTemplate.ResumeLayout(false);
+            TabControlGenSelectTemplate.ResumeLayout(false);
             tabPageGenSaveTemplate.ResumeLayout(false);
             tabPageGenLoadTemplate.ResumeLayout(false);
             tabPageGenLoadTemplate.PerformLayout();
@@ -1220,7 +1218,7 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialTabControl materialTabControlMainMenu;
+        private MaterialSkin.Controls.MaterialTabControl TabControlMainMenu;
         private TabPage tabPageTemplate;
         private TabPage tabPageCommand;
         private ImageList imageListMenu;
@@ -1254,11 +1252,11 @@
         private MaterialSkin.Controls.MaterialTextBox TextBoxGenPathSaveDocument;
         private MaterialSkin.Controls.MaterialButton ButtonCreateCommand;
         private GroupBox groupBoxGenChoseTemplate;
-        private MaterialSkin.Controls.MaterialTabControl materialTabControlGenSelectTemplate;
+        private MaterialSkin.Controls.MaterialTabControl TabControlGenSelectTemplate;
         private TabPage tabPageGenSaveTemplate;
         private MaterialSkin.Controls.MaterialListBox ListBoxGenSavedTemplates;
         private TabPage tabPageGenLoadTemplate;
-        private MaterialSkin.Controls.MaterialTabSelector materialTabSelectorGenSelectTemplate;
+        private MaterialSkin.Controls.MaterialTabSelector TabSelectorGenSelectTemplate;
         private MaterialSkin.Controls.MaterialTextBox TextBoxCmdInputDocument;
         private MaterialSkin.Controls.MaterialLabel LabelCmdInputDocument;
         private MaterialSkin.Controls.MaterialButton ButtonCmdViewBookmark;

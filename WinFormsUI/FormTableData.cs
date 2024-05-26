@@ -6,6 +6,7 @@ namespace WinFormsUI
     public partial class FormTableData : MaterialForm
     {
         public TableData tableData { get; set; }
+        public bool isSavedTable { get; set; }
         public FormTableData()
         {
             InitializeComponent();
@@ -13,6 +14,7 @@ namespace WinFormsUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             this.tableData = new TableData(0, 0);
+            this.isSavedTable = false;
         }
 
         private void ShowTable()
@@ -63,6 +65,7 @@ namespace WinFormsUI
             }
             else
             {
+                this.isSavedTable = true;
                 CustomMessageBox.Show("Дані таблиці успішно збережені!", "Збереження даних таблиці", MessageBoxButtons.OK);
             }
 

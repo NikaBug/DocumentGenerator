@@ -6,6 +6,7 @@ namespace WinFormsUI
     public partial class FormTextData : MaterialForm
     {
         public string textData { get; set; }
+        public bool isSavedText { get; set; }
 
         public FormTextData()
         {
@@ -14,7 +15,7 @@ namespace WinFormsUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             this.materialLabelMaxLengthSymbol.Text += " " + this.MultiLineTextBoxTextData.MaxLength.ToString();
-
+            this.isSavedText = false;
         }
 
         private void MultiLineTextBoxTextData_TextChanged(object sender, EventArgs e)
@@ -35,6 +36,7 @@ namespace WinFormsUI
             if (this.MultiLineTextBoxTextData.Text.Length > 0)
             {
                 textData = this.MultiLineTextBoxTextData.Text;
+                this.isSavedText = true;
                 CustomMessageBox.Show("Введений текст успішно збережено!", "Збереження", MessageBoxButtons.OK);
             }
             else
