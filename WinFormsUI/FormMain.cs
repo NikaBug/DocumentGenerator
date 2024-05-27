@@ -324,17 +324,14 @@ namespace WinFormsUI
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                FileInfo fileInfo = new FileInfo(ofd.FileName); // назва файлу
-                if(this.dataGridViewTableTemplate.Rows.Count > 0)
+                FileInfo fileInfo = new FileInfo(ofd.FileName); 
+                foreach (DataGridViewRow row in this.dataGridViewTableTemplate.Rows)
                 {
-                    foreach (DataGridViewRow row in this.dataGridViewTableTemplate.Rows)
+                    string columnValue = row.Cells[1].Value.ToString() ?? throw new ArgumentNullException();
+                    if (columnValue == fileInfo.Name)
                     {
-                        string columnValue = row.Cells[1].Value.ToString(); //?? throw new ArgumentNullException();
-                        if (columnValue == fileInfo.Name)
-                        {
-                            CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Додавання шаблону", MessageBoxButtons.OK);
-                            return;
-                        }
+                        CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Додавання шаблону", MessageBoxButtons.OK);
+                        return;
                     }
                 }
                 templateViewModel = new TemplateViewModel();
