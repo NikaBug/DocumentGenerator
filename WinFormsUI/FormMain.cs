@@ -317,7 +317,7 @@ namespace WinFormsUI
         private void ButtonAddTemplate_Click(object sender, EventArgs e)
         {
             // відкрити діалогове вікно з вибором файлу .docx
-            OpenFileDialog ofd = new OpenFileDialog
+            OpenFileDialog ofd = new OpenFileDialog 
             {
                 Filter = "Word|*.docx"
             };
@@ -325,16 +325,18 @@ namespace WinFormsUI
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 FileInfo fileInfo = new FileInfo(ofd.FileName); // назва файлу
-                foreach (DataGridViewRow row in this.dataGridViewTableTemplate.Rows)
+                if(this.dataGridViewTableTemplate.Rows.Count > 0)
                 {
-                    string columnValue = row.Cells[1].Value.ToString() ?? throw new ArgumentNullException(); ;
-                    if (columnValue == fileInfo.Name)
+                    foreach (DataGridViewRow row in this.dataGridViewTableTemplate.Rows)
                     {
-                        CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Додавання шаблону", MessageBoxButtons.OK);
-                        return;
+                        string columnValue = row.Cells[1].Value.ToString(); //?? throw new ArgumentNullException();
+                        if (columnValue == fileInfo.Name)
+                        {
+                            CustomMessageBox.Show("Шаблон має бути з унікальним іменем.", "Додавання шаблону", MessageBoxButtons.OK);
+                            return;
+                        }
                     }
                 }
-
                 templateViewModel = new TemplateViewModel();
                 templateViewModel.FileName = fileInfo.Name;
                 templateViewModel.FilePath = fileInfo.FullName;
@@ -656,7 +658,7 @@ namespace WinFormsUI
         /// <param name="document">документ</param>
         /// <param name="tableInsert">дані таблиці для заповнення</param>
         /// <returns>таблиця</returns>
-        Table CreateTableForWord(Document document, TableData tableInsert)
+        private Table CreateTableForWord(Document document, TableData tableInsert)
         {
             Table table = new Table(document, true);
             table.ResetCells(tableInsert.numberRows, tableInsert.numberColumns);
@@ -679,7 +681,7 @@ namespace WinFormsUI
         /// </summary>
         private void ButtonGenerateDocument_Click(object sender, EventArgs e)
         {
-            string pathFile = this.TextBoxGenPathSaveDocument.Text.ToString(); // шлях для збрежеження
+            string pathFile = this.TextBoxGenPathSaveDocument.Text.ToString(); // шлях для збереження
             string nameFile = this.TextBoxGenNameOutputDocument.Text; // назва вихідного файлу
 
             if (string.IsNullOrEmpty(pathFile) || (checkNameTemplate(nameFile) == false)
@@ -780,12 +782,13 @@ namespace WinFormsUI
                         navigatorInput.MoveToBookmark(item.Key);
                         if (item.Value.GetType() == typeof(string)) // якщо дані текст
                         {
-                            if (navigatorInput.GetBookmarkContent() != null)
-                            {
-                                navigatorInput.ReplaceBookmarkContent(item.Value.ToString(), true);
-                            }
-                            else
-                                navigatorInput.InsertText(item.Value.ToString());
+                            //if (navigatorInput.GetBookmarkContent() != null)
+                            //{
+                            //    navigatorInput.ReplaceBookmarkContent(item.Value.ToString(), true);
+                            //}
+                            //else
+                            //    navigatorInput.InsertText(item.Value.ToString());
+                            navigatorInput.ReplaceBookmarkContent(item.Value.ToString(), true);
                         }
                         else if (item.Value.GetType() == typeof(System.Drawing.Bitmap)) // якщо дані зображення
                         {
