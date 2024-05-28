@@ -324,7 +324,16 @@ namespace WinFormsUI
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                FileInfo fileInfo = new FileInfo(ofd.FileName); 
+                FileInfo fileInfo = new FileInfo(ofd.FileName);
+
+                Document doc = new Document(fileInfo.FullName);
+                if (doc.Bookmarks.Count == 0)
+                {   // якщо в документі немає закладок
+                    CustomMessageBox.Show("Шаблон не містить закладок! Додайте закладки до шаблону.",
+                        "Додавання шаблона", MessageBoxButtons.OK);
+                    return;
+                }
+
                 foreach (DataGridViewRow row in this.dataGridViewTableTemplate.Rows)
                 {
                     string columnValue = row.Cells[1].Value.ToString() ?? throw new ArgumentNullException();
