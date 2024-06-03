@@ -116,9 +116,8 @@ namespace WinFormsUI
                     // вставити рядок з інформацією про шаблон
                     dataGridViewTableTemplate.Rows.Insert(IndexRowTemplateTable, 0, templates.ElementAt(counter).FileName,
                         templates.ElementAt(counter).FilePath);
-
+                    // прапорець показу закладок - false
                     this.isShowBookmark.Add(templates.ElementAt(counter).FileName, false);
-
                     // додати  до списку збережених шаблонів в модулі "Генератор"
                     MaterialListBoxItem listBoxItem = new MaterialListBoxItem();
                     listBoxItem.Text = templates.ElementAt(counter).FileName;
@@ -242,16 +241,14 @@ namespace WinFormsUI
                     // видалення шаблону з таблиці шаблонів
                     this.dataGridViewTableTemplate.Rows.RemoveAt(index);
                     IndexRowTemplateTable--;
-
                     // якщо показані закладки видаленого шаблону
                     if (this.dataGridViewTableBookmarks.Rows.Count > 0 && (this.isShowBookmark[templateName] == true))
                     {   // очищення таблиці закладок
                         this.dataGridViewTableBookmarks.Rows.Clear();
                         this.dataGridViewTableBookmarks.Refresh();
                     }
-
+                    // видалити позначку про показ закладок
                     this.isShowBookmark.Remove(templateName);
-
                     if (isShowForCmd.ContainsKey(templateName))
                     { // якщо показані параметри конвертування у модулі команд
                         if ((isShowForCmd[templateName] == true)
@@ -278,9 +275,8 @@ namespace WinFormsUI
                     {   // якщо шаблон вибраний у модулі генерації
                         this.dataGridViewGenSettingBookmarks.Rows.Clear();
                         this.dataGridViewGenSettingBookmarks.Refresh();
-
                     }
-
+                    // видалення шаблону зі списків збережених та вихідних відповідно
                     this.ListBoxGenSavedTemplates.Items.RemoveAt(index);
                     ListBoxGenSavedTemplates.SelectedIndex = index > 0 ? index - 1 : -1;
                     this.ComboBoxCmdOutputTemplate.Items.RemoveAt(index);
@@ -529,7 +525,7 @@ namespace WinFormsUI
                     if (isContains)
                     {
                         CustomMessageBox.Show("Назва шаблона не має співпадати з вже завантаженим шаблоном! Змініть назву одного з файлів.",
-                                      "Завантаження шаблона", MessageBoxButtons.OK);
+                          "Завантаження шаблона", MessageBoxButtons.OK);
                         return;
                     }
                 }
@@ -547,13 +543,13 @@ namespace WinFormsUI
                 {
                     dictionaryBookmarks.Add(doc.Bookmarks[i].Name, "Текст");
                 }
+                // задати дані вхідного документа
                 genInputTemplate = new TemplateViewModel();
                 genInputTemplate.FileName = fileInfo.Name;
                 genInputTemplate.BookmarksFile = dictionaryBookmarks;
                 genInputTemplate.FilePath = fileInfo.FullName;
                 genInputTemplate.ContentFile = File.ReadAllBytes(fileInfo.FullName);
-
-                if (this.bookmarksData.Count > 0) // якщо є задані дані закладок
+                if (this.bookmarksData.Count > 0)
                     this.bookmarksData.Clear();
                 this.dataGridViewGenSettingBookmarks.Rows.Clear();
                 this.dataGridViewGenSettingBookmarks.Refresh();
@@ -591,9 +587,7 @@ namespace WinFormsUI
                     if (!formTextData.isSavedText)
                         return;
                     if (this.bookmarksData.ContainsKey(nameBookmark))
-                    {
                         this.bookmarksData[nameBookmark] = formTextData.textData;
-                    }
                     else
                         this.bookmarksData.Add(nameBookmark, formTextData.textData);
                 }
@@ -606,9 +600,7 @@ namespace WinFormsUI
                     if (!formImageData.isSavedImage)
                         return;
                     if (this.bookmarksData.ContainsKey(nameBookmark))
-                    {
                         this.bookmarksData[nameBookmark] = formImageData.imageData;
-                    }
                     else
                         this.bookmarksData.Add(nameBookmark, formImageData.imageData);
                 }
@@ -627,13 +619,10 @@ namespace WinFormsUI
                     else
                         this.bookmarksData.Add(nameBookmark, formTableData.tableData);
                 }
-
                 int indexSelectedTemplate = ListBoxGenSavedTemplates.SelectedIndex;
                 string name = ListBoxGenSavedTemplates.Items[indexSelectedTemplate].Text;
                 if (!this.isDataSet.ContainsKey(name))
-                {
-                    this.isDataSet.Add(name, true);
-                }
+                     this.isDataSet.Add(name, true); // позначка про задані дані закладок
 
             }
         }
@@ -930,38 +919,31 @@ namespace WinFormsUI
                     CustomMessageBox.Show("Вихідний шаблон не вибрано! Додайте шаблон.", "Показ закладок", MessageBoxButtons.OK);
                     return;
                 }
-
                 this.templateViewModel = new TemplateViewModel();
                 string nameSelectedTemplate = ComboBoxCmdOutputTemplate.Items[indexOutputTemplate].ToString()
                     ?? throw new ArgumentNullException();
                 templateViewModel.FileName = nameSelectedTemplate;
                 // отримати шаблон з бази даних
                 GetTemplate?.Invoke(sender, viewTemplate);
-                int countOutput = viewTemplate.BookmarksFile.Count;
-                int countInput = cmdInputDoc.BookmarksFile.Count();
+                int countOutput = viewTemplate.BookmarksFile.Count; // кількість вихідних закладок
+                int countInput = cmdInputDoc.BookmarksFile.Count(); // кількість вхідних закладок
                 if (countOutput != countInput)
-                {
+                { 
                     CustomMessageBox.Show("Кількість закладок у вхідному документі та вихідному шаблоні має бути однакова! " +
                         "Вхідний документ має " + countInput.ToString() + " закладки(ок), а вихідний шаблон " + countOutput.ToString(),
                         "Показ закладок", MessageBoxButtons.OK);
                     return;
                 }
-
                 if (isShowForCmd.ContainsKey(viewTemplate.FileName))
-                {
                     isShowForCmd[viewTemplate.FileName] = true;
-                }
                 else
                     isShowForCmd.Add(viewTemplate.FileName, true);
-
                 DataGridViewComboBoxColumn inputBookmarks = (DataGridViewComboBoxColumn)this.dataGridViewCmdBookmarkMatch.Columns[2];
-
                 foreach (var input in cmdInputDoc.BookmarksFile.Keys)
                 {
                     inputBookmarks.Items.Add(input);
                     inputBookmarks.DefaultCellStyle.NullValue = inputBookmarks.Items[0].ToString();
                 }
-
                 foreach (var output in viewTemplate.BookmarksFile.Keys)
                 {
                     this.dataGridViewCmdBookmarkMatch.Rows.Add(0, output);
@@ -994,7 +976,6 @@ namespace WinFormsUI
                     "не вибраний вихідний шаблон або не задані параметри конвертування.", "Створення команди", MessageBoxButtons.OK);
                 return;
             }
-
             foreach (DataGridViewRow row in this.dataGridViewTableCommand.Rows)
             {
                 string name = row.Cells[1].Value.ToString() ?? throw new ArgumentNullException();
@@ -1004,7 +985,6 @@ namespace WinFormsUI
                     return;
                 }
             }
-
             Dictionary<string, string> cmdSetting = new Dictionary<string, string>();
             for (int indexRow = 0; indexRow < countRowSetting; indexRow++)
             {
@@ -1017,64 +997,51 @@ namespace WinFormsUI
                         "Створення команди", MessageBoxButtons.OK);
                     return;
                 }
-
                 cmdSetting.Add(OutputBookmark, InputBookmark);
             }
-
             this.templateViewModel = new TemplateViewModel();
-            string nameSelectedTemplate = ComboBoxCmdOutputTemplate.Items[indexOutputTemplate].ToString() ?? throw new ArgumentNullException();
+            string nameSelectedTemplate = ComboBoxCmdOutputTemplate.Items[indexOutputTemplate].ToString() 
+                ?? throw new ArgumentNullException();
             templateViewModel.FileName = nameSelectedTemplate;
-
+            // отримати шаблон з бази даних
             GetTemplate?.Invoke(sender, viewTemplate);
-
             this.commandViewModel = new CommandViewModel();
             commandViewModel.NameCommand = commandName;
             commandViewModel.InputTemplate = cmdInputDoc;
             commandViewModel.OutputTemplate = viewTemplate;
             commandViewModel.CommandSetting = cmdSetting;
-
+            // зберегти команду в базі даних
             SaveCommand?.Invoke(sender, e);
-
             List<CommandViewModel> command = new List<CommandViewModel>()
             { viewCommand };
-
             this.SetCommandsList(command);
         }
 
+        /// <summary>
+        /// [Модуль команд]
+        /// Видалення команди
+        /// </summary>
         private void dataGridViewTableCommand_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // індекс стовпця таблиці команд
             string columnTableCommand = this.dataGridViewTableCommand.Columns[e.ColumnIndex].Name;
-
             if (columnTableCommand == "CmdDeleteCommand")
             {
                 DialogResult dialogResult = CustomMessageBox.Show("Ви впевнені, що хочете видалити команду? Видалення скасувати неможливо.",
                 "Видалення команди", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes) // якщо видалити команду
                 {
-                    if (this.dataGridViewTableCommand.SelectedRows.Count == 0) //
-                    {
-                        CustomMessageBox.Show("Для видалення виберіть команду зі списку.", "Видалення команди", MessageBoxButtons.OK);
-                    }
-                    else
-                    {   // видалення
-                        int index = this.dataGridViewTableCommand.CurrentCell.RowIndex;
-                        viewNameCommand = this.dataGridViewTableCommand.Rows[index].Cells[1].Value.ToString() ?? throw new ArgumentNullException();
-                        commandViewModel = new CommandViewModel();
-                        commandViewModel.NameCommand = viewNameCommand;
-
-                        GetCommand?.Invoke(sender, viewCommand);
-                        DeleteCommand?.Invoke(sender, e);
-
-                        // видалення з таблиці
-                        this.dataGridViewTableCommand.Rows.RemoveAt(index);
-                        IndexRowCommandTable--;
-
-                        // видалення зі списку команд у модулі генерації
-                        this.ComboBoxGenCommandList.Items.RemoveAt(index);
-                        // this.ComboBoxGenCommandList.SelectedIndex = 0;
-                    }
-
+                    int index = this.dataGridViewTableCommand.CurrentCell.RowIndex;
+                    viewNameCommand = this.dataGridViewTableCommand.Rows[index].Cells[1].Value.ToString() ?? throw new ArgumentNullException();
+                    commandViewModel = new CommandViewModel();
+                    commandViewModel.NameCommand = viewNameCommand;
+                    GetCommand?.Invoke(sender, viewCommand); // отримати команду з бази даних
+                    DeleteCommand?.Invoke(sender, e); // видалити команду з бази даних
+                     // видалення з таблиці
+                    this.dataGridViewTableCommand.Rows.RemoveAt(index);
+                    IndexRowCommandTable--;
+                    // видалення зі списку команд у модулі генерації
+                    this.ComboBoxGenCommandList.Items.RemoveAt(index);
                 }
             }
 
@@ -1098,40 +1065,34 @@ namespace WinFormsUI
         private void ButtonEditCommand_Click(object sender, EventArgs e)
         {
             if (this.dataGridViewTableCommand.SelectedRows.Count == 0)
-            {
                 CustomMessageBox.Show("Для редагування виберіть команду з таблиці.", "Редагування команди", MessageBoxButtons.OK);
-            }
             else
             {
                 int indexCmd = this.dataGridViewTableCommand.CurrentCell.RowIndex; // індекс вибраної команди
-                this.commandName = this.dataGridViewTableCommand.Rows[indexCmd].Cells[1].Value.ToString() ?? throw new ArgumentNullException();
-
+                this.commandName = this.dataGridViewTableCommand.Rows[indexCmd].Cells[1].Value.ToString() 
+                    ?? throw new ArgumentNullException();
                 commandViewModel = new CommandViewModel();
                 commandViewModel.NameCommand = commandName;
-
+                // отримати команду з бази даних
                 GetCommand?.Invoke(sender, viewCommand);
-
                 List<string> namesCommand = new List<string>();
                 foreach (DataGridViewRow row in this.dataGridViewTableCommand.Rows)
                 {
                     string name = row.Cells[1].Value.ToString() ?? throw new ArgumentNullException();
                     if (viewCommand.NameCommand != name)
-                    {
-                        namesCommand.Add(name);
-                    }
+                       namesCommand.Add(name);
                 }
-
+                // форма редагування команди
                 FormEditCommand formEditCommand = new FormEditCommand(viewCommand.NameCommand, viewCommand.InputTemplate.BookmarksFile,
                     viewCommand.CommandSetting, namesCommand);
                 formEditCommand.ShowDialog();
                 if (!formEditCommand.SavedChanges)
                     return;
-
                 commandViewModel = new CommandViewModel();
                 commandViewModel.NameCommand = formEditCommand.newNameCommand;
                 commandViewModel.CommandSetting = formEditCommand.newCommandSetting;
+                // оновити дані команди в базі даних
                 UpdateCommand?.Invoke(sender, e);
-
                 this.dataGridViewTableCommand.Rows[indexCmd].Cells[1].Value = viewCommand.NameCommand;
                 this.ComboBoxGenCommandList.Items[indexCmd] = viewCommand.NameCommand;
             }
