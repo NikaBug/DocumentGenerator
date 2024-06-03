@@ -284,6 +284,7 @@ namespace WinFormsUI
                     this.ListBoxGenSavedTemplates.Items.RemoveAt(index);
                     ListBoxGenSavedTemplates.SelectedIndex = index > 0 ? index - 1 : -1;
                     this.ComboBoxCmdOutputTemplate.Items.RemoveAt(index);
+                    ComboBoxCmdOutputTemplate.SelectedIndex = index > 0 ? index - 1 : -1;
 
                 }
             }
@@ -682,8 +683,8 @@ namespace WinFormsUI
                 if (SwitchGenUseCommand.Checked)
                 {   // формування документа з використанням даних команди
                     int indexSelectedCommand = ComboBoxGenCommandList.SelectedIndex;
-                    if (indexSelectedCommand == -1) // [додати до налагодження]
-                    {
+                    if (indexSelectedCommand == -1)
+                    { 
                         CustomMessageBox.Show("Не вибрана команда! Спочатку створіть команду.",
                        "Формування документа", MessageBoxButtons.OK);
                         return;
@@ -764,7 +765,6 @@ namespace WinFormsUI
                         MemoryStream streamInput = new MemoryStream(genInputTemplate.ContentFile);
                         inputTemplate.LoadFromStream(streamInput, FileFormat.Docx);
                     }
-
                     BookmarksNavigator navigatorInput = new BookmarksNavigator(inputTemplate);
                     foreach (var item in bookmarksData)
                     {
@@ -800,37 +800,25 @@ namespace WinFormsUI
 
         }
 
-
         /// <summary>
         /// [Модуль генерації]
         /// Список збережених шаблонів
         /// (зміна значення)
         /// </summary>
         private void ListBoxGenSavedTemplates_SelectedValueChanged(object sender, MaterialListBoxItem selectedItem)
-        {
+        { 
             int indexSelectedTemplate = ListBoxGenSavedTemplates.SelectedIndex;
             if (bookmarksData.Count > 0)
             {
-                var result = CustomMessageBox.Show("Увага! Попередньо задані дані для закладок поточного шаблону буде видалено!" +
-                    " Продовжити?", "Попередження", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                    this.bookmarksData.Clear();
-                else
-                {
-                    //if (indexSelectedTemplate > 1)
-                    //    ListBoxGenSavedTemplates.SelectedIndex = indexSelectedTemplate - 1;
-                    //else if (indexSelectedTemplate == 0)
-                    //    ListBoxGenSavedTemplates.SelectedIndex = indexSelectedTemplate;
-                    return;
-                }
+                CustomMessageBox.Show("Увага! Попередньо задані дані для закладок поточного шаблону буде видалено!", 
+                    "Попередеження", MessageBoxButtons.OK);
+                this.bookmarksData.Clear();
             }
 
             this.dataGridViewGenSettingBookmarks.Rows.Clear();
             this.dataGridViewGenSettingBookmarks.Refresh();
-
             this.templateViewModel = new TemplateViewModel();
             templateViewModel.FileName = ListBoxGenSavedTemplates.Items[indexSelectedTemplate].Text;
-
             // отримати шаблон з бази даних
             this.GetTemplate.Invoke(sender, viewTemplate);
 
@@ -936,6 +924,10 @@ namespace WinFormsUI
                 if (TextBoxCmdInputDocument.Text.Length == 0)
                 {
                     CustomMessageBox.Show("Спочатку завантажте заповнений шаблон!", "Показ закладок", MessageBoxButtons.OK);
+                    return;
+                } else if(indexOutputTemplate == -1)
+                {
+                    CustomMessageBox.Show("Вихідний шаблон не вибрано! Додайте шаблон.", "Показ закладок", MessageBoxButtons.OK);
                     return;
                 }
 
