@@ -509,7 +509,7 @@
             TextBoxGenNameOutputDocument.HideSelection = true;
             TextBoxGenNameOutputDocument.LeadingIcon = null;
             TextBoxGenNameOutputDocument.Location = new Point(24, 74);
-            TextBoxGenNameOutputDocument.MaxLength = 300;
+            TextBoxGenNameOutputDocument.MaxLength = 100;
             TextBoxGenNameOutputDocument.MouseState = MaterialSkin.MouseState.OUT;
             TextBoxGenNameOutputDocument.Name = "TextBoxGenNameOutputDocument";
             TextBoxGenNameOutputDocument.PasswordChar = '\0';
