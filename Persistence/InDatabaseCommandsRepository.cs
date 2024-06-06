@@ -90,7 +90,6 @@ namespace Persistence
                 command.CommandText = @"SELECT * FROM Commands WHERE Name=@name";
                 command.Parameters.AddWithValue("@name", cmdName);
             }
-
             using (var reader = command.ExecuteReader())
             {
                 List<Command> commands = new List<Command>();
@@ -102,7 +101,6 @@ namespace Persistence
                     var setting_bookmarks = JsonConvert.DeserializeObject<Dictionary<string, string>>(reader.GetString(4));
                     commands.Add(new Command(name, setting_bookmarks, input_document, output_template));
                 }
-
                 connection.Close();
                 return Task.FromResult<IEnumerable<Command>>(commands);
             }
@@ -118,7 +116,6 @@ namespace Persistence
             string json_inputdoc = JsonConvert.SerializeObject(command.InputTemplate);
             string json_outputTemplate = JsonConvert.SerializeObject(command.OutputTemplate);
             string json_setting = JsonConvert.SerializeObject(command.CommandSetting);
-
             connection = CreateConnection();
             string insertQuery = "INSERT INTO Commands ('Name','InputDoc','OutputTemplate','SettingBookmarks') " +
                "VALUES(@name,@inputdoc,@outtemplate,@setting)";
@@ -130,7 +127,6 @@ namespace Persistence
             var insertResult = sqlite_cmd.ExecuteNonQuery();
             sqlite_cmd.Connection.Close();
             connection.Close();
-
             return Task.FromResult(insertResult);
         }
 
@@ -145,7 +141,6 @@ namespace Persistence
         {
             connection = CreateConnection();
             string json_bookmarks = JsonConvert.SerializeObject(newSetting);
-
             var command = connection.CreateCommand();
             command.CommandText = @"UPDATE Commands SET Name=@newname, SettingBookmarks=@newbookmarks WHERE Name=@oldname";
             command.Parameters.AddWithValue("newname", newName);
@@ -153,7 +148,6 @@ namespace Persistence
             command.Parameters.AddWithValue("oldname", oldName);
             _ = command.ExecuteNonQuery();
             command.Connection.Close();
-
             connection.Close();
             return Task.CompletedTask;
         }

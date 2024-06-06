@@ -88,7 +88,6 @@ namespace Persistence
                 command.CommandText = @"SELECT * FROM Templates WHERE Name=@name";
                 command.Parameters.AddWithValue("@name", name);
             }
-
             using (var reader = command.ExecuteReader())
             {
                 List<Template> templates = new List<Template>();
@@ -100,7 +99,6 @@ namespace Persistence
                     Dictionary<string, string> bookmarks = JsonConvert.DeserializeObject<Dictionary<string, string>>(reader.GetString(4));
                     templates.Add(new Template(_name, path, content, bookmarks));
                 }
-
                 connection.Close();
                 return Task.FromResult<IEnumerable<Template>>(templates);
             }
@@ -114,10 +112,8 @@ namespace Persistence
         public Task Save(Template template)
         {
             connection = CreateConnection();
-
             string insertQuery = "INSERT INTO Templates ('Name','Path','Content','Bookmarks') VALUES(@name,@path,@content,@bookmarks)";
             SQLiteCommand sqlite_cmd = new SQLiteCommand(insertQuery, connection);
-
             string json_bookmarks = JsonConvert.SerializeObject(template.FileBookmarks);
             sqlite_cmd.Parameters.AddWithValue("name", template.FileName);
             sqlite_cmd.Parameters.AddWithValue("path", template.FilePath);
@@ -126,9 +122,7 @@ namespace Persistence
             var insertResult = sqlite_cmd.ExecuteNonQuery();
             sqlite_cmd.Connection.Close();
             connection.Close();
-
             return Task.FromResult(insertResult);
-
         }
 
         /// <summary>

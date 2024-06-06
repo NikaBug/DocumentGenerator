@@ -26,7 +26,6 @@ namespace WinFormsUI
                 this.dataGridViewTableData.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                 this.dataGridViewTableData.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-
             for (int i = 0; i < this.tableData.numberRows; i++)
             {
                 this.dataGridViewTableData.Rows[i].HeaderCell.Value = Convert.ToString(i + 1);
@@ -41,12 +40,9 @@ namespace WinFormsUI
             {
                 Array.Clear(this.tableData.arrayData, 0, this.tableData.arrayData.Length);
             }
-
             int numberRows = Convert.ToInt32(numericUpDownNumberRows.Value);
             int numberColumns = Convert.ToInt32(numericUpDownNumberColumns.Value);
-
             this.tableData = new TableData(numberRows, numberColumns);
-
             this.dataGridViewTableData.RowCount = this.tableData.numberRows;
             this.dataGridViewTableData.ColumnCount = this.tableData.numberColumns;
             //заповнення таблиці
@@ -68,7 +64,6 @@ namespace WinFormsUI
                 this.isSavedTable = true;
                 CustomMessageBox.Show("Дані таблиці успішно збережені!", "Збереження даних таблиці", MessageBoxButtons.OK);
             }
-
             this.Close();
         }
 
@@ -77,7 +72,6 @@ namespace WinFormsUI
             // індекси елемента матриці для поточной клітки таблиці
             int i = this.dataGridViewTableData.CurrentCell.RowIndex;
             int j = this.dataGridViewTableData.CurrentCell.ColumnIndex;
-
             if (dataGridViewTableData.CurrentCell.Value == null)
             {
                 CustomMessageBox.Show("Значення клітинки таблиці не має бути порожнім!", "Значення клітинок таблиці", MessageBoxButtons.OK);
@@ -87,7 +81,6 @@ namespace WinFormsUI
                 string value = dataGridViewTableData.CurrentCell.Value.ToString() ?? throw new ArgumentNullException();
                 this.tableData.arrayData[i, j] = value;
             }
-
         }
 
         private void ButtonClearTableData_Click(object sender, EventArgs e)

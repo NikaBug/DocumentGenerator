@@ -8,7 +8,6 @@ namespace WinFormsUI
         private string _oldNameTemplate;
         private Dictionary<string, string> _newBookmarksTemplate;
         private List<string> namesSavedTemplates;
-
         public string oldNameTemplate { get => _oldNameTemplate; set => _oldNameTemplate = value; }
         public string newNameTemplate { get => TextBoxTemplateName.Text; set => TextBoxTemplateName.Text = value; }
         public Dictionary<string, string> newBookmarksTemplate { get => _newBookmarksTemplate; set => _newBookmarksTemplate = value; }
@@ -22,7 +21,6 @@ namespace WinFormsUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-
             this.TextBoxTemplateName.Text = templateName;
             oldNameTemplate = TextBoxTemplateName.Text;
             flagSave = false;
@@ -31,7 +29,6 @@ namespace WinFormsUI
             theColumn.Items.Add("Зображення");
             theColumn.Items.Add("Таблиця");
             theColumn.DefaultCellStyle.NullValue = "Текст";
-
             foreach (var itemBookmarks in templateBookmarks)
             {
                 this.dataGridViewEditTableBookmarks.Rows.Add(0, itemBookmarks.Key);
@@ -69,7 +66,6 @@ namespace WinFormsUI
                 }
             }
             _newBookmarksTemplate = new Dictionary<string, string>();
-
             for (int indexRow = 0; indexRow < this.dataGridViewEditTableBookmarks.Rows.Count; indexRow++)
             {
                 string NameBookmark = dataGridViewEditTableBookmarks.Rows[indexRow].Cells[1].FormattedValue.ToString();

@@ -69,8 +69,6 @@ namespace WinFormsUI
             CmdInputBookmark = (DataGridViewComboBoxColumn)this.dataGridViewCmdBookmarkMatch.Columns[2];
             // представлення вхідного документа для команди
             this.cmdInputDoc = new TemplateViewModel();
-
-
         }
 
         /// <summary>

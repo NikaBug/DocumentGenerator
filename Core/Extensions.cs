@@ -13,7 +13,6 @@ namespace Core
         /// Додати до пам'яті репозиторії
         /// </summary>
         /// <param name="services"></param>
-        /// <returns></returns>
         public static IServiceCollection AddInMemoryRepositories(this IServiceCollection services)
         {
             services.AddScoped<ITemplateRepository, InDatabaseTemplateRepository>();

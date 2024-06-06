@@ -44,7 +44,6 @@ namespace WinFormsUI
                 CustomMessageBox.Show("Для збереження заповніть текстове поле!", "Збереження", MessageBoxButtons.OK);
                 return;
             }
-
             this.Close();
         }
     }

@@ -8,10 +8,8 @@ namespace WinFormsUI
         private Dictionary<string, string> newCmdSetting;
         private Dictionary<string, string> inputBookmarks;
         private List<string> NamesSavedCommands;
-
         public string newNameCommand { get => this.TextBoxNewNameCommand.Text; set => this.TextBoxNewNameCommand.Text = value; }
         public Dictionary<string, string> newCommandSetting { get => newCmdSetting; set => this.newCmdSetting = value; }
-
         private bool flagSave;
         public bool SavedChanges { get => flagSave; }
 
@@ -22,21 +20,17 @@ namespace WinFormsUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-
             this.TextBoxNewNameCommand.Text = oldCmdName;
             this.inputBookmarks = inputDocBookmarks;
             this.flagSave = false;
             this.NamesSavedCommands = namesSavedCommands;
-
             // стовпець - вхідні закладки (документ)
             DataGridViewComboBoxColumn cmbColBookmarks = (DataGridViewComboBoxColumn)this.dataGridViewEditBookmarkMatch.Columns[2];
-            
             // всі назви вхідних закладок (документ)
             foreach (var inputBookmark in inputBookmarks.Keys)
             {
                 cmbColBookmarks.Items.Add(inputBookmark);
             }
-
             int j = 0;
             foreach (var oldSetting in oldCmdSetting) // налаштування команди: key - вихід, value - вхід
             {   // назва вибраної вхідної закладки (документ)
@@ -73,7 +67,6 @@ namespace WinFormsUI
                         return;
                     }
                 }
-
                 this.newCmdSetting = new Dictionary<string, string>();
                 for (int indexRow = 0; indexRow < this.dataGridViewEditBookmarkMatch.Rows.Count; indexRow++)
                 {
@@ -81,7 +74,6 @@ namespace WinFormsUI
                     string SelectedInputBookmark = this.dataGridViewEditBookmarkMatch.Rows[indexRow].Cells[2].FormattedValue.ToString();
                     newCmdSetting.Add(outputBoookmark, SelectedInputBookmark);
                 }
-
                 flagSave = true;
                 this.Close();
             }
