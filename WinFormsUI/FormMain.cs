@@ -6,6 +6,7 @@ using Presentation.Views;
 using Spire.Doc;
 using Spire.Doc.Collections;
 using Spire.Doc.Documents;
+using Spire.Doc.Fields;
 
 namespace WinFormsUI
 {
@@ -240,10 +241,13 @@ namespace WinFormsUI
                     this.dataGridViewTableTemplate.Rows.RemoveAt(index);
                     IndexRowTemplateTable--;
                     // якщо показані закладки видаленого шаблону
-                    if (this.dataGridViewTableBookmarks.Rows.Count > 0 && (this.isShowBookmark[templateName] == true))
-                    {   // очищення таблиці закладок
-                        this.dataGridViewTableBookmarks.Rows.Clear();
-                        this.dataGridViewTableBookmarks.Refresh();
+                    if (this.isShowBookmark.ContainsKey(templateName))
+                    {
+                        if (this.dataGridViewTableBookmarks.Rows.Count > 0 && (this.isShowBookmark[templateName] == true))
+                        {   // очищення таблиці закладок
+                            this.dataGridViewTableBookmarks.Rows.Clear();
+                            this.dataGridViewTableBookmarks.Refresh();
+                        }
                     }
                     // видалити позначку про показ закладок
                     this.isShowBookmark.Remove(templateName);
@@ -257,7 +261,6 @@ namespace WinFormsUI
                             this.isShowForCmd.Remove(templateName);
                         }
                     }
-
                     if (isDataSet.ContainsKey(templateName))
                     {  // якщо задані дані для закладок у модулі генерації
                         if ((isDataSet[templateName] == true)
@@ -269,10 +272,13 @@ namespace WinFormsUI
                             this.isDataSet.Remove(templateName);
                         }
                     }
-                    else if (ListBoxGenSavedTemplates.SelectedItem.Text.Equals(templateName))
+                    else if (ListBoxGenSavedTemplates.SelectedItem != null)
                     {   // якщо шаблон вибраний у модулі генерації
-                        this.dataGridViewGenSettingBookmarks.Rows.Clear();
-                        this.dataGridViewGenSettingBookmarks.Refresh();
+                        if (ListBoxGenSavedTemplates.SelectedItem.Text.Equals(templateName))
+                        {
+                            this.dataGridViewGenSettingBookmarks.Rows.Clear();
+                            this.dataGridViewGenSettingBookmarks.Refresh();
+                        }
                     }
                     // видалення шаблону зі списків збережених та вихідних відповідно
                     this.ListBoxGenSavedTemplates.Items.RemoveAt(index);
@@ -768,6 +774,13 @@ namespace WinFormsUI
                             TextBodyPart textBodyPart = new TextBodyPart(inputTemplate);
                             textBodyPart.BodyItems.Add(paragraph);
                             navigatorInput.ReplaceBookmarkContent(textBodyPart);
+
+                            //paragraph.AppendPicture((System.Drawing.Image)item.Value);
+                            //navigatorInput.InsertParagraph(paragraph);
+                            inputTemplate.Sections.Remove(section);
+                            inputTemplate.LastParagraph.RemoveFrame();
+
+                           
                         }
                         else if (item.Value.GetType() == typeof(TableData)) // якщо дані таблиця
                         {
