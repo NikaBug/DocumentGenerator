@@ -8,9 +8,10 @@ DocumentGenerator — це дипломний проєкт, мета якого 
 * [Project Status](#project-status)
 <!-- * [License](#license) -->
 ## General Info
-Для розробки програми було обрано трирівневу архітектуру.
-<!-- [StructureProjects1 screenshot](./Screenshots/StructureProjects1.jpg) -->
-Для зберігання даних передбачено використання бази даних SQLite.
+Для розробки програми було обрано трирівневу архітектуру. Дані зберігаються з використанням бази даних SQLite.
+
+![StructureProjects screenshot](./Documentation/Screenshots/StructureProjects1.jpg)
+
 Для реалізації проєкту Presentation було використано патерн MVP (ModelView-Presenter).
 ## Technologies Used
 - .NET - version 6.0;
