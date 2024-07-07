@@ -29,9 +29,12 @@ DocumentGenerator реалізовує такі можливості:
 - створення документа на основі шаблону;
 - створення команд для перетворення одного документа на інший.
 ## Screenshots
-Меню:
-...
-- Вкладка "Шаблони"
-- Вкладка "Генератор"
-- Вкладка "Команди"
+- Меню: <br>
+  <img align="center" height="250" src="./Documentation/Screenshots/mainMenu.png">
+- Вкладка "Шаблони"<br>
+  <img align="center" height="400" src="./Documentation/Screenshots/tabTemplate.png">
+- Вкладка "Генератор"<br>
+  <img align="center" height="400" src="./Documentation/Screenshots/tabGenerator.png">
+- Вкладка "Команди"<br>
+  <img align="center" height="400" src="./Documentation/Screenshots/tabCommand.png">
 ## Project Status
