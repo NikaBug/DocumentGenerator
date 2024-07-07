@@ -8,6 +8,20 @@ DocumentGenerator — це дипломний проєкт, який мав на
 * [Project Status](#project-status)
 <!-- * [License](#license) -->
 ## General Info
+## Technologies Used
+- MaterialSkin.2 - version 2.3.1
+- Microsoft.Extensions.DependencyInjection - version 8.0.0
+- Microsoft.Extensions.Hosting - version 8.0.0
+- Microsoft-WindowsAPICodePack-Shell - version 1.1.5
+- System.Data.SQLite - version 1.0.118
+- Newtonsoft.Json - version 13.0.3
+- FreeSpire.Doc - version 12.2.0
+## Features
+DocumentGenerator реалізовує такі можливості:
+- завантаження шаблонів
+- експорт сформованих документів
+- створення документа на основі шаблону
+- створення команд для перетворення одного документа на інший
 
 
 
