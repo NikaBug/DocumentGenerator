@@ -38,4 +38,8 @@ DocumentGenerator реалізовує такі можливості:
 - Вкладка "Команди"<br>
   <img align="center" height="400" src="./Documentation/Screenshots/tabCommand.png"> <br>
 
+Відео-демонстраційний приклад роботи програми:
+
+https://github.com/NikaBug/DocumentGenerator/assets/149799394/d8a01cd3-89fb-4a4e-9466-ff0f46b730b5
+
 ## Project Status
