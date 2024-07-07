@@ -12,7 +12,7 @@ DocumentGenerator — це дипломний проєкт, мета якого 
 
 ![StructureProjects screenshot](./Documentation/Screenshots/StructureProjects1.jpg)
 
-Для реалізації проєкту Presentation було використано патерн MVP (Model-View-Presenter).
+Для реалізації проєкту Presentation було використано патерн MVP (Model-View-Presenter). Також для керування залежностями використовується патерн Dependency Injection.
 ## Technologies Used
 - .NET - version 6.0;
 - MaterialSkin.2 - version 2.3.1;
@@ -29,4 +29,8 @@ DocumentGenerator реалізовує такі можливості:
 - створення документа на основі шаблону;
 - створення команд для перетворення одного документа на інший.
 ## Screenshots
+Приклади роботи з вкладками:
+- Вкладка "Шаблони"
+- Вкладка "Генератор"
+- Вкладка "Команди"
 ## Project Status
