@@ -1,5 +1,5 @@
 # DocumentGenerator
-DocumentGenerator — це дипломний проєкт, який мав на меті розробити програму для поліпшення та спрощення процесу створення Word документів на основі шаблонів.
+DocumentGenerator — це дипломний проєкт, мета якого розробити програму для поліпшення та спрощення процесу створення Word документів на основі шаблонів.
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
