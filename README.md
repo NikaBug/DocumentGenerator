@@ -1,32 +1,47 @@
 # DocumentGenerator
-Інтерфейс (проєкт WinFormsUI)
-- Інтерфейс модуля шаблонів
-<img width="959" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/d0601140-1e80-44b5-b194-4f7bd684a823">
-<img width="458" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/12284123-1553-439d-8cb0-4fa5e0d6db8c">
+DocumentGenerator — це дипломний проєкт, мета якого розробити програму для поліпшення та спрощення процесу створення Word документів на основі шаблонів.
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Project Status](#project-status)
+<!-- * [License](#license) -->
+## General Info
+Для розробки програми було обрано трирівневу архітектуру. Дані зберігаються з використанням бази даних SQLite.
 
-- Інтерфейс модуля генерації документа
-<img width="959" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/49ca6650-a59c-418a-8abb-69e0b04bcd51">
-<img width="407" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/aefb03ce-ab0d-418f-906d-9a7f465bcc11">
-<img width="424" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/d86b7ce8-9d6d-44a3-bfdc-381234434f9d">
-<img width="466" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/d94cd504-7dde-4ee5-8fbb-eab0207a05ca">
+![StructureProjects screenshot](./Documentation/Screenshots/StructureProjects1.jpg)
 
-- Інтерфейс модуля команд
-<img width="959" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/afa00652-6879-4e05-87a9-2ce0e0966258">
-<img width="452" alt="image" src="https://github.com/NikaBug/DocumentGenerator/assets/149799394/c3b1ee9e-e970-4e51-a029-94b1daac5f2f">
+Для реалізації проєкту Presentation було використано патерн MVP (Model-View-Presenter). Також для керування залежностями використовується патерн Dependency Injection.
+## Technologies Used
+- .NET - version 6.0;
+- MaterialSkin.2 - version 2.3.1;
+- Microsoft.Extensions.DependencyInjection - version 8.0.0;
+- Microsoft.Extensions.Hosting - version 8.0.0;
+- Microsoft-WindowsAPICodePack-Shell - version 1.1.5;
+- System.Data.SQLite - version 1.0.118;
+- Newtonsoft.Json - version 13.0.3;
+- FreeSpire.Doc - version 12.2.0.
+## Features
+DocumentGenerator реалізовує такі можливості:
+- завантаження шаблонів;
+- експорт сформованих документів;
+- створення документа на основі шаблону;
+- створення команд для перетворення одного документа на інший
+  (шляхом вибору вхідного документа та вихідного шаблону).
+## Screenshots
+- Меню<br>
+  <img align="center" height="250" src="./Documentation/Screenshots/mainMenu.png">
+- Вкладка "Шаблони"<br>
+  <img align="center" height="400" src="./Documentation/Screenshots/tabTemplate.png">
+- Вкладка "Генератор"<br>
+  <img align="center" height="400" src="./Documentation/Screenshots/tabGenerator.png">
+- Вкладка "Команди"<br>
+  <img align="center" height="400" src="./Documentation/Screenshots/tabCommand.png"> <br>
 
+Відео-демонстраційний приклад роботи програми:
 
+https://github.com/NikaBug/DocumentGenerator/assets/149799394/d8a01cd3-89fb-4a4e-9466-ff0f46b730b5
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Project Status
+Завершено в червні 2024 року.
